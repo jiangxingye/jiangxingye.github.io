@@ -237,6 +237,22 @@
     
         
             
+            <li><div data-rel="测试分类">测试分类<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="运维">运维<small>(82)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
             <li><div data-rel="读书"><i class="fold iconfont icon-right"></i>读书<small>(4)</small></div>
                 
                     <ul class="sub hide">
@@ -250,14 +266,6 @@
                         </li>
                             
                     </ul>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="运维">运维<small>(82)</small></div>
                 
             </li>
             
@@ -304,14 +312,6 @@
         
     
         
-            
-        
-    
-        
-            
-            <li><div data-rel="测试分类">测试分类<small>(1)</small></div>
-                
-            </li>
             
         
     
@@ -424,19 +424,19 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">浏览器</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color3">js</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">reading</a>
+        <a href="javascript:" class="color4">浏览器</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">活着</a>
+        <a href="javascript:" class="color2">测试分类标签</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">centos</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -445,10 +445,6 @@
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color3">运维</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">centos</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -484,10 +480,6 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">ftp</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color1">maven</a>
     </li>
     
@@ -496,7 +488,19 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">ftp</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color3">linux命令</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">reading</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">活着</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -573,10 +577,6 @@
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color1">regex</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">测试分类标签</a>
     </li>
     
     <div class="clearfix"></div>
@@ -699,7 +699,7 @@
         
         <a  class="大前端 "
            href="/2017/09/21/bf-cache/"
-           data-tag="浏览器,js"
+           data-tag="js,浏览器"
            data-author="" >
             <span class="post-title" title="[转]浏览器前进/后退缓存（BF Cache）">[转]浏览器前进/后退缓存（BF Cache）</span>
             <span class="post-date" title="2017-09-21 15:35:24">2017/09/21</span>
@@ -843,7 +843,7 @@
         
         <a  class="测试分类 "
            href="/2017/05/23/CentOS-DNS-GW-IP/"
-           data-tag="centos,测试分类标签"
+           data-tag="测试分类标签,centos"
            data-author="" >
             <span class="post-title" title="CentOS修改DNS/GW/IP">CentOS修改DNS/GW/IP</span>
             <span class="post-date" title="2017-05-23 09:53:52">2017/05/23</span>
@@ -851,7 +851,7 @@
         
         <a  class="运维 "
            href="/2017/05/23/CentOS-DNS-GW-IP/"
-           data-tag="运维,centos"
+           data-tag="centos,运维"
            data-author="" >
             <span class="post-title" title="CentOS修改DNS/GW/IP">CentOS修改DNS/GW/IP</span>
             <span class="post-date" title="2017-05-23 09:53:52">2017/05/23</span>
@@ -1940,7 +1940,7 @@ $ ls -l | wc -l
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#java','#translation','#javaee','#dubbo','#zookeeper','#mybatis','#PostgreSQL','#postgres','#sql','#AngularJs','#jsp','#jstl','#freemarker','#jQuery','#node','#hexo','#浏览器','#js','#reading','#活着','#samba','#运维','#centos','#firewall','#vim','#docker','#keybord','#emacs','#linux','#磁盘分区','#nginx','#ftp','#maven','#nexus','#linux命令','#3-hexo','#mathjax','#Git','#git','#GitHub','#fragment_cache','#mac','#efficiency','#pjax','#deepin','#IntellijIDEA','#tale','#encryption','#docker仓库','#shell','#encoding','#spring','#springmvc','#regex','#测试分类标签',],
+            'data': ['#java','#translation','#javaee','#dubbo','#zookeeper','#mybatis','#PostgreSQL','#postgres','#sql','#AngularJs','#jsp','#jstl','#freemarker','#jQuery','#node','#hexo','#js','#浏览器','#测试分类标签','#centos','#samba','#运维','#firewall','#vim','#docker','#keybord','#emacs','#linux','#磁盘分区','#nginx','#maven','#nexus','#ftp','#linux命令','#reading','#活着','#3-hexo','#mathjax','#Git','#git','#GitHub','#fragment_cache','#mac','#efficiency','#pjax','#deepin','#IntellijIDEA','#tale','#encryption','#docker仓库','#shell','#encoding','#spring','#springmvc','#regex',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');

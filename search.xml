@@ -1322,9 +1322,9 @@ function sendXHR () {
         
         <tags>
             
-            <tag> 浏览器 </tag>
-            
             <tag> js </tag>
+            
+            <tag> 浏览器 </tag>
             
         </tags>
         
@@ -2844,9 +2844,9 @@ ONBOOT=yes #系统启动时是否设置此网络接口，设置为yes时，系�
         
         <tags>
             
-            <tag> centos </tag>
-            
             <tag> 测试分类标签 </tag>
+            
+            <tag> centos </tag>
             
         </tags>
         
@@ -2902,9 +2902,9 @@ ONBOOT=yes #系统启动时是否设置此网络接口，设置为yes时，系�
         
         <tags>
             
-            <tag> 运维 </tag>
-            
             <tag> centos </tag>
+            
+            <tag> 运维 </tag>
             
         </tags>
         
