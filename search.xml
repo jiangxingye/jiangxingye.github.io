@@ -907,47 +907,6 @@ COMMIT;
     </entry>
     
     <entry>
-      <title><![CDATA[linux下修改按键ESC<=>CAPSLOCK和Control=>ALT_R]]></title>
-      <url>/2017/10/20/linux%E4%B8%8B%E4%BF%AE%E6%94%B9%E6%8C%89%E9%94%AEESC%3C=%3ECAPSLOCK%E5%92%8CControl=%3EALT_R/</url>
-      <content type="html"><![CDATA[<p>使用 <code>vim</code> 过程中发现 <code>esc</code> 和 <code>ctrl</code> 按键很难按，小拇指没有那么长啊～～，而 <code>caps_lock</code> 和 <code>alt_r</code>(右alt) 很少用。</p>
-<p>本教程将 <code>esc</code> 和 <code>caps_lock</code> 两个按键交换， <code>alt_r</code>(右alt) 改为 <code>ctrl</code>。</p>
-<h2 id="一、-esc-与-caps-lock-按键交换"><a href="#一、-esc-与-caps-lock-按键交换" class="headerlink" title="一、 esc 与 caps_lock 按键交换"></a>一、 esc 与 caps_lock 按键交换</h2><p>①. 创建 <code>.xmodmaprc</code> 文件。<br>②. 加入以下内容：</p>
-<pre><code class="bash">remove Lock = Caps_Lock
-add Lock = Escape
-keysym Caps_Lock = Escape
-keysym Escape = Caps_Lock
-</code></pre>
-<p>③. 执行 <code>xmodmap .xmodmaprc</code> 使之生效。</p>
-<h2 id="二、-将-右alt-改为-ctrl"><a href="#二、-将-右alt-改为-ctrl" class="headerlink" title="二、 将 右alt 改为 ctrl"></a>二、 将 右alt 改为 ctrl</h2><p>①. 查看需要修改键位的 keysym<br>通过 <code>xev | grep keycode</code> 获取右 <code>alt</code> 的 keysym 为 <code>Alt_R</code>。如下图所示：<br><img src="http://img.xiangzhangshugongyi.com/FvuqjLi5czeBluMTyIfv_xUOcu5k.png" alt="通过xev获取右alt的keysym"></p>
-<p>②. 查看 <code>Alt_R</code> 是哪个 modifier 使用的<br>通过 <code>xmodmap -pm</code> 查看，发现 <code>Alt_R</code> 是作为 modifier <code>mod1</code> 使用的。如下图所示：<br><img src="http://img.xiangzhangshugongyi.com/Fib8QjT-Ccx30DCf2rF4WkzHsbOH.png" alt="查看 Alt_R 是作为 mode1 使用的"></p>
-<p>③. 修改 modifier</p>
-<pre><code class="bash">xmodmap -e &#39;remove mod1 = Alt_R&#39; # 解除原来绑定
-xmodmap -e &#39;add control = Alt_R&#39; # 作为 control 使用
-</code></pre>
-]]></content>
-      
-        <categories>
-            
-            <category> 运维 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> vim </tag>
-            
-            <tag> keybord </tag>
-            
-            <tag> emacs </tag>
-            
-            <tag> linux </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[[转]字符编解码的故事（ASCII，ANSI，Unicode，Utf-8区别）]]></title>
       <url>/2017/09/25/ascii-ansi-unicode-utf-8%EF%BC%89/</url>
       <content type="html"><![CDATA[<p>很久很久以前，有一群人，他们决定用8个可以开合的晶体管来组合成不同的状态，以表示世界上的万物。他们认为8个开关状态作为原子单位很好，于是他们把这称为”字节”。</p>
@@ -1322,9 +1281,9 @@ function sendXHR () {
         
         <tags>
             
-            <tag> js </tag>
-            
             <tag> 浏览器 </tag>
+            
+            <tag> js </tag>
             
         </tags>
         
