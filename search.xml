@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title><![CDATA[raid丢失系统恢复案例]]></title>
+      <url>/2019/08/12/raid%E4%B8%A2%E5%A4%B1%E7%B3%BB%E7%BB%9F%E6%81%A2%E5%A4%8D%E6%A1%88%E4%BE%8B/</url>
+      <content type="html"><![CDATA[<h1 id="How-to-fix-“No-Bootable-Device”-issue-on-server"><a href="#How-to-fix-“No-Bootable-Device”-issue-on-server" class="headerlink" title="How to fix “No Bootable Device” issue on server?"></a>How to fix “No Bootable Device” issue on server?</h1><pre><code> This article focuses on &quot;No bootable device&quot; error, introducing its meaning, causes and step-by-step solutions. This error means that computer can&#39;t find boot drive which contains necessary files for computer to boot. If the error can&#39;t be solved properly, it may not only stop you from booting up PC, but also cause data loss. If your computer can&#39;t boot and shows &quot;No bootable device&quot; or similar error message, you can have a look at troubleshooting in this guide before replacing, formatting hard drive or reinstalling Windows. This page is divided into several parts and you can click subtitles below to read content you are interested in.
+</code></pre><p><img src="C:\Users\Administrator\Desktop\jiangxingye\source\_posts\raid丢失系统恢复案例\353c3787ac700e369a1951dade7f985.jpg" alt="故障图片"></p>
+<p>上面是故障现象。</p>
+<p><strong>原因分析：</strong>客户机器有独立的RAID卡，2块物理磁盘做的RAID0，和客户沟通，RAID卡进去状态不正常，不想重新安装系统。因为上面的环境配置很麻烦。</p>
+<p><strong>处理过程：</strong> 重新在RAID卡里做同级别RAID的话，不在raid里做clear操作的话，数据不丢失的话，理论上系统是有办法恢复的，如果数据会消失，那就要重做了。经验证，做同级别RAID系统恢复，数据并未消失。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> IT技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> bootable </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[[记]《知识分子的不幸》-王小波]]></title>
       <url>/2019/06/09/misfortune-intellectual/</url>
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章发表于1996年第二期《东方》杂志，同样收录于《沉默的大多数》一书中。</p>
