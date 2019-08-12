@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jiangxingye.github.io/"/>
-  <updated>2019-08-12T06:47:17.767Z</updated>
+  <updated>2019-08-12T07:21:25.200Z</updated>
   <id>https://jiangxingye.github.io/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>severinfo</title>
+    <link href="https://jiangxingye.github.io/2019/08/12/severinfo/"/>
+    <id>https://jiangxingye.github.io/2019/08/12/severinfo/</id>
+    <published>2019-08-12T07:09:02.000Z</published>
+    <updated>2019-08-12T07:21:25.200Z</updated>
+    
+    <content type="html"><![CDATA[<table><thead><tr><th>型号</th><th>主板</th><th>RAM</th><th>HDD</th><th>PCIE</th><th>Others</th></tr></thead><tbody><tr><td>PR2510G</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>PR</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;型号&lt;/th&gt;
+&lt;th&gt;主板&lt;/th&gt;
+&lt;th&gt;RAM&lt;/th&gt;
+&lt;th&gt;HDD&lt;/th&gt;
+&lt;th&gt;PCIE&lt;/th&gt;
+&lt;th&gt;Others&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PR2510G
+      
+    
+    </summary>
+    
+      <category term="IT技术" scheme="https://jiangxingye.github.io/categories/IT%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="服务器" scheme="https://jiangxingye.github.io/categories/IT%E6%8A%80%E6%9C%AF/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="服务器信息" scheme="https://jiangxingye.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BF%A1%E6%81%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>如何在服务器的BIOS中设置上电自启动</title>
