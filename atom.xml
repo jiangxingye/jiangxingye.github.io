@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jiangxingye.github.io/"/>
-  <updated>2019-08-12T06:31:39.327Z</updated>
+  <updated>2019-08-12T06:47:17.767Z</updated>
   <id>https://jiangxingye.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何在服务器的BIOS中设置上电自启动</title>
+    <link href="https://jiangxingye.github.io/2019/08/12/%E5%A6%82%E4%BD%95%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84BIOS%E4%B8%AD%E8%AE%BE%E7%BD%AE%E4%B8%8A%E7%94%B5%E8%87%AA%E5%90%AF%E5%8A%A8/"/>
+    <id>https://jiangxingye.github.io/2019/08/12/如何在服务器的BIOS中设置上电自启动/</id>
+    <published>2019-08-12T06:36:33.000Z</published>
+    <updated>2019-08-12T06:47:17.767Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>说明：</strong></p><p>1、为什么要实现这种功能，很多时候在民间都基本用普通PC来做小型服务器，公司的私服等等，而这些普通PC在民用电环境中经常会停电，一停就会导致服务器不能自动来电重启，所以这个功能来点开机是必须的。</p><p>2、普通PC基本都是以下这些配置方式，但不要和服务器主板做比较，服务器主板有专业的配置选项以及专业的来电自动启动设备。</p><p><strong>下面根据不同的BIOS列出相应的设置方法：</strong></p><p><img src="/2019/08/12/如何在服务器的BIOS中设置上电自启动/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190812142347.png" alt></p><p>1：首先进入BIOS的设置主界面，选择[POWER MANAGEMENT SETUP]，再选择[PWR Lost Resume State]，这一项有三个选择项。</p><p>选择[Keep OFF]项，代表停电后再来电时，电脑不会自动启动。<br>        选择[Turn On]项，代表停电后再来电时，电脑会自动启动。<br>        选择的[Last State]，那么代表停电后再来电时，电脑恢复到停电前电脑的状态。断电前如果电脑是处于开机状态，那么来电后就会自动开机。断电前是处于关机状态，那么来电后电脑不会自动开机。</p><p>2：首先进入Power Management Setup（电源管理设定）→Power Again（再来电状态），此项决定了开机时意外断电之后，电力供应恢复时系统电源的状态。设定值有：<br>Power Off（保持系统处于关机状态）<br>Power On（保持系统处于开机状态）<br>Last State（恢复到系统断电前的状态）进入挂起/睡眠模式，但若按钮被揿下超过4秒，机器关机。<br>若想来电自动开机把上面的这项改成power on就行了！</p><p>3：有的BIOS中[POWER MANAGEMENT SETUP]没有上面说的[PWR Lost Resume State]，可以在[PWRON After PWR-Fail]→[Integrated Peripherals]选项中找到两个选项：ON(打开自动开机)和OFF(关闭自动开机)，设置为OFF即可。<br>不同的主板及BIOS型号相对应的选项会有所不同，但我想应该会差不多，一般都在[POWER MANAGEMENT SETUP]这个选项中可以找到相应的设置选项！  </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1、为什么要实现这种功能，很多时候在民间都基本用普通PC来做小型服务器，公司的私服等等，而这些普通PC在民用电环境中经常会停电，一停就会导致服务器不能自动来电重启，所以这个功能来点开机是必须的。&lt;/p&gt;
+&lt;p&gt;2、普通
+      
+    
+    </summary>
+    
+      <category term="IT技术" scheme="https://jiangxingye.github.io/categories/IT%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="服务器问题" scheme="https://jiangxingye.github.io/categories/IT%E6%8A%80%E6%9C%AF/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%97%AE%E9%A2%98/"/>
+    
+    
+      <category term="如何在服务器的BIOS中设置上电自启动" scheme="https://jiangxingye.github.io/tags/%E5%A6%82%E4%BD%95%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84BIOS%E4%B8%AD%E8%AE%BE%E7%BD%AE%E4%B8%8A%E7%94%B5%E8%87%AA%E5%90%AF%E5%8A%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>raid丢失系统恢复案例</title>
