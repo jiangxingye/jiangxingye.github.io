@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jiangxingye.github.io/"/>
-  <updated>2019-08-12T05:16:12.865Z</updated>
+  <updated>2019-08-12T06:18:42.841Z</updated>
   <id>https://jiangxingye.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://jiangxingye.github.io/2019/08/12/raid%E4%B8%A2%E5%A4%B1%E7%B3%BB%E7%BB%9F%E6%81%A2%E5%A4%8D%E6%A1%88%E4%BE%8B/"/>
     <id>https://jiangxingye.github.io/2019/08/12/raid丢失系统恢复案例/</id>
     <published>2019-08-12T04:31:04.000Z</published>
-    <updated>2019-08-12T05:16:12.865Z</updated>
+    <updated>2019-08-12T06:18:42.841Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="How-to-fix-“No-Bootable-Device”-issue-on-server"><a href="#How-to-fix-“No-Bootable-Device”-issue-on-server" class="headerlink" title="How to fix “No Bootable Device” issue on server?"></a>How to fix “No Bootable Device” issue on server?</h1><p><strong>故障现象：</strong></p><p><img src="raid%C2%80%E4%B8%A2%E5%A4%B1%E7%B3%BB%E7%BB%9F%E6%81%A2%E5%A4%8D%E6%A1%88%E4%BE%8B/353c3787ac700e369a1951dade7f985.jpg" alt="故障图片"></p><p><strong>原因分析：</strong>客户机器有独立的RAID卡，2块物理磁盘做的RAID0，和客户沟通，RAID卡进去状态不正常，不想重新安装系统。因为上面的环境配置很麻烦。</p><p><strong>处理过程：</strong> 重新在RAID卡里做同级别RAID的话，不在raid里做clear操作的话，数据不丢失的话，理论上系统是有办法恢复的，如果数据会消失，那就要重做了。经验证，做同级别RAID系统恢复，数据并未消失。</p><p><strong>问题解决：</strong></p><p><img src="raid%C2%80%E4%B8%A2%E5%A4%B1%E7%B3%BB%E7%BB%9F%E6%81%A2%E5%A4%8D%E6%A1%88%E4%BE%8B/22.png" alt="问题解决"></p><p><strong>建议：</strong> 如果系统上有重要数据的话，还是建议使用RAID1会安全一些。</p><p>如果你忙觉得上述案例帮助了您，给个赞哦，当然也可以打赏杯可乐，我就不用喝酱油兑水了,^_^ </p><p>么么哒！</p><p><strong>服务器购买也可以通过下面的联系方式向我咨询。</strong></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="How-to-fix-“No-Bootable-Device”-issue-on-server"><a href="#How-to-fix-“No-Bootable-Device”-issue-on-server" class="headerlink" title="How to fix “No Bootable Device” issue on server?"></a>How to fix “No Bootable Device” issue on server?</h1><p><strong>故障现象：</strong></p><p><img src="/2019/08/12/raid丢失系统恢复案例/353c3787ac700e369a1951dade7f985.jpg" alt="故障图片"></p><p><strong>原因分析：</strong>客户机器有独立的RAID卡，2块物理磁盘做的RAID0，和客户沟通，RAID卡进去状态不正常，不想重新安装系统。因为上面的环境配置很麻烦。</p><p><strong>处理过程：</strong> 重新在RAID卡里做同级别RAID的话，不在raid里做clear操作的话，数据不丢失的话，理论上系统是有办法恢复的，如果数据会消失，那就要重做了。经验证，做同级别RAID系统恢复，数据并未消失。</p><p><strong>问题解决：</strong></p><p><img src="/2019/08/12/raid丢失系统恢复案例/22.png" alt="问题解决"></p><p><strong>建议：</strong> 如果系统上有重要数据的话，还是建议使用RAID1会安全一些。</p><p>如果你忙觉得上述案例帮助了您，给个赞哦，当然也可以打赏杯可乐，我就不用喝酱油兑水了,^_^ </p><p>么么哒！</p><p><strong>服务器购买也可以通过下面的联系方式向我咨询。</strong></p>]]></content>
     
     <summary type="html">
     
@@ -37,7 +37,7 @@
       <category term="IT技术" scheme="https://jiangxingye.github.io/categories/IT%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="bootable" scheme="https://jiangxingye.github.io/tags/bootable/"/>
+      <category term="bootable device were deteced." scheme="https://jiangxingye.github.io/tags/bootable-device-were-deteced/"/>
     
   </entry>
   
@@ -111,7 +111,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;下面是一些我读过的书&lt;br&gt;
+      &lt;p&gt;下面是一些我读过的书&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
