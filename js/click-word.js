@@ -1,6 +1,4 @@
- 
-<script>
-    //定义获取词语下标
+ //定义获取词语下标
 var a_idx = 0;
 jQuery(document).ready(function($) {
         //点击body时触发事件
@@ -38,5 +36,3 @@ jQuery(document).ready(function($) {
         });
     });
 });
- 
-</script>
