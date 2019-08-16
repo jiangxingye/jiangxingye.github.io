@@ -11,9 +11,9 @@
 <p>CentOS7.x OS中使用了 Intel<br>P-state ，导致机器BIOS关闭节电设置后，处理器的频率依旧处于频繁跳动状态。通过grub禁用<br>Intel P-state解决OS控制处理器频率问题。操作如下：</p>
 <p>使用root账号进入系统打开终端，两种方式，</p>
 <p>第一种：右键 –> Open in Terminal</p>
-<p><img src="/2019/08/16/关闭服务器CPU节能模式/57a36bd3fe871535772594e357e28704.png" alt="E:\\Ume\\Yealink UME\\app\\UCDoc\\yl2029\@yealink.com\\record\\Img\\0_0\\9be1ad0d62e84b53864f1a44c04ecfe0.png"></p>
+<p><img src="/2019/08/16/关闭服务器CPU节能模式/57a36bd3fe871535772594e357e28704.png" alt></p>
 <p>第二种，左上角Applications –> Utilities -> Terminal</p>
-<p><img src="/2019/08/16/关闭服务器CPU节能模式/9511a917506a6dfb5c22f0e5350b1da1.png" alt="E:\\Ume\\Yealink UME\\app\\UCDoc\\yl2029\@yealink.com\\record\\Img\\0_0\\6302c74f9b3944b7a43412c5c678fc9d.png"></p>
+<p><img src="/2019/08/16/关闭服务器CPU节能模式/9511a917506a6dfb5c22f0e5350b1da1.png" alt></p>
 <p>（蓝色字体部分为需要执行的命令）</p>
 <p>在命令行执行lscpu |grep “Hz”，<br>查看CPU是否处于额定主频（红色框中数值是否相等或非常相近，2.10GHz=2100MHz，图中明显不相等），然后执行下列命令：</p>
 <p><img src="/2019/08/16/关闭服务器CPU节能模式/2a813e4dc8d1dede7d408438c47c8260.png" alt></p>
@@ -46,7 +46,6 @@
 <p>7、重启完成以后输入账户密码进入系统，打开终端，在命令行执行 lscpu |grep<br>“Hz”查看CPU是否处于额定主频（下图中共色框中两个数值是否相等或非常相近，2.10GHz=2100MHz），如是说明修改成功。</p>
 <p><img src="/2019/08/16/关闭服务器CPU节能模式/6ca684228eb8f4c9cef650d33a2be84a.png" alt></p>
 <p>change_grub.sh 脚本如下</p>
-<p>``</p>
 <pre><code>#!/bin/sh
 cmd=&quot;intel_pstate=disable intel_idle.max_cstate=0 processor.max_cstate=1 idle=poll quiet&quot;
 
