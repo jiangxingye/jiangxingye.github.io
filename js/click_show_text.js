@@ -8,7 +8,7 @@ jQuery(document).ready(function($) {
         var x = e.pageX,
         y = e.pageY;
         $i.css({
-            "z-index": 5,
+            "z-index": 15,
             "top": y - 20,
             "left": x,
             "position": "absolute",
