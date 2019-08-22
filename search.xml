@@ -68,9 +68,9 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
       
         <categories>
             
-            <category> IT技术 </category>
+            <category> IT </category>
             
-            <category> 服务器问题 </category>
+            <category> 服务器 </category>
             
         </categories>
         
@@ -380,9 +380,9 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
       
         <categories>
             
-            <category> IT技术 </category>
+            <category> IT </category>
             
-            <category> 服务器问题 </category>
+            <category> 服务器 </category>
             
         </categories>
         
@@ -600,7 +600,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
       
         <categories>
             
-            <category> IT技术 </category>
+            <category> IT </category>
             
             <category> 服务器 </category>
             
@@ -631,9 +631,9 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
       
         <categories>
             
-            <category> IT技术 </category>
+            <category> IT </category>
             
-            <category> 服务器问题 </category>
+            <category> 服务器 </category>
             
         </categories>
         
@@ -663,9 +663,9 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
       
         <categories>
             
-            <category> IT技术 </category>
+            <category> IT </category>
             
-            <category> 服务器问题 </category>
+            <category> 服务器 </category>
             
         </categories>
         
