@@ -98,33 +98,6 @@
   </entry>
   
   <entry>
-    <title>severinfo</title>
-    <link href="https://jiangxingye.github.io/2019/08/12/severinfo/"/>
-    <id>https://jiangxingye.github.io/2019/08/12/severinfo/</id>
-    <published>2019-08-12T07:09:02.000Z</published>
-    <updated>2019-08-22T08:07:48.551Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><table><thead><tr><th>型号</th><th>主板</th><th>RAM</th><th>HDD</th><th>PCIE</th><th>Others</th></tr></thead><tbody><tr><td>PR2510G</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>PR</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-      <category term="IT" scheme="https://jiangxingye.github.io/categories/IT/"/>
-    
-      <category term="服务器" scheme="https://jiangxingye.github.io/categories/IT/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    
-      <category term="服务器信息" scheme="https://jiangxingye.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BF%A1%E6%81%AF/"/>
-    
-  </entry>
-  
-  <entry>
     <title>如何在服务器的BIOS中设置上电自启动</title>
     <link href="https://jiangxingye.github.io/2019/08/12/%E5%A6%82%E4%BD%95%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84BIOS%E4%B8%AD%E8%AE%BE%E7%BD%AE%E4%B8%8A%E7%94%B5%E8%87%AA%E5%90%AF%E5%8A%A8/"/>
     <id>https://jiangxingye.github.io/2019/08/12/如何在服务器的BIOS中设置上电自启动/</id>
