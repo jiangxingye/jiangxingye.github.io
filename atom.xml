@@ -46,7 +46,7 @@
     <link href="https://jiangxingye.github.io/2019/09/02/server%20support%20OS%20list/"/>
     <id>https://jiangxingye.github.io/2019/09/02/server support OS list/</id>
     <published>2019-09-02T12:20:22.000Z</published>
-    <updated>2019-09-02T12:53:23.088Z</updated>
+    <updated>2019-09-02T13:17:50.089Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><table><thead><tr><th><strong>PM</strong></th><th><strong>说明</strong></th></tr></thead><tbody><tr><td><strong>邓克武</strong></td><td><strong>单路C系列产品（PR1280C/2280C/6280C/1285C/2285C/1280C4/1285C4）桌面级系统不支持WIN7，支持WIN10,企业级系统最低支持Windows 2012系统，不兼容Windows 2008版本。</strong>  <strong>图站C系列（PT6610C/PR4610C）/P系列(6620P)/W系列(6630W)系列不支持WIN7，只支持WIN10，不支持Windows服务器级操作系统</strong></td></tr><tr><td><strong>曾柳雄</strong></td><td><strong>双路3/5/7系列（PRX510P/PRX710P/PR2012P/PR2715P/PR2750P/PR6510P）桌面级系统不支持WIN7，支持WIN10,企业级系统最低支持Windows 2012系统，不兼容Windows 2008版本。</strong></td></tr><tr><td><strong>李世伟</strong></td><td><strong>AI**</strong>系列（PR2906P/2908P/4904P/4908P/4910P/4920P/1904PV/4908PV）桌面级不支持WIN7，支持WIN10,上多张显卡不支持Windows Server系列系统**</td></tr><tr><td><strong>李海鸥</strong></td><td><strong>PLSphere**</strong>虚拟化软件当前版本暂不支持vGPU，但可以支持直通模式使用，后续版本会升级支持vGPU特性**</td></tr><tr><td><strong>刘磊</strong></td><td><strong>双路3/5/7系列（PR4024P/PR4036P/PR2720TP/PR2725TP/PR2740TP/PR2745TP/PR4740TP/PR4785TP）企业级系统最低支持Windows 2012系统，不兼容Windows 2008版本。</strong></td></tr><tr><td><strong>邵武</strong></td><td><strong>四路Purely 系列（PR2865P）桌面级系统不支持WIN7，支持WIN10；企业级系统最低支持Windows 2012系统，不兼容Windows 2008版本。</strong></td></tr><tr><td><strong>符芳裕</strong></td><td><strong>工控机系列（NAS-200H/918H/922H/941H/RNB-1402S），企业级系统最低支持Windows 2008系统，桌面系统支持Win7，Win10；（IPC-909C）,企业级系统最低支持Windows 2012系统，桌面系统只支持Win10/64位；网安机器（903B/916B/918S/928S/915S/925S/926G）,企业级系统最低支持Windows 2008系统，桌面系统支持Win7，Win10。</strong></td></tr></tbody></table>]]></content>
     
@@ -156,7 +156,7 @@
     <link href="https://jiangxingye.github.io/2019/08/12/%E8%8B%8F%E8%81%94%E8%A7%A3%E4%BD%93%E7%9A%84%E5%90%AF%E7%A4%BA/"/>
     <id>https://jiangxingye.github.io/2019/08/12/苏联解体的启示/</id>
     <published>2019-08-12T11:15:19.000Z</published>
-    <updated>2019-08-12T11:31:29.652Z</updated>
+    <updated>2019-09-02T13:21:08.928Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>从1989春至1991年底，短短两年，人类历史上最强大的专政机器——苏联东欧红色帝国土崩瓦解。这是二十世纪最伟大的故事。</p><p>一个皇朝的解体，一般可以概括为：“生于不义，死于耻辱。”</p><p>皇朝倒台前会有几个特点：</p><p>货币急速贬值，老百姓爱做梦。</p><p>美国当年成立特殊金融小组制裁前苏联，导致苏联解体。</p><p>表面强大的前苏联，就这样既无外敌入侵，又没有天灾，自己就玩不下去了，就解体了。</p><p>朝鲜经济短时间内很难稳定，楼市、基建、政府各种债务出清，国有资产私有化，</p><p>区域自治的各地关税统一等等，这些问题牵扯到的利益博弈将是及其复杂，</p><p>没有十几年的争吵很难达成统一，毕竟是各方都有选票，财富无论怎么划分，</p><p>都会有人不满意，这就注定了未来朝鲜金融系统将会长期动荡。</p><p>总之，生活在百姓无知，爱做梦的国家，挺难的，不确定性太大。</p>]]></content>
     
@@ -169,9 +169,9 @@
     
     </summary>
     
-      <category term="读书" scheme="https://jiangxingye.github.io/categories/%E8%AF%BB%E4%B9%A6/"/>
+      <category term="reading" scheme="https://jiangxingye.github.io/categories/reading/"/>
     
-      <category term="历史" scheme="https://jiangxingye.github.io/categories/%E8%AF%BB%E4%B9%A6/%E5%8E%86%E5%8F%B2/"/>
+      <category term="历史" scheme="https://jiangxingye.github.io/categories/reading/%E5%8E%86%E5%8F%B2/"/>
     
     
       <category term="苏联解体" scheme="https://jiangxingye.github.io/tags/%E8%8B%8F%E8%81%94%E8%A7%A3%E4%BD%93/"/>
@@ -229,62 +229,6 @@
     
     
       <category term="bootable device were deteced." scheme="https://jiangxingye.github.io/tags/bootable-device-were-deteced/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[记]《知识分子的不幸》-王小波</title>
-    <link href="https://jiangxingye.github.io/2019/06/09/misfortune-intellectual/"/>
-    <id>https://jiangxingye.github.io/2019/06/09/misfortune-intellectual/</id>
-    <published>2019-06-09T13:31:09.000Z</published>
-    <updated>2019-08-09T10:39:09.050Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章发表于1996年第二期《东方》杂志，同样收录于《沉默的大多数》一书中。</p><h2 id="所想"><a href="#所想" class="headerlink" title="所想"></a>所想</h2><p>文章一开头就抛出了一个问题：什么是知识分子最害怕的事？想起了高晓松在晓说中提到过这个问题，晓松肯定是看过这篇文章的。</p><p>王小波说：“<strong>知识分子最怕活在不理智的年代。”所谓不理智的年代，就是伽利略低头认罪，承认地球不转的年代，也是拉瓦斯上断头台的年代；是茨威格服毒自杀的年代，也是老舍跳太平湖的年代。</strong>“</p><p>王小波和他的美国老师谈论了一个问题：”有信仰比无信仰要好。“，由于王小波是经历过文革的，所以王小波一开始是抵触这种思想的，尤其是 <strong>课间祷告 </strong>让王小波想起了文革中的 <strong>早请示</strong>。但老师最终说服了他，“<strong>不管是信神，还是自珍自重，人活在世界上总得有点信念才成。就我个人而言，虽是无神论者，我也有个人操守，从不逾越。</strong>”</p><p>国内的学者，只搞学术研究，不搞意识形态，这由不了自己。有朝一日它成了意识形态，你的话就是罪状。言论不自由，不理智，民族狂热，这不就是知识分子最怕的事情吗？</p><p>王小波崇拜墨子：其一，他思维缜密，其二，他敢赤裸裸地谈利害。（有了他，我也敢说自己是中华民族的赤诚分子，不怕国学家说我是全盘西化了。）</p><p>营造意识形态则是灭绝思想额丰饶。中国的人文知识分子，有种以天下为己任的使命感，总觉得自己该搞出些老百姓当信仰的东西。</p><p>国学，这种东西实在厉害。最可怕之处就在于那个“国”字。顶着这个字，谁敢有不同意见？抢到了这个制高点，就可以压制一切不同意见；所以很容易落入思想流氓的手中变成一种凶器。</p><p>目前正值 “<strong>中美贸易战</strong>”，各种自媒体为了点击量、关注度。煽动民族狂热情绪，导致民众根本容不得半点不同意见，不讲道理，“盲目爱国“。</p><p>认真思索，真诚的明辨是非，有这种态度大概就可算是善良了吧。</p><p>人活在世上，自会形成信念，一种学问、一本书，假如不对我的价值观发生变化，就不值得一学，不值得一看。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-      <category term="读书" scheme="https://jiangxingye.github.io/categories/%E8%AF%BB%E4%B9%A6/"/>
-    
-      <category term="阅读笔记" scheme="https://jiangxingye.github.io/categories/%E8%AF%BB%E4%B9%A6/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="reading" scheme="https://jiangxingye.github.io/tags/reading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>人们在一本叫《活着》的书中纷纷死去</title>
-    <link href="https://jiangxingye.github.io/2019/05/02/to-live/"/>
-    <id>https://jiangxingye.github.io/2019/05/02/to-live/</id>
-    <published>2019-05-02T09:46:16.000Z</published>
-    <updated>2019-08-09T10:39:09.051Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>有那么一个年代，离我们很近，它腥风血雨，连活着都是一件奢侈的事。</p><p>在富贵的一生中，每次出现看似被上天眷顾的福气后（如有庆长跑第一、凤霞嫁了人并怀了孩子），读者还在替富贵开心的时候，他们却以各种方式迅速死去，最终富贵亲手埋葬了他所有的亲人。</p><p>一本 12w 左右的小说，但是在没有华丽词藻的情况下，在顺畅流利的写作手法、跌宕起伏的剧情、第一人称的代入感下一口气读完了。期间多次痛哭流涕（一点儿没夸张），不得不放下书本，洗过脸后才能继续阅读。所以已经多年没写书评的我，还是忍不住为她写下书评。</p><blockquote><p>人是为了活着本身而活着，而不是为了活着之外的任何事物所活着。</p></blockquote><p>这是作者在中文序言中的一句话，在当今生活着的我，初读序言中的这句话，并无任何共鸣，甚至还行吐槽两句。随着富贵将他的”一生”娓娓道来，你就会明白在那样的时代背景下，活着已经是一件不容易的事。 所以作者在日文版序言中说到：</p><blockquote><p>在旁人眼中富贵的一生是苦熬的一生；可是对于富贵自己，我相信他更多地感受到了幸福。</p></blockquote><p>因为他相信自己的妻子是世上最好的妻子，他相信自己的子女也是世上最好的子女，还有他的女婿他的外孙，还有他的那头也叫富贵的牛，还有一起上火锅的朋友们，还有生活的点点滴滴……</p><p>富贵的真是一路跌下去的一生，从”富家少爷”赌光了家产、气死了爹爹。由于母亲生病，为母亲求医路上被国民党抓壮丁，被俘虏后，放回家中。却发现母亲已死，女儿也由于生病变成了聋哑人。本想着大难之后必有后福，却只是悲惨一生的开端。儿子有庆由于和县长夫人血型匹配，遭抽血而亡、女儿凤霞产子大出血而亡、妻子家珍失去儿女后，失去了最后与病魔争斗的信念，也走了、女婿二喜在工地被水泥板拍死、外孙苦根难得吃到豆子，却被豆子撑死。最后只剩下自己和一个也叫作富贵的老牛。</p><p>春生想自杀前，找到富贵告别，在被家珍原谅，并答应不会自杀，在这种情况下坚持了一个月，最终还是自杀了。那种时代背景下的无奈，那种窒息感。。。</p><p>富贵的一生跨越了地主、解放战争、人民公社运动、大炼钢铁、自然灾害和文化大革命，从一个人的视角看到每个时代下的一个小小的缩影，但却比任何其他的描述更让人深刻了解到这些时代背景下人们的生活状态。</p><p>在那时，活着不仅是幸运，也更需要勇气。</p><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1556806574463&amp;di=868e65579acfc800020db78de3c07ac4&amp;imgtype=0&amp;src=http%3A%2F%2Fs1.sinaimg.cn%2Flarge%2F001Pe7mxzy76VARpXvdc3" alt></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-      <category term="读书" scheme="https://jiangxingye.github.io/categories/%E8%AF%BB%E4%B9%A6/"/>
-    
-      <category term="阅读笔记" scheme="https://jiangxingye.github.io/categories/%E8%AF%BB%E4%B9%A6/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="reading" scheme="https://jiangxingye.github.io/tags/reading/"/>
-    
-      <category term="活着" scheme="https://jiangxingye.github.io/tags/%E6%B4%BB%E7%9D%80/"/>
     
   </entry>
   
@@ -541,6 +485,56 @@
     
     
       <category term="firewall" scheme="https://jiangxingye.github.io/tags/firewall/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>docker备份恢复之save与export</title>
+    <link href="https://jiangxingye.github.io/2017/09/18/docker-save-export/"/>
+    <id>https://jiangxingye.github.io/2017/09/18/docker-save-export/</id>
+    <published>2017-09-18T14:38:52.000Z</published>
+    <updated>2019-09-02T13:02:59.994Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="docker-save"><a href="#docker-save" class="headerlink" title="docker save"></a>docker save</h2><h3 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h3><p><code>docker save</code> 命令用于持久化 <strong>镜像</strong>，先获得镜像名称，再执行保存：</p><pre><code class="bash"># 通过此命令查出要持久化的镜像名称$ docker images# 持久化镜像名为 image_name 的镜像，$ docker save image_name -o ~/save.tar</code></pre><blockquote><p><strong>注意：</strong> 如果镜像是在远程仓库，执行保存镜像的时候可能会报 <code>Cowardly refusing to save to a terminal. Use the -o flag or redirect.</code> 的错，可以通过 <code>docker save image_name &gt; image_name.tar</code> 将镜像从远程仓库持久化到本地。</p></blockquote><h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><pre><code class="bash"># 导入 save.tar$ docker load &lt; ~/save.tar# 查看镜像$ docker images images</code></pre><h2 id="docker-export"><a href="#docker-export" class="headerlink" title="docker export"></a>docker export</h2><h3 id="导出-1"><a href="#导出-1" class="headerlink" title="导出"></a>导出</h3><p><code>docker export</code> 命令用于持久化 <strong>容器</strong>，先获取容器ID，再执行保存。</p><pre><code class="bash"># 通过此命令查出要持久化的容器ID$ docker ps -a# 持久化容器id为 container_id 的容器$ docker export container_id &gt; ~/export.tar</code></pre><h3 id="导入-1"><a href="#导入-1" class="headerlink" title="导入"></a>导入</h3><pre><code class="bash"># 从 export.tar 导入镜像$ cat ~/export.tar | docker import - my-images:latest# 查看镜像$ sudo docker images</code></pre><h2 id="不同"><a href="#不同" class="headerlink" title="不同"></a>不同</h2><p>通过 <code>sudo docker images --tree</code> 可以查看到镜像的所有层，就会发现， <code>docker export</code> 丢失了所有的历史，而<code>docker save</code> 则会保存所有历史。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+      <category term="运维" scheme="https://jiangxingye.github.io/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="docker" scheme="https://jiangxingye.github.io/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sudo命令免密码设置</title>
+    <link href="https://jiangxingye.github.io/2017/09/11/sudo%E5%91%BD%E4%BB%A4%E5%85%8D%E5%AF%86%E7%A0%81%E8%AE%BE%E7%BD%AE/"/>
+    <id>https://jiangxingye.github.io/2017/09/11/sudo命令免密码设置/</id>
+    <published>2017-09-11T01:30:55.000Z</published>
+    <updated>2019-09-02T13:02:59.999Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p>如果某台linux只有自己在使用，比如个人系统，每次调用 <code>sudo</code> 时都需要输入密码，长期下来着实厌烦，因此本文介绍如何配置 <code>sudo</code> 命令，使其在运行时不需要输入密码。</p></blockquote><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol><li><p>执行命令</p><pre><code class="bash">$ sudo visudo</code></pre></li><li><p>添加以下两行， 下面的 sys 表示 sys 组成员不用密码使用sudo</p><pre><code class="bash">aaronkilik ALL=(ALL) NOPASSWD: ALL%sys ALL=(ALL) NOPASSWD: ALL</code></pre></li></ol><p>现在在使用 <code>sudo</code> 命令， 将不再需要输入密码。</p><h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>如果只允许用户使用 <code>kill</code> 和 <code>rm</code> 命令时，不需要输入密码，见如下配置</p><pre><code>%sys ALL=(ALL) NOPASSWD: /bin/kill, /bin/rm</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+      <category term="运维" scheme="https://jiangxingye.github.io/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="linux" scheme="https://jiangxingye.github.io/tags/linux/"/>
     
   </entry>
   
