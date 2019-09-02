@@ -221,9 +221,7 @@
             
             <category> IT </category>
             
-            <category> 服务器 </category>
-            
-            <category> PR2865P </category>
+            <category> server </category>
             
         </categories>
         
@@ -616,7 +614,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
             
             <category> IT </category>
             
-            <category> Server </category>
+            <category> server </category>
             
         </categories>
         
@@ -712,7 +710,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
             
             <category> IT </category>
             
-            <category> 服务器 </category>
+            <category> server </category>
             
         </categories>
         
