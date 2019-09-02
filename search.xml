@@ -14,18 +14,18 @@
 <th></th>
 <th></th>
 <th></th>
-<th></th>
+<th style="text-align:left"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><img src="file:///C:\Users\ADMINI~1\AppData\Local\Temp\msohtmlclip1\01\clip_image006.png" alt="img">            班级：一年（5）班</td>
+<td>班级：一年（5）班</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
-<td></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
 <td></td>
@@ -34,7 +34,7 @@
 <td>星期二</td>
 <td>星期三</td>
 <td>星期四</td>
-<td>星期五</td>
+<td style="text-align:left">星期五</td>
 </tr>
 <tr>
 <td>上午</td>
@@ -43,7 +43,7 @@
 <td></td>
 <td></td>
 <td></td>
-<td></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
 <td>第一节      8:30-9:10</td>
@@ -52,7 +52,7 @@
 <td>语文</td>
 <td>语文</td>
 <td>数学</td>
-<td></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
 <td>第二节      9:15-9:55</td>
@@ -61,7 +61,7 @@
 <td>数学</td>
 <td>语文</td>
 <td>语文</td>
-<td></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
 <td>10:05-10:10</td>
@@ -70,7 +70,7 @@
 <td></td>
 <td></td>
 <td></td>
-<td></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
 <td>第三节      10:10-10:50</td>
@@ -79,7 +79,7 @@
 <td>道德与法治</td>
 <td>数学</td>
 <td>体育</td>
-<td></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
 <td>第四节      11:00-11:40</td>
@@ -88,7 +88,7 @@
 <td>语文</td>
 <td>英语</td>
 <td>音乐</td>
-<td></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
 <td></td>
@@ -97,7 +97,7 @@
 <td></td>
 <td></td>
 <td></td>
-<td></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
 <td>下午</td>
@@ -106,7 +106,7 @@
 <td>美术</td>
 <td>语文阅读</td>
 <td>体育</td>
-<td>道德与法治</td>
+<td style="text-align:left">道德与法治</td>
 </tr>
 <tr>
 <td>3:20-3:25</td>
@@ -115,7 +115,7 @@
 <td></td>
 <td></td>
 <td></td>
-<td></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
 <td>第二节      3:25-4:05</td>
@@ -124,7 +124,7 @@
 <td>阳光体育</td>
 <td>科技艺术</td>
 <td>科技艺术</td>
-<td></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
 <td>4:15-4:45</td>
@@ -133,10 +133,10 @@
 <td></td>
 <td></td>
 <td></td>
-<td></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td>注：      周一早上7：30前到校，其他时间早上7：50前到校；下午夏令时2:15前到校，冬令时2:00前到校</td>
+<td>注：周一早上7：30前到校，其他时间早上7：50前到校；下午夏令时2:15前到校，冬令时2:00前到校</td>
 <td></td>
 <td></td>
 <td></td>
@@ -145,8 +145,6 @@
 </tr>
 </tbody>
 </table>
-<p><img src="/.io//jiangxingye\source\_posts\Class-Schedule\课程表.jpg" alt="课程表"></p>
-<p><img src="/.io//jiangxingye\source\_posts\Class-Schedule\作息时间表.jpg" alt></p>
 ]]></content>
       
         <categories>
