@@ -145,8 +145,8 @@
 </tr>
 </tbody>
 </table>
-<p><img src="//jiangxingye.github.io/2019/09/02/Class Schedule/jiangxingye\source\_posts\Class-Schedule\课程表.jpg" alt="课程表"></p>
-<p><img src="//jiangxingye.github.io/2019/09/02/Class Schedule/jiangxingye\source\_posts\Class-Schedule\作息时间表.jpg" alt></p>
+<p><img src="/.io//jiangxingye\source\_posts\Class-Schedule\课程表.jpg" alt="课程表"></p>
+<p><img src="/.io//jiangxingye\source\_posts\Class-Schedule\作息时间表.jpg" alt></p>
 ]]></content>
       
         <categories>
@@ -175,12 +175,12 @@
 <p>CentOS7.x OS中使用了 Intel<br>P-state ，导致机器BIOS关闭节电设置后，处理器的频率依旧处于频繁跳动状态。通过grub禁用<br>Intel P-state解决OS控制处理器频率问题。操作如下：</p>
 <p>使用root账号进入系统打开终端，两种方式，</p>
 <p>第一种：右键 –> Open in Terminal</p>
-<p><img src="//jiangxingye.github.io/2019/08/16/关闭服务器CPU节能模式/57a36bd3fe871535772594e357e28704.png" alt></p>
+<p><img src="/.io//57a36bd3fe871535772594e357e28704.png" alt></p>
 <p>第二种，左上角Applications –> Utilities -> Terminal</p>
-<p><img src="//jiangxingye.github.io/2019/08/16/关闭服务器CPU节能模式/9511a917506a6dfb5c22f0e5350b1da1.png" alt></p>
+<p><img src="/.io//9511a917506a6dfb5c22f0e5350b1da1.png" alt></p>
 <p>（蓝色字体部分为需要执行的命令）</p>
 <p>在命令行执行lscpu |grep “Hz”，<br>查看CPU是否处于额定主频（红色框中数值是否相等或非常相近，2.10GHz=2100MHz，图中明显不相等），然后执行下列命令：</p>
-<p><img src="//jiangxingye.github.io/2019/08/16/关闭服务器CPU节能模式/2a813e4dc8d1dede7d408438c47c8260.png" alt></p>
+<p><img src="/.io//2a813e4dc8d1dede7d408438c47c8260.png" alt></p>
 <ol>
 <li>将更改脚本放到/tmp/目录下。在终端执行sh change_grub.sh</li>
 <li>如果成功，会自动重启，如果失败，会报错”更改失敗，需要手動進行更改”，请联系运维人员</li>
@@ -191,24 +191,24 @@
 <ol>
 <li>CPU configuration Advanced Power Managerment Configuretion</li>
 </ol>
-<p><img src="//jiangxingye.github.io/2019/08/16/关闭服务器CPU节能模式/6ffb5cf18e02252d2a9134b6a884ae07.png" alt></p>
+<p><img src="/.io//6ffb5cf18e02252d2a9134b6a884ae07.png" alt></p>
 <ol>
 <li>在Power Technology 中选择Custom &amp;&amp; 返回</li>
 </ol>
-<p><img src="//jiangxingye.github.io/2019/08/16/关闭服务器CPU节能模式/02bb1d016ef0a65ba5260b74c1fcaa0a.png" alt></p>
+<p><img src="/.io//02bb1d016ef0a65ba5260b74c1fcaa0a.png" alt></p>
 <p>3．CPU P state Cotrol -> Disable &amp;&amp; 返回</p>
-<p><img src="//jiangxingye.github.io/2019/08/16/关闭服务器CPU节能模式/275882948d9b8fc3c23755ad63bfdc7f.png" alt></p>
-<p><img src="//jiangxingye.github.io/2019/08/16/关闭服务器CPU节能模式/b2b029be99ecb9e650e8e56a10ec6576.png" alt></p>
+<p><img src="/.io//275882948d9b8fc3c23755ad63bfdc7f.png" alt></p>
+<p><img src="/.io//b2b029be99ecb9e650e8e56a10ec6576.png" alt></p>
 <p>4.CPU Cstat Cotrol -> Package C State Limit：C0/C1 state &amp;&amp; 返回</p>
-<p><img src="//jiangxingye.github.io/2019/08/16/关闭服务器CPU节能模式/95c9b084f7e2fc451407699b7975986b.png" alt></p>
-<p><img src="//jiangxingye.github.io/2019/08/16/关闭服务器CPU节能模式/b4e8d2e61424419ad2422828dfc01ae9.png" alt></p>
+<p><img src="/.io//95c9b084f7e2fc451407699b7975986b.png" alt></p>
+<p><img src="/.io//b4e8d2e61424419ad2422828dfc01ae9.png" alt></p>
 <p>5.关闭QPI 总线的节能: advanced –> Chipset Configuration -> North Bridge -><br>QPI Configuration -> QPI General Configuretion —> LINK L0p /L1<br>enable更改为disable 。</p>
-<p><img src="//jiangxingye.github.io/2019/08/16/关闭服务器CPU节能模式/08aae0c6bb3ac4d4f05a5c0546dd9d7d.png" alt></p>
+<p><img src="/.io//08aae0c6bb3ac4d4f05a5c0546dd9d7d.png" alt></p>
 <ol>
 <li>F4 保存退出执行重启</li>
 </ol>
 <p>7、重启完成以后输入账户密码进入系统，打开终端，在命令行执行 lscpu |grep<br>“Hz”查看CPU是否处于额定主频（下图中共色框中两个数值是否相等或非常相近，2.10GHz=2100MHz），如是说明修改成功。</p>
-<p><img src="//jiangxingye.github.io/2019/08/16/关闭服务器CPU节能模式/6ca684228eb8f4c9cef650d33a2be84a.png" alt></p>
+<p><img src="/.io//6ca684228eb8f4c9cef650d33a2be84a.png" alt></p>
 <p>change_grub.sh 脚本如下</p>
 <pre><code>#!/bin/sh
 cmd=&quot;intel_pstate=disable intel_idle.max_cstate=0 processor.max_cstate=1 idle=poll quiet&quot;
@@ -412,7 +412,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
 <p>清空系统缓存</p>
 <p>echo 3 > /proc/sys/vm/drop_caches</p>
 <p>验证<a href="http://**ip**:8900/solr/yk/select?q=\*%3A\*&amp;wt=json&amp;indent=true确保访问正常，返回如下结果" target="_blank" rel="noopener">http://**ip**:8900/solr/yk/select?q=\*%3A\*&amp;wt=json&amp;indent=true确保访问正常，返回如下结果</a></p>
-<p><img src="//jiangxingye.github.io/2019/08/15/meiyatest/3f08f42e7eb2c1942eeed79dd1085cb3.png" alt="C:\\Users\\zhujm\\AppData\\Local\\Temp\\ksohtml\\wps_clip_image-22344.png"></p>
+<p><img src="/.io//3f08f42e7eb2c1942eeed79dd1085cb3.png" alt="C:\\Users\\zhujm\\AppData\\Local\\Temp\\ksohtml\\wps_clip_image-22344.png"></p>
 <p>登录任意一台服务器（如：172.16.20.159，与solr服务器同一网段），安装perl环境（perl为系统盘对应的版本）</p>
 <p>将benchmark.tar.gz文件解压到/opt目录后执行如下操作：</p>
 <p>cd /opt/benchmark/solr/</p>
@@ -420,9 +420,9 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
 <p>forkCount:并发数 测试并发数为：100</p>
 <p>queryCount:查询次数 测试并发数为：1000</p>
 <p>urlHost：目标主机ip 根据实际SOLR服务器的ip配置</p>
-<p><img src="//jiangxingye.github.io/2019/08/15/meiyatest/69ac37994a381a720102b2a5db2a68e8.png" alt></p>
+<p><img src="/.io//69ac37994a381a720102b2a5db2a68e8.png" alt></p>
 <p>执行benchmark文件：perl benchmark.perl，运行结果：</p>
-<p><img src="//jiangxingye.github.io/2019/08/15/meiyatest/2449c646329951cf1d16064b6ee872ae.png" alt="C:\\Users\\zhujm\\AppData\\Local\\Temp\\ksohtml\\wps_clip_image-22442.png"></p>
+<p><img src="/.io//2449c646329951cf1d16064b6ee872ae.png" alt="C:\\Users\\zhujm\\AppData\\Local\\Temp\\ksohtml\\wps_clip_image-22442.png"></p>
 <p>Req/s:(每秒请求数)</p>
 <p>Avg:平均耗时</p>
 <p>Median:中间耗时</p>
@@ -430,9 +430,9 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
 <p>99th:99%的查询耗时在5.498范围</p>
 <p>Max：最大耗时</p>
 <h1 id="存储基准测试"><a href="#存储基准测试" class="headerlink" title="存储基准测试"></a>存储基准测试</h1><h2 id="1、主机名配置"><a href="#1、主机名配置" class="headerlink" title="1、主机名配置"></a>1、主机名配置</h2><p>vi /etc/sysconfig/network</p>
-<p><img src="//jiangxingye.github.io/2019/08/15/meiyatest/45931771e1bb7e555a61ea0ec9db9811.png" alt></p>
+<p><img src="/.io//45931771e1bb7e555a61ea0ec9db9811.png" alt></p>
 <p>并执行hostname HBase-01</p>
-<h2 id="2、主机名查询静态表配置"><a href="#2、主机名查询静态表配置" class="headerlink" title="2、主机名查询静态表配置"></a>2、主机名查询静态表配置</h2><p><img src="//jiangxingye.github.io/2019/08/15/meiyatest/2e2abea932820757fd7fbede289d6046.png" alt></p>
+<h2 id="2、主机名查询静态表配置"><a href="#2、主机名查询静态表配置" class="headerlink" title="2、主机名查询静态表配置"></a>2、主机名查询静态表配置</h2><p><img src="/.io//2e2abea932820757fd7fbede289d6046.png" alt></p>
 <h2 id="3、snappy安装"><a href="#3、snappy安装" class="headerlink" title="3、snappy安装"></a>3、snappy安装</h2><p>snappy-1.1.2.tar.gz解压至/opt/下</p>
 <p>cd /opt;</p>
 <p>tar zxvf snappy-1.1.2.tar.gz</p>
@@ -462,7 +462,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
 <p>查看<a href="http://172.16.20.232:50070/dfshealth.jsp页面，确保访问正常，同时" target="_blank" rel="noopener">http://172.16.20.232:50070/dfshealth.jsp页面，确保访问正常，同时</a> Dead<br>Nodes为0</p>
 <p>执行jps命令,确保有以下的进程</p>
 </blockquote>
-<p><img src="//jiangxingye.github.io/2019/08/15/meiyatest/a33a5ef81689966982262057c2f8145d.png" alt="C:\\Users\\zhujm\\AppData\\Local\\Temp\\ksohtml\\wps_clip_image-24620.png"></p>
+<p><img src="/.io//a33a5ef81689966982262057c2f8145d.png" alt="C:\\Users\\zhujm\\AppData\\Local\\Temp\\ksohtml\\wps_clip_image-24620.png"></p>
 <h2 id="9、HBase基准测试"><a href="#9、HBase基准测试" class="headerlink" title="9、HBase基准测试"></a>9、HBase基准测试</h2><p>测试工具（yscb安装）</p>
 <p>mkdir -p /opt/benchmark/hbase/;</p>
 <p>解压yscb至/opt/benchmark/hbase/</p>
@@ -479,12 +479,12 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
 <p>查看<a href="http://172.16.20.232:60010/master-status页面，确保访问正常，同时没有Dead" target="_blank" rel="noopener">http://172.16.20.232:60010/master-status页面，确保访问正常，同时没有Dead</a><br>Region Servers</p>
 <p>执行jps命令,确保有以下的进程：</p>
 </blockquote>
-<p><img src="//jiangxingye.github.io/2019/08/15/meiyatest/3f13831faa7287894df35d582719048f.png" alt="C:\\Users\\zhujm\\AppData\\Local\\Temp\\ksohtml\\wps_clip_image-26658.png"></p>
+<p><img src="/.io//3f13831faa7287894df35d582719048f.png" alt="C:\\Users\\zhujm\\AppData\\Local\\Temp\\ksohtml\\wps_clip_image-26658.png"></p>
 <h2 id="12、HBase基准测试"><a href="#12、HBase基准测试" class="headerlink" title="12、HBase基准测试"></a>12、HBase基准测试</h2><p>创建hbase表</p>
 <p>echo “create ‘usertable’,’f1’,’f2’,’f3’”|hbase shell</p>
 <p>查看表是否已经创建</p>
 <p>echo list|hbase shell</p>
-<p><img src="//jiangxingye.github.io/2019/08/15/meiyatest/807fc1f42a0e08e3398a48ad6bdd9c2c.png" alt="C:\\Users\\zhujm\\AppData\\Local\\Temp\\ksohtml\\wps_clip_image-27334.png"></p>
+<p><img src="/.io//807fc1f42a0e08e3398a48ad6bdd9c2c.png" alt="C:\\Users\\zhujm\\AppData\\Local\\Temp\\ksohtml\\wps_clip_image-27334.png"></p>
 <p>清空系统缓存:</p>
 <p>echo 3 > /proc/sys/vm/drop_caches</p>
 <p>cd /opt/benchmark/hbase/ycsb-0.1.4/bin;</p>
@@ -494,7 +494,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
 </blockquote>
 <p>测试结果存取在load.dat中,查看load.dat有如下结果</p>
 <p>grep -v -E ‘UPDATE|CLEANUP’ load.dat|more</p>
-<p><img src="//jiangxingye.github.io/2019/08/15/meiyatest/bb56c0029f8f549b4cc984e036524a18.png" alt="C:\\Users\\zhujm\\AppData\\Local\\Temp\\ksohtml\\wps_clip_image-27170.png"></p>
+<p><img src="/.io//bb56c0029f8f549b4cc984e036524a18.png" alt="C:\\Users\\zhujm\\AppData\\Local\\Temp\\ksohtml\\wps_clip_image-27170.png"></p>
 <p>Runtime:执行时间(ms)</p>
 <p>Throughput(ops/sec):吞吐量(每秒操作次数)</p>
 <p>Operations：操作总数</p>
@@ -513,7 +513,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
 <p>查看读取操作测试结果</p>
 <p>grep READ transactions.dat</p>
 </blockquote>
-<p><img src="//jiangxingye.github.io/2019/08/15/meiyatest/8e432a6721779f92712efc517a20e388.png" alt></p>
+<p><img src="/.io//8e432a6721779f92712efc517a20e388.png" alt></p>
 <h1 id="NMON监控"><a href="#NMON监控" class="headerlink" title="NMON监控"></a>NMON监控</h1><p>在做SOLR或HBase基准测试时，使用nmon监控服务器的CPU、内存、磁盘资源使用情况</p>
 <h2 id="1、安装nmon"><a href="#1、安装nmon" class="headerlink" title="1、安装nmon"></a>1、安装nmon</h2><blockquote>
 <p>解压nmon至/usr/local/</p>
@@ -525,13 +525,13 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
 <p>vi nmon_start.sh</p>
 <p>修改频率为10秒一次，监控5000次：</p>
 </blockquote>
-<p><img src="//jiangxingye.github.io/2019/08/15/meiyatest/55693422c2f187bede43e163626a9a9d.png" alt></p>
+<p><img src="/.io//55693422c2f187bede43e163626a9a9d.png" alt></p>
 <h2 id="3、运行nmon"><a href="#3、运行nmon" class="headerlink" title="3、运行nmon"></a>3、运行nmon</h2><blockquote>
 <p>做基准测试同时，运行nmon，监控测试时的硬件资源使用情况</p>
 <p>./nmon_start.sh</p>
 <p>同一目录下会生成nmon文件</p>
 </blockquote>
-<p><img src="//jiangxingye.github.io/2019/08/15/meiyatest/8e979ce79ec9cd55ae8dd17c544bc865.png" alt></p>
+<p><img src="/.io//8e979ce79ec9cd55ae8dd17c544bc865.png" alt></p>
 <h2 id="4、关掉nmon"><a href="#4、关掉nmon" class="headerlink" title="4、关掉nmon"></a>4、关掉nmon</h2><blockquote>
 <p>基准测试结束时，停掉nmon</p>
 <p>Killall nmon</p>
@@ -539,7 +539,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
 <h2 id="5、生成图形化结果"><a href="#5、生成图形化结果" class="headerlink" title="5、生成图形化结果"></a>5、生成图形化结果</h2><blockquote>
 <p>打开nmon analyser v34a.xls，点击Analyse nmon data<br>按键，加载nmon文件，生成图形化结果：</p>
 </blockquote>
-<p><img src="//jiangxingye.github.io/2019/08/15/meiyatest/594cc99f55d6df5ec031b64b43d0f00b.png" alt></p>
+<p><img src="/.io//594cc99f55d6df5ec031b64b43d0f00b.png" alt></p>
 ]]></content>
       
         <categories>
@@ -599,7 +599,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
 <p>1、为什么要实现这种功能，很多时候在民间都基本用普通PC来做小型服务器，公司的私服等等，而这些普通PC在民用电环境中经常会停电，一停就会导致服务器不能自动来电重启，所以这个功能来点开机是必须的。</p>
 <p>2、普通PC基本都是以下这些配置方式，但不要和服务器主板做比较，服务器主板有专业的配置选项以及专业的来电自动启动设备。</p>
 <p><strong>下面根据不同的BIOS列出相应的设置方法：</strong></p>
-<p><img src="//jiangxingye.github.io/2019/08/12/如何在服务器的BIOS中设置上电自启动/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190812142347.png" alt></p>
+<p><img src="/.io//%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190812142347.png" alt></p>
 <p>1：首先进入BIOS的设置主界面，选择[POWER MANAGEMENT SETUP]，再选择[PWR Lost Resume State]，这一项有三个选择项。</p>
 <p>选择[Keep OFF]项，代表停电后再来电时，电脑不会自动启动。<br>        选择[Turn On]项，代表停电后再来电时，电脑会自动启动。<br>        选择的[Last State]，那么代表停电后再来电时，电脑恢复到停电前电脑的状态。断电前如果电脑是处于开机状态，那么来电后就会自动开机。断电前是处于关机状态，那么来电后电脑不会自动开机。</p>
 <p>2：首先进入Power Management Setup（电源管理设定）→Power Again（再来电状态），此项决定了开机时意外断电之后，电力供应恢复时系统电源的状态。设定值有：<br>Power Off（保持系统处于关机状态）<br>Power On（保持系统处于开机状态）<br>Last State（恢复到系统断电前的状态）进入挂起/睡眠模式，但若按钮被揿下超过4秒，机器关机。<br>若想来电自动开机把上面的这项改成power on就行了！</p>
@@ -627,11 +627,11 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
       <title><![CDATA[raid丢失系统恢复案例]]></title>
       <url>/2019/08/12/raid%E4%B8%A2%E5%A4%B1%E7%B3%BB%E7%BB%9F%E6%81%A2%E5%A4%8D%E6%A1%88%E4%BE%8B/</url>
       <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="How-to-fix-“No-Bootable-Device”-issue-on-server"><a href="#How-to-fix-“No-Bootable-Device”-issue-on-server" class="headerlink" title="How to fix “No Bootable Device” issue on server?"></a>How to fix “No Bootable Device” issue on server?</h1><p><strong>故障现象：</strong></p>
-<p><img src="//jiangxingye.github.io/2019/08/12/raid丢失系统恢复案例/353c3787ac700e369a1951dade7f985.jpg" alt="故障图片"></p>
+<p><img src="/.io//353c3787ac700e369a1951dade7f985.jpg" alt="故障图片"></p>
 <p><strong>原因分析：</strong>客户机器有独立的RAID卡，2块物理磁盘做的RAID0，和客户沟通，RAID卡进去状态不正常，不想重新安装系统。因为上面的环境配置很麻烦。</p>
 <p><strong>处理过程：</strong> 重新在RAID卡里做同级别RAID的话，不在raid里做clear操作的话，数据不丢失的话，理论上系统是有办法恢复的，如果数据会消失，那就要重做了。经验证，做同级别RAID系统恢复，数据并未消失。</p>
 <p><strong>问题解决：</strong></p>
-<p><img src="//jiangxingye.github.io/2019/08/12/raid丢失系统恢复案例/22.png" alt="问题解决"></p>
+<p><img src="/.io//22.png" alt="问题解决"></p>
 <p><strong>建议：</strong> 如果系统上有重要数据的话，还是建议使用RAID1会安全一些。</p>
 <p>如果你忙觉得上述案例帮助了您，给个赞哦，当然也可以打赏杯可乐，我就不用喝酱油兑水了,^_^ </p>
 <p>么么哒！</p>
