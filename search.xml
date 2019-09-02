@@ -89,16 +89,16 @@
             
             <category> IT </category>
             
-            <category> 服务器 </category>
+            <category> Server </category>
             
-            <category> 服务器兼容系统列表 </category>
+            <category> Compatibility list </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> 服务器兼容系统列表 </tag>
+            <tag> Compatibility list </tag>
             
         </tags>
         
@@ -306,7 +306,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
             
             <category> IT </category>
             
-            <category> 服务器 </category>
+            <category> server </category>
             
         </categories>
         
@@ -618,14 +618,14 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
             
             <category> IT </category>
             
-            <category> 服务器 </category>
+            <category> Server </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> 美亚测试机要求 </tag>
+            <tag> 美亚测试机 </tag>
             
         </tags>
         
@@ -682,7 +682,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
             
             <category> IT </category>
             
-            <category> 服务器 </category>
+            <category> server </category>
             
         </categories>
         
