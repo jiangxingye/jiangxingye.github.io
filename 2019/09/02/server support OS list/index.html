@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>如何在服务器的BIOS中设置上电自启动 | 姜兴业非官方网站</title>
-  <meta name="keywords" content=" 如何在服务器的BIOS中设置上电自启动 ">
-  <meta name="description" content="如何在服务器的BIOS中设置上电自启动 | 姜兴业非官方网站">
+  <title>server support OS list | 姜兴业非官方网站</title>
+  <meta name="keywords" content=" 服务器兼容系统列表 ">
+  <meta name="description" content="server support OS list | 姜兴业非官方网站">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="为 layui 扩展的 下拉多选select在线demo： http://yelog.org/layui-select-multiple/ 这个在线 demo就是本项目的 index.html。 可将项目 clone 到本地查看效果。 效果图 参数   属性名 属性值 备注     multiple 无 开启多选   lay-search 无 开启搜索   lay-case 无 大小写敏感   l">
 <meta property="og:type" content="website">
@@ -391,9 +391,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-如何在服务器的BIOS中设置上电自启动" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-server support OS list" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">如何在服务器的BIOS中设置上电自启动</h1>
+        <h1 class="article-title">server support OS list</h1>
     
     <div class="article-meta">
         
@@ -403,26 +403,28 @@
             
                 <a href="javascript:" data-rel="IT">IT</a>/
             
-                <a href="javascript:" data-rel="服务器">服务器</a>
+                <a href="javascript:" data-rel="服务器">服务器</a>/
+            
+                <a href="javascript:" data-rel="服务器兼容系统列表">服务器兼容系统列表</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color5">如何在服务器的BIOS中设置上电自启动</a>
+            <a href="javascript:" class="color5">服务器兼容系统列表</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-22 16:07:32'>2019-08-12 14:36</time>
+        创建时间:<time class="date" title='更新时间: 2019-09-02 20:22:23'>2019-09-02 20:20</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:557</span>
+        <span>字数:384</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -456,15 +458,44 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>说明：</strong></p>
-<p>1、为什么要实现这种功能，很多时候在民间都基本用普通PC来做小型服务器，公司的私服等等，而这些普通PC在民用电环境中经常会停电，一停就会导致服务器不能自动来电重启，所以这个功能来点开机是必须的。</p>
-<p>2、普通PC基本都是以下这些配置方式，但不要和服务器主板做比较，服务器主板有专业的配置选项以及专业的来电自动启动设备。</p>
-<p><strong>下面根据不同的BIOS列出相应的设置方法：</strong></p>
-<p><img src="/.io//%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190812142347.png" alt></p>
-<p>1：首先进入BIOS的设置主界面，选择[POWER MANAGEMENT SETUP]，再选择[PWR Lost Resume State]，这一项有三个选择项。</p>
-<p>选择[Keep OFF]项，代表停电后再来电时，电脑不会自动启动。<br>        选择[Turn On]项，代表停电后再来电时，电脑会自动启动。<br>        选择的[Last State]，那么代表停电后再来电时，电脑恢复到停电前电脑的状态。断电前如果电脑是处于开机状态，那么来电后就会自动开机。断电前是处于关机状态，那么来电后电脑不会自动开机。</p>
-<p>2：首先进入Power Management Setup（电源管理设定）→Power Again（再来电状态），此项决定了开机时意外断电之后，电力供应恢复时系统电源的状态。设定值有：<br>Power Off（保持系统处于关机状态）<br>Power On（保持系统处于开机状态）<br>Last State（恢复到系统断电前的状态）进入挂起/睡眠模式，但若按钮被揿下超过4秒，机器关机。<br>若想来电自动开机把上面的这项改成power on就行了！</p>
-<p>3：有的BIOS中[POWER MANAGEMENT SETUP]没有上面说的[PWR Lost Resume State]，可以在[PWRON After PWR-Fail]→[Integrated Peripherals]选项中找到两个选项：ON(打开自动开机)和OFF(关闭自动开机)，设置为OFF即可。<br>不同的主板及BIOS型号相对应的选项会有所不同，但我想应该会差不多，一般都在[POWER MANAGEMENT SETUP]这个选项中可以找到相应的设置选项！  </p>
+        <table>
+<thead>
+<tr>
+<th><strong>PM</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>邓克武</strong></td>
+<td><strong>单路C系列产品（PR1280C/2280C/6280C/1285C/2285C/1280C4/1285C4）桌面级系统不支持WIN7，支持WIN10,企业级系统最低支持Windows 2012系统，不兼容Windows 2008版本。</strong>  <strong>图站C系列（PT6610C/PR4610C）/P系列(6620P)/W系列(6630W)系列不支持WIN7，只支持WIN10，不支持Windows服务器级操作系统</strong></td>
+</tr>
+<tr>
+<td><strong>曾柳雄</strong></td>
+<td><strong>双路3/5/7系列（PRX510P/PRX710P/PR2012P/PR2715P/PR2750P/PR6510P）桌面级系统不支持WIN7，支持WIN10,企业级系统最低支持Windows 2012系统，不兼容Windows 2008版本。</strong></td>
+</tr>
+<tr>
+<td><strong>李世伟</strong></td>
+<td><strong>AI**</strong>系列（PR2906P/2908P/4904P/4908P/4910P/4920P/1904PV/4908PV）桌面级不支持WIN7，支持WIN10,上多张显卡不支持Windows Server系列系统**</td>
+</tr>
+<tr>
+<td><strong>李海鸥</strong></td>
+<td><strong>PLSphere**</strong>虚拟化软件当前版本暂不支持vGPU，但可以支持直通模式使用，后续版本会升级支持vGPU特性**</td>
+</tr>
+<tr>
+<td><strong>刘磊</strong></td>
+<td><strong>双路3/5/7系列（PR4024P/PR4036P/PR2720TP/PR2725TP/PR2740TP/PR2745TP/PR4740TP/PR4785TP）企业级系统最低支持Windows 2012系统，不兼容Windows 2008版本。</strong></td>
+</tr>
+<tr>
+<td><strong>邵武</strong></td>
+<td><strong>四路Purely 系列（PR2865P）桌面级系统不支持WIN7，支持WIN10；企业级系统最低支持Windows 2012系统，不兼容Windows 2008版本。</strong></td>
+</tr>
+<tr>
+<td><strong>符芳裕</strong></td>
+<td><strong>工控机系列（NAS-200H/918H/922H/941H/RNB-1402S），企业级系统最低支持Windows 2008系统，桌面系统支持Win7，Win10；（IPC-909C）,企业级系统最低支持Windows 2012系统，桌面系统只支持Win10/64位；网安机器（903B/916B/918S/928S/915S/925S/926G）,企业级系统最低支持Windows 2008系统，桌面系统支持Win7，Win10。</strong></td>
+</tr>
+</tbody>
+</table>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jiangxingye@outlook.com </span>
@@ -478,12 +509,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>如何在服务器的BIOS中设置上电自启动</p>
-    <p><span class="copy-title">文章字数:</span><span class="post-count">557</span></p>
+    <p><span class="copy-title">文章标题:</span>server support OS list</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">384</span></p>
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="姜兴业">姜兴业</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-08-12, 14:36:33</p>
-    <p><span class="copy-title">最后更新:</span>2019-08-22, 16:07:32</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/12/如何在服务器的BIOS中设置上电自启动/" title="如何在服务器的BIOS中设置上电自启动">https://jiangxingye.github.io/2019/08/12/如何在服务器的BIOS中设置上电自启动/</a>
+    <p><span class="copy-title">发布时间:</span>2019-09-02, 20:20:22</p>
+    <p><span class="copy-title">最后更新:</span>2019-09-02, 20:22:23</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/09/02/server support OS list/" title="server support OS list">https://jiangxingye.github.io/2019/09/02/server support OS list/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
