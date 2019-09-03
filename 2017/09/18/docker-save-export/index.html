@@ -6,18 +6,18 @@
   <meta name="keywords" content=" docker ">
   <meta name="description" content="docker备份恢复之save与export | 姜兴业非官方网站">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="为 layui 扩展的 下拉多选select在线demo： http://yelog.org/layui-select-multiple/ 这个在线 demo就是本项目的 index.html。 可将项目 clone 到本地查看效果。 效果图 参数   属性名 属性值 备注     multiple 无 开启多选   lay-search 无 开启搜索   lay-case 无 大小写敏感   l">
+<meta name="description" content="为 layui 扩展的 下拉多选select在线demo： http://yelog.org/layui-select-multiple/ 这个在线 demo就是本项目的 index.html。 可将项目 clone 到本地查看效果。 效果图 参数   属性名 属性值 备注    multiple 无 开启多选   lay-search 无 开启搜索   lay-case 无 大小写敏感   la">
 <meta property="og:type" content="website">
 <meta property="og:title" content="姜兴业非官方网站">
 <meta property="og:url" content="https://jiangxingye.github.io/README.html">
 <meta property="og:site_name" content="姜兴业非官方网站">
-<meta property="og:description" content="为 layui 扩展的 下拉多选select在线demo： http://yelog.org/layui-select-multiple/ 这个在线 demo就是本项目的 index.html。 可将项目 clone 到本地查看效果。 效果图 参数   属性名 属性值 备注     multiple 无 开启多选   lay-search 无 开启搜索   lay-case 无 大小写敏感   l">
+<meta property="og:description" content="为 layui 扩展的 下拉多选select在线demo： http://yelog.org/layui-select-multiple/ 这个在线 demo就是本项目的 index.html。 可将项目 clone 到本地查看效果。 效果图 参数   属性名 属性值 备注    multiple 无 开启多选   lay-search 无 开启搜索   lay-case 无 大小写敏感   la">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oncj6b2vl.bkt.clouddn.com/Frg6VGOCjKJ8fdTYkekfsi-Ax9p2.png">
 <meta property="og:updated_time" content="2019-08-09T10:39:08.961Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="姜兴业非官方网站">
-<meta name="twitter:description" content="为 layui 扩展的 下拉多选select在线demo： http://yelog.org/layui-select-multiple/ 这个在线 demo就是本项目的 index.html。 可将项目 clone 到本地查看效果。 效果图 参数   属性名 属性值 备注     multiple 无 开启多选   lay-search 无 开启搜索   lay-case 无 大小写敏感   l">
+<meta name="twitter:description" content="为 layui 扩展的 下拉多选select在线demo： http://yelog.org/layui-select-multiple/ 这个在线 demo就是本项目的 index.html。 可将项目 clone 到本地查看效果。 效果图 参数   属性名 属性值 备注    multiple 无 开启多选   lay-search 无 开启搜索   lay-case 无 大小写敏感   la">
 <meta name="twitter:image" content="http://oncj6b2vl.bkt.clouddn.com/Frg6VGOCjKJ8fdTYkekfsi-Ax9p2.png">
 
 
@@ -264,11 +264,11 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">如何在服务器的BIOS中设置上电自启动</a>
+        <a href="javascript:" class="color5">苏联解体</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">苏联解体</a>
+        <a href="javascript:" class="color5">如何在服务器的BIOS中设置上电自启动</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -277,10 +277,6 @@
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color5">java</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">translation</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -328,6 +324,10 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">translation</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color2">jQuery</a>
     </li>
     
@@ -340,11 +340,11 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">浏览器</a>
+        <a href="javascript:" class="color3">js</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">js</a>
+        <a href="javascript:" class="color4">浏览器</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -551,7 +551,7 @@
         
         <a  class="大前端 "
            href="/2017/09/21/bf-cache/"
-           data-tag="浏览器,js"
+           data-tag="js,浏览器"
            data-author="" >
             <span class="post-title" title="[转]浏览器前进/后退缓存（BF Cache）">[转]浏览器前进/后退缓存（BF Cache）</span>
             <span class="post-date" title="2017-09-21 15:35:24">2017/09/21</span>
@@ -1412,27 +1412,23 @@
 <pre><code class="bash"># 通过此命令查出要持久化的镜像名称
 $ docker images
 # 持久化镜像名为 image_name 的镜像，
-$ docker save image_name -o ~/save.tar
-</code></pre>
+$ docker save image_name -o ~/save.tar</code></pre>
 <blockquote>
 <p><strong>注意：</strong> 如果镜像是在远程仓库，执行保存镜像的时候可能会报 <code>Cowardly refusing to save to a terminal. Use the -o flag or redirect.</code> 的错，可以通过 <code>docker save image_name &gt; image_name.tar</code> 将镜像从远程仓库持久化到本地。</p>
 </blockquote>
 <h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><pre><code class="bash"># 导入 save.tar
 $ docker load &lt; ~/save.tar
 # 查看镜像
-$ docker images images
-</code></pre>
+$ docker images images</code></pre>
 <h2 id="docker-export"><a href="#docker-export" class="headerlink" title="docker export"></a>docker export</h2><h3 id="导出-1"><a href="#导出-1" class="headerlink" title="导出"></a>导出</h3><p><code>docker export</code> 命令用于持久化 <strong>容器</strong>，先获取容器ID，再执行保存。</p>
 <pre><code class="bash"># 通过此命令查出要持久化的容器ID
 $ docker ps -a
 # 持久化容器id为 container_id 的容器
-$ docker export container_id &gt; ~/export.tar
-</code></pre>
+$ docker export container_id &gt; ~/export.tar</code></pre>
 <h3 id="导入-1"><a href="#导入-1" class="headerlink" title="导入"></a>导入</h3><pre><code class="bash"># 从 export.tar 导入镜像
 $ cat ~/export.tar | docker import - my-images:latest
 # 查看镜像
-$ sudo docker images
-</code></pre>
+$ sudo docker images</code></pre>
 <h2 id="不同"><a href="#不同" class="headerlink" title="不同"></a>不同</h2><p>通过 <code>sudo docker images --tree</code> 可以查看到镜像的所有层，就会发现， <code>docker export</code> 丢失了所有的历史，而<code>docker save</code> 则会保存所有历史。</p>
 
       
@@ -1513,7 +1509,7 @@ $ sudo docker images
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#PR2865P','#Write a letter to parents','#bootable device were deteced.','#Compatibility list','#关闭服务器CPU节能模式','#如何在服务器的BIOS中设置上电自启动','#苏联解体','#美亚测试机','#java','#translation','#javaee','#dubbo','#zookeeper','#mybatis','#PostgreSQL','#postgres','#sql','#AngularJs','#jsp','#jstl','#freemarker','#jQuery','#node','#hexo','#浏览器','#js','#samba','#firewall','#运维','#centos','#vim','#docker','#磁盘分区','#nginx','#linux','#ftp','#maven','#nexus','#linux命令','#encryption','#docker仓库','#shell','#encoding','#spring','#springmvc',],
+            'data': ['#PR2865P','#Write a letter to parents','#bootable device were deteced.','#Compatibility list','#关闭服务器CPU节能模式','#苏联解体','#如何在服务器的BIOS中设置上电自启动','#美亚测试机','#java','#javaee','#dubbo','#zookeeper','#mybatis','#PostgreSQL','#postgres','#sql','#AngularJs','#jsp','#jstl','#freemarker','#translation','#jQuery','#node','#hexo','#js','#浏览器','#samba','#firewall','#运维','#centos','#vim','#docker','#磁盘分区','#nginx','#linux','#ftp','#maven','#nexus','#linux命令','#encryption','#docker仓库','#shell','#encoding','#spring','#springmvc',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
