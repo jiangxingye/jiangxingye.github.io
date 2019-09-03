@@ -89,8 +89,6 @@
             
             <category> server </category>
             
-            <category> Compatibility list </category>
-            
         </categories>
         
         
@@ -1812,9 +1810,9 @@ function sendXHR () {
         
         <tags>
             
-            <tag> js </tag>
-            
             <tag> 浏览器 </tag>
+            
+            <tag> js </tag>
             
         </tags>
         
