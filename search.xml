@@ -645,9 +645,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
       
         <categories>
             
-            <category> reading </category>
-            
-            <category> 历史 </category>
+            <category> read </category>
             
         </categories>
         
