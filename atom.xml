@@ -46,7 +46,7 @@
     <link href="https://jiangxingye.github.io/2019/09/02/server%20support%20OS%20list/"/>
     <id>https://jiangxingye.github.io/2019/09/02/server support OS list/</id>
     <published>2019-09-02T12:20:22.000Z</published>
-    <updated>2019-09-02T13:17:50.089Z</updated>
+    <updated>2019-09-03T01:18:10.751Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><table><thead><tr><th><strong>PM</strong></th><th><strong>说明</strong></th></tr></thead><tbody><tr><td><strong>邓克武</strong></td><td><strong>单路C系列产品（PR1280C/2280C/6280C/1285C/2285C/1280C4/1285C4）桌面级系统不支持WIN7，支持WIN10,企业级系统最低支持Windows 2012系统，不兼容Windows 2008版本。</strong>  <strong>图站C系列（PT6610C/PR4610C）/P系列(6620P)/W系列(6630W)系列不支持WIN7，只支持WIN10，不支持Windows服务器级操作系统</strong></td></tr><tr><td><strong>曾柳雄</strong></td><td><strong>双路3/5/7系列（PRX510P/PRX710P/PR2012P/PR2715P/PR2750P/PR6510P）桌面级系统不支持WIN7，支持WIN10,企业级系统最低支持Windows 2012系统，不兼容Windows 2008版本。</strong></td></tr><tr><td><strong>李世伟</strong></td><td><strong>AI**</strong>系列（PR2906P/2908P/4904P/4908P/4910P/4920P/1904PV/4908PV）桌面级不支持WIN7，支持WIN10,上多张显卡不支持Windows Server系列系统**</td></tr><tr><td><strong>李海鸥</strong></td><td><strong>PLSphere**</strong>虚拟化软件当前版本暂不支持vGPU，但可以支持直通模式使用，后续版本会升级支持vGPU特性**</td></tr><tr><td><strong>刘磊</strong></td><td><strong>双路3/5/7系列（PR4024P/PR4036P/PR2720TP/PR2725TP/PR2740TP/PR2745TP/PR4740TP/PR4785TP）企业级系统最低支持Windows 2012系统，不兼容Windows 2008版本。</strong></td></tr><tr><td><strong>邵武</strong></td><td><strong>四路Purely 系列（PR2865P）桌面级系统不支持WIN7，支持WIN10；企业级系统最低支持Windows 2012系统，不兼容Windows 2008版本。</strong></td></tr><tr><td><strong>符芳裕</strong></td><td><strong>工控机系列（NAS-200H/918H/922H/941H/RNB-1402S），企业级系统最低支持Windows 2008系统，桌面系统支持Win7，Win10；（IPC-909C）,企业级系统最低支持Windows 2012系统，桌面系统只支持Win10/64位；网安机器（903B/916B/918S/928S/915S/925S/926G）,企业级系统最低支持Windows 2008系统，桌面系统支持Win7，Win10。</strong></td></tr></tbody></table>]]></content>
     
@@ -59,11 +59,11 @@
     
     </summary>
     
-      <category term="IT" scheme="https://jiangxingye.github.io/categories/IT/"/>
+      <category term="it" scheme="https://jiangxingye.github.io/categories/it/"/>
     
-      <category term="Server" scheme="https://jiangxingye.github.io/categories/IT/Server/"/>
+      <category term="server" scheme="https://jiangxingye.github.io/categories/it/server/"/>
     
-      <category term="Compatibility list" scheme="https://jiangxingye.github.io/categories/IT/Server/Compatibility-list/"/>
+      <category term="Compatibility list" scheme="https://jiangxingye.github.io/categories/it/server/Compatibility-list/"/>
     
     
       <category term="Compatibility list" scheme="https://jiangxingye.github.io/tags/Compatibility-list/"/>
@@ -75,7 +75,7 @@
     <link href="https://jiangxingye.github.io/2019/09/02/PR2865P/"/>
     <id>https://jiangxingye.github.io/2019/09/02/PR2865P/</id>
     <published>2019-09-02T10:09:26.000Z</published>
-    <updated>2019-09-02T13:17:37.498Z</updated>
+    <updated>2019-09-03T01:18:29.263Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>宝德PR2865P是基于Intel Purley平台研发的高密度2U<br>4路服务器，具有突出的高性能，高可靠性，易扩展等优点。PR2865P支持最新的英特尔®<br>至强®<br>处理器可扩展家族，支持最大205W功率的CPU。PR2865P可提供更高效的计算性能，最大支持内存可达6TB，支持24块热插拔硬盘，扩展IO方面最大支持11个PCIE标准扩展槽，可同时支持2个双宽GPU计算卡</p><p>宝德PR2865P是商业关键负载，虚拟化，超融合，数据库，商业业务处理，以及对空间和性能要求严苛的数据密集型数据中心应用。</p><p><img src="/.io//795a468ea8db6821245ea82635bc9c28.png" alt></p><table><thead><tr><th><strong>特性</strong></th><th><strong>PR2865P技术规格</strong></th></tr></thead><tbody><tr><td>形态</td><td>2U机架服务器</td></tr><tr><td>处理器数量</td><td>4个</td></tr><tr><td>处理器型号</td><td>英特尔® 至强® 处理器可扩展家族铂金8100 系列和黄金6100/5100系列，最高205W。</td></tr><tr><td>内存</td><td>48个插槽，最大支持6TB容量，最大频率 2666 MHz,支持Apache Pass (AEP) DIMMs</td></tr><tr><td>硬盘</td><td>24个2.5英寸SAS/SATA/SSD硬盘 可支持4个NVMe SSD硬盘</td></tr><tr><td>板载存储控制器</td><td>英特尔® C621，支持14个 SATA3 (6 Gbps)接口; RAID 0，1，5，10 同时，支持Intel VROC，可实现NVMe raid控制。</td></tr><tr><td>板载网络</td><td>支持4个千兆网口</td></tr><tr><td>PCIE扩展</td><td>最大支持11个PCIE 3.0 插槽，包含5个PCIE3.0 x8和6个 PCIE3.0 x16，选择165W一下CPU，可支持2个主动散热GPU卡</td></tr><tr><td>其他端口</td><td>后置：1个VGA接口, 1个串口, 2个USB 3.0，4个千兆网口，1个千兆IPMI2.0管理网口 内置：1个TPM2.0接口，1个VROC Key接口，1个USB3.0接口，2个SATA DOM接口，3个x4 mini SATA接口（支持12个SATA接口）</td></tr><tr><td>风扇</td><td>4个8CM热插拔冗余风扇</td></tr><tr><td>电源</td><td>标配2x 1600W钛金级热插拔冗余电源，支持1+1 冗余</td></tr><tr><td>管理</td><td>板载 Aspeed AST2500管理模块，支持IPMI2.0，英特尔® Node Manager，NMI，SMCBU，SMM，看门狗;</td></tr><tr><td>安全模块</td><td>支持TPM2.0</td></tr><tr><td>显示控制器</td><td>集成AST2500显示控制器</td></tr><tr><td>支持的操作系统</td><td>Windows Server 2012Enterprise Edition SP2 Red Hat* Enterprise Advanced Server 6.0 SuSE Linux Enterprise Server 11</td></tr><tr><td>供电</td><td>110V/220V AC</td></tr><tr><td>箱体尺寸</td><td>437 x 89 x 780mm (17.2” x 3.5” x 30.7”)</td></tr><tr><td><strong>环境及规范</strong></td><td></td></tr><tr><td>环境温度</td><td>运行时10℃至35℃ 非运行时-40℃至+70°C 周围环境</td></tr><tr><td>相对湿度</td><td>运行时：8% to 90%，不凝结 非运行时：5% to 95%，不凝结</td></tr><tr><td>静电释放</td><td>每项英特尔环境温度测试规范15KV</td></tr><tr><td>安全标准（中国）</td><td>CCC</td></tr></tbody></table><p>服务及支持</p><p>PowerLeader提供全国联保，由分布在全国各地PowerLeader专业售后服务网点提供“一站式”服务响应与支持。</p><p>- 3年有限现场保修以及现场支持服务</p><p>- 4008-870-872热线响应和支持</p><p>欲了解更多信息：请访问：<a href="http://www.powerleader.com.cn" target="_blank" rel="noopener">http://www.powerleader.com.cn</a></p><p>通信地址：深圳市龙华新区观澜高新技术产业园宝德科技研发生产基地（观澜街道环观南路南侧）</p><p>宝德集团保留对产品规格或其他产品信息（包含但不限于产品重量，外观，尺寸或其他物理因素）不经通知予以更改的权利；本文中所提到的信息，如因产品升级或其他原因而导致的变更，恕不另行通知。本文中所涉及的产品图片均以产品实物为准。</p><p>2017年8月中国印刷</p><p>P/N:DPPR2865P V1.0</p>]]></content>
     
@@ -88,9 +88,9 @@
     
     </summary>
     
-      <category term="IT" scheme="https://jiangxingye.github.io/categories/IT/"/>
+      <category term="it" scheme="https://jiangxingye.github.io/categories/it/"/>
     
-      <category term="server" scheme="https://jiangxingye.github.io/categories/IT/server/"/>
+      <category term="server" scheme="https://jiangxingye.github.io/categories/it/server/"/>
     
     
       <category term="PR2865P" scheme="https://jiangxingye.github.io/tags/PR2865P/"/>
@@ -102,7 +102,7 @@
     <link href="https://jiangxingye.github.io/2019/08/16/%E5%85%B3%E9%97%AD%E6%9C%8D%E5%8A%A1%E5%99%A8CPU%E8%8A%82%E8%83%BD%E6%A8%A1%E5%BC%8F/"/>
     <id>https://jiangxingye.github.io/2019/08/16/关闭服务器CPU节能模式/</id>
     <published>2019-08-16T09:58:37.000Z</published>
-    <updated>2019-09-02T12:54:06.220Z</updated>
+    <updated>2019-09-03T01:18:53.645Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p><strong>OS系统总关闭P-state模式</strong></p></blockquote><p>CentOS7.x OS中使用了 Intel<br>P-state ，导致机器BIOS关闭节电设置后，处理器的频率依旧处于频繁跳动状态。通过grub禁用<br>Intel P-state解决OS控制处理器频率问题。操作如下：</p><p>使用root账号进入系统打开终端，两种方式，</p><p>第一种：右键 –> Open in Terminal</p><p><img src="/.io//57a36bd3fe871535772594e357e28704.png" alt></p><p>第二种，左上角Applications –> Utilities -> Terminal</p><p><img src="/.io//9511a917506a6dfb5c22f0e5350b1da1.png" alt></p><p>（蓝色字体部分为需要执行的命令）</p><p>在命令行执行lscpu |grep “Hz”，<br>查看CPU是否处于额定主频（红色框中数值是否相等或非常相近，2.10GHz=2100MHz，图中明显不相等），然后执行下列命令：</p><p><img src="/.io//2a813e4dc8d1dede7d408438c47c8260.png" alt></p><ol><li>将更改脚本放到/tmp/目录下。在终端执行sh change_grub.sh</li><li>如果成功，会自动重启，如果失败，会报错”更改失敗，需要手動進行更改”，请联系运维人员</li></ol><p><strong>主板BIOS中设置关闭节能模式</strong></p><p>BIOS关闭节能，方法如下：</p><p>在上一步执行reboot之后会进行重启操作，过程中进入bios系统后 (按Delete键进入)</p><ol><li>CPU configuration Advanced Power Managerment Configuretion</li></ol><p><img src="/.io//6ffb5cf18e02252d2a9134b6a884ae07.png" alt></p><ol><li>在Power Technology 中选择Custom &amp;&amp; 返回</li></ol><p><img src="/.io//02bb1d016ef0a65ba5260b74c1fcaa0a.png" alt></p><p>3．CPU P state Cotrol -> Disable &amp;&amp; 返回</p><p><img src="/.io//275882948d9b8fc3c23755ad63bfdc7f.png" alt></p><p><img src="/.io//b2b029be99ecb9e650e8e56a10ec6576.png" alt></p><p>4.CPU Cstat Cotrol -> Package C State Limit：C0/C1 state &amp;&amp; 返回</p><p><img src="/.io//95c9b084f7e2fc451407699b7975986b.png" alt></p><p><img src="/.io//b4e8d2e61424419ad2422828dfc01ae9.png" alt></p><p>5.关闭QPI 总线的节能: advanced –> Chipset Configuration -> North Bridge -><br>QPI Configuration -> QPI General Configuretion —> LINK L0p /L1<br>enable更改为disable 。</p><p><img src="/.io//08aae0c6bb3ac4d4f05a5c0546dd9d7d.png" alt></p><ol><li>F4 保存退出执行重启</li></ol><p>7、重启完成以后输入账户密码进入系统，打开终端，在命令行执行 lscpu |grep<br>“Hz”查看CPU是否处于额定主频（下图中共色框中两个数值是否相等或非常相近，2.10GHz=2100MHz），如是说明修改成功。</p><p><img src="/.io//6ca684228eb8f4c9cef650d33a2be84a.png" alt></p><p>change_grub.sh 脚本如下</p><pre><code>#!/bin/shcmd=&quot;intel_pstate=disable intel_idle.max_cstate=0 processor.max_cstate=1 idle=poll quiet&quot;check=$(cat /etc/default/grub |grep &quot;intel_pstate=disable intel_idle.max_cstate=0 processor.max_cstate=1 idle=poll&quot; | wc -l ) if [ $check -eq 0 ]    then         sed -i &quot;/GRUB_CMDLINE_LINUX/ s/quiet/$cmd/g&quot; /etc/default/grub    else        printf &quot;the file has been edited at a earlier time&quot;        exit 0fiif [ $? -ne 0 ]then    printf &quot;faild,please change it by edit the file&quot;    exit 1figrub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot</code></pre>]]></content>
     
@@ -115,9 +115,9 @@
     
     </summary>
     
-      <category term="IT" scheme="https://jiangxingye.github.io/categories/IT/"/>
+      <category term="it" scheme="https://jiangxingye.github.io/categories/it/"/>
     
-      <category term="server" scheme="https://jiangxingye.github.io/categories/IT/server/"/>
+      <category term="server" scheme="https://jiangxingye.github.io/categories/it/server/"/>
     
     
       <category term="关闭服务器CPU节能模式" scheme="https://jiangxingye.github.io/tags/%E5%85%B3%E9%97%AD%E6%9C%8D%E5%8A%A1%E5%99%A8CPU%E8%8A%82%E8%83%BD%E6%A8%A1%E5%BC%8F/"/>
@@ -183,7 +183,7 @@
     <link href="https://jiangxingye.github.io/2019/08/12/%E5%A6%82%E4%BD%95%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84BIOS%E4%B8%AD%E8%AE%BE%E7%BD%AE%E4%B8%8A%E7%94%B5%E8%87%AA%E5%90%AF%E5%8A%A8/"/>
     <id>https://jiangxingye.github.io/2019/08/12/如何在服务器的BIOS中设置上电自启动/</id>
     <published>2019-08-12T06:36:33.000Z</published>
-    <updated>2019-09-02T12:53:56.912Z</updated>
+    <updated>2019-09-03T01:18:47.131Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>说明：</strong></p><p>1、为什么要实现这种功能，很多时候在民间都基本用普通PC来做小型服务器，公司的私服等等，而这些普通PC在民用电环境中经常会停电，一停就会导致服务器不能自动来电重启，所以这个功能来点开机是必须的。</p><p>2、普通PC基本都是以下这些配置方式，但不要和服务器主板做比较，服务器主板有专业的配置选项以及专业的来电自动启动设备。</p><p><strong>下面根据不同的BIOS列出相应的设置方法：</strong></p><p><img src="/.io//%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190812142347.png" alt></p><p>1：首先进入BIOS的设置主界面，选择[POWER MANAGEMENT SETUP]，再选择[PWR Lost Resume State]，这一项有三个选择项。</p><p>选择[Keep OFF]项，代表停电后再来电时，电脑不会自动启动。<br>        选择[Turn On]项，代表停电后再来电时，电脑会自动启动。<br>        选择的[Last State]，那么代表停电后再来电时，电脑恢复到停电前电脑的状态。断电前如果电脑是处于开机状态，那么来电后就会自动开机。断电前是处于关机状态，那么来电后电脑不会自动开机。</p><p>2：首先进入Power Management Setup（电源管理设定）→Power Again（再来电状态），此项决定了开机时意外断电之后，电力供应恢复时系统电源的状态。设定值有：<br>Power Off（保持系统处于关机状态）<br>Power On（保持系统处于开机状态）<br>Last State（恢复到系统断电前的状态）进入挂起/睡眠模式，但若按钮被揿下超过4秒，机器关机。<br>若想来电自动开机把上面的这项改成power on就行了！</p><p>3：有的BIOS中[POWER MANAGEMENT SETUP]没有上面说的[PWR Lost Resume State]，可以在[PWRON After PWR-Fail]→[Integrated Peripherals]选项中找到两个选项：ON(打开自动开机)和OFF(关闭自动开机)，设置为OFF即可。<br>不同的主板及BIOS型号相对应的选项会有所不同，但我想应该会差不多，一般都在[POWER MANAGEMENT SETUP]这个选项中可以找到相应的设置选项！  </p>]]></content>
     
@@ -196,9 +196,9 @@
     
     </summary>
     
-      <category term="IT" scheme="https://jiangxingye.github.io/categories/IT/"/>
+      <category term="it" scheme="https://jiangxingye.github.io/categories/it/"/>
     
-      <category term="server" scheme="https://jiangxingye.github.io/categories/IT/server/"/>
+      <category term="server" scheme="https://jiangxingye.github.io/categories/it/server/"/>
     
     
       <category term="如何在服务器的BIOS中设置上电自启动" scheme="https://jiangxingye.github.io/tags/%E5%A6%82%E4%BD%95%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84BIOS%E4%B8%AD%E8%AE%BE%E7%BD%AE%E4%B8%8A%E7%94%B5%E8%87%AA%E5%90%AF%E5%8A%A8/"/>
@@ -210,7 +210,7 @@
     <link href="https://jiangxingye.github.io/2019/08/12/raid%E4%B8%A2%E5%A4%B1%E7%B3%BB%E7%BB%9F%E6%81%A2%E5%A4%8D%E6%A1%88%E4%BE%8B/"/>
     <id>https://jiangxingye.github.io/2019/08/12/raid丢失系统恢复案例/</id>
     <published>2019-08-12T04:31:04.000Z</published>
-    <updated>2019-09-02T13:17:43.626Z</updated>
+    <updated>2019-09-03T01:18:21.817Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="How-to-fix-“No-Bootable-Device”-issue-on-server"><a href="#How-to-fix-“No-Bootable-Device”-issue-on-server" class="headerlink" title="How to fix “No Bootable Device” issue on server?"></a>How to fix “No Bootable Device” issue on server?</h1><p><strong>故障现象：</strong></p><p><img src="/.io//353c3787ac700e369a1951dade7f985.jpg" alt="故障图片"></p><p><strong>原因分析：</strong>客户机器有独立的RAID卡，2块物理磁盘做的RAID0，和客户沟通，RAID卡进去状态不正常，不想重新安装系统。因为上面的环境配置很麻烦。</p><p><strong>处理过程：</strong> 重新在RAID卡里做同级别RAID的话，不在raid里做clear操作的话，数据不丢失的话，理论上系统是有办法恢复的，如果数据会消失，那就要重做了。经验证，做同级别RAID系统恢复，数据并未消失。</p><p><strong>问题解决：</strong></p><p><img src="/.io//22.png" alt="问题解决"></p><p><strong>建议：</strong> 如果系统上有重要数据的话，还是建议使用RAID1会安全一些。</p><p>如果你忙觉得上述案例帮助了您，给个赞哦，当然也可以打赏杯可乐，我就不用喝酱油兑水了,^_^ </p><p>么么哒！</p><p><strong>服务器购买也可以通过下面的联系方式向我咨询。</strong></p>]]></content>
     
@@ -223,9 +223,9 @@
     
     </summary>
     
-      <category term="IT" scheme="https://jiangxingye.github.io/categories/IT/"/>
+      <category term="it" scheme="https://jiangxingye.github.io/categories/it/"/>
     
-      <category term="server" scheme="https://jiangxingye.github.io/categories/IT/server/"/>
+      <category term="server" scheme="https://jiangxingye.github.io/categories/it/server/"/>
     
     
       <category term="bootable device were deteced." scheme="https://jiangxingye.github.io/tags/bootable-device-were-deteced/"/>
