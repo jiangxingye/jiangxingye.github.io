@@ -612,7 +612,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg &amp;&amp; reboot
       
         <categories>
             
-            <category> IT </category>
+            <category> it </category>
             
             <category> server </category>
             
