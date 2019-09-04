@@ -3,6 +3,30 @@
   
     
     <entry>
+      <title><![CDATA[what is the Hbass]]></title>
+      <url>/2019/09/04/what%20is%20the%20Hbass/</url>
+      <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Hbase-简介"><a href="#Hbase-简介" class="headerlink" title="Hbase 简介"></a>Hbase 简介</h1><h2 id="Hbase概述"><a href="#Hbase概述" class="headerlink" title="Hbase概述"></a>Hbase概述</h2><p>​     Hbase是一个分布式开源数据库，基于Hadoop分布式文件系统，模仿并提供了基于Google文件系统的Bigtable数据库的所有功能。其目标是处理非常庞大的表，可以用普通的计算机处理超过10亿行数据，并且有数百万列元素组成的数据表。Hbase可以直接使用本地文件系统或者Hadoop作为数据存储方式，不过为了提高数据可靠性和系统的健壮性，发挥Hbase处理大数据量等功能，需要使用Hadoop作为文件系统。</p>
+<p>Google BigTable论文中BigTable的定义：Bigtable是一个疏松的分布式的持久的多维排序的map,这个map被行键,列键,和时间戳索引.每一个值都是无解释数组.(A Bigtable is a sparse, distributed, persistent multidimensional sorted map. The map is indexed by a row key, column key, and a timestamp; each value in the map is an uninterpreted array of bytes.)</p>
+<h2 id><a href="#" class="headerlink" title></a></h2>]]></content>
+      
+        <categories>
+            
+            <category> it </category>
+            
+            <category> hadoop </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hbass </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Write a letter to parents]]></title>
       <url>/2019/09/02/Write%20a%20letter%20to%20parents/</url>
       <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>思明区 观音山音乐学校 课后延时服务工作致家长一封信</p>
