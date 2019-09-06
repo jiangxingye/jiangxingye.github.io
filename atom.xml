@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jiangxingye.github.io/"/>
-  <updated>2019-09-04T10:27:53.896Z</updated>
+  <updated>2019-09-06T02:08:33.643Z</updated>
   <id>https://jiangxingye.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>what is NVMe?</title>
+    <link href="https://jiangxingye.github.io/2019/09/06/what%20is%20NVMe?/"/>
+    <id>https://jiangxingye.github.io/2019/09/06/what is NVMe?/</id>
+    <published>2019-09-06T01:59:19.000Z</published>
+    <updated>2019-09-06T02:08:33.643Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="NVMe-is-what"><a href="#NVMe-is-what" class="headerlink" title="NVMe is what?"></a>NVMe is what?</h1><h2 id="先来看一下Wikipredia的解释。"><a href="#先来看一下Wikipredia的解释。" class="headerlink" title="先来看一下Wikipredia的解释。"></a>先来看一下Wikipredia的解释。</h2><p>wikipedia是这样婶儿说滴。</p><p><strong>NVM Express</strong>（<strong>NVMe</strong>），或称<strong>非易失性内存主机控制器接口规范</strong>（英语：<strong>N</strong>on-<strong>V</strong>olatile <strong>M</strong>emory <strong>H</strong>ost <strong>C</strong>ontroller <strong>I</strong>nterface <strong>S</strong>pecification，缩写：<strong>NVMHCIS</strong>），是一个逻辑设备接口<a href="https://zh.wikipedia.org/wiki/标准" target="_blank" rel="noopener">规范</a>。它是与<a href="https://zh.wikipedia.org/wiki/AHCI" target="_blank" rel="noopener">AHCI</a>类似的、基于设备逻辑接口的<a href="https://zh.wikipedia.org/wiki/匯流排" target="_blank" rel="noopener">总线</a>传输协议规范（相当于通讯协议中的<a href="https://zh.wikipedia.org/wiki/应用层" target="_blank" rel="noopener">应用层</a>），用于访问通过<a href="https://zh.wikipedia.org/wiki/PCI_Express" target="_blank" rel="noopener">PCI Express</a>（PCIe）总线附加的<a href="https://zh.wikipedia.org/wiki/非揮發性記憶體" target="_blank" rel="noopener">非易失性存储器</a>介质（例如采用<a href="https://zh.wikipedia.org/wiki/快閃記憶體" target="_blank" rel="noopener">闪存</a>的<a href="https://zh.wikipedia.org/wiki/固态硬盘" target="_blank" rel="noopener">固态硬盘驱动器</a>），虽然理论上不一定要求PCIe总线协议。</p><p>NVM代表非易失性存储器（non-volatile memory）的<a href="https://zh.wikipedia.org/wiki/首字母縮略字" target="_blank" rel="noopener">首字母缩略字</a>，这是固态硬盘（SSD）的常见的闪存形式。此规范主要是为基于闪存的存储设备提供一个低延时、内部并发化的原生界面规范，也为现代<a href="https://zh.wikipedia.org/wiki/CPU" target="_blank" rel="noopener">CPU</a>、计算机平台及相关应用提供原生存储并发化的支持<a href="https://zh.wikipedia.org/wiki/NVM_Express#cite_note-1" target="_blank" rel="noopener">[1]</a>，令主机硬件和软件可以充分利用固态存储设备的并行化存储能力。相比此前<a href="https://zh.wikipedia.org/wiki/硬碟機" target="_blank" rel="noopener">机械硬盘驱动器</a>（HDD）时代的<a href="https://zh.wikipedia.org/wiki/AHCI" target="_blank" rel="noopener">AHCI</a>，NVMe/NVMHCI降低了<a href="https://zh.wikipedia.org/wiki/I/O" target="_blank" rel="noopener">I/O</a>操作等待时间、提升同一时间内的操作数、更大容量的操作队列等。</p><p>依托于PCIe总线，NVMe设备可适用于各种支持PCIe总线的物理插槽上，包括标准尺寸的PCIe<a href="https://zh.wikipedia.org/w/index.php?title=Expansion_card&action=edit&redlink=1" target="_blank" rel="noopener">扩展卡</a>（一般是4个PCIe通道）<a href="https://zh.wikipedia.org/wiki/NVM_Express#cite_note-2" target="_blank" rel="noopener">[2]</a>、采用<a href="https://zh.wikipedia.org/wiki/U.2" target="_blank" rel="noopener">U.2</a>物理连接界面（SFF-8639）的2.5英寸/3.5英寸标准尺寸固态硬盘驱动器、<a href="https://zh.wikipedia.org/wiki/NVM_Express#cite_note-3" target="_blank" rel="noopener">[3]</a><a href="https://zh.wikipedia.org/wiki/NVM_Express#cite_note-4" target="_blank" rel="noopener">[4]</a><a href="https://zh.wikipedia.org/wiki/SATA_Express" target="_blank" rel="noopener">SATA Express</a>总线（兼容于PCIe）的设备、<a href="https://zh.wikipedia.org/wiki/M.2" target="_blank" rel="noopener">M.2</a>规格扩展卡等。<a href="https://zh.wikipedia.org/wiki/NVM_Express#cite_note-ahci-nvme-5" target="_blank" rel="noopener">[5]</a></p><p>此规范由“Non-Volatile Memory Host Controller Interface Working Group”（非易失性存储器主机控制器界面工作组）负责管理。</p><h2 id="SATA-SAS-PCIe-都是总线规范-或者叫电气接口"><a href="#SATA-SAS-PCIe-都是总线规范-或者叫电气接口" class="headerlink" title="SATA, SAS, PCIe 都是总线规范, 或者叫电气接口"></a>SATA, SAS, PCIe 都是总线规范, 或者叫电气接口</h2><h2 id="SCSI-NVMe-是存储协议"><a href="#SCSI-NVMe-是存储协议" class="headerlink" title="SCSI, NVMe 是存储协议"></a>SCSI, NVMe 是存储协议</h2><h2 id="NAND-3D-Xpoint-是介质"><a href="#NAND-3D-Xpoint-是介质" class="headerlink" title="NAND, 3D-Xpoint 是介质"></a>NAND, 3D-Xpoint 是介质</h2><p>我们用的比较多的是SATA SSD, PCIe SSD, NVMe SSD, Optane</p><p>常用的SATA SSD 对应的存储命令协议是SCSI, PCIe SSD 对应的存储命令协议一般是NVMe.</p><p>所以我们常说的 SATA SSD 指的是 NAND SATA/SAS SCSI SSD. PCIe SSD 指的是 NAND PCIe NVMe SSD, NVMe SSD 指的也是 NAND PCIe NVMe SSD. Optane(Intel 产品) 指的是 3D-Xpoint PCIe NVMe SSD</p><p>不管是用户态还是内核态, 都需要有对应的存储协议的支持, 所以对应的内核上都要有对应driver, 比如 SCSI 就是 isci, NVMe 就是nvme 这个驱动, 这个驱动做的事情就是封装对应格式的命令包, 传输给SSD上, SCSI 就封装成isci IO命令包, NVMe封装成 NVMe IO命令包.</p><p>NVMe 一般会有用户态的驱动, spdk 里面就包含. NVMe 使用内核态也可以把硬件跑满, 但是使用SPDK 的话, 因为使用poll 和 SPDK 的大页机制, 可以让负载比较低的时候 IO 延迟更短</p><p>所以我们一般常说的PCIe SSD, 一般就是NVMe SSD</p><p>NVMe SSD的读大概50us, 写大概可以达到10+us. 因为NVMe内部有ram, 这个写入时间是写到NVMe内部ram 的时间, NVMe自带掉电保护, 所以可以认为写入到内部的ram 就落盘了. 这个ram 的大小是具体根据不同厂商不一样</p><p>目前更快的是3Dxpoint 介质的optane/AEP</p><p>这两个 optane/AEP 都是intel 的产品. optane也是基于PCIe 的NVMe SSD, AEP 走的是内存设备总线, 所以是内存总线的 NVMe SSD。</p><h2 id="使用NVMe有啥优势，可以参考超能网的这篇文章。"><a href="#使用NVMe有啥优势，可以参考超能网的这篇文章。" class="headerlink" title="使用NVMe有啥优势，可以参考超能网的这篇文章。"></a>使用NVMe有啥优势，可以参考超能网的这篇文章。</h2><p><a href="https://www.expreview.com/42142.html" target="_blank" rel="noopener">NVMe到底是什么？用它的SSD有啥优势？</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+      <category term="it" scheme="https://jiangxingye.github.io/categories/it/"/>
+    
+      <category term="server" scheme="https://jiangxingye.github.io/categories/it/server/"/>
+    
+    
+      <category term="NVMe" scheme="https://jiangxingye.github.io/tags/NVMe/"/>
+    
+  </entry>
   
   <entry>
     <title>what is the Hbass</title>
@@ -508,31 +535,6 @@
     
     
       <category term="firewall" scheme="https://jiangxingye.github.io/tags/firewall/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>docker备份恢复之save与export</title>
-    <link href="https://jiangxingye.github.io/2017/09/18/docker-save-export/"/>
-    <id>https://jiangxingye.github.io/2017/09/18/docker-save-export/</id>
-    <published>2017-09-18T14:38:52.000Z</published>
-    <updated>2019-09-02T13:02:59.994Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="docker-save"><a href="#docker-save" class="headerlink" title="docker save"></a>docker save</h2><h3 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h3><p><code>docker save</code> 命令用于持久化 <strong>镜像</strong>，先获得镜像名称，再执行保存：</p><pre><code class="bash"># 通过此命令查出要持久化的镜像名称$ docker images# 持久化镜像名为 image_name 的镜像，$ docker save image_name -o ~/save.tar</code></pre><blockquote><p><strong>注意：</strong> 如果镜像是在远程仓库，执行保存镜像的时候可能会报 <code>Cowardly refusing to save to a terminal. Use the -o flag or redirect.</code> 的错，可以通过 <code>docker save image_name &gt; image_name.tar</code> 将镜像从远程仓库持久化到本地。</p></blockquote><h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><pre><code class="bash"># 导入 save.tar$ docker load &lt; ~/save.tar# 查看镜像$ docker images images</code></pre><h2 id="docker-export"><a href="#docker-export" class="headerlink" title="docker export"></a>docker export</h2><h3 id="导出-1"><a href="#导出-1" class="headerlink" title="导出"></a>导出</h3><p><code>docker export</code> 命令用于持久化 <strong>容器</strong>，先获取容器ID，再执行保存。</p><pre><code class="bash"># 通过此命令查出要持久化的容器ID$ docker ps -a# 持久化容器id为 container_id 的容器$ docker export container_id &gt; ~/export.tar</code></pre><h3 id="导入-1"><a href="#导入-1" class="headerlink" title="导入"></a>导入</h3><pre><code class="bash"># 从 export.tar 导入镜像$ cat ~/export.tar | docker import - my-images:latest# 查看镜像$ sudo docker images</code></pre><h2 id="不同"><a href="#不同" class="headerlink" title="不同"></a>不同</h2><p>通过 <code>sudo docker images --tree</code> 可以查看到镜像的所有层，就会发现， <code>docker export</code> 丢失了所有的历史，而<code>docker save</code> 则会保存所有历史。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-      <category term="运维" scheme="https://jiangxingye.github.io/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-    
-      <category term="docker" scheme="https://jiangxingye.github.io/tags/docker/"/>
     
   </entry>
   
