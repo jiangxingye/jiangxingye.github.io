@@ -3,6 +3,237 @@
   
     
     <entry>
+      <title><![CDATA[how to install os & install NVIDIA Driver]]></title>
+      <url>/2019/09/11/how%20to%20install%20os%20&amp;%20install%20NVIDIA%20Driver/</url>
+      <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>一.安装Ubuntu</strong></p>
+<p>1.制作启动盘，选择启动盘启动，硬盘分区自己分，然后按步安装就行就行了。</p>
+<p><strong>二.修改主机名和root密码</strong></p>
+<p>vim     /etc/hostname 与vim /etc/hosts/(ip域名)</p>
+<p>sudo passwd root</p>
+<p><strong>三.网络配置</strong></p>
+<p>vim /etc/network/interfaces</p>
+<p>自动获取：</p>
+<p>auton eno2</p>
+<p>iface eno2 inet dhcp</p>
+<p>设置静态地址：</p>
+<p>auto eno2</p>
+<p>iface eno2 inet static</p>
+<p>address <strong><strong>****</strong></strong></p>
+<p>netmask 255.255.255.0 </p>
+<p>gateway：<strong><strong>*****</strong></strong></p>
+<p>重启网络服务：</p>
+<p>1.service network restart</p>
+<p>2./etc/init.d/networking restart</p>
+<p>3.ifdown / ifup</p>
+<p>配置dns</p>
+<p>vim /etc/resolv.conf</p>
+<p><strong>四.NVIDIA驱动安装</strong></p>
+<p>1.删除旧的驱动：</p>
+<p>sudo apt-get purge nvidia*</p>
+<p>2.关闭nouveau</p>
+<p>查看属性 </p>
+<p>sudo ls -lh /etc/modprobe.d/blacklist.conf</p>
+<p>修改属性 </p>
+<p>sudo chmod 666 /etc/modprobe.d/blacklist.conf</p>
+<p>禁用：</p>
+<p>vim /etc/modprobe.d/blacklist.conf</p>
+<p>添加：</p>
+<p>blacklist vga16fb</p>
+<p>blacklist nouveau</p>
+<p>blacklist rivafb</p>
+<p>blacklist rivatv</p>
+<p>blacklist nvidiafb</p>
+<p>options nouveau modeset=0——如果禁用不成功就加上这句，不行就重启</p>
+<p>更新：</p>
+<p>sudo update-initramfs -u</p>
+<p>重启查看：</p>
+<p> lsmod | grep nouveau</p>
+<p>关闭图形界面：</p>
+<p>init 3 或 sudo service lightdw stop</p>
+<p>安装 ：</p>
+<p> sudo chmod +x NVIDIA-Linux-x86_64-***run</p>
+<p>sudo sh NVIDIA-Linux-x86_64-xxx.run -no-x-check -no-nouveau-check -no-opengl-files或sudo ./NVIDIA-Linux-x86_64-xxx.run -no-x-check -no-nouveau-check -no-opengl-files(避免出现循环登录)</p>
+<p>安装gcc g++ make（不然可能报错）</p>
+<p>apt-get install gcc</p>
+<p>apt-get install g++</p>
+<p>apt-get install make</p>
+<p>查看:</p>
+<p>nvidia-smi或nvidia-settings</p>
+<p>卸载：</p>
+<p>sudo sh ~/NVIDIA-Linux-x86_64-**.run –uninstall</p>
+<p>驱动安装启动不了界面问题解决：</p>
+<p>把/etc/lightdm/lightdm.conf备份</p>
+<p>把/etc/x11/下面的xorg.conf.failsafe文件复制成xorg.conf</p>
+<p>关闭集显</p>
+<p><strong>五.安装cuda9.1及cudnn7——</strong>关闭NetworkManager（不然重启可能进不去命令行）</p>
+<p>下载runfile文件</p>
+<p>关闭图形界面</p>
+<p>验证系统是否安装了kernel header和 package development</p>
+<p>uname -rsudo apt-get install linux-headers-$(uname -r)——可省略的操作</p>
+<p>安装：</p>
+<p>sudo sh cuda_9.1.85_387.26_linux.run</p>
+<p>配置环境：</p>
+<p>vim /etc/profile </p>
+<p>export PATH=/usr/local/cuda-9.1/bin:$PATH</p>
+<p>export LD_LIBRARY_PATH=/usr/local/cuda-9.1/lib64:$LD_LIBRARY_PATH</p>
+<p>不行的话试试：</p>
+<p>vim ~/.bashrc</p>
+<p>$ export PATH=/usr/local/cuda-9.1/bin${PATH:+:{PATH}}$ export LD_LIBRARY_PATH=/usr/local/cuda-9.1/lib64${LD_LIBRARY_PATH:+:{LD_LIBRARY_PATH}}</p>
+<p>vim /etc/p rofile </p>
+<p>export PATH=/usr/local/cuda-9.1/bin:$PATH</p>
+<p>链接文件：</p>
+<p>vim /etc/ld.so.conf.d/cuda.conf</p>
+<p>/usr/local/cuda/lib64</p>
+<p>sudo lsconfig</p>
+<p>.查看：</p>
+<p>nvcc –version</p>
+<p>cudnn安装——和cuda一个路径</p>
+<p>tar -zxvf <strong>**</strong></p>
+<p>cd  cuda/</p>
+<p>sudo cp lib64/libcudnn*  /usr/local/cuda-9.1/lib64/</p>
+<p>sudo cp include/cudnn.h  /usr/local/cuda-9.1/include/</p>
+<p>更新网络连接：</p>
+<p>cd /usr/local/cuda-9.1/lib64/</p>
+<p>chmod +r libcudnn.so.7.1.1 ——主要看版本</p>
+<p>sudo ln -sf libcudnn.so.7.1.1 libcudnn.so.7</p>
+<p>sudo ln -sf libcudnn.so.7  libcudnn.so</p>
+<p>链接文件：</p>
+<p>vim /etc/ld.so.conf.d/cuda.conf</p>
+<p>/usr/local/cuda-9.1/lib64</p>
+<p>查看成功安装与否:ls /usr/local/cuda-9.0/lib64/libcudnn*</p>
+<p>sudo ldconfig</p>
+<p><strong>六.安装docker——一定要跟更新apt-get</strong></p>
+<p>更新apt-get</p>
+<p>apt-get  update</p>
+<p>通过HTTP使用存储库：</p>
+<p>sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common——可不用加</p>
+<p>添加密钥</p>
+<p>curl -fsSL <a href="https://download.docker.com/linux/ubuntu/gpg" target="_blank" rel="noopener">https://download.docker.com/linux/ubuntu/gpg</a> | sudo apt-key add -</p>
+<p>设置stable存储库</p>
+<p>sudo add-apt-repository “deb [arch=amd64] <a href="https://download.docker.com/linux/ubuntu" target="_blank" rel="noopener">https://download.docker.com/linux/ubuntu</a> $(lsb_release -cs) stable”</p>
+<p>在更新：</p>
+<p>sudo apt-get update</p>
+<p>安装最新的docker社区版</p>
+<p>sudo apt-get install -y docker-ce</p>
+<p>测试：</p>
+<p>sudo docker run hello-world</p>
+<p>列出可用的版本：</p>
+<p>$ apt-cache madison docker-ce</p>
+<p>下载nvidia-docker源文件：</p>
+<p>wget <a href="https://github.com/nvidia/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd.deb" target="_blank" rel="noopener">https://github.com/nvidia/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd.deb</a>  <a href="https://github.com/nvidia/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd.deb" target="_blank" rel="noopener">https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd64.deb</a> </p>
+<p> ——注：如果下载不了就用优盘拷贝进去</p>
+<p>安装nvidia-docker</p>
+<p>dpck -i nvidia-docker*.deb</p>
+<p>验证：</p>
+<p>systemctl start docker或 service docker start</p>
+<p>docker images</p>
+<p>docker –version</p>
+<p>docker run hello-world</p>
+<p><strong>七.caffe安装</strong></p>
+<p>依赖库安装：</p>
+<p>sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler libgflags-dev libgoogle-glog-dev liblmdb-dev libatlas-base-dev git </p>
+<p>sudo apt-get install –no-install-recommends libboost-all-dev</p>
+<p>如果不行可加上这些依赖项：（cmake build-essential libopenblas-dev liblapack-dev）</p>
+<p>安装NCCL：</p>
+<p>git clone <a href="https://github.com/NVIDIA/nccl.git" target="_blank" rel="noopener">https://github.com/NVIDIA/nccl.git</a></p>
+<p>cd nccl</p>
+<p>sudo make install -j8</p>
+<p>安装caffe：</p>
+<p>wget <a href="https://github.com/NVIDIA/caffe/archive/v0.15.9.tar.gz" target="_blank" rel="noopener">https://github.com/NVIDIA/caffe/archive/v0.15.9.tar.gz</a> /opt</p>
+<p>tar zxvf v0.15.9.tar.g z</p>
+<p>cd caffe-0.15.9</p>
+<p>cp Makefile,config.example Makefile.config</p>
+<p>vim Makefile.config</p>
+<p>取消 USE_CUDNN:=1的注释和取消USE_NCCL:=1的注释</p>
+<p>编译：</p>
+<p>make all -j12</p>
+<p>出现问题：</p>
+<p>1.找不到目录caffe hdf5</p>
+<p>解决：vim Makefile.config</p>
+<p>85行：INCLUDE_DIRS 后面添加 /usr/include/hdf5/serial/</p>
+<p>vim Makefile</p>
+<p>173行： LIBRARIES+=中的hdf5_hl和hdf5改为hdf5_serial_hl和hdf5_serial</p>
+<p>2.Unsupport<strong><strong>***</strong></strong>“compute 20“</p>
+<p>解决：因为安装的是cuda9.1所以vim Makefile.config中CUDA_ARCH</p>
+<p>删除20和21结尾的两行</p>
+<p>测试：</p>
+<p>sudo make runtest -j8</p>
+<p>验证：</p>
+<p> /build/tools<strong>*****</strong></p>
+<p>最后把caffe的环境变量加入到etc profile</p>
+<p>vim /etc/profile </p>
+<p>eaport PATH= /opt/caffe-0.15.9/build/tools :$PATH</p>
+<p><strong>cudnn.hpp问题：</strong></p>
+<p>因为当前版本的caffe的cudnn实现与系统所安装的cudnn的版本不一致引起的。</p>
+<p>解决办法：</p>
+<p>1.将./include/caffe/util/cudnn.hpp 换成最新版的caffe里的cudnn的实现，即相应的cudnn.hpp.</p>
+<p>\2. 将./include/caffe/layers里的，所有以cudnn开头的文件，例cudnn_conv_layer.hpp。   都替换成最新版的c affe里的相应的同名文件。</p>
+<p>3.将./src/caffe/layer里的，所有以cudnn开头的文件，例如cudnn_lrn_layer.cu，cudnn_pooling_layer.cpp，cudnn_sigmoid_layer.cu。都替换成最新版的caffe里的相应的同名文件。</p>
+<p><a href="https://blog.csdn.net/u014696921/article/details/56014899" target="_blank" rel="noopener">https://blog.csdn.net/u014696921/article/details/56014899</a></p>
+<p>编译错误：</p>
+<p>.build_release/examples/siamese/convert_mnist_siamese_data.bin </p>
+<p>解决方法：</p>
+<p>首先这个问题确实是opencv的问题，只需要把  Makefile.config里的    #USE_PKG_CONFIG := 这一行前面的#给去掉，然后在他下一行添加</p>
+<p>LIBRARIES += glog gflags protobuf leveldb snappy \</p>
+<p>​        lmdb boost_system hdf5_hl hdf5 m \</p>
+<p>​        opencv_core opencv_highgui opencv_imgproc opencv_imgcodecs</p>
+<p>保存，然后再编译即可。如果还不可以，试一下把原来的编译内容用make clean清空，再重新编译。如果还不行，那只能靠诸位再继续大胆尝试了。</p>
+<p><strong>八.安装Anaconda</strong></p>
+<p>应用软件安装在/opt目录下：</p>
+<p>bash Anaconda………………..</p>
+<p>添加环境：export PATH=………..：/opt/anaconda3/bin:$PATH</p>
+<p>source /etc/profile</p>
+<p>验证:</p>
+<p>conda list</p>
+<p>配置好PATH后，可以通过which conda或conda –version命令检查是否正确。 </p>
+<p>输入conda list 就可以查询，你现在安装了哪些库，常用的numpy, scipy名列其中。如果你还有什么包没有安装上，可以运行conda install * 来进行安装， </p>
+<p>如果某个包版本不是最新的，运行 conda update * 就可以了。</p>
+<p><strong>九.安装tensorflow——</strong>目前只有cuda9.0可以匹配tensorflow1.8和1.9，cuda9.1版本太高</p>
+<p>安装：pip –default-timeout=100 install -U tensorflow<strong><strong>*****</strong></strong></p>
+<p>如果没有pip执行:</p>
+<p>apt-get install python-pip</p>
+<p>验证：1.python </p>
+<p>2.import tensorflow </p>
+<p>3.import tensorflow as if </p>
+<p>4.a = tf.constant(’hello world’)      with tf.Session () as sess:     两个空格–print（sess.run(a)） </p>
+<p>Ubuntu18.04验证：</p>
+<p>import tensorflow as tf</p>
+<p>hello =tf.constant(‘hello,world’)——创建常量</p>
+<p>sess =tf.Session()——创建会话</p>
+<p>result =sess.run(hello)——执行</p>
+<p>sess.close()——关闭会话</p>
+<p>print(result)——输出</p>
+<p><strong>十.安装VASP</strong></p>
+<p>详见vsap篇</p>
+<p><strong>十一.安装torch</strong></p>
+<p>pip –default-timeout=100 install torch torchvision</p>
+<p>或：pip3 install  torch torchvision</p>
+<p>如果局限于网速则可以通whl文件离线安装</p>
+<p>验证:</p>
+<p>ipython </p>
+<p>import torch</p>
+<p>或：import pytorch</p>
+<p>import torchvision</p>
+]]></content>
+      
+        <categories>
+            
+            <category> it </category>
+            
+            <category> server </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> nvidia </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[what is the NVMe]]></title>
       <url>/2019/09/06/what%20is%20the%20NVMe/</url>
       <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="NVMe-is-what"><a href="#NVMe-is-what" class="headerlink" title="NVMe is what?"></a>NVMe is what?</h1><h2 id="先来看一下Wikipredia的解释。"><a href="#先来看一下Wikipredia的解释。" class="headerlink" title="先来看一下Wikipredia的解释。"></a>先来看一下Wikipredia的解释。</h2><p>wikipedia是这样婶儿说滴。</p>
