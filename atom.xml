@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jiangxingye.github.io/"/>
-  <updated>2019-09-12T03:23:21.145Z</updated>
+  <updated>2019-09-12T09:20:33.237Z</updated>
   <id>https://jiangxingye.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to visit Google like drinking water</title>
+    <link href="https://jiangxingye.github.io/2019/09/12/How%20to%20visit%20Google%20like%20drinking%20water/"/>
+    <id>https://jiangxingye.github.io/2019/09/12/How to visit Google like drinking water/</id>
+    <published>2019-09-12T09:10:52.000Z</published>
+    <updated>2019-09-12T09:20:33.237Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="How-to-visit-Google-like-drinking-water"><a href="#How-to-visit-Google-like-drinking-water" class="headerlink" title="How to visit Google like drinking water"></a>How to visit Google like drinking water</h1><p>我也是无意中发现的一个网站，还挺好用的呢。^_^</p><p><a href="https://5414.ml" target="_blank" rel="noopener">点我访问</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+      <category term="it" scheme="https://jiangxingye.github.io/categories/it/"/>
+    
+      <category term="network" scheme="https://jiangxingye.github.io/categories/it/network/"/>
+    
+    
+      <category term="科学上网" scheme="https://jiangxingye.github.io/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    
+  </entry>
   
   <entry>
     <title>how to install os &amp; install NVIDIA Driver</title>
@@ -512,31 +539,6 @@
       <category term="js" scheme="https://jiangxingye.github.io/tags/js/"/>
     
       <category term="浏览器" scheme="https://jiangxingye.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决iphone下后退不执行js的问题</title>
-    <link href="https://jiangxingye.github.io/2017/09/21/iphone-bf-no-run-js/"/>
-    <id>https://jiangxingye.github.io/2017/09/21/iphone-bf-no-run-js/</id>
-    <published>2017-09-21T07:25:32.000Z</published>
-    <updated>2019-09-02T13:02:59.991Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="直接上解决方法"><a href="#直接上解决方法" class="headerlink" title="直接上解决方法"></a>直接上解决方法</h2><p>不论页面是否被缓存，都会触发 <code>pageshow</code>，所以后退后需要执行的方法可以都放在下面事件内：</p><pre><code class="javascript">window.addEventListener(&#39;pageshow&#39;, function () {  console.log(&#39;on pageshow&#39;)})</code></pre><p><code>浏览器缓存行为</code> 的详细介绍可以参考： <a href="/2017/09/21/bf-cache/" title="[转]浏览器前进/后退缓存（BF Cache）">[转]浏览器前进/后退缓存（BF Cache）</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-      <category term="大前端" scheme="https://jiangxingye.github.io/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="js" scheme="https://jiangxingye.github.io/tags/js/"/>
     
   </entry>
   
