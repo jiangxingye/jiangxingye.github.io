@@ -5,13 +5,10 @@
     <entry>
       <title><![CDATA[how to install os & install NVIDIA Driver]]></title>
       <url>/2019/09/11/how%20to%20install%20os%20&amp;%20install%20NVIDIA%20Driver/</url>
-      <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>一.安装Ubuntu</strong></p>
-<p>1.制作启动盘，选择启动盘启动，硬盘分区自己分，然后按步安装就行就行了。</p>
-<p><strong>二.修改主机名和root密码</strong></p>
-<p>vim     /etc/hostname 与vim /etc/hosts/(ip域名)</p>
+      <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="一-安装Ubuntu"><a href="#一-安装Ubuntu" class="headerlink" title="一.安装Ubuntu"></a><strong>一.安装Ubuntu</strong></h1><p>1.制作启动盘，选择启动盘启动，硬盘分区自己分，然后按步安装就行就行了。</p>
+<h1 id="二-修改主机名和root密码"><a href="#二-修改主机名和root密码" class="headerlink" title="二.修改主机名和root密码"></a><strong>二.修改主机名和root密码</strong></h1><p>vim     /etc/hostname 与vim /etc/hosts/(ip域名)</p>
 <p>sudo passwd root</p>
-<p><strong>三.网络配置</strong></p>
-<p>vim /etc/network/interfaces</p>
+<h1 id="三-网络配置"><a href="#三-网络配置" class="headerlink" title="三.网络配置"></a><strong>三.网络配置</strong></h1><p>vim /etc/network/interfaces</p>
 <p>自动获取：</p>
 <p>auton eno2</p>
 <p>iface eno2 inet dhcp</p>
@@ -27,8 +24,7 @@
 <p>3.ifdown / ifup</p>
 <p>配置dns</p>
 <p>vim /etc/resolv.conf</p>
-<p><strong>四.NVIDIA驱动安装</strong></p>
-<p>1.删除旧的驱动：</p>
+<h1 id="四-NVIDIA驱动安装"><a href="#四-NVIDIA驱动安装" class="headerlink" title="四.NVIDIA驱动安装"></a><strong>四.NVIDIA驱动安装</strong></h1><p>1.删除旧的驱动：</p>
 <p>sudo apt-get purge nvidia*</p>
 <p>2.关闭nouveau</p>
 <p>查看属性 </p>
@@ -65,8 +61,7 @@
 <p>把/etc/lightdm/lightdm.conf备份</p>
 <p>把/etc/x11/下面的xorg.conf.failsafe文件复制成xorg.conf</p>
 <p>关闭集显</p>
-<p><strong>五.安装cuda9.1及cudnn7——</strong>关闭NetworkManager（不然重启可能进不去命令行）</p>
-<p>下载runfile文件</p>
+<h1 id="五-安装cuda9-1及cudnn7——关闭NetworkManager（不然重启可能进不去命令行）"><a href="#五-安装cuda9-1及cudnn7——关闭NetworkManager（不然重启可能进不去命令行）" class="headerlink" title="五.安装cuda9.1及cudnn7——关闭NetworkManager（不然重启可能进不去命令行）"></a><strong>五.安装cuda9.1及cudnn7——</strong>关闭NetworkManager（不然重启可能进不去命令行）</h1><p>下载runfile文件</p>
 <p>关闭图形界面</p>
 <p>验证系统是否安装了kernel header和 package development</p>
 <p>uname -rsudo apt-get install linux-headers-$(uname -r)——可省略的操作</p>
@@ -102,8 +97,7 @@
 <p>/usr/local/cuda-9.1/lib64</p>
 <p>查看成功安装与否:ls /usr/local/cuda-9.0/lib64/libcudnn*</p>
 <p>sudo ldconfig</p>
-<p><strong>六.安装docker——一定要跟更新apt-get</strong></p>
-<p>更新apt-get</p>
+<h1 id="六-安装docker——一定要跟更新apt-get"><a href="#六-安装docker——一定要跟更新apt-get" class="headerlink" title="六.安装docker——一定要跟更新apt-get"></a><strong>六.安装docker——一定要跟更新apt-get</strong></h1><p>更新apt-get</p>
 <p>apt-get  update</p>
 <p>通过HTTP使用存储库：</p>
 <p>sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common——可不用加</p>
@@ -129,8 +123,7 @@
 <p>docker images</p>
 <p>docker –version</p>
 <p>docker run hello-world</p>
-<p><strong>七.caffe安装</strong></p>
-<p>依赖库安装：</p>
+<h1 id="七-caffe安装"><a href="#七-caffe安装" class="headerlink" title="七.caffe安装"></a><strong>七.caffe安装</strong></h1><p>依赖库安装：</p>
 <p>sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler libgflags-dev libgoogle-glog-dev liblmdb-dev libatlas-base-dev git </p>
 <p>sudo apt-get install –no-install-recommends libboost-all-dev</p>
 <p>如果不行可加上这些依赖项：（cmake build-essential libopenblas-dev liblapack-dev）</p>
@@ -178,8 +171,7 @@
 <p>​        lmdb boost_system hdf5_hl hdf5 m \</p>
 <p>​        opencv_core opencv_highgui opencv_imgproc opencv_imgcodecs</p>
 <p>保存，然后再编译即可。如果还不可以，试一下把原来的编译内容用make clean清空，再重新编译。如果还不行，那只能靠诸位再继续大胆尝试了。</p>
-<p><strong>八.安装Anaconda</strong></p>
-<p>应用软件安装在/opt目录下：</p>
+<h1 id="八-安装Anaconda"><a href="#八-安装Anaconda" class="headerlink" title="八.安装Anaconda"></a><strong>八.安装Anaconda</strong></h1><p>应用软件安装在/opt目录下：</p>
 <p>bash Anaconda………………..</p>
 <p>添加环境：export PATH=………..：/opt/anaconda3/bin:$PATH</p>
 <p>source /etc/profile</p>
@@ -188,11 +180,11 @@
 <p>配置好PATH后，可以通过which conda或conda –version命令检查是否正确。 </p>
 <p>输入conda list 就可以查询，你现在安装了哪些库，常用的numpy, scipy名列其中。如果你还有什么包没有安装上，可以运行conda install * 来进行安装， </p>
 <p>如果某个包版本不是最新的，运行 conda update * 就可以了。</p>
-<p><strong>九.安装tensorflow——</strong>目前只有cuda9.0可以匹配tensorflow1.8和1.9，cuda9.1版本太高</p>
-<p>安装：pip –default-timeout=100 install -U tensorflow<strong><strong>*****</strong></strong></p>
+<h1 id="九-安装tensorflow——目前只有cuda9-0可以匹配tensorflow1-8和1-9，cuda9-1版本太高"><a href="#九-安装tensorflow——目前只有cuda9-0可以匹配tensorflow1-8和1-9，cuda9-1版本太高" class="headerlink" title="九.安装tensorflow——目前只有cuda9.0可以匹配tensorflow1.8和1.9，cuda9.1版本太高"></a><strong>九.安装tensorflow——</strong>目前只有cuda9.0可以匹配tensorflow1.8和1.9，cuda9.1版本太高</h1><p>安装：pip –default-timeout=100 install -U tensorflow<strong><strong>*****</strong></strong></p>
 <p>如果没有pip执行:</p>
 <p>apt-get install python-pip</p>
-<p>验证：1.python </p>
+<p>验证：</p>
+<p>1.python </p>
 <p>2.import tensorflow </p>
 <p>3.import tensorflow as if </p>
 <p>4.a = tf.constant(’hello world’)      with tf.Session () as sess:     两个空格–print（sess.run(a)） </p>
@@ -203,10 +195,8 @@
 <p>result =sess.run(hello)——执行</p>
 <p>sess.close()——关闭会话</p>
 <p>print(result)——输出</p>
-<p><strong>十.安装VASP</strong></p>
-<p>详见vsap篇</p>
-<p><strong>十一.安装torch</strong></p>
-<p>pip –default-timeout=100 install torch torchvision</p>
+<h1 id="十-安装VASP"><a href="#十-安装VASP" class="headerlink" title="十.安装VASP"></a><strong>十.安装VASP</strong></h1><p>详见vsap篇</p>
+<h1 id="十一-安装torch"><a href="#十一-安装torch" class="headerlink" title="十一.安装torch"></a><strong>十一.安装torch</strong></h1><p>pip –default-timeout=100 install torch torchvision</p>
 <p>或：pip3 install  torch torchvision</p>
 <p>如果局限于网速则可以通whl文件离线安装</p>
 <p>验证:</p>
