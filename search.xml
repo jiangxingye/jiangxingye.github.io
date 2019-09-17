@@ -5,7 +5,14 @@
     <entry>
       <title></title>
       <url>/2019/09/16/ubuntu%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85cuda%E5%92%8Ccudnn%E9%A9%B1%E5%8A%A8%E6%96%B9%E6%B3%95/</url>
-      <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Ubuntu-16-04-系统下安装-cuda-驱动方法"><a href="#Ubuntu-16-04-系统下安装-cuda-驱动方法" class="headerlink" title="Ubuntu 16.04 系统下安装 cuda 驱动方法"></a>Ubuntu 16.04 系统下安装 cuda 驱动方法</h1><h2 id="一、cuda-install"><a href="#一、cuda-install" class="headerlink" title="一、cuda install"></a>一、cuda install</h2><ol>
+      <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
+<p>title: ubuntu系统下安装cuda和cudnn驱动方法<br>permalink: ubuntu系统下安装cuda和cudnn驱动方法<br>date: 2019-09-17 11:25:38<br>categories:</p>
+<ul>
+<li>it</li>
+<li>server<br>tags:</li>
+<li>cuda install</li>
+</ul>
+<h1 id="Ubuntu-16-04-系统下安装-cuda-驱动方法"><a href="#Ubuntu-16-04-系统下安装-cuda-驱动方法" class="headerlink" title="Ubuntu 16.04 系统下安装 cuda 驱动方法"></a>Ubuntu 16.04 系统下安装 cuda 驱动方法</h1><h2 id="一、cuda-install"><a href="#一、cuda-install" class="headerlink" title="一、cuda install"></a>一、cuda install</h2><ol>
 <li>cuda 包含nvidia 显卡驱动 ，如果事先安装好了 nvidia 显卡驱动，在安装 cuda<br>的时候提示安装 nvidia 显卡驱动时候选择 no，不用安装显卡驱动。</li>
 <li>cuda 下载链接：<a href="https://developer.nvidia.com/cuda-toolkit" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-toolkit</a></li>
 <li>cuda 安装前准备</li>
