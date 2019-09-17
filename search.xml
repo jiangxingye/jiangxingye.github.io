@@ -3,16 +3,9 @@
   
     
     <entry>
-      <title></title>
-      <url>/2019/09/16/ubuntu%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85cuda%E5%92%8Ccudnn%E9%A9%B1%E5%8A%A8%E6%96%B9%E6%B3%95/</url>
-      <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<p>title: ubuntu系统下安装cuda和cudnn驱动方法<br>permalink: ubuntu系统下安装cuda和cudnn驱动方法<br>date: 2019-09-17 11:25:38<br>categories:</p>
-<ul>
-<li>it</li>
-<li>server<br>tags:</li>
-<li>cuda install</li>
-</ul>
-<h1 id="Ubuntu-16-04-系统下安装-cuda-驱动方法"><a href="#Ubuntu-16-04-系统下安装-cuda-驱动方法" class="headerlink" title="Ubuntu 16.04 系统下安装 cuda 驱动方法"></a>Ubuntu 16.04 系统下安装 cuda 驱动方法</h1><h2 id="一、cuda-install"><a href="#一、cuda-install" class="headerlink" title="一、cuda install"></a>一、cuda install</h2><ol>
+      <title><![CDATA[ubuntu系统下安装cuda和cudnn驱动方法]]></title>
+      <url>/2019/09/17/ubuntu%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85cuda%E5%92%8Ccudnn%E9%A9%B1%E5%8A%A8%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Ubuntu-16-04-系统下安装-cuda-驱动方法"><a href="#Ubuntu-16-04-系统下安装-cuda-驱动方法" class="headerlink" title="Ubuntu 16.04 系统下安装 cuda 驱动方法"></a>Ubuntu 16.04 系统下安装 cuda 驱动方法</h1><h2 id="一、cuda-install"><a href="#一、cuda-install" class="headerlink" title="一、cuda install"></a>一、cuda install</h2><ol>
 <li>cuda 包含nvidia 显卡驱动 ，如果事先安装好了 nvidia 显卡驱动，在安装 cuda<br>的时候提示安装 nvidia 显卡驱动时候选择 no，不用安装显卡驱动。</li>
 <li>cuda 下载链接：<a href="https://developer.nvidia.com/cuda-toolkit" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-toolkit</a></li>
 <li>cuda 安装前准备</li>
@@ -45,7 +38,7 @@
 <li><p>进入安装，第一个问题:选择接受 accept，第二个问题:问是否安装 nvidia<br>显卡驱动？ 如果事前安装了驱动，可以选择 no，不然后就选者 yes<br>。然后第三个问题及后面的问题都选择 yes。没有 yes/no 选择的<br>用回车默认就可以了。</p>
 </li>
 </ol>
-<p><img src="/2019/09/16/ubuntu系统下安装cuda和cudnn驱动方法/890c8c55b96dc29f109a2930ac1a16c6.jpg" alt>Cuda 安装完毕。</p>
+<p><img src="/2019/09/17/ubuntu系统下安装cuda和cudnn驱动方法/890c8c55b96dc29f109a2930ac1a16c6.jpg" alt>Cuda 安装完毕。</p>
 <h3 id="四、设置环境变量："><a href="#四、设置环境变量：" class="headerlink" title="四、设置环境变量："></a>四、设置环境变量<strong>：</strong></h3><p>终端中输入 ：sudo gedit /etc/profile 在打开的文件末尾，添加以下两行。</p>
 <pre><code>export PATH=/usr/local/cuda-10.1/bin:\$PATH
 
@@ -85,11 +78,11 @@ cd /usr/local/cuda-9.0/samples/1_Utilities/bandwidthTest Make
 </ol>
 </li>
 </ol>
-<p><img src="/2019/09/16/ubuntu系统下安装cuda和cudnn驱动方法/67ced510ecc00b4ede3098611c9086e0.png" alt></p>
+<p><img src="/2019/09/17/ubuntu系统下安装cuda和cudnn驱动方法/67ced510ecc00b4ede3098611c9086e0.png" alt></p>
 <ol>
 <li>先登录，然后同意下载，然后选择自己需要 cudnn 下载</li>
 </ol>
-<p><img src="/2019/09/16/ubuntu系统下安装cuda和cudnn驱动方法/2c8cc9e129b45e225dc9705bc4794824.jpg" alt></p>
+<p><img src="/2019/09/17/ubuntu系统下安装cuda和cudnn驱动方法/2c8cc9e129b45e225dc9705bc4794824.jpg" alt></p>
 <ol>
 <li><p>点击下载 tar 的压缩包，然厚把压缩包拷贝到系统下，然后进入到对应目录</p>
 </li>
@@ -110,6 +103,20 @@ cd /usr/local/cuda-9.0/samples/1_Utilities/bandwidthTest Make
 </blockquote>
 ]]></content>
       
+        <categories>
+            
+            <category> it </category>
+            
+            <category> server </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> cuda install </tag>
+            
+        </tags>
         
     </entry>
     
