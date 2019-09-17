@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jiangxingye.github.io/"/>
-  <updated>2019-09-12T09:20:33.237Z</updated>
+  <updated>2019-09-17T03:20:24.984Z</updated>
   <id>https://jiangxingye.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://jiangxingye.github.io/2019/09/16/ubuntu%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85cuda%E5%92%8Ccudnn%E9%A9%B1%E5%8A%A8%E6%96%B9%E6%B3%95/"/>
+    <id>https://jiangxingye.github.io/2019/09/16/ubuntu系统下安装cuda和cudnn驱动方法/</id>
+    <published>2019-09-16T01:22:01.476Z</published>
+    <updated>2019-09-17T03:20:24.984Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Ubuntu-16-04-系统下安装-cuda-驱动方法"><a href="#Ubuntu-16-04-系统下安装-cuda-驱动方法" class="headerlink" title="Ubuntu 16.04 系统下安装 cuda 驱动方法"></a>Ubuntu 16.04 系统下安装 cuda 驱动方法</h1><h2 id="一、cuda-install"><a href="#一、cuda-install" class="headerlink" title="一、cuda install"></a>一、cuda install</h2><ol><li>cuda 包含nvidia 显卡驱动 ，如果事先安装好了 nvidia 显卡驱动，在安装 cuda<br>的时候提示安装 nvidia 显卡驱动时候选择 no，不用安装显卡驱动。</li><li>cuda 下载链接：<a href="https://developer.nvidia.com/cuda-toolkit" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-toolkit</a></li><li>cuda 安装前准备</li></ol><h3 id="二、禁用-ubuntu-系统自带的nvidia-第三方驱动：nouveau"><a href="#二、禁用-ubuntu-系统自带的nvidia-第三方驱动：nouveau" class="headerlink" title="二、禁用 ubuntu 系统自带的nvidia 第三方驱动：nouveau"></a>二、禁用 ubuntu 系统自带的nvidia 第三方驱动：nouveau</h3><p>禁用方法：</p><ol><li><p>编译/etc/modprobe.d/blacklist.conf</p></li><li><p>nano /etc/modprobe.d/blacklist.conf</p></li><li><p>在配置文件的最后一页贴加如下命令。</p><p>blacklist nouveau</p><p>options nouveau modeset=0</p></li><li><p>贴加完毕后按ctrl+x 保存 选 y 保存，然后回车即可退出编译界面。</p></li><li><p>执行命令加载文件： update-initramfs –u</p></li><li><p>重启机器 执行：lsmod | grep nouveau 命令，如果屏幕没有输出，说明禁用<br>nouveau 成功。</p><h2 id="三、禁用-X-Window-服务"><a href="#三、禁用-X-Window-服务" class="headerlink" title="三、禁用 X-Window 服务"></a>三、禁用 X-Window 服务</h2><p>首先用命令：service lightdm stop 禁用图形界面</p><p>然后用命令 Ctrl-Alt+F1 进入命令行界面，输入用户名和密码登录</p></li></ol><p>安装 cuda</p><ol><li><p>把 cuda 驱动拷贝到根目录下， 然后进入到根目录下面， 记住要 root 权限<br>安装 。用命令:./cuda.xxx.run -no-opengl-libs 安装</p></li><li><p>进入安装界面，首先阅读安装说明，可以用 ctrl+c 跳过，也可以用空格<br>一个个的看完。一般直接忽略。</p></li><li><p>进入安装，第一个问题:选择接受 accept，第二个问题:问是否安装 nvidia<br>显卡驱动？ 如果事前安装了驱动，可以选择 no，不然后就选者 yes<br>。然后第三个问题及后面的问题都选择 yes。没有 yes/no 选择的<br>用回车默认就可以了。</p></li></ol><p><img src="/2019/09/16/ubuntu系统下安装cuda和cudnn驱动方法/890c8c55b96dc29f109a2930ac1a16c6.jpg" alt>Cuda 安装完毕。</p><h3 id="四、设置环境变量："><a href="#四、设置环境变量：" class="headerlink" title="四、设置环境变量："></a>四、设置环境变量<strong>：</strong></h3><p>终端中输入 ：sudo gedit /etc/profile 在打开的文件末尾，添加以下两行。</p><pre><code>export PATH=/usr/local/cuda-10.1/bin:\$PATHexport LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64:\$LD_LIBRARY_PATH</code></pre><p>保存文件，并重启。因为 source /etc/profile是临时生效，重启电脑才是永久生效。</p><h3 id="五、重启电脑，检查上述的环境变量是否设置成功"><a href="#五、重启电脑，检查上述的环境变量是否设置成功" class="headerlink" title="五、重启电脑，检查上述的环境变量是否设置成功"></a><strong>五、</strong>重启电脑，检查上述的环境变量是否设置成功</h3><ol start="2"><li>a、 验证驱动版本敲入</li></ol><pre><code>$ cat /proc/driver/nvidia/version 结果显示NVRM version: NVIDIA UNIX x86_64 Kernel Module 384.81 Sat Sep 2 02:43:11 PDT2017GCC version: gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1\~16.04.5)</code></pre><p>b、 验证 CUDA Toolkit 敲入</p><p>$ nvcc -V 会输出 CUDA</p><p>版本信息</p><p>如果是这样的：</p><p>The program ‘nvcc’ is currently not installed. You can install it by typing:<br>sudo apt-get install nvidia-cuda-toolkit。</p><p>可能是环境配置没有成功，请重复上述步骤 7</p><ol><li>测试 CUDA 的 Samples 例子</li></ol><blockquote><p>  运行下面命令：</p></blockquote><pre><code>cd /usr/local/cuda-9.0/samples/1_Utilities/deviceQuery make</code></pre><pre><code>./deviceQuerycd /usr/local/cuda-9.0/samples/1_Utilities/bandwidthTest Make./ bandwidthTest</code></pre><p>测试成功会显示结果：pass</p><h1 id="六、Cuda-安装成功。"><a href="#六、Cuda-安装成功。" class="headerlink" title="六、Cuda 安装成功。"></a>六、Cuda 安装成功。</h1><blockquote><p>  Cuda 安装参考文档及一些常用问题参考此链接：<br>  <em><a href="http://blog.csdn.net/qlulibin/article/details/78714596" target="_blank" rel="noopener">http://blog.csdn.net/qlulibin/article/details/78714596</a></em></p></blockquote><ol><li><p>cuda 安装完后，安装 cudnn</p><ol><li>先去 nvidia 官网下载 cudnn，cudnn<br>下载需要注册账号才能安登陆进去下载。网站：<em><a href="https://developer.nvidia.com/cudnn" target="_blank" rel="noopener">https://developer.nvidia.com/cudnn</a></em></li></ol></li></ol><p><img src="/2019/09/16/ubuntu系统下安装cuda和cudnn驱动方法/67ced510ecc00b4ede3098611c9086e0.png" alt></p><ol><li>先登录，然后同意下载，然后选择自己需要 cudnn 下载</li></ol><p><img src="/2019/09/16/ubuntu系统下安装cuda和cudnn驱动方法/2c8cc9e129b45e225dc9705bc4794824.jpg" alt></p><ol><li><p>点击下载 tar 的压缩包，然厚把压缩包拷贝到系统下，然后进入到对应目录</p></li><li><p>执行下面命令，开始安装。</p></li></ol><blockquote><pre><code>  &gt; tar -zxvf cudnn-7.5-linux-x64-v5.0-ga.tgz  &gt; cp cuda/include/cudnn.h /usr/local/cuda/include/ cp cuda/lib64/libcudnn\*  &gt; /usr/local/cuda/lib64/ chmod a+r /usr/local/cuda/include/cudnn.h chmod a+r  &gt; /usr/local/cuda/lib64/libcudnn\*</code></pre></blockquote><ol><li>Cudnn 安装完毕。</li></ol><blockquote><p>  备注：cudnn 的版本需要和 cuda 的版本是要在兼容范围内，若果不兼容，会报错的。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>How to visit Google like drinking water</title>
@@ -173,33 +194,6 @@
     
     
       <category term="Compatibility list" scheme="https://jiangxingye.github.io/tags/Compatibility-list/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>宝德PR2865P</title>
-    <link href="https://jiangxingye.github.io/2019/09/02/PR2865P/"/>
-    <id>https://jiangxingye.github.io/2019/09/02/PR2865P/</id>
-    <published>2019-09-02T10:09:26.000Z</published>
-    <updated>2019-09-03T01:18:29.263Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>宝德PR2865P是基于Intel Purley平台研发的高密度2U<br>4路服务器，具有突出的高性能，高可靠性，易扩展等优点。PR2865P支持最新的英特尔®<br>至强®<br>处理器可扩展家族，支持最大205W功率的CPU。PR2865P可提供更高效的计算性能，最大支持内存可达6TB，支持24块热插拔硬盘，扩展IO方面最大支持11个PCIE标准扩展槽，可同时支持2个双宽GPU计算卡</p><p>宝德PR2865P是商业关键负载，虚拟化，超融合，数据库，商业业务处理，以及对空间和性能要求严苛的数据密集型数据中心应用。</p><p><img src="/2019/09/02/PR2865P/795a468ea8db6821245ea82635bc9c28.png" alt></p><table><thead><tr><th><strong>特性</strong></th><th><strong>PR2865P技术规格</strong></th></tr></thead><tbody><tr><td>形态</td><td>2U机架服务器</td></tr><tr><td>处理器数量</td><td>4个</td></tr><tr><td>处理器型号</td><td>英特尔® 至强® 处理器可扩展家族铂金8100 系列和黄金6100/5100系列，最高205W。</td></tr><tr><td>内存</td><td>48个插槽，最大支持6TB容量，最大频率 2666 MHz,支持Apache Pass (AEP) DIMMs</td></tr><tr><td>硬盘</td><td>24个2.5英寸SAS/SATA/SSD硬盘 可支持4个NVMe SSD硬盘</td></tr><tr><td>板载存储控制器</td><td>英特尔® C621，支持14个 SATA3 (6 Gbps)接口; RAID 0，1，5，10 同时，支持Intel VROC，可实现NVMe raid控制。</td></tr><tr><td>板载网络</td><td>支持4个千兆网口</td></tr><tr><td>PCIE扩展</td><td>最大支持11个PCIE 3.0 插槽，包含5个PCIE3.0 x8和6个 PCIE3.0 x16，选择165W一下CPU，可支持2个主动散热GPU卡</td></tr><tr><td>其他端口</td><td>后置：1个VGA接口, 1个串口, 2个USB 3.0，4个千兆网口，1个千兆IPMI2.0管理网口 内置：1个TPM2.0接口，1个VROC Key接口，1个USB3.0接口，2个SATA DOM接口，3个x4 mini SATA接口（支持12个SATA接口）</td></tr><tr><td>风扇</td><td>4个8CM热插拔冗余风扇</td></tr><tr><td>电源</td><td>标配2x 1600W钛金级热插拔冗余电源，支持1+1 冗余</td></tr><tr><td>管理</td><td>板载 Aspeed AST2500管理模块，支持IPMI2.0，英特尔® Node Manager，NMI，SMCBU，SMM，看门狗;</td></tr><tr><td>安全模块</td><td>支持TPM2.0</td></tr><tr><td>显示控制器</td><td>集成AST2500显示控制器</td></tr><tr><td>支持的操作系统</td><td>Windows Server 2012Enterprise Edition SP2 Red Hat* Enterprise Advanced Server 6.0 SuSE Linux Enterprise Server 11</td></tr><tr><td>供电</td><td>110V/220V AC</td></tr><tr><td>箱体尺寸</td><td>437 x 89 x 780mm (17.2” x 3.5” x 30.7”)</td></tr><tr><td><strong>环境及规范</strong></td><td></td></tr><tr><td>环境温度</td><td>运行时10℃至35℃ 非运行时-40℃至+70°C 周围环境</td></tr><tr><td>相对湿度</td><td>运行时：8% to 90%，不凝结 非运行时：5% to 95%，不凝结</td></tr><tr><td>静电释放</td><td>每项英特尔环境温度测试规范15KV</td></tr><tr><td>安全标准（中国）</td><td>CCC</td></tr></tbody></table><p>服务及支持</p><p>PowerLeader提供全国联保，由分布在全国各地PowerLeader专业售后服务网点提供“一站式”服务响应与支持。</p><p>- 3年有限现场保修以及现场支持服务</p><p>- 4008-870-872热线响应和支持</p><p>欲了解更多信息：请访问：<a href="http://www.powerleader.com.cn" target="_blank" rel="noopener">http://www.powerleader.com.cn</a></p><p>通信地址：深圳市龙华新区观澜高新技术产业园宝德科技研发生产基地（观澜街道环观南路南侧）</p><p>宝德集团保留对产品规格或其他产品信息（包含但不限于产品重量，外观，尺寸或其他物理因素）不经通知予以更改的权利；本文中所提到的信息，如因产品升级或其他原因而导致的变更，恕不另行通知。本文中所涉及的产品图片均以产品实物为准。</p><p>2017年8月中国印刷</p><p>P/N:DPPR2865P V1.0</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-      <category term="it" scheme="https://jiangxingye.github.io/categories/it/"/>
-    
-      <category term="server" scheme="https://jiangxingye.github.io/categories/it/server/"/>
-    
-    
-      <category term="PR2865P" scheme="https://jiangxingye.github.io/tags/PR2865P/"/>
     
   </entry>
   
