@@ -3,6 +3,45 @@
   
     
     <entry>
+      <title><![CDATA[How to flash Pixel Experience ROM on One Plus5]]></title>
+      <url>/2019/10/16/How%20to%20flash%20Pixel%20Experience%20ROM%20on%20One%20Plus5/</url>
+      <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>How to flash Pixel Experience ROM</p>
+<p>Download </p>
+<ol>
+<li>The latest firmware #firmware</li>
+<li>The latest PE build #download</li>
+<li>Magisk (optional) #magisk</li>
+<li>Disable Dm Verity ForceEncrypt (optional) #decrypt</li>
+</ol>
+<p>Clean Flash</p>
+<ol>
+<li>Wipe system, data, cache, dalvik/art cache, vendor </li>
+<li>Flash the latest Firmware </li>
+<li>Flash ROM</li>
+<li>Flash Magisk (if you want root)</li>
+<li>Flash Disable Dm Verity ForceEncrypt (if your data was previously decryped)</li>
+<li>Wipe cache and Enjoy!</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> it </category>
+            
+            <category> mobile </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> oneplus5 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[ubuntu系统下安装cuda和cudnn驱动方法]]></title>
       <url>/2019/09/17/ubuntu%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85cuda%E5%92%8Ccudnn%E9%A9%B1%E5%8A%A8%E6%96%B9%E6%B3%95/</url>
       <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Ubuntu-16-04-系统下安装-cuda-驱动方法"><a href="#Ubuntu-16-04-系统下安装-cuda-驱动方法" class="headerlink" title="Ubuntu 16.04 系统下安装 cuda 驱动方法"></a>Ubuntu 16.04 系统下安装 cuda 驱动方法</h1><h2 id="一、cuda-install"><a href="#一、cuda-install" class="headerlink" title="一、cuda install"></a>一、cuda install</h2><ol>
@@ -2035,9 +2074,9 @@ function sendXHR () {
         
         <tags>
             
-            <tag> js </tag>
-            
             <tag> 浏览器 </tag>
+            
+            <tag> js </tag>
             
         </tags>
         

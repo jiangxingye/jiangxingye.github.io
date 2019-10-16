@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jiangxingye.github.io/2019/10/16/How%20to%20flash%20Pixel%20Experience%20ROM%20on%20One%20Plus5/</loc>
+    
+    <lastmod>2019-10-16T02:52:58.268Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jiangxingye.github.io/2019/09/17/ubuntu%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85cuda%E5%92%8Ccudnn%E9%A9%B1%E5%8A%A8%E6%96%B9%E6%B3%95/</loc>
     
     <lastmod>2019-09-17T03:36:46.379Z</lastmod>
@@ -128,6 +135,13 @@
   </url>
   
   <url>
+    <loc>https://jiangxingye.github.io/2016/12/05/linux-command%EF%BC%885%EF%BC%89-rm/</loc>
+    
+    <lastmod>2019-09-02T13:03:00.030Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jiangxingye.github.io/2016/12/06/linux-command%EF%BC%886%EF%BC%89-rmdir/</loc>
     
     <lastmod>2019-09-02T13:03:00.030Z</lastmod>
@@ -142,9 +156,9 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2016/12/05/linux-command%EF%BC%885%EF%BC%89-rm/</loc>
+    <loc>https://jiangxingye.github.io/2017/05/23/linux-command%EF%BC%8857%EF%BC%89-sort/</loc>
     
-    <lastmod>2019-09-02T13:03:00.030Z</lastmod>
+    <lastmod>2019-09-02T13:03:00.029Z</lastmod>
     
   </url>
   
@@ -156,9 +170,9 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/05/23/linux-command%EF%BC%8857%EF%BC%89-sort/</loc>
+    <loc>https://jiangxingye.github.io/2017/01/23/linux-command%EF%BC%8855%EF%BC%89-crontab/</loc>
     
-    <lastmod>2019-09-02T13:03:00.029Z</lastmod>
+    <lastmod>2019-09-02T13:03:00.028Z</lastmod>
     
   </url>
   
@@ -170,21 +184,14 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/01/23/linux-command%EF%BC%8855%EF%BC%89-crontab/</loc>
-    
-    <lastmod>2019-09-02T13:03:00.028Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jiangxingye.github.io/2017/01/22/linux-command%EF%BC%8854%EF%BC%89-at/</loc>
+    <loc>https://jiangxingye.github.io/2017/01/21/linux-command%EF%BC%8853%EF%BC%89-watch/</loc>
     
     <lastmod>2019-09-02T13:03:00.027Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/01/21/linux-command%EF%BC%8853%EF%BC%89-watch/</loc>
+    <loc>https://jiangxingye.github.io/2017/01/22/linux-command%EF%BC%8854%EF%BC%89-at/</loc>
     
     <lastmod>2019-09-02T13:03:00.027Z</lastmod>
     
@@ -205,13 +212,6 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/01/18/linux-command%EF%BC%8850%EF%BC%89-grep/</loc>
-    
-    <lastmod>2019-09-02T13:03:00.025Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jiangxingye.github.io/2016/12/04/linux-command%EF%BC%884%EF%BC%89-mkdir/</loc>
     
     <lastmod>2019-09-02T13:03:00.025Z</lastmod>
@@ -219,9 +219,9 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/01/16/linux-command%EF%BC%8848%EF%BC%89-date/</loc>
+    <loc>https://jiangxingye.github.io/2017/01/18/linux-command%EF%BC%8850%EF%BC%89-grep/</loc>
     
-    <lastmod>2019-09-02T13:03:00.024Z</lastmod>
+    <lastmod>2019-09-02T13:03:00.025Z</lastmod>
     
   </url>
   
@@ -240,14 +240,21 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/01/14/linux-command%EF%BC%8846%EF%BC%89-ln/</loc>
+    <loc>https://jiangxingye.github.io/2017/01/16/linux-command%EF%BC%8848%EF%BC%89-date/</loc>
+    
+    <lastmod>2019-09-02T13:03:00.024Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jiangxingye.github.io/2017/01/13/linux-command%EF%BC%8845%EF%BC%89-scp/</loc>
     
     <lastmod>2019-09-02T13:03:00.023Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/01/13/linux-command%EF%BC%8845%EF%BC%89-scp/</loc>
+    <loc>https://jiangxingye.github.io/2017/01/14/linux-command%EF%BC%8846%EF%BC%89-ln/</loc>
     
     <lastmod>2019-09-02T13:03:00.023Z</lastmod>
     
@@ -275,14 +282,14 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/01/09/linux-command%EF%BC%8840%EF%BC%89-traceroute/</loc>
+    <loc>https://jiangxingye.github.io/2017/01/10/linux-command%EF%BC%8841%EF%BC%89-netstat/</loc>
     
     <lastmod>2019-09-02T13:03:00.020Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/01/10/linux-command%EF%BC%8841%EF%BC%89-netstat/</loc>
+    <loc>https://jiangxingye.github.io/2017/01/09/linux-command%EF%BC%8840%EF%BC%89-traceroute/</loc>
     
     <lastmod>2019-09-02T13:03:00.020Z</lastmod>
     
@@ -303,14 +310,14 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/01/07/linux-command%EF%BC%8838%EF%BC%89-route/</loc>
+    <loc>https://jiangxingye.github.io/2017/01/06/linux-command%EF%BC%8837%EF%BC%89-ifconfig/</loc>
     
     <lastmod>2019-09-02T13:03:00.017Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/01/06/linux-command%EF%BC%8837%EF%BC%89-ifconfig/</loc>
+    <loc>https://jiangxingye.github.io/2017/01/07/linux-command%EF%BC%8838%EF%BC%89-route/</loc>
     
     <lastmod>2019-09-02T13:03:00.017Z</lastmod>
     
@@ -331,14 +338,14 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/01/02/linux-command%EF%BC%8833%EF%BC%89-free/</loc>
+    <loc>https://jiangxingye.github.io/2017/01/03/linux-command%EF%BC%8834%EF%BC%89-vmstat/</loc>
     
     <lastmod>2019-09-02T13:03:00.015Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/01/03/linux-command%EF%BC%8834%EF%BC%89-vmstat/</loc>
+    <loc>https://jiangxingye.github.io/2017/01/02/linux-command%EF%BC%8833%EF%BC%89-free/</loc>
     
     <lastmod>2019-09-02T13:03:00.015Z</lastmod>
     
@@ -352,7 +359,7 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2016/12/31/linux-command%EF%BC%8831%EF%BC%89-du/</loc>
+    <loc>https://jiangxingye.github.io/2016/12/02/linux-command%EF%BC%882%EF%BC%89-cd/</loc>
     
     <lastmod>2019-09-02T13:03:00.012Z</lastmod>
     
@@ -366,14 +373,14 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2016/12/02/linux-command%EF%BC%882%EF%BC%89-cd/</loc>
+    <loc>https://jiangxingye.github.io/2016/12/31/linux-command%EF%BC%8831%EF%BC%89-du/</loc>
     
     <lastmod>2019-09-02T13:03:00.012Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2016/12/28/linux-command%EF%BC%8828%EF%BC%89-chown/</loc>
+    <loc>https://jiangxingye.github.io/2016/12/29/linux-command%EF%BC%8829%EF%BC%89-/etc/group%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</loc>
     
     <lastmod>2019-09-02T13:03:00.010Z</lastmod>
     
@@ -387,7 +394,7 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2016/12/29/linux-command%EF%BC%8829%EF%BC%89-/etc/group%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</loc>
+    <loc>https://jiangxingye.github.io/2016/12/28/linux-command%EF%BC%8828%EF%BC%89-chown/</loc>
     
     <lastmod>2019-09-02T13:03:00.010Z</lastmod>
     
@@ -415,14 +422,14 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2016/12/22/linux-command%EF%BC%8822%EF%BC%89-find%E5%91%BD%E4%BB%A4%E7%9A%84%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3/</loc>
+    <loc>https://jiangxingye.github.io/2016/12/23/linux-command%EF%BC%8823%EF%BC%89-%E7%94%A8SecureCRT%E6%9D%A5%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6/</loc>
     
     <lastmod>2019-09-02T13:03:00.007Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2016/12/23/linux-command%EF%BC%8823%EF%BC%89-%E7%94%A8SecureCRT%E6%9D%A5%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6/</loc>
+    <loc>https://jiangxingye.github.io/2016/12/22/linux-command%EF%BC%8822%EF%BC%89-find%E5%91%BD%E4%BB%A4%E7%9A%84%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3/</loc>
     
     <lastmod>2019-09-02T13:03:00.007Z</lastmod>
     
@@ -471,13 +478,6 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2016/12/16/linux-command%EF%BC%8816%EF%BC%89-which/</loc>
-    
-    <lastmod>2019-09-02T13:03:00.004Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jiangxingye.github.io/2016/12/15/linux-command%EF%BC%8815%EF%BC%89-tail/</loc>
     
     <lastmod>2019-09-02T13:03:00.004Z</lastmod>
@@ -485,9 +485,9 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2016/12/14/linux-command%EF%BC%8814%EF%BC%89-head/</loc>
+    <loc>https://jiangxingye.github.io/2016/12/16/linux-command%EF%BC%8816%EF%BC%89-which/</loc>
     
-    <lastmod>2019-09-02T13:03:00.003Z</lastmod>
+    <lastmod>2019-09-02T13:03:00.004Z</lastmod>
     
   </url>
   
@@ -499,9 +499,9 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2016/12/12/linux-command%EF%BC%8812%EF%BC%89-more/</loc>
+    <loc>https://jiangxingye.github.io/2016/12/14/linux-command%EF%BC%8814%EF%BC%89-head/</loc>
     
-    <lastmod>2019-09-02T13:03:00.002Z</lastmod>
+    <lastmod>2019-09-02T13:03:00.003Z</lastmod>
     
   </url>
   
@@ -513,14 +513,21 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2016/12/10/linux-command%EF%BC%8810%EF%BC%89-cat/</loc>
+    <loc>https://jiangxingye.github.io/2016/12/12/linux-command%EF%BC%8812%EF%BC%89-more/</loc>
+    
+    <lastmod>2019-09-02T13:03:00.002Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jiangxingye.github.io/2017/01/23/linux-command/</loc>
     
     <lastmod>2019-09-02T13:03:00.001Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/01/23/linux-command/</loc>
+    <loc>https://jiangxingye.github.io/2016/12/10/linux-command%EF%BC%8810%EF%BC%89-cat/</loc>
     
     <lastmod>2019-09-02T13:03:00.001Z</lastmod>
     
@@ -541,13 +548,6 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/09/11/sudo%E5%91%BD%E4%BB%A4%E5%85%8D%E5%AF%86%E7%A0%81%E8%AE%BE%E7%BD%AE/</loc>
-    
-    <lastmod>2019-09-02T13:02:59.999Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jiangxingye.github.io/2018/09/08/shell-command/</loc>
     
     <lastmod>2019-09-02T13:02:59.999Z</lastmod>
@@ -555,14 +555,21 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/05/19/docker-image/</loc>
+    <loc>https://jiangxingye.github.io/2017/09/11/sudo%E5%91%BD%E4%BB%A4%E5%85%8D%E5%AF%86%E7%A0%81%E8%AE%BE%E7%BD%AE/</loc>
+    
+    <lastmod>2019-09-02T13:02:59.999Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jiangxingye.github.io/2018/02/08/nginx-config/</loc>
     
     <lastmod>2019-09-02T13:02:59.998Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2018/02/08/nginx-config/</loc>
+    <loc>https://jiangxingye.github.io/2017/05/19/docker-image/</loc>
     
     <lastmod>2019-09-02T13:02:59.998Z</lastmod>
     
@@ -625,13 +632,6 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/05/23/CentOS-DNS-GW-IP/</loc>
-    
-    <lastmod>2019-09-02T13:02:59.993Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jiangxingye.github.io/2017/05/22/Dockerfile/</loc>
     
     <lastmod>2019-09-02T13:02:59.993Z</lastmod>
@@ -639,9 +639,9 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/07/03/CentOS7-anonymous-Samba/</loc>
+    <loc>https://jiangxingye.github.io/2017/05/23/CentOS-DNS-GW-IP/</loc>
     
-    <lastmod>2019-09-02T13:02:59.992Z</lastmod>
+    <lastmod>2019-09-02T13:02:59.993Z</lastmod>
     
   </url>
   
@@ -653,14 +653,21 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/09/21/bf-cache/</loc>
+    <loc>https://jiangxingye.github.io/2017/07/03/CentOS7-anonymous-Samba/</loc>
+    
+    <lastmod>2019-09-02T13:02:59.992Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jiangxingye.github.io/2017/09/21/iphone-bf-no-run-js/</loc>
     
     <lastmod>2019-09-02T13:02:59.991Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/09/21/iphone-bf-no-run-js/</loc>
+    <loc>https://jiangxingye.github.io/2017/09/21/bf-cache/</loc>
     
     <lastmod>2019-09-02T13:02:59.991Z</lastmod>
     
@@ -681,14 +688,14 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/03/09/duoshuo-pjax/</loc>
+    <loc>https://jiangxingye.github.io/2017/03/09/busuanzi-pjax/</loc>
     
     <lastmod>2019-09-02T13:02:59.989Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/03/09/busuanzi-pjax/</loc>
+    <loc>https://jiangxingye.github.io/2017/03/09/duoshuo-pjax/</loc>
     
     <lastmod>2019-09-02T13:02:59.989Z</lastmod>
     
@@ -730,14 +737,14 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2016/10/12/PostgreSQL-3/</loc>
+    <loc>https://jiangxingye.github.io/2017/03/04/AngularJs/</loc>
     
     <lastmod>2019-09-02T13:02:59.982Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/03/04/AngularJs/</loc>
+    <loc>https://jiangxingye.github.io/2016/10/12/PostgreSQL-3/</loc>
     
     <lastmod>2019-09-02T13:02:59.982Z</lastmod>
     
@@ -758,14 +765,14 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2016/10/12/PostgreSQL-1/</loc>
+    <loc>https://jiangxingye.github.io/2017/11/09/PostgreSQL%E4%BA%8B%E7%89%A9%E5%8F%8A%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</loc>
     
     <lastmod>2019-09-02T13:02:59.980Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/11/09/PostgreSQL%E4%BA%8B%E7%89%A9%E5%8F%8A%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</loc>
+    <loc>https://jiangxingye.github.io/2016/10/12/PostgreSQL-1/</loc>
     
     <lastmod>2019-09-02T13:02:59.980Z</lastmod>
     
@@ -779,13 +786,6 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/04/15/SpringMVC-implementation-process/</loc>
-    
-    <lastmod>2019-09-02T13:02:59.978Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jiangxingye.github.io/2017/11/27/java-grammatical-sugar/</loc>
     
     <lastmod>2019-09-02T13:02:59.978Z</lastmod>
@@ -793,7 +793,14 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2016/10/24/web-xml/</loc>
+    <loc>https://jiangxingye.github.io/2017/04/15/SpringMVC-implementation-process/</loc>
+    
+    <lastmod>2019-09-02T13:02:59.978Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jiangxingye.github.io/2017/04/22/encryption-algorithm/</loc>
     
     <lastmod>2019-09-02T13:02:59.977Z</lastmod>
     
@@ -807,7 +814,7 @@
   </url>
   
   <url>
-    <loc>https://jiangxingye.github.io/2017/04/22/encryption-algorithm/</loc>
+    <loc>https://jiangxingye.github.io/2016/10/24/web-xml/</loc>
     
     <lastmod>2019-09-02T13:02:59.977Z</lastmod>
     
