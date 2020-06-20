@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jiangxingye.github.io/"/>
-  <updated>2020-06-20T08:47:25.305Z</updated>
+  <updated>2020-06-20T09:47:35.483Z</updated>
   <id>https://jiangxingye.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cert</title>
+    <link href="https://jiangxingye.github.io/2020/06/20/cert/"/>
+    <id>https://jiangxingye.github.io/2020/06/20/cert/</id>
+    <published>2020-06-20T09:46:12.000Z</published>
+    <updated>2020-06-20T09:47:35.483Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://i.loli.net/2020/06/20/XqNxunfYrA8aH7K.png" alt="vvv.png"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>pl2404xg</title>
@@ -500,31 +521,6 @@
       <category term="linux" scheme="https://jiangxingye.github.io/tags/linux/"/>
     
       <category term="shell" scheme="https://jiangxingye.github.io/tags/shell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nginx配置记录</title>
-    <link href="https://jiangxingye.github.io/2018/02/08/nginx-config/"/>
-    <id>https://jiangxingye.github.io/2018/02/08/nginx-config/</id>
-    <published>2018-02-08T01:19:09.000Z</published>
-    <updated>2019-09-02T13:02:59.998Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="启用https"><a href="#启用https" class="headerlink" title="启用https"></a>启用https</h2><h3 id="1-购买免费证书"><a href="#1-购买免费证书" class="headerlink" title="1.购买免费证书"></a>1.购买免费证书</h3><p>登录阿里云 -&gt; 控制台 -&gt; 安全（云盾） -&gt; CA证书服务 -&gt; 购买证书<br><img src="http://img.xiangzhangshugongyi.com/Fr8xZ-Z1ylYPcoN1PCTk_5SDm6TM.png" alt="购买免费证书"></p><h3 id="2-补全证书信息"><a href="#2-补全证书信息" class="headerlink" title="2.补全证书信息"></a>2.补全证书信息</h3><p>点击补全，绑定域名</p><h3 id="3-下载并配置"><a href="#3-下载并配置" class="headerlink" title="3.下载并配置"></a>3.下载并配置</h3><p>选择下载 证书for nginx<br><img src="http://img.xiangzhangshugongyi.com/FnMUOU4IZY2ZbMZcqggp4v7JHtej.png" alt="下载证书"></p><p>上面这个页面有相关的配置信息，下面简单介绍：</p><p>① 将下载文件中的 <code>*.pem</code>、<code>*.key</code>, 拷贝到 nginx 目录下 的 <code>cert</code> , 当然也可以是其他目录<br>② 修改 <code>nginx.conf</code></p><pre><code class="conf">server {      listen       443 ssl;      server_name  xiangzhangshugongyi.com;      ssl_certificate      cert/214487958220243.pem;      ssl_certificate_key  cert/214487958220243.key;      ssl_session_cache    shared:SSL:1m;      ssl_session_timeout  5m;      ssl_ciphers  HIGH:!aNULL:!MD5;      ssl_prefer_server_ciphers  on;      location / {          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;          proxy_set_header Host $http_host;          proxy_set_header X-Forwarded-Proto https;          proxy_redirect off;          proxy_connect_timeout      240;          proxy_send_timeout         240;          proxy_read_timeout         240;          # note, there is not SSL here! plain HTTP is used          proxy_pass http://127.0.0.1:8080;      }  }</code></pre><p>③ 重启 nginx，通过 证书绑定域名进行 https 访问到 服务器跑在 8080 的服务<br><img src="http://img.xiangzhangshugongyi.com/FtTXB9QIYoZOlPFKsGg-ImxbL58N.png" alt="通过https访问"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-      <category term="运维" scheme="https://jiangxingye.github.io/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-    
-      <category term="nginx" scheme="https://jiangxingye.github.io/tags/nginx/"/>
     
   </entry>
   
