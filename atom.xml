@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jiangxingye.github.io/"/>
-  <updated>2020-06-17T00:29:22.922Z</updated>
+  <updated>2020-06-20T08:10:04.463Z</updated>
   <id>https://jiangxingye.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PR4865TP</title>
+    <link href="https://jiangxingye.github.io/2020/06/20/PR4865TP/"/>
+    <id>https://jiangxingye.github.io/2020/06/20/PR4865TP/</id>
+    <published>2020-06-20T08:01:37.000Z</published>
+    <updated>2020-06-20T08:10:04.463Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td></td><td><img src="file:///C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image002.png" alt="img"></td></tr></tbody></table><p><img src="file:///C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image004.png" alt="img"></p><p>宝德至强四路云服务器PR4865P</p><p>**<br>** </p><p>宝德PR4865P是基于Intel Purley平台研发的高密度4U 4路服务器，具有突出的高性能，高可靠性，易扩展等优点。PR4865P支持最新的英特尔® 至强® 处理器可扩展家族,适合高端企业关键应用，如：数据库、ERP、高性能并行运算、虚拟化等应用环境。</p><p><a href="#_top"><img src="file:///C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cmsohtmlclip1%5C01%5Cclip_image005.png" alt="文本框: 核心优势 Ø    全新的处理器架构  支持 4 颗Intel® Xeon 可扩展处理器（Skylake &amp; Cascade Lake），最高支持最高 3UPI 总线，最高速率能到 10.4GT/s， 实现了 CPU 之间的全互联（crossbar）。支持最多 48 根DDR4 内存，可实现最高 18.0TB 的内存容量。能轻松处理复杂的工作负载，适合数据库，ERP，高性能并行运算，虚拟化等应用环境。 Ø    高密度高扩展性  最高可支持 24 个 3.5 英寸硬盘，或 25个 2.5 英寸硬盘；并支持内置 2 个 M.2 SSD，2 个 SATA DOM；提供专属 NIC MEZZ 卡扩展槽位；最多 15 个PCIE3.0 扩展槽，最大支持扩展 8 个全高全长及 7 个全高半长PCIE 设备， 可支持 4 张全高全长双宽GPU 加速卡或6张全高全长单宽GPU卡或2张主动散热显卡。 Ø    超强BMC监控、管理功能  内嵌服务器智能管理芯片，支持 IPMI2.0 及 Redfish 管理模式。实现完整的远程系统监控、远程KVM、虚拟媒体等各种 管理功能。用于数据中心日常维护，可帮助数据中心有效改善 能源效率，提升管理水平，节省运维成本。  Ø    坚实的可靠性  支持多种 RAS 特性，提供更高的可靠性、可用性和可服务性。完美支持 Intel 芯片级Standard RAS 与 Advanced RAS 特性，同时提供电源、风扇冗余功能，硬盘、电源、风扇、PCIE 扩展卡等设备热替换支持，以及关键组件免工具拆装等易用性设计。  "></a></p><table><thead><tr><th><strong>特性</strong></th><th><strong>PR4865P**</strong>技术规格**</th></tr></thead><tbody><tr><td>处理器</td><td>4 颗 Intel  Xeon 可扩展处理器系列（Skylake &amp; Cascade Lake），采取 Cross bar 全互联</td></tr><tr><td>芯片组</td><td>Intel  Lewisburg C621</td></tr><tr><td>内存</td><td>共 24 个内存通道，48 根  DDR4 DIMM 插槽</td></tr><tr><td>内存类型</td><td>DDR4  1866/2133/2400/2666/2933MHz  支持 ECC  RDIMM/LRDIMM/Intel Optane DC Persistent Memory</td></tr><tr><td>内存容量</td><td>单条容量 8GB，16GB，32GB，64GB，128GB，256GB，512GB，最大支持 18.0TB</td></tr><tr><td>存储控制器</td><td>集成 6Gb/s SATA 控制器；可选支持 12Gb/s SAS HBA，及 12Gb/s SAS RAID 控制器</td></tr><tr><td>存储</td><td>标配8*3.5寸  扩展背板  最大支持：  8/12/24 个 3.5 英寸硬盘，全部支持热插拔  或 25 个 2.5 英寸硬盘，全部支持热插拔（最大可扩展至50个2.5寸硬盘）  或 8/16 个 2.5 英寸NVMe 固态盘，支持热插拔（14 个热插拔+2 个非热插拔）  支持 2 个 M.2、2 个SATA DOM、1 个 Micro SD card</td></tr><tr><td>PCI-E 扩展</td><td>标配11个PCIE3.0扩展插槽（含一个网络专用插槽），最大可扩展支持 15 个PCI Express 3.0 扩展插槽</td></tr><tr><td>GPU</td><td>最大支持 4 个全高全长双宽GPU或6个单宽GPU 如P4，T4）或2个主动散热显卡</td></tr><tr><td>网络</td><td>集成 2 个 1GbE，</td></tr><tr><td>管理</td><td>可选 LCD 管理模块</td></tr><tr><td>安全性</td><td>可选 TPM/TCM 安全模块</td></tr><tr><td>电源</td><td>最大支持 4 个电源模块，支持 1+1；2+1；2+2；3+1 冗余，支持热插拔可选 220v 交流/240v 直流  可选 1200W/1600W  冗余电源模块</td></tr><tr><td>端口</td><td>前置：1 个 D-Sub VGA、2 个USB3.0、1 个 LCD Mini USB  后置：1 个 D-Sub VGA、4 个USB3.0、1 个 RJ45 管理网口、2 个RJ45 以太网口</td></tr><tr><td>尺寸</td><td>机架式 4U，宽 448mm × 高 175mm × 深 840mm（不含挂耳 820mm）</td></tr><tr><td>重量</td><td>全配置净重约 45KG，全配置包含导轨、附件及包装约 70KG</td></tr><tr><td>工作温度</td><td>0ºC  - 45ºC</td></tr><tr><td>工作相对湿度</td><td>0% -  90%</td></tr><tr><td>操作系统支持</td><td>Microsoft  Windows Server、Microsoft Hyper-V Server、Red Hat Enterprise  Linux、SUSE Linux Enterprise Server、CentOS、Ubuntu、Fedora、Solaris、Oracle Linux、FreeBSD、VMware ESXi、Citrix XenServer</td></tr></tbody></table><p>服务及支持</p><p>PowerLeader提供全国联保，由分布在全国各地PowerLeader专业售后服务网点提供“一站式”服务响应与支持。</p><p>- 3年有限现场保修以及现场支持服务</p><p>- 4008-870-872热线响应和支持</p><p>欲了解更多信息：请访问：<a href="http://www.powerleader.com.cn" target="_blank" rel="noopener">http://www.powerleader.com.cn</a></p><p>通信地址：深圳市龙华新区观澜高新技术产业园宝德科技研发生产基地（观澜街道环观南路南侧）</p><p><em>宝德</em>集团保留对产品规格或其他产品信息（包含但不限于产品重量，外观，尺寸或其他物理因素）不经通知予以更改的权利；本文中所提到的信息，如因产品升级或其他原因而导致的变更，恕不另行通知。本文中所涉及的产品图片均以产品实物为准。</p><p>2019年08月中国印刷</p><p>服务及支持</p><p>PowerLeader提供全国联保，由分布在全国各地PowerLeader专业售后服务网点提供“一站式”服务响应与支持。</p><p>- 3年有限现场保修以及现场支持服务</p><p>- 4008-870-872热线响应和支持</p><p>欲了解更多信息：请访问：<a href="http://www.powerleader.com.cn" target="_blank" rel="noopener">http://www.powerleader.com.cn</a></p><p>通信地址：深圳市龙华新区观澜高新技术产业园宝德科技研发生产基地（观澜街道环观南路南侧）</p><p>宝德集团保留对产品规格或其他产品信息（包含但不限于产品重量，外观，尺寸或其他物理因素）不经通知予以更改的权利；本文中所提到的信息，如因产品升级或其他原因而导致的变更，恕不另行通知。本文中所涉及的产品图片均以产品实物为准。</p><p>2019年8月中国印刷</p><p>P/N:DPPR4865P V1.0</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>netdisk</title>
@@ -508,31 +529,6 @@
     
     
       <category term="java" scheme="https://jiangxingye.github.io/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL事务及隔离级别</title>
-    <link href="https://jiangxingye.github.io/2017/11/09/PostgreSQL%E4%BA%8B%E7%89%A9%E5%8F%8A%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/"/>
-    <id>https://jiangxingye.github.io/2017/11/09/PostgreSQL事物及隔离级别/</id>
-    <published>2017-11-08T16:07:33.000Z</published>
-    <updated>2019-09-02T13:02:59.980Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>PostgreSQL中提供了多种数据完整性的保证机制。如：约束、触发器、事务和锁管理等。</p><p>事务主要是为了保证一组相关数据库的操作能全部执行成功，从而保证数据的完整性。锁机制主要是控制多个用户对同一数据进行操作，使用锁机制可以解决并发问题。</p><h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><p>事务是用户对一个数据库操作的一个序列，这些操作要么全做，要么全不做，是一个不可分割的单位。</p><p>事务管理的常用语句如下：</p><pre><code class="sql">BEGIN;SQL语句1;SQL语句2;...COMMIT;</code></pre><p>事务块是指包围在BEGIN和COMMIT之间的语句。在PostgreSQL9中，常用的事务块管理语句含义如下：</p><blockquote><p><strong>START TRANSACTION</strong>：此命令表示开始一个新的事务块.<br><strong>BEGIN</strong>：初始化一个事务块。在BEGIN命令后的语句都将在一个事务里面执行，知道遇见COMMIT或ROLLBACK。它和START TRANSACTION是一样的。<br><strong>COMMIT</strong>：提交事务。<br><strong>ROLLBACK</strong>：事务失败时执行回滚操作。<br><strong>SET TRANSACTION</strong>：设置当前事务的特性。对后面的事务没有影响。</p></blockquote><h3 id="事务隔离及并发控制"><a href="#事务隔离及并发控制" class="headerlink" title="事务隔离及并发控制"></a>事务隔离及并发控制</h3><p>PostgreSQL是一个支持多用户的数据库，当多个用户操作同一数据库时，并发控制要保证所有用户可以高效的访问的同时不破坏数据的完整性。</p><p>数据库中数据的并发操作经常发生，而对数据的并发操作会带来下面的一些问题：</p><ol><li>脏读<br>一个事务读取了另一个未提交事务写入的数据。</li><li>不可重复读<br>一个事务重新读取前面读取过的数据，发现该数据已经被另一个已经提交的事务修改。</li><li>幻读<br>一个事务重新执行一个查询，返回符合查询条件的行的集合，发现满足查询条件的行的集合因为其它最近提交的事务而发生了改变。</li></ol><p>SQL标准定义了四个级别的事务隔离。</p><p>| 隔离级别 | 脏读 | 幻读 | 不可重复性读取 |<br>| :- | :- |<br>|读未提交    |可能    |可能    |可能|<br>|读已提交    |不可能|    可能    |可能|<br>|可重复读    |不可能    |可能    |不可能|<br>|可串行读    |不可能    |不可能    |不可能|</p><p>在PostgreSQL中，可以请求4种隔离级别中的任意一种。但是在内部，实际上只有两种独立的隔离级别，分别对应已提交和可串行化。如果选择了读未提交的级别，实际上使用的是读已提交，在选择可重复读级别的时候，实际上用的是可串行化，所以实际的隔离级别可能比选择的更严格。这是SQL标准允许的：4种隔离级别只定义了哪种现象不能发生，但是没有定义哪种现象一定发生。</p><p>PostgreSQL只提供两种隔离级别的原因是，这是把标准的隔离级别与多版本并发控制架构映射相关的唯一合理方法。</p><ol><li>读已提交<br>这是PostgreSQL中默认的隔离级别，当一个事务运行在这个隔离级别时，一个SELECT查询只能看到查询开始前已提交的数据，而无法看到未提交的数据或者在查询期间其他的事务已提交的数据。</li><li>可串行化<br>可串行化提供最严格的事务隔离。这个级别模拟串行的事务执行，就好像事务是一个接着一个串行的执行。不过，这个级别的应用必须准备在串行化失败的时候重新启动事务。</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-      <category term="数据库" scheme="https://jiangxingye.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-      <category term="PostgreSQL" scheme="https://jiangxingye.github.io/tags/PostgreSQL/"/>
     
   </entry>
   
