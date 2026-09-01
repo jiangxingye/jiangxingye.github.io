@@ -1,7 +1,7 @@
 baseURL = 'https://jiangxingye.github.io/'
 locale = 'zh-CN'
 title = "jiangxingye's blog"
-theme = ["PaperMod"]
+theme = ["FixIt"]
 enableGitInfo = false
 
 [frontmatter]
