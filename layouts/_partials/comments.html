@@ -1,0 +1,21 @@
+{{- if .Params.comments | default true }}
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script>
+  var gitalk = new Gitalk({
+    clientID: "{{ .Site.Params.gitalk.clientID }}",
+    clientSecret: "{{ .Site.Params.gitalk.clientSecret }}",
+    repo: "{{ .Site.Params.gitalk.repo }}",
+    owner: "{{ .Site.Params.gitalk.owner }}",
+    admin: {{ .Site.Params.gitalk.admin | jsonify }},
+    id: window.location.pathname,
+    labels: {{ .Site.Params.gitalk.labels | jsonify }},
+    perPage: {{ .Site.Params.gitalk.perPage | default 15 }},
+    pagerDirection: "{{ .Site.Params.gitalk.pagerDirection | default "last" }}",
+    createIssueManually: {{ .Site.Params.gitalk.createIssueManually | default false }},
+    distractionFreeMode: {{ .Site.Params.gitalk.distractionFreeMode | default false }}
+  });
+  gitalk.render('gitalk-container');
+</script>
+{{- end }}

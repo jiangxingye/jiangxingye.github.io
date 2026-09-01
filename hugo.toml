@@ -1,0 +1,94 @@
+baseURL = 'https://jiangxingye.github.io/'
+locale = 'zh-CN'
+title = "jiangxingye's blog"
+theme = ["PaperMod"]
+enableGitInfo = false
+
+[frontmatter]
+  lastmod = ["lastmod", ":fileModTime", ":gitLastMod", ":getGitLastMod"]
+
+[params]
+  comments = true
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  disableSpecial1stPost = false
+  disableScrollToTop = false
+  env = "production"
+  DateFormat = "2006-01-02"
+
+  [params.gitalk]
+    clientID = ""
+    clientSecret = ""
+    repo = "jiangxingye-comments"
+    owner = "jiangxingye"
+    admin = ["jiangxingye"]
+    id = "pathname"
+    labels = ["gitalk"]
+    perPage = 15
+    pagerDirection = "last"
+    createIssueManually = false
+    distractionFreeMode = false
+
+  [params.homeInfoParams]
+    Title = "jiangxingye"
+    Content = """不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。 毕业于吉林省万顺中学，目前在做IT智能和硬件服务器这个行当。 想买的朋友，可以用下面的联系方式和我联系。 最近在看《独裁者手册》这本书。 联系方式 QQ : 174762929 Wechat:jiangxingye 邮箱 : jiangxingye@outlook.com"""
+
+  customCSS = ["/css/style.css", "/css/mobile.css", "/css/gitalk.css", "/css/blog-encrypt.css"]
+
+[[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/jiangxingye"
+
+[[params.socialIcons]]
+  name = "mail"
+  url = "mailto:jiangxingye@outlook.com"
+
+[[params.socialIcons]]
+  name = "qq"
+  url = "http://wpa.qq.com/msgrd?v=3&uin=174762929&site=qq&menu=yes"
+
+[[params.socialIcons]]
+  name = "weibo"
+  url = "https://weibo.com/jiangxingye"
+
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "about/"
+    weight = 10
+  [[menu.main]]
+    identifier = "archives"
+    name = "归档"
+    url = "archives/"
+    weight = 20
+  [[menu.main]]
+    identifier = "tags"
+    name = "标签"
+    url = "tags/"
+    weight = 30
+  [[menu.main]]
+    identifier = "categories"
+    name = "分类"
+    url = "categories/"
+    weight = 40
+  [[menu.main]]
+    identifier = "search"
+    name = "搜索"
+    url = "search/"
+    weight = 50
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

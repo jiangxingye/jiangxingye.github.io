@@ -1,0 +1,6 @@
+public/
+resources/
+.hugo_build.lock
+*.zip
+*.tar.gz
+content.json.bak
