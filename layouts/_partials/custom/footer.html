@@ -1,0 +1,9 @@
+{{- $totalWords := 0 -}}
+{{- range site.RegularPages.ByDate -}}
+  {{- $totalWords = add $totalWords .WordCount -}}
+{{- end -}}
+<div class="footer-line statistics total-words">
+  <span title='本博客文章总字数'>
+    <i class="fa-solid fa-align-left me-1"></i>本博客共 {{ $totalWords }} 字
+  </span>
+</div>

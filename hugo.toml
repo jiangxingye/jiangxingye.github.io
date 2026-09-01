@@ -9,54 +9,52 @@ enableGitInfo = false
 
 [params]
   comments = true
-  defaultTheme = "auto"
-  ShowReadingTime = true
-  ShowShareButtons = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  ShowToc = true
-  ShowWordCount = true
-  ShowRssButtonInSectionTermList = true
+  default_theme = "auto"
+  word_count = true
+  reading_time = true
+  show_lastmod = true
   disableSpecial1stPost = false
   disableScrollToTop = false
   env = "production"
-  DateFormat = "2006-01-02"
+  date_format = "2006-01-02"
 
-  [params.gitalk]
-    clientID = ""
-    clientSecret = ""
-    repo = "jiangxingye-comments"
-    owner = "jiangxingye"
-    admin = ["jiangxingye"]
-    id = "pathname"
-    labels = ["gitalk"]
-    perPage = 15
-    pagerDirection = "last"
-    createIssueManually = false
-    distractionFreeMode = false
+[params.busuanzi]
+  enable = true
+  source = "https://vercount.one/js"
+  site_views = true
+  page_views = true
 
-  [params.homeInfoParams]
-    Title = "jiangxingye"
-    Content = """不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。 毕业于吉林省万顺中学，目前在做IT智能和硬件服务器这个行当。 想买的朋友，可以用下面的联系方式和我联系。 最近在看《独裁者手册》这本书。 联系方式 QQ : 174762929 Wechat:jiangxingye 邮箱 : jiangxingye@outlook.com"""
+[params.comment]
+  enable = true
 
-  customCSS = ["/css/style.css", "/css/mobile.css", "/css/gitalk.css", "/css/blog-encrypt.css"]
+[params.comment.gitalk]
+  enable = true
+  owner = "jiangxingye"
+  repo = "jiangxingye-comments"
+  client_id = ""
+  client_secret = ""
 
-[[params.socialIcons]]
-  name = "github"
-  url = "https://github.com/jiangxingye"
+[params.author]
+  name = "jiangxingye"
+  email = "jiangxingye@outlook.com"
+  link = "https://jiangxingye.github.io/"
 
-[[params.socialIcons]]
-  name = "mail"
-  url = "mailto:jiangxingye@outlook.com"
+[params.social]
+  GitHub = "https://github.com/jiangxingye"
+  Weibo = "https://weibo.com/jiangxingye"
+  QQ = "http://wpa.qq.com/msgrd?v=3&uin=174762929&site=qq&menu=yes"
+  Email = "mailto:jiangxingye@outlook.com"
 
-[[params.socialIcons]]
-  name = "qq"
-  url = "http://wpa.qq.com/msgrd?v=3&uin=174762929&site=qq&menu=yes"
+[params.home.profile]
+  enable = true
+  avatar_url = "/img/avatar.jpg"
+  title = "jiangxingye"
+  subtitle = "不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。毕业于吉林省万顺中学，目前在做IT智能和硬件服务器这个行当。联系方式 QQ：174762929，Wechat：jiangxingye，邮箱：jiangxingye@outlook.com"
+  typeit = false
+  social = true
 
-[[params.socialIcons]]
-  name = "weibo"
-  url = "https://weibo.com/jiangxingye"
+[params.custom_partials]
+  footer = ["custom/footer.html"]
 
 [menu]
   [[menu.main]]
@@ -86,9 +84,16 @@ enableGitInfo = false
     weight = 50
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS", "ARCHIVES", "SEARCH", "MANIFEST"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML"]
+  term = ["HTML", "RSS"]
 
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+[minify]
+  disableJS = true

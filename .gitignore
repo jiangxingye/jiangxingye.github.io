@@ -4,3 +4,4 @@ resources/
 *.zip
 *.tar.gz
 content.json.bak
+assets/jsconfig.json
