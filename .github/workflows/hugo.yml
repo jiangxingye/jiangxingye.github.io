@@ -24,21 +24,13 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
       - uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: "0.165.0"
           extended: true
 
-      - name: Setup Dart Sass
-        run: |
-          npm install -g sass
-
       - name: Build
-        run: hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+        run: hugo --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - uses: actions/upload-pages-artifact@v3
         with:
