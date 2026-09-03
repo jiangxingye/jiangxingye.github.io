@@ -5,3 +5,4 @@ resources/
 *.tar.gz
 content.json.bak
 assets/jsconfig.json
+content_backup/

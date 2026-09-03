@@ -1,0 +1,22 @@
+{{- if and site.Params.gitalk.enable .Page }}
+{{- with site.Params.gitalk }}
+<div id="gitalk-container" style="margin-top: 30px;"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: "{{ .clientId }}",
+        clientSecret: "{{ .clientSecret }}",
+        repo: "{{ .repo }}",
+        owner: "{{ .owner }}",
+        admin: {{ .admin | jsonify }},
+        id: "{{ with .id }}{{ . }}{{ else }}location.pathname{{ end }}",
+        distractionFreeMode: false,
+        language: 'zh-CN',
+        labels: {{ .labels | jsonify }},
+        perPage: {{ default 15 .perPage }}
+    });
+    gitalk.render('gitalk-container');
+</script>
+{{- end }}
+{{- end }}

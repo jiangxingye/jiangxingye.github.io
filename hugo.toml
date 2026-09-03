@@ -1,99 +1,154 @@
 baseURL = 'https://jiangxingye.github.io/'
 locale = 'zh-CN'
 title = "jiangxingye's blog"
-theme = ["FixIt"]
+theme = "PaperMod"
+enableRobotsTXT = true
+enableEmoji = true
 enableGitInfo = false
+paginate = 10
 
 [frontmatter]
-  lastmod = ["lastmod", ":fileModTime", ":gitLastMod", ":getGitLastMod"]
+  lastmod = ["lastmod", ":fileModTime", ":gitLastMod"]
 
 [params]
-  comments = true
-  default_theme = "auto"
-  word_count = true
-  reading_time = true
-  show_lastmod = true
+  env = "production"
+  title = "jiangxingye's blog"
+  description = "不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。"
+  keywords = ["Blog", "Portfolio", "Linux", "IT"]
+  author = "jiangxingye"
+  DateFormat = "2006-01-02"
+  defaultTheme = "auto"
+  disableThemeToggle = false
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  UseHugoToc = false
   disableSpecial1stPost = false
   disableScrollToTop = false
-  env = "production"
-  date_format = "2006-01-02"
+  comments = true
+  hidemeta = false
+  hideSummary = false
+  showtoc = false
+  tocopen = false
+  relativeURLs = false
+  ShowFullTextinRSS = true
+  ShowLastModified = true
+  hideFootnotes = false
+  hideAuthor = false
+  showBreadCrumbs = true
 
-[params.busuanzi]
-  enable = true
-  source = "https://vercount.one/js"
-  site_views = true
-  page_views = true
+  [params.homeInfoParams]
+    Title = "jiangxingye"
+    Content = "不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。毕业于吉林省万顺中学，目前在做IT智能和硬件服务器这个行当。联系方式 QQ：174762929，Wechat：jiangxingye，邮箱：jiangxingye@outlook.com"
 
-[params.comment]
-  enable = true
+  [params.profileMode]
+    enabled = false
+    title = "jiangxingye"
+    imageUrl = "/img/avatar.jpg"
+    imageTitle = "avatar"
+    imageWidth = 120
+    imageHeight = 120
+    buttons = []
 
-[params.comment.gitalk]
-  enable = true
-  owner = "jiangxingye"
-  repo = "jiangxingye-comments"
-  client_id = ""
-  client_secret = ""
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/jiangxingye"
 
-[params.author]
-  name = "jiangxingye"
-  email = "jiangxingye@outlook.com"
-  link = "https://jiangxingye.github.io/"
+  [[params.socialIcons]]
+    name = "email"
+    url = "mailto:jiangxingye@outlook.com"
 
-[params.social]
-  GitHub = "https://github.com/jiangxingye"
-  Weibo = "https://weibo.com/jiangxingye"
-  QQ = "http://wpa.qq.com/msgrd?v=3&uin=174762929&site=qq&menu=yes"
-  Email = "mailto:jiangxingye@outlook.com"
+  [[params.socialIcons]]
+    name = "qq"
+    url = "http://wpa.qq.com/msgrd?v=3&uin=174762929&site=qq&menu=yes"
 
-[params.home.profile]
-  enable = true
-  avatar_url = "/img/avatar.jpg"
-  title = "jiangxingye"
-  subtitle = "不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。毕业于吉林省万顺中学，目前在做IT智能和硬件服务器这个行当。联系方式 QQ：174762929，Wechat：jiangxingye，邮箱：jiangxingye@outlook.com"
-  typeit = false
-  social = true
+  [[params.socialIcons]]
+    name = "weibo"
+    url = "https://weibo.com/jiangxingye"
 
-[params.custom_partials]
-  footer = ["custom/footer.html"]
+  [params.assets]
+    favicon = "/img/avatar.jpg"
+
+  [params.busuanzi]
+    enable = true
+    source = "https://vercount.one/js"
+    site_views = true
+    page_views = true
+
+  [params.totalWords]
+    enable = true
+
+  [params.gitalk]
+    enable = true
+    owner = "jiangxingye"
+    repo = "jiangxingye-comments"
+    clientId = ""
+    clientSecret = ""
+    admin = ["jiangxingye"]
+    id = "pathname"
+    labels = ["gitalk"]
+    perPage = 15
+
+  [params.label]
+    text = "jiangxingye's blog"
+    icon = "/img/avatar.jpg"
+    iconHeight = 35
+
+  [params.editPost]
+    disabled = true
+
+  [params.analytics]
+    google.SiteVerificationTag = ""
+
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    limit = 10
+    keys = ["title", "permalink", "summary", "content"]
 
 [menu]
   [[menu.main]]
-    identifier = "about"
-    name = "关于"
-    url = "about/"
-    weight = 10
-  [[menu.main]]
     identifier = "archives"
     name = "归档"
-    url = "archives/"
-    weight = 20
+    url = "/archives/"
+    weight = 10
   [[menu.main]]
     identifier = "tags"
     name = "标签"
-    url = "tags/"
-    weight = 30
+    url = "/tags/"
+    weight = 20
   [[menu.main]]
     identifier = "categories"
     name = "分类"
-    url = "categories/"
-    weight = 40
+    url = "/categories/"
+    weight = 30
   [[menu.main]]
     identifier = "search"
     name = "搜索"
-    url = "search/"
+    url = "/search/"
+    weight = 40
+  [[menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "/about/"
     weight = 50
 
 [outputs]
-  home = ["HTML", "RSS", "ARCHIVES", "SEARCH", "MANIFEST"]
-  page = ["HTML"]
-  section = ["HTML", "RSS"]
-  taxonomy = ["HTML"]
-  term = ["HTML", "RSS"]
+  home = ["HTML", "RSS", "JSON"]
 
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
 
-[minify]
-  disableJS = true
+[taxonomies]
+  category = "categories"
+  tag = "tags"

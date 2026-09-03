@@ -1,0 +1,26 @@
+{{- $totalWords := 0 }}
+{{- range site.RegularPages }}
+  {{- $totalWords = add $totalWords .WordCount }}
+{{- end }}
+
+{{- with site.Params.busuanzi }}
+  {{- if .enable }}
+    <script async src="{{ .source }}"></script>
+  {{- end }}
+{{- end }}
+
+<div class="footer-stats" style="text-align:center; color:var(--secondary); font-size:0.875em; margin-top:1rem;">
+  {{- with site.Params.totalWords }}
+    {{- if .enable }}
+      <span>本博客共 {{ $totalWords }} 字</span>
+    {{- end }}
+  {{- end }}
+  {{- with site.Params.busuanzi }}
+    {{- if and .enable .site_views }}
+      <span> · 本站总访问量 <span id="busuanzi_value_site_pv"></span></span>
+    {{- end }}
+    {{- if and .enable .page_views }}
+      <span> · 本文阅读量 <span id="busuanzi_value_page_pv"></span></span>
+    {{- end }}
+  {{- end }}
+</div>
