@@ -6,3 +6,4 @@ resources/
 content.json.bak
 assets/jsconfig.json
 content_backup/
+DEPLOYMENT_GUIDE.md

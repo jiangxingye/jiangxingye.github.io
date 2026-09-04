@@ -9,11 +9,11 @@
         clientSecret: "{{ .clientSecret }}",
         repo: "{{ .repo }}",
         owner: "{{ .owner }}",
-        admin: {{ .admin | jsonify }},
+        admin: [{{ range $i, $v := .admin }}{{ if $i }},{{ end }}"{{ $v }}"{{ end }}],
         id: "{{ with .id }}{{ . }}{{ else }}location.pathname{{ end }}",
         distractionFreeMode: false,
         language: 'zh-CN',
-        labels: {{ .labels | jsonify }},
+        labels: [{{ range $i, $v := .labels }}{{ if $i }},{{ end }}"{{ $v }}"{{ end }}],
         perPage: {{ default 15 .perPage }}
     });
     gitalk.render('gitalk-container');
