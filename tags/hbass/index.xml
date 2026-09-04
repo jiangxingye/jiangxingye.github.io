@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Hbass on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/tags/hbass/</link>
+    <description>Recent content in Hbass on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 04 Sep 2019 10:27:53 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/tags/hbass/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>what is the Hbass</title>
+      <link>https://jiangxingye.github.io/2019/09/04/what-is-the-hbass/</link>
+      <pubDate>Wed, 04 Sep 2019 01:08:48 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2019/09/04/what-is-the-hbass/</guid>
+      <description>what is the Hbass</description>
+      <content:encoded><![CDATA[<p>Hbase 简介Hbase概述​ Hbase是一个分布式开源数据库，基于Hadoop分布式文件系统，模仿并提供了基于Google文件系统的Bigtable数据库的所有功能。其目标是处理非常庞大的表，可以用普通的计算机处理超过10亿行数据，并且有数百万列元素组成的数据表。Hbase可以直接使用本地文件系统或者Hadoop作为数据存储方式，不过为了提高数据可靠性和系统的健壮性，发挥Hbase处理大数据量等功能，需要使用Hadoop作为文件系统。</p>
+<p>Google BigTable论文中BigTable的定义：Bigtable是一个疏松的分布式的持久的多维排序的map,这个map被行键,列键,和时间戳索引.每一个值都是无解释数组.(A Bigtable is a sparse, distributed, persistent multidimensional sorted map. The map is indexed by a row key, column key, and a timestamp;</p>
+<p>each value in the map is an uninterpreted array of bytes.)</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

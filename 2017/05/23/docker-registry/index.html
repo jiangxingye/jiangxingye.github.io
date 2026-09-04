@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>docker仓库 | jiangxingye&#39;s blog</title>
+<meta name="keywords" content="docker, docker仓库">
+<meta name="description" content="docker仓库">
+<meta name="author" content="jiangxingye">
+<link rel="canonical" href="https://jiangxingye.github.io/2017/05/23/docker-registry/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jiangxingye.github.io/img/avatar.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jiangxingye.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jiangxingye.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jiangxingye.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jiangxingye.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://jiangxingye.github.io/2017/05/23/docker-registry/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://jiangxingye.github.io/2017/05/23/docker-registry/">
+  <meta property="og:site_name" content="jiangxingye&#39;s blog">
+  <meta property="og:title" content="docker仓库">
+  <meta property="og:description" content="docker仓库">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="2017">
+    <meta property="article:published_time" content="2017-05-23T13:15:52+08:00">
+    <meta property="article:modified_time" content="2019-09-02T13:02:59+08:00">
+    <meta property="article:tag" content="Docker">
+    <meta property="article:tag" content="Docker仓库">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="docker仓库">
+  <meta name="twitter:description" content="docker仓库">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "2017s",
+      "item": "https://jiangxingye.github.io/2017/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "docker仓库",
+      "item": "https://jiangxingye.github.io/2017/05/23/docker-registry/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "docker仓库",
+  "name": "docker仓库",
+  "description": "docker仓库",
+  "keywords": [
+    "docker", "docker仓库"
+  ],
+  "articleBody": "Docker Hub目前 Docker 官方维护了一个公共仓库 Docker Hub，其中已经包括了超过 15,000 的镜像。大部分需求，都可以通过在 Docker Hub 中直接下载镜像来实现。\n登录可以通过执行 docker login 命令来输入用户名、密码和邮箱来完成注册和登录。\n注册成功后，本地用户目录的 .dockercfg 中将保存用户的认证信息。\n基本操作用户无需登录即可通过 docker search 命令来查找官方仓库中的镜像，并利用 docker pull 命令来将它下载到本地。\n例如以 centos 为关键词进行搜索：\n$ sudo docker search centos NAME DESCRIPTION STARS OFFICIAL AUTOMATED centos The official build of CentOS. 465 [OK] tianon/centos CentOS 5 and 6, created using rinse instea… 28 blalor/centos Bare-bones base CentOS 6.5 image 6 [OK] saltstack/centos-6-minimal 6 [OK] tutum/centos-6.4 DEPRECATED. Use tutum/centos:6.4 instead. … 5 [OK] … 可以看到返回了很多包含关键字的镜像，其中包括镜像名字、描述、星级（表示该镜像的受欢迎程度）、是否官方创建、是否自动创建。\n官方的镜像说明是官方项目组创建和维护的，automated 资源允许用户验证镜像的来源和内容。\n根据是否是官方提供，可将镜像资源分为两类。\n一种是类似 centos 这样的基础镜像，被称为基础或根镜像。这些基础镜像是由 Docker 公司创建、验证、支持、提供。这样的镜像往往使用单个单词作为名字。\n还有一种类型，比如 tianon/centos 镜像，它是由 Docker 的用户创建并维护的，往往带有用户名称前缀。可以通过前缀 user_name/ 来指定使用某个用户提供的镜像，比如 tianon 用户。\n另外，在查找的时候通过 -s N 参数可以指定仅显示评价为 N 星以上的镜像。\n下载官方 centos 镜像到本地。\n$ sudo docker pull centos Pulling repository centos 0b443ba03958:\nDownload complete 539c0211cd76:\nDownload complete 511136ea3c5a:\nDownload complete 7064731afe90:\nDownload complete 用户也可以在登录后通过 docker push 命令来将镜像推送到 Docker Hub。\n私有仓库安装 docker-registry容器运行在安装了 Docker 后，可以通过获取官方 registry 镜像来运行。\n$ sudo docker run -d -p 5000:5000 registry 这将使用官方的 registry 镜像来启动本地的私有仓库。\n用户可以通过指定参数来配置私有仓库位置，例如配置镜像存储到 Amazon S3 服务。\n$ sudo docker run \\ -e SETTINGS_FLAVOR=s3 \\ -e AWS_BUCKET=acme-docker \\ -e STORAGE_PATH=/registry \\ -e AWS_KEY=AKIAHSHB43HS3J92MXZ \\ -e AWS_SECRET=xdDowwlK7TJajV1Y7EoOZrmuPEJlHYcNP2k4j49T \\ -e SEARCH_BACKEND=sqlalchemy \\ -p 5000:5000 \\ registry此外，还可以指定本地路径（如 /home/user/registry-conf ）下的配置文件。\n$ sudo docker run -d -p 5000:5000 -v /home/user/registry-conf:/registry-conf -e DOCKER_REGISTRY_CONFIG=/registry-conf/config.yml registry 默认情况下，仓库会被创建在容器的 /tmp/registry 下。可以通过 -v 参数来将镜像文件存放在本地的指定路径。\n例如下面的例子将上传的镜像放到 /opt/data/registry 目录。\n$ sudo docker run -d -p 5000:5000 -v /opt/data/registry:/tmp/registry registry 本地安装对于 Ubuntu 或 CentOS 等发行版，可以直接通过源安装。1.Ubuntu $ sudo apt-get install -y build-essential python-dev libevent-dev python-pip liblzma-dev $ sudo pip install docker-registry 2.CentOS $ sudo yum install -y python-devel libevent-devel python-pip gcc xz-devel $ sudo python-pip install docker-registry 3.源码安装 $ sudo apt-get install build-essential python-dev libevent-dev python-pip libssl-dev liblzma-dev libffi-dev $ git clone https://github.com/docker/docker-registry.git $ cd docker-registry $ sudo python setup.py install 然后修改配置文件，主要修改 dev 模板段的 storage_path 到本地的存储仓库的路径。\n$ cp config/config_sample.yml config/config.yml 之后启动 Web 服务。\n$ sudo gunicorn -c contrib/gunicorn.py docker_registry.wsgi:application 或者 $ sudo gunicorn –access-logfile - –error-logfile - -k gevent -b 0.0.0.0:5000 -w 4 –max-requests 100 docker_registry.wsgi:application 此时使用 curl 访问本地的 5000 端口，看到输出 docker-registry 的版本信息说明运行成功。\n注：config/config_sample.yml 文件是示例配置文件。\n在私有仓库上传、下载、搜索镜像创建好私有仓库之后，就可以使用 docker tag 来标记一个镜像，然后推送它到仓库，别的机器上就可以下载下来了。例如私有仓库地址为 192.168.7.26:5000。\n先在本机查看已有的镜像。\n$ sudo docker images REPOSITORY TAG IMAGE ID CREATED VIRTUAL SIZE ubuntu latest ba5877dc9bec 6 weeks ago 192.7 MB ubuntu 14.04 ba5877dc9bec 6 weeks ago 192.7 MB 使用docker tag 将 ba58 这个镜像标记为 192.168.7.26:5000/test（格式为 docker tag IMAGE[:TAG] [REGISTRYHOST/][USERNAME/]NAME[:TAG]）。\n$ sudo docker tag ba58 192.168.7.26:5000/test root ~ # docker images REPOSITORY TAG IMAGE ID CREATED VIRTUAL SIZE ubuntu 14.04 ba5877dc9bec 6 weeks ago 192.7 MB ubuntu latest ba5877dc9bec 6 weeks ago 192.7 MB 192.168.7.26:5000/test latest ba5877dc9bec 6 weeks ago 192.7 MB 使用 docker push 上传标记的镜像。\n$ sudo docker push 192.168.7.26:5000/test The push refers to a repository [192.168.7.26:5000/test] (len:\nSending image list Pushing repository 192.168.7.26:5000/test (1 tags) Image 511136ea3c5a already pushed, skipping Image 9bad880da3d2 already pushed, skipping Image 25f11f5fb0cb already pushed, skipping Image ebc34468f71d already pushed, skipping Image 2318d26665ef already pushed, skipping Image ba5877dc9bec already pushed, skipping Pushing tag for rev [ba5877dc9bec] on {http://192.168.7.26:5000/v1/repositories/test/tags/latest} 用 curl 查看仓库中的镜像。 $ curl http://192.168.7.26:5000/v1/search {“num_results”:\n7, “query”:\n“”, “results”:\n[{“description”:\n“”, “name”:\n“library/miaxis_j2ee”}, {“description”:\n“”, “name”:\n“library/tomcat”}, {“description”:\n“”, “name”:\n“library/ubuntu”}, {“description”:\n“”, “name”:\n“library/ubuntu_office”}, {“description”:\n“”, “name”:\n“library/desktop_ubu”}, {“description”:\n“”, “name”:\n“dockerfile/ubuntu”}, {“description”:\n“”, “name”:\n“library/test”}]} 这里可以看到 {“description”:\n“”, “name”:\n“library/test”}，表明镜像已经被成功上传了。\n现在可以到另外一台机器去下载这个镜像。\n$ sudo docker pull 192.168.7.26:5000/test Pulling repository 192.168.7.26:5000/test ba5877dc9bec:\nDownload complete 511136ea3c5a:\nDownload complete 9bad880da3d2:\nDownload complete 25f11f5fb0cb:\nDownload complete ebc34468f71d:\nDownload complete 2318d26665ef:\nDownload complete $ sudo docker images REPOSITORY TAG IMAGE ID CREATED VIRTUAL SIZE 192.168.7.26:5000/test latest ba5877dc9bec 6 weeks ago 192.7 MB 可以使用 这个脚本 批量上传本地的镜像到注册服务器中，默认是本地注册服务器 127.0.0.1:5000。例如：\n$ wget https://github.com/yeasy/docker_practice/raw/master/_local/push_images.sh;\nsudo chmod a+x push_images.sh $ ./push_images.sh ubuntu:latest centos:centos7 The registry server is 127.0.0.1 Uploading ubuntu:latest… The push refers to a repository [127.0.0.1:5000/ubuntu] (len:\nSending image list Pushing repository 127.0.0.1:5000/ubuntu (1 tags) Image 511136ea3c5a already pushed, skipping Image bfb8b5a2ad34 already pushed, skipping Image c1f3bdbd8355 already pushed, skipping Image 897578f527ae already pushed, skipping Image 9387bcc9826e already pushed, skipping Image 809ed259f845 already pushed, skipping Image 96864a7d2df3 already pushed, skipping Pushing tag for rev [96864a7d2df3] on {http://127.0.0.1:5000/v1/repositories/ubuntu/tags/latest} Untagged: 127.0.0.1:5000/ubuntu:latest Done Uploading centos:centos7… The push refers to a repository [127.0.0.1:5000/centos] (len:\nSending image list Pushing repository 127.0.0.1:5000/centos (1 tags) Image 511136ea3c5a already pushed, skipping 34e94e67e63a: Image successfully pushed 70214e5d0a90:\nImage successfully pushed Pushing tag for rev [70214e5d0a90] on {http://127.0.0.1:5000/v1/repositories/centos/tags/centos7} Untagged:\n127.0.0.1:5000/centos:centos7 Done 仓库配置文件Docker 的 Registry 利用配置文件提供了一些仓库的模板（flavor），用户可以直接使用它们来进行开发或生产部署。\n模板在 config_sample.yml 文件中，可以看到一些现成的模板段：\ncommon：基础配置 local：存储数据到本地文件系统 s3：存储数据到 AWS S3 中 dev：使用 local 模板的基本配置 test：单元测试使用 prod：生产环境配置（基本上跟s3配置类似） gcs：存储数据到 Google 的云存储 swift：存储数据到 OpenStack Swift 服务 glance：存储数据到 OpenStack Glance 服务，本地文件系统为后备 glance-swift：存储数据到 OpenStack Glance 服务，Swift 为后备 elliptics：存储数据到 Elliptics key/value 存储 用户也可以添加自定义的模版段。\n默认情况下使用的模板是 dev，要使用某个模板作为默认值，可以添加 SETTINGS_FLAVOR 到环境变量中，例如 export SETTINGS_FLAVOR=dev另外，配置文件中支持从环境变量中加载值，语法格式为 _env:VARIABLENAME[:DEFAULT]。\n示例配置common:\nloglevel:\ninfo search_backend:\n“_env:SEARCH_BACKEND:” sqlalchemy_index_database:\n“_env:SQLALCHEMY_INDEX_DATABASE:sqlite:////tmp/docker-registry.db” prod:\nloglevel:\nwarn storage:\ns3 s3_access_key:\n_env:AWS_S3_ACCESS_KEY s3_secret_key:\n_env:AWS_S3_SECRET_KEY s3_bucket:\n_env:AWS_S3_BUCKET boto_bucket:\n_env:AWS_S3_BUCKET storage_path:\n/srv/docker smtp_host:\nlocalhost from_addr:\ndocker@myself.com to_addr:\nmy@myself.com dev:\nloglevel:\ndebug storage:\nlocal storage_path:\n/home/myself/docker test:\nstorage:\nlocal storage_path:\n/tmp/tmpdockertmp\n",
+  "wordCount" : "760",
+  "inLanguage": "en",
+  "datePublished": "2017-05-23T13:15:52+08:00",
+  "dateModified": "2019-09-02T13:02:59+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "jiangxingye"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://jiangxingye.github.io/2017/05/23/docker-registry/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "jiangxingye's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jiangxingye.github.io/img/avatar.jpg"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://jiangxingye.github.io/" accesskey="h" title="jiangxingye&#39;s blog (Alt + H)">
+                <img src="https://jiangxingye.github.io/img/avatar.jpg" alt="" aria-label="logo"
+                    height="35">jiangxingye&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://jiangxingye.github.io/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/search/" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/2017/">2017s</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      docker仓库
+    </h1>
+    <div class="post-description">
+      docker仓库
+    </div>
+    <div class="post-meta">
+
+<span title='2017-05-23 13:15:52 +0800 +0800'>2017-05-23</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>760 words</span>&nbsp;·&nbsp;<span>jiangxingye</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><p>Docker Hub目前 Docker 官方维护了一个公共仓库 Docker Hub，其中已经包括了超过 15,000 的镜像。大部分需求，都可以通过在 Docker Hub 中直接下载镜像来实现。</p>
+<p>登录可以通过执行 docker login 命令来输入用户名、密码和邮箱来完成注册和登录。</p>
+<p>注册成功后，本地用户目录的 .dockercfg 中将保存用户的认证信息。</p>
+<p>基本操作用户无需登录即可通过 docker search 命令来查找官方仓库中的镜像，并利用 docker pull 命令来将它下载到本地。</p>
+<p>例如以 centos 为关键词进行搜索：</p>
+<p>$ sudo docker search centos NAME DESCRIPTION STARS OFFICIAL AUTOMATED centos The official build of CentOS. 465 [OK] tianon/centos CentOS 5 and 6, created using rinse instea&hellip; 28 blalor/centos Bare-bones base CentOS 6.5 image 6 [OK] saltstack/centos-6-minimal 6 [OK] tutum/centos-6.4 DEPRECATED. Use tutum/centos:6.4 instead. &hellip; 5 [OK] &hellip; 可以看到返回了很多包含关键字的镜像，其中包括镜像名字、描述、星级（表示该镜像的受欢迎程度）、是否官方创建、是否自动创建。</p>
+<p>官方的镜像说明是官方项目组创建和维护的，automated 资源允许用户验证镜像的来源和内容。</p>
+<p>根据是否是官方提供，可将镜像资源分为两类。</p>
+<p>一种是类似 centos 这样的基础镜像，被称为基础或根镜像。这些基础镜像是由 Docker 公司创建、验证、支持、提供。这样的镜像往往使用单个单词作为名字。</p>
+<p>还有一种类型，比如 tianon/centos 镜像，它是由 Docker 的用户创建并维护的，往往带有用户名称前缀。可以通过前缀 user_name/ 来指定使用某个用户提供的镜像，比如 tianon 用户。</p>
+<p>另外，在查找的时候通过 -s N 参数可以指定仅显示评价为 N 星以上的镜像。</p>
+<p>下载官方 centos 镜像到本地。</p>
+<p>$ sudo docker pull centos Pulling repository centos 0b443ba03958:</p>
+<p>Download complete 539c0211cd76:</p>
+<p>Download complete 511136ea3c5a:</p>
+<p>Download complete 7064731afe90:</p>
+<p>Download complete 用户也可以在登录后通过 docker push 命令来将镜像推送到 Docker Hub。</p>
+<p>私有仓库安装 docker-registry容器运行在安装了 Docker 后，可以通过获取官方 registry 镜像来运行。</p>
+<p>$ sudo docker run -d -p 5000:5000 registry 这将使用官方的 registry 镜像来启动本地的私有仓库。</p>
+<p>用户可以通过指定参数来配置私有仓库位置，例如配置镜像存储到 Amazon S3 服务。</p>
+<p>$ sudo docker run \ -e SETTINGS_FLAVOR=s3 \ -e AWS_BUCKET=acme-docker \ -e STORAGE_PATH=/registry \ -e AWS_KEY=AKIAHSHB43HS3J92MXZ \ -e AWS_SECRET=xdDowwlK7TJajV1Y7EoOZrmuPEJlHYcNP2k4j49T \ -e SEARCH_BACKEND=sqlalchemy \ -p 5000:5000 \ registry此外，还可以指定本地路径（如 /home/user/registry-conf ）下的配置文件。</p>
+<p>$ sudo docker run -d -p 5000:5000 -v /home/user/registry-conf:/registry-conf -e DOCKER_REGISTRY_CONFIG=/registry-conf/config.yml registry 默认情况下，仓库会被创建在容器的 /tmp/registry 下。可以通过 -v 参数来将镜像文件存放在本地的指定路径。</p>
+<p>例如下面的例子将上传的镜像放到 /opt/data/registry 目录。</p>
+<p>$ sudo docker run -d -p 5000:5000 -v /opt/data/registry:/tmp/registry registry 本地安装对于 Ubuntu 或 CentOS 等发行版，可以直接通过源安装。1.Ubuntu $ sudo apt-get install -y build-essential python-dev libevent-dev python-pip liblzma-dev $ sudo pip install docker-registry 2.CentOS $ sudo yum install -y python-devel libevent-devel python-pip gcc xz-devel $ sudo python-pip install docker-registry 3.源码安装 $ sudo apt-get install build-essential python-dev libevent-dev python-pip libssl-dev liblzma-dev libffi-dev $ git clone <a href="https://github.com/docker/docker-registry.git">https://github.com/docker/docker-registry.git</a> $ cd docker-registry $ sudo python setup.py install 然后修改配置文件，主要修改 dev 模板段的 storage_path 到本地的存储仓库的路径。</p>
+<p>$ cp config/config_sample.yml config/config.yml 之后启动 Web 服务。</p>
+<p>$ sudo gunicorn -c contrib/gunicorn.py docker_registry.wsgi:application 或者 $ sudo gunicorn &ndash;access-logfile - &ndash;error-logfile - -k gevent -b 0.0.0.0:5000 -w 4 &ndash;max-requests 100 docker_registry.wsgi:application 此时使用 curl 访问本地的 5000 端口，看到输出 docker-registry 的版本信息说明运行成功。</p>
+<p>注：config/config_sample.yml 文件是示例配置文件。</p>
+<p>在私有仓库上传、下载、搜索镜像创建好私有仓库之后，就可以使用 docker tag 来标记一个镜像，然后推送它到仓库，别的机器上就可以下载下来了。例如私有仓库地址为 192.168.7.26:5000。</p>
+<p>先在本机查看已有的镜像。</p>
+<p>$ sudo docker images REPOSITORY TAG IMAGE ID CREATED VIRTUAL SIZE ubuntu latest ba5877dc9bec 6 weeks ago 192.7 MB ubuntu 14.04 ba5877dc9bec 6 weeks ago 192.7 MB 使用docker tag 将 ba58 这个镜像标记为 192.168.7.26:5000/test（格式为 docker tag IMAGE[:TAG] [REGISTRYHOST/][USERNAME/]NAME[:TAG]）。</p>
+<p>$ sudo docker tag ba58 192.168.7.26:5000/test root ~ # docker images REPOSITORY TAG IMAGE ID CREATED VIRTUAL SIZE ubuntu 14.04 ba5877dc9bec 6 weeks ago 192.7 MB ubuntu latest ba5877dc9bec 6 weeks ago 192.7 MB 192.168.7.26:5000/test latest ba5877dc9bec 6 weeks ago 192.7 MB 使用 docker push 上传标记的镜像。</p>
+<p>$ sudo docker push 192.168.7.26:5000/test The push refers to a repository [192.168.7.26:5000/test] (len:</p>
+<ol>
+<li>Sending image list Pushing repository 192.168.7.26:5000/test (1 tags) Image 511136ea3c5a already pushed, skipping Image 9bad880da3d2 already pushed, skipping Image 25f11f5fb0cb already pushed, skipping Image ebc34468f71d already pushed, skipping Image 2318d26665ef already pushed, skipping Image ba5877dc9bec already pushed, skipping Pushing tag for rev [ba5877dc9bec] on {http://192.168.7.26:5000/v1/repositories/test/tags/latest} 用 curl 查看仓库中的镜像。</li>
+</ol>
+<p>$ curl http://192.168.7.26:5000/v1/search {&ldquo;num_results&rdquo;:</p>
+<p>7, &ldquo;query&rdquo;:</p>
+<p>&ldquo;&rdquo;, &ldquo;results&rdquo;:</p>
+<p>[{&ldquo;description&rdquo;:</p>
+<p>&ldquo;&rdquo;, &ldquo;name&rdquo;:</p>
+<p>&ldquo;library/miaxis_j2ee&rdquo;}, {&ldquo;description&rdquo;:</p>
+<p>&ldquo;&rdquo;, &ldquo;name&rdquo;:</p>
+<p>&ldquo;library/tomcat&rdquo;}, {&ldquo;description&rdquo;:</p>
+<p>&ldquo;&rdquo;, &ldquo;name&rdquo;:</p>
+<p>&ldquo;library/ubuntu&rdquo;}, {&ldquo;description&rdquo;:</p>
+<p>&ldquo;&rdquo;, &ldquo;name&rdquo;:</p>
+<p>&ldquo;library/ubuntu_office&rdquo;}, {&ldquo;description&rdquo;:</p>
+<p>&ldquo;&rdquo;, &ldquo;name&rdquo;:</p>
+<p>&ldquo;library/desktop_ubu&rdquo;}, {&ldquo;description&rdquo;:</p>
+<p>&ldquo;&rdquo;, &ldquo;name&rdquo;:</p>
+<p>&ldquo;dockerfile/ubuntu&rdquo;}, {&ldquo;description&rdquo;:</p>
+<p>&ldquo;&rdquo;, &ldquo;name&rdquo;:</p>
+<p>&ldquo;library/test&rdquo;}]} 这里可以看到 {“description”:</p>
+<p>“”, “name”:</p>
+<p>“library/test”}，表明镜像已经被成功上传了。</p>
+<p>现在可以到另外一台机器去下载这个镜像。</p>
+<p>$ sudo docker pull 192.168.7.26:5000/test Pulling repository 192.168.7.26:5000/test ba5877dc9bec:</p>
+<p>Download complete 511136ea3c5a:</p>
+<p>Download complete 9bad880da3d2:</p>
+<p>Download complete 25f11f5fb0cb:</p>
+<p>Download complete ebc34468f71d:</p>
+<p>Download complete 2318d26665ef:</p>
+<p>Download complete $ sudo docker images REPOSITORY TAG IMAGE ID CREATED VIRTUAL SIZE 192.168.7.26:5000/test latest ba5877dc9bec 6 weeks ago 192.7 MB 可以使用 这个脚本 批量上传本地的镜像到注册服务器中，默认是本地注册服务器 127.0.0.1:5000。例如：</p>
+<p>$ wget <a href="https://github.com/yeasy/docker_practice/raw/master/_local/push_images.sh;">https://github.com/yeasy/docker_practice/raw/master/_local/push_images.sh;</a></p>
+<p>sudo chmod a+x push_images.sh $ ./push_images.sh ubuntu:latest centos:centos7 The registry server is 127.0.0.1 Uploading ubuntu:latest&hellip; The push refers to a repository [127.0.0.1:5000/ubuntu] (len:</p>
+<ol>
+<li>Sending image list Pushing repository 127.0.0.1:5000/ubuntu (1 tags) Image 511136ea3c5a already pushed, skipping Image bfb8b5a2ad34 already pushed, skipping Image c1f3bdbd8355 already pushed, skipping Image 897578f527ae already pushed, skipping Image 9387bcc9826e already pushed, skipping Image 809ed259f845 already pushed, skipping Image 96864a7d2df3 already pushed, skipping Pushing tag for rev [96864a7d2df3] on {http://127.0.0.1:5000/v1/repositories/ubuntu/tags/latest} Untagged:</li>
+</ol>
+<p>127.0.0.1:5000/ubuntu:latest Done Uploading centos:centos7&hellip; The push refers to a repository [127.0.0.1:5000/centos] (len:</p>
+<ol>
+<li>Sending image list Pushing repository 127.0.0.1:5000/centos (1 tags) Image 511136ea3c5a already pushed, skipping 34e94e67e63a:</li>
+</ol>
+<p>Image successfully pushed 70214e5d0a90:</p>
+<p>Image successfully pushed Pushing tag for rev [70214e5d0a90] on {http://127.0.0.1:5000/v1/repositories/centos/tags/centos7} Untagged:</p>
+<p>127.0.0.1:5000/centos:centos7 Done 仓库配置文件Docker 的 Registry 利用配置文件提供了一些仓库的模板（flavor），用户可以直接使用它们来进行开发或生产部署。</p>
+<p>模板在 config_sample.yml 文件中，可以看到一些现成的模板段：</p>
+<p>common：基础配置 local：存储数据到本地文件系统 s3：存储数据到 AWS S3 中 dev：使用 local 模板的基本配置 test：单元测试使用 prod：生产环境配置（基本上跟s3配置类似） gcs：存储数据到 Google 的云存储 swift：存储数据到 OpenStack Swift 服务 glance：存储数据到 OpenStack Glance 服务，本地文件系统为后备 glance-swift：存储数据到 OpenStack Glance 服务，Swift 为后备 elliptics：存储数据到 Elliptics key/value 存储 用户也可以添加自定义的模版段。</p>
+<p>默认情况下使用的模板是 dev，要使用某个模板作为默认值，可以添加 SETTINGS_FLAVOR 到环境变量中，例如 export SETTINGS_FLAVOR=dev另外，配置文件中支持从环境变量中加载值，语法格式为 _env:VARIABLENAME[:DEFAULT]。</p>
+<p>示例配置common:</p>
+<p>loglevel:</p>
+<p>info search_backend:</p>
+<p>&ldquo;_env:SEARCH_BACKEND:&rdquo; sqlalchemy_index_database:</p>
+<p>&ldquo;_env:SQLALCHEMY_INDEX_DATABASE:sqlite:////tmp/docker-registry.db&rdquo; prod:</p>
+<p>loglevel:</p>
+<p>warn storage:</p>
+<p>s3 s3_access_key:</p>
+<p>_env:AWS_S3_ACCESS_KEY s3_secret_key:</p>
+<p>_env:AWS_S3_SECRET_KEY s3_bucket:</p>
+<p>_env:AWS_S3_BUCKET boto_bucket:</p>
+<p>_env:AWS_S3_BUCKET storage_path:</p>
+<p>/srv/docker smtp_host:</p>
+<p>localhost from_addr:</p>
+<p><a href="mailto:docker@myself.com">docker@myself.com</a> to_addr:</p>
+<p><a href="mailto:my@myself.com">my@myself.com</a> dev:</p>
+<p>loglevel:</p>
+<p>debug storage:</p>
+<p>local storage_path:</p>
+<p>/home/myself/docker test:</p>
+<p>storage:</p>
+<p>local storage_path:</p>
+<p>/tmp/tmpdockertmp</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://jiangxingye.github.io/tags/docker/">Docker</a></li>
+      <li><a href="https://jiangxingye.github.io/tags/docker%E4%BB%93%E5%BA%93/">Docker仓库</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://jiangxingye.github.io/2017/05/23/docker-container/">
+    <span class="title">« Prev</span>
+    <span>docker容器</span>
+  </a>
+  <a class="next" href="https://jiangxingye.github.io/2017/05/23/linux-command57-sort/">
+    <span class="title">Next »</span>
+    <span>每天一个linux命令（58）: sort</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share docker仓库 on x"
+            href="https://x.com/intent/tweet/?text=docker%e4%bb%93%e5%ba%93&amp;url=https%3a%2f%2fjiangxingye.github.io%2f2017%2f05%2f23%2fdocker-registry%2f&amp;hashtags=docker%2cdocker%e4%bb%93%e5%ba%93">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share docker仓库 on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fjiangxingye.github.io%2f2017%2f05%2f23%2fdocker-registry%2f&amp;title=docker%e4%bb%93%e5%ba%93&amp;summary=docker%e4%bb%93%e5%ba%93&amp;source=https%3a%2f%2fjiangxingye.github.io%2f2017%2f05%2f23%2fdocker-registry%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share docker仓库 on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fjiangxingye.github.io%2f2017%2f05%2f23%2fdocker-registry%2f&title=docker%e4%bb%93%e5%ba%93">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share docker仓库 on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fjiangxingye.github.io%2f2017%2f05%2f23%2fdocker-registry%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share docker仓库 on whatsapp"
+            href="https://api.whatsapp.com/send?text=docker%e4%bb%93%e5%ba%93%20-%20https%3a%2f%2fjiangxingye.github.io%2f2017%2f05%2f23%2fdocker-registry%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share docker仓库 on telegram"
+            href="https://telegram.me/share/url?text=docker%e4%bb%93%e5%ba%93&amp;url=https%3a%2f%2fjiangxingye.github.io%2f2017%2f05%2f23%2fdocker-registry%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share docker仓库 on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=docker%e4%bb%93%e5%ba%93&u=https%3a%2f%2fjiangxingye.github.io%2f2017%2f05%2f23%2fdocker-registry%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+<div id="gitalk-container" style="margin-top: 30px;"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: "Ov23li0HarkPcKBrhYRL",
+        clientSecret: "08c9bebd481f660de75bb9b47de70353d3a65378",
+        repo: "jiangxingye-comments",
+        owner: "jiangxingye",
+        admin: ["jiangxingye"],
+        id: "pathname",
+        distractionFreeMode: false,
+        language: 'zh-CN',
+        labels: ["gitalk"],
+        perPage:  15 
+    });
+    gitalk.render('gitalk-container');
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jiangxingye.github.io/">jiangxingye&#39;s blog</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+    <script async src="https://vercount.one/js"></script>
+
+<div class="footer-stats" style="text-align:center; color:var(--secondary); font-size:0.875em; margin-top:1rem;">
+      <span>本博客共 21891 字</span>
+      <span> · 本站总访问量 <span id="busuanzi_value_site_pv"></span></span>
+      <span> · 本文阅读量 <span id="busuanzi_value_page_pv"></span></span>
+</div>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

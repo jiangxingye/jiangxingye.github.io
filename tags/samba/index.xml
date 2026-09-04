@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Samba on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/tags/samba/</link>
+    <description>Recent content in Samba on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Sep 2019 13:02:59 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/tags/samba/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CentOS7安装配置匿名访问Samba</title>
+      <link>https://jiangxingye.github.io/2017/07/03/centos7-anonymous-samba/</link>
+      <pubDate>Mon, 03 Jul 2017 11:40:14 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/07/03/centos7-anonymous-samba/</guid>
+      <description>CentOS7安装配置匿名访问Samba</description>
+      <content:encoded><![CDATA[<p>介绍 Samba，是种用来让UNIX系列的操作系统与微软Windows操作系统的SMB/CIFS（Server Message Block/Common Internet File System）网络协议做链接的自由软件 –wikipedia 本文就以 CentOS7 搭建 Samba 匿名完全访问（读/写）为目标，实现一个局域网内的文件共享平台。</p>
+<p>1.安装Samba服务使用 yum 工具进行安装 $ yum install samba samba-client 2.检查是否安装成功$ rpm -qa | grep samba 3.防火墙开放端口在 /etc/sysconfig/iptables 中添加配置 -A INPUT -p tcp -m state &ndash;state NEW -m tcp &ndash;dport 137 -j ACCEPT -A INPUT -p tcp -m state &ndash;state NEW -m tcp &ndash;dport 138 -j ACCEPT -A INPUT -p tcp -m state &ndash;state NEW -m tcp &ndash;dport 139 -j ACCEPT -A INPUT -p tcp -m state &ndash;state NEW -m tcp &ndash;dport 389 -j ACCEPT -A INPUT -p tcp -m state &ndash;state NEW -m tcp &ndash;dport 445 -j ACCEPT -A INPUT -p tcp -m state &ndash;state NEW -m tcp &ndash;dport 901 -j ACCEPT 重启 iptables 服务 $ service iptables restart 设置开机自启动 $ chkconfig &ndash;level 35 smb on 4.共享配置Samba Server的验证方式有四种：</p>
+<p>share：匿名访问共享，不需要提供用户名和口令, 安全性能较低。</p>
+<p>user：共享目录只能被授权的用户访问,由Samba Server负责检查账号和密码的正确性。账号和密码要在本Samba Server中建立。</p>
+<p>server：依靠其他Windows Server或Samba Server来验证用户的账号和密码,是一种代理验证。此种安全模式下,系统管理员可以把所有的Windows用户和口令集中到一个Server系统上,使用 Windows Server进行Samba认证, 远程服务器可以自动认证全部用户和口令,如果认证失败,Samba将使用用户级安全模式作为替代的方式。</p>
+<p>domain：域安全级别,使用主域控制器(PDC)来完成认证。</p>
+<p>创建一个匿名共享访问，需要使用share模式，但在CentOS安装的samba4中share 和 server验证方式已被弃用 配置如下：</p>
+<p>[global] workgroup = MYGROUP server string = Samba Server Version %v log file = /var/log/samba/log.%m max log size = 50 security = user map to guest = Bad User load printers = yes cups options = raw [share] comment = share path = /home/samba directory mask = 0777 create mask = 0777 #不可视目录 #browseable = yes guest ok=yes writable=yes 创建 /home/samba 共享目录 $ mkdir /home/samba 重启 smb 服务 $ service smb restart 检查服务是否在运行 $ pgrep smbd 检查配置参数 $ testparm Load smb config files from /etc/samba/smb.conf Processing section &ldquo;[share]&rdquo; Loaded services file OK. Server role:</p>
+<p>ROLE_STANDALONE Press enter to see a dump of your service definitions # Global parameters [global] server string = Samba Server Version %v workgroup = MYGROUP log file = /var/log/samba/log.%m max log size = 50 map to guest = Bad User security = USER idmap config * :</p>
+<p>backend = tdb cups options = raw [share] comment = share path = /home/samba create mask = 0777 directory mask = 0777 guest ok = Yes read only = No 访问以上就配置完成，如服务器地址为192.168.0.87 windows 系统访问，直接运行 \192.168.0.87\share linux 系统访问， smb://192.168.0.87/share 遇到的问题 linux 系统可以正常读写修改，但 windows 系统只可以读写，直接打开修改时就，就为只读文件了。</p>
+<p>解决办法*：修改 /etc/samba/smb.conf ,在 [share] 中加入以下内容create mask = 0777 访问部分文件可以正常访问，但部分文件无法访问。</p>
+<p>解决方法*：修改文件访问权限$ chmod -R 1777 /home/samba $ chown nobody:nobody 参考 CentOS7 安装Samba服务 CentOS7 安装配置匿名访问Samba</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

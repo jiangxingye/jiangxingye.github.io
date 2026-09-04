@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Springmvc | jiangxingye&#39;s blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+<meta name="author" content="jiangxingye">
+<link rel="canonical" href="https://jiangxingye.github.io/tags/springmvc/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jiangxingye.github.io/img/avatar.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jiangxingye.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jiangxingye.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jiangxingye.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jiangxingye.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://jiangxingye.github.io/tags/springmvc/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://jiangxingye.github.io/tags/springmvc/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://jiangxingye.github.io/tags/springmvc/">
+  <meta property="og:site_name" content="jiangxingye&#39;s blog">
+  <meta property="og:title" content="Springmvc">
+  <meta property="og:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Springmvc">
+  <meta name="twitter:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://jiangxingye.github.io/" accesskey="h" title="jiangxingye&#39;s blog (Alt + H)">
+                <img src="https://jiangxingye.github.io/img/avatar.jpg" alt="" aria-label="logo"
+                    height="35">jiangxingye&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://jiangxingye.github.io/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/search/" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/tags/">Tags</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+  <h1>
+    Springmvc
+    <a href="/tags/springmvc/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[转]SpringMVC执行流程及源码解析
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>在SpringMVC中主要是围绕着DispatcherServlet来设计，可以把它当做指挥中心。这里先说明一下SpringMVC文档给出的执行流程，然后是我们稍微具体的执行流程，最后是流程大致的源码跟踪。关于很很很详细的源码解析，这里暂先不做。
+官方文档中的流程首先看下SpringMVC文档上给的流程图：这张图片给了我们大概的执行流程：
+用户请求首先发送到前端控制器DispatcherServlet，DispatcherServlet根据请求的信息来决定使用哪个页面控制器Controller（也就是我们通常编写的Controller）来处理该请求。找到控制器之后，DispatcherServlet将请求委托给控制器去处理。
+接下来页面控制器开始处理用户请求，页面控制器会根据请求信息进行处理，调用业务层等等，处理完成之后，会把结果封装成一个ModelAndView返回给DispatcherServlet。
+前端控制器DispatcherServlet接到页面控制器的返回结果后，根据返回的视图名选择相应的试图模板，并根据返回的数据进行渲染。
+最后前端控制器DispatcherServlet将结果返回给用户。
+更具体的流程上面只是总体流程，接下来我们稍微深入一点，看下更具体的流程，这里没有图，只有步骤解析：
+用户请求发送到前端控制器DispatcherServlet。
+前端控制器DispatcherServlet接收到请求后，DispatcherServlet会使用HandlerMapping来处理，HandlerMapping会查找到具体进行处理请求的Handler对象。
+HandlerMapping找到对应的Handler之后，并不是返回一个Handler原始对象，而是一个Handler执行链，在这个执行链中包括了拦截器和处理请求的Handler。HandlerMapping返回一个执行链给DispatcherServlet。
+DispatcherServlet接收到执行链之后，会调用Handler适配器去执行Handler。
+Handler适配器执行完成Handler（也就是我们写的Controller）之后会得到一个ModelAndView，并返回给DispatcherServlet。
+DispatcherServlet接收到Handler适配器返回的ModelAndView之后，会根据其中的视图名调用视图解析器。
+视图解析器根据逻辑视图名解析成一个真正的View视图，并返回给DispatcherServlet。
+DispatcherServlet接收到视图之后，会根据上面的ModelAndView中的model来进行视图中数据的填充，也就是所谓的视图渲染。
+渲染完成之后，DispatcherServlet就可以将结果返回给用户了。
+源码DispatcherServlet是一个Servlet，我们知道在Servlet在处理一个请求的时候会交给service方法进行处理，这里也不例外，DispatcherServlet继承了FrameworkServlet，首先进入FrameworkServlet的service方法：
+protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { //请求方法 String method = request.getMethod();
+//PATCH方法单独处理 if (method.equalsIgnoreCase(RequestMethod.PATCH.name())) { processRequest(request, response);
+} else {//其他的请求类型的方法经由父类，也就是HttpServlet处理 super.service(request, response);
+} } HttpServlet中会根据请求类型的不同分别调用doGet或者doPost等方法，FrameworkServlet中已经重写了这些方法，在这些方法中会调用processRequest进行处理，在processRequest中会调用doService方法，这个doService方法就是在DispatcherServlet中实现的。下面就看下DispatcherServlet中的doService方法的实现。
+请求到达DispatcherServletdoService方法：
+protected void doService(HttpServletRequest request, HttpServletResponse response) throws Exception { //给request中的属性做一份快照 Map&lt;String, Object&gt; attributesSnapshot = null;
+if (WebUtils.isIncludeRequest(request)) { logger.debug(“Taking snapshot of request attributes before include”);
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-04-15 02:22:05 +0800 +0800'>2017-04-15</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>1006 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to [转]SpringMVC执行流程及源码解析" href="https://jiangxingye.github.io/2017/04/15/springmvc-implementation-process/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jiangxingye.github.io/">jiangxingye&#39;s blog</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+    <script async src="https://vercount.one/js"></script>
+
+<div class="footer-stats" style="text-align:center; color:var(--secondary); font-size:0.875em; margin-top:1rem;">
+      <span>本博客共 21891 字</span>
+      <span> · 本站总访问量 <span id="busuanzi_value_site_pv"></span></span>
+      <span> · 本文阅读量 <span id="busuanzi_value_page_pv"></span></span>
+</div>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

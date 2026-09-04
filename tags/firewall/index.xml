@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Firewall on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/tags/firewall/</link>
+    <description>Recent content in Firewall on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Sep 2019 13:02:59 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/tags/firewall/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CentOS7使用Firewalld</title>
+      <link>https://jiangxingye.github.io/2017/09/19/centos7%E4%BD%BF%E7%94%A8firewalld/</link>
+      <pubDate>Tue, 19 Sep 2017 01:53:53 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/09/19/centos7%E4%BD%BF%E7%94%A8firewalld/</guid>
+      <description>CentOS7使用Firewalld</description>
+      <content:encoded><![CDATA[<p>介绍FirewallD 提供了支持网络/防火墙区域(zone)定义网络链接以及接口安全等级的动态防火墙管理工具。它支持 IPv4, IPv6 防火墙设置以及以太网桥接，并且拥有运行时配置和永久配置选项。它也支持允许服务或者应用程序直接添加防火墙规则的接口。</p>
+<p>安装$ yum install firewalld # 如果需要图形界面的话，则再安装 $ yum install firewall-config zoneFirewall 能将不同的网络连接归类到不同的信任级别。</p>
+<p>$ firewall-cmd &ndash;list-all-zones #查看所有zone信息 Zone 提供了以下几个级别：</p>
+<p>drop:</p>
+<p>丢弃所有进入的包，而不给出任何响应 block:</p>
+<p>拒绝所有外部发起的连接，允许内部发起的连接 public:</p>
+<p>允许指定的进入连接 external:</p>
+<p>同上，对伪装的进入连接，一般用于路由转发 dmz:</p>
+<p>允许受限制的进入连接 work:</p>
+<p>允许受信任的计算机被限制的进入连接，类似 workgroup home:</p>
+<p>同上，类似 homegroup internal:</p>
+<p>同上，范围针对所有互联网用户 trusted:</p>
+<p>信任所有连接 过滤规则 source:</p>
+<p>根据源地址过滤 interface:</p>
+<p>根据网卡过滤 service:</p>
+<p>根据服务名过滤 port:</p>
+<p>根据端口过滤 icmp-block:</p>
+<p>icmp 报文过滤，按照 icmp 类型配置 masquerade:</p>
+<p>ip 地址伪装 forward-port:</p>
+<p>端口转发 rule:</p>
+<p>自定义规则 过滤规则的优先级遵循如下顺序 source interface firewalld.conf 使用$ systemctl start firewalld # 启动 $ systemctl stop firewalld # 关闭 $ systemctl enable firewalld # 开机启动 $ systemctl disable firewalld # 取消开机启动 具体的规则管理，可以使用 firewall-cmd,具体的使用方法 $ firewall-cmd &ndash;help &ndash;zone=NAME # 指定 zone &ndash;permanent # 永久修改，&ndash;reload 后生效 &ndash;timeout=seconds # 持续效果，到期后自动移除，用于调试，不能与 &ndash;permanent 同时使用 查看规则查看运行状态 $ firewall-cmd &ndash;state 查看已被激活的 Zone 信息 $ firewall-cmd &ndash;get-active-zones public interfaces:</p>
+<p>eth0 eth1 查看指定接口的 Zone 信息 $ firewall-cmd &ndash;get-zone-of-interface=eth0 public 查看指定级别的接口 $ firewall-cmd &ndash;zone=public &ndash;list-interfaces eth0 查看指定级别的所有信息，譬如 public $ firewall-cmd &ndash;zone=public &ndash;list-all public (default, active) interfaces:</p>
+<p>eth0 sources:</p>
+<p>services:</p>
+<p>dhcpv6-client http ssh ports:</p>
+<p>masquerade:</p>
+<p>no forward-ports:</p>
+<p>icmp-blocks:</p>
+<p>rich rules:</p>
+<p>查看所有级别被允许的信息 $ firewall-cmd &ndash;get-service 查看重启后所有 Zones 级别中被允许的服务，即永久放行的服务 $ firewall-cmd &ndash;get-service &ndash;permanent 管理规则$ firewall-cmd &ndash;panic-on # 丢弃 $ firewall-cmd &ndash;panic-off # 取消丢弃 $ firewall-cmd &ndash;query-panic # 查看丢弃状态 $ firewall-cmd &ndash;reload # 更新规则，不重启服务 $ firewall-cmd &ndash;complete-reload # 更新规则，重启服务 添加某接口至某信任等级，譬如添加 eth0 至 public，永久修改 $ firewall-cmd &ndash;zone=public &ndash;add-interface=eth0 &ndash;permanent 设置 public 为默认的信任级别 $ firewall-cmd &ndash;set-default-zone=public a. 管理端口列出 dmz 级别的被允许的进入端口 $ firewall-cmd &ndash;zone=dmz &ndash;list-ports 允许 tcp 端口 8080 至 dmz 级别 $ firewall-cmd &ndash;zone=dmz &ndash;add-port=8080/tcp 允许某范围的 udp 端口至 public 级别，并永久生效 $ firewall-cmd &ndash;zone=public &ndash;add-port=5060-5059/udp &ndash;permanent b. 网卡接口列出 public zone 所有网卡 $ firewall-cmd &ndash;zone=public &ndash;list-interfaces 将 eth0 添加至 public zone，永久 $ firewall-cmd &ndash;zone=public &ndash;permanent &ndash;add-interface=eth0 eth0 存在与 public zone，将该网卡添加至 work zone，并将之从 public zone 中删除 $ firewall-cmd &ndash;zone=work &ndash;permanent &ndash;change-interface=eth0 删除 public zone 中的 eth0，永久 $ firewall-cmd &ndash;zone=public &ndash;permanent &ndash;remove-interface=eth0 c. 管理服务添加 smtp 服务至 work zone $ firewall-cmd &ndash;zone=work &ndash;add-service=smtp 移除 work zone 中的 smtp 服务 $ firewall-cmd &ndash;zone=work &ndash;remove-service=smtp d. 配置 external zone 中的 ip 地址伪装查看 $ firewall-cmd &ndash;zone=external &ndash;query-masquerade 打开伪装 $ firewall-cmd &ndash;zone=external &ndash;add-masquerade 关闭伪装 $ firewall-cmd &ndash;zone=external &ndash;remove-masquerade e. 配置 public zone 的端口转发要打开端口转发，则需要先 $ firewall-cmd &ndash;zone=public &ndash;add-masquerade 然后转发 tcp 22 端口至 3753 $ firewall-cmd &ndash;zone=public &ndash;add-forward-port=port=22:proto=tcp:toport=3753 转发 22 端口数据至另一个 ip 的相同端口上 $ firewall-cmd &ndash;zone=public &ndash;add-forward-port=port=22:proto=tcp:toaddr=192.168.1.100 转发 22 端口数据至另一 ip 的 2055 端口上 $ firewall-cmd &ndash;zone=public &ndash;add-forward-port=port=22:proto=tcp:toport=2055:toaddr=192.168.1.100 f. 配置 public zone 的 icmp查看所有支持的 icmp 类型 $ firewall-cmd &ndash;get-icmptypes destination-unreachable echo-reply echo-request parameter-problem redirect router-advertisement router-solicitation source-quench time-exceeded 列出 $ firewall-cmd &ndash;zone=public &ndash;list-icmp-blocks 添加 echo-request 屏蔽 $ firewall-cmd &ndash;zone=public &ndash;add-icmp-block=echo-request [&ndash;timeout=seconds] 移除 echo-reply 屏蔽 $ firewall-cmd &ndash;zone=public &ndash;remove-icmp-block=echo-reply g. IP 封禁 $ firewall-cmd &ndash;permanent &ndash;add-rich-rule=&ldquo;rule family=&lsquo;ipv4&rsquo; source address=&lsquo;222.222.222.222&rsquo; reject&rdquo; 当然，我们仍然可以通过 ipset 来封禁 ip 封禁 ip $ firewall-cmd &ndash;permanent &ndash;zone=public &ndash;new-ipset=blacklist &ndash;type=hash:ip $ firewall-cmd &ndash;permanent &ndash;zone=public &ndash;ipset=blacklist &ndash;add-entry=222.222.222.222 封禁网段 $ firewall-cmd &ndash;permanent &ndash;zone=public &ndash;new-ipset=blacklist &ndash;type=hash:net $ firewall-cmd &ndash;permanent &ndash;zone=public &ndash;ipset=blacklist &ndash;add-entry=222.222.222.0/24 倒入 ipset 规则 $ firewall-cmd &ndash;permanent &ndash;zone=public &ndash;new-ipset-from-file=/path/blacklist.xml 然后封禁 blacklist $ firewall-cmd &ndash;permanent &ndash;zone=public &ndash;add-rich-rule=&lsquo;rule source ipset=blacklist drop&rsquo; 重新载入以生效 $ firewall-cmd &ndash;reload</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

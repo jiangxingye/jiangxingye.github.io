@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>JQuery | jiangxingye&#39;s blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+<meta name="author" content="jiangxingye">
+<link rel="canonical" href="https://jiangxingye.github.io/tags/jquery/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jiangxingye.github.io/img/avatar.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jiangxingye.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jiangxingye.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jiangxingye.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jiangxingye.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://jiangxingye.github.io/tags/jquery/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://jiangxingye.github.io/tags/jquery/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://jiangxingye.github.io/tags/jquery/">
+  <meta property="og:site_name" content="jiangxingye&#39;s blog">
+  <meta property="og:title" content="JQuery">
+  <meta property="og:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="JQuery">
+  <meta name="twitter:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://jiangxingye.github.io/" accesskey="h" title="jiangxingye&#39;s blog (Alt + H)">
+                <img src="https://jiangxingye.github.io/img/avatar.jpg" alt="" aria-label="logo"
+                    height="35">jiangxingye&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://jiangxingye.github.io/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/search/" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/tags/">Tags</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+  <h1>
+    JQuery
+    <a href="/tags/jquery/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">不蒜子适配pjax
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>不蒜子一般配置加入脚本 本站总访问量次 本站访客数人次 本文总阅读量次 只安装脚本，不安装标签代码，即可实现只记数，不显示。
+适配pjax最近开发3-hexo主题，由于主题使用的pjax，异步加载页面时不蒜子会出现加载不到多说js的问题。在pjax：end加载下面js代替标签即可 $.getScript(&#34;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&#34;);
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-03-09 12:15:51 +0800 +0800'>2017-03-09</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>7 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 不蒜子适配pjax" href="https://jiangxingye.github.io/2017/03/09/busuanzi-pjax/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">多说适配pjax
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>最近开发3-hexo主题，由于主题使用的pjax，异步加载页面时多说会出现加载不到多说js的问题。
+多说加载代码如下：
+//加载多说 function loadComment() { duoshuoQuery = {short_name:
+$(&#34;.theme_duoshuo_domain&#34;).val()};
+var d = document, s = d.createElement(‘script’);
+s.src = ‘https://static.duoshuo.com/embed.js?t=&#39;&#43;new Date().getTime();
+s.async = true;
+s.charset = ‘UTF-8’;
+(d.head || d.body).appendChild(s);
+} 当局部加载页面时，就会无法加载多说。需要编写一个js方法，参考文档：(http://dev.duoshuo.com/docs/50b344447f32d30066000147) /** * pjax后需要回调函数.加载多说 */ function pajx_loadDuodsuo(){ if(typeof duoshuoQuery ==“undefined”){ loadComment();
+} else { var dus=$(&#34;.ds-thread&#34;);
+if($(dus).length==1){ var el = document.createElement(‘div’);
+el.setAttribute(‘data-thread-key’,$(dus).attr(“data-thread-key”));//必选参数 el.setAttribute(‘data-url’,$(dus).attr(“data-url”));
+DUOSHUO.EmbedThread(el);
+$(dus).html(el);
+} } } 在pjax:end中调用此方法即可。
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-03-09 11:50:45 +0800 +0800'>2017-03-09</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>60 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 多说适配pjax" href="https://jiangxingye.github.io/2017/03/09/duoshuo-pjax/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">pjax用法
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>最近在开发一款hexo主题3-hexo，其中使用了pjax大大提高了用户体验和加载速度，在此简单介绍一下pjax的用法github链接 pjax是什么 pjax是一款jQuery插件，使用了ajax和pushState的技术，在保留真正永久链接，网页标题和可用的返回功能的情况下，带来一种快速的浏览体验。
+–官方介绍 用人话说，就是当跳转过去的网页和当前网页的一部分是一样的，这时可以通过pjax就会从响应页面中取出 不同的那部分 （需指定），替换掉原来的内容。
+如果在服务端判断处理，直接返回 不同的那部分内容，这样就可以减少带宽占用，提升加载速度。
+这样做的优势：
+由于从服务器取回的数据量变少，加载速度将会提升。
+并且采用异步刷新页面中的不一样的地方，用户体验也是满满的。
+保留了浏览器回退的功能（解决了ajax的尴尬） 好了，开始操作。
+Demo第一步：引入jQuery和jQuery.pjax 第二步：将指定的a的链接，转为pjax风格 /将#menu中的a的链接的页面，只取回class=pjax元素中的内容，替换掉当前页面class=pjax元素中的内容/ $(document).pjax(’.#menu a’, ‘.pjax’, {fragment:’.pjax’, timeout:8000});
+第三步：如果需要在请求的过程中做一些自定义的事件，可以使用下面的方法 $(document).on({ ‘pjax:click’:
+function() { //点击链接时，需要触发的事件写到这里 }, ‘pjax:start’:
+function() { //当开始获取请求时，需要触发的事件写在这里 }, ‘pjax:end’:
+function() { //当请求完成后，需要触发的事件写在这里 } });
+结束。
+详细文档翻译于官方 参数$(document).pjax(selector, [container], options) selector 触发点击事件的选择器，String类型 container 一个选择器，为唯一的pjax容器 options 一个可以包含下面这些选项的对象 pjax options key default description timeout 650 ajax超时时间，单位毫秒，超时后将请求整个页面进行刷新 push true 使用 pushState 添加一个浏览器历史导航条目 replace false 替换URL，而不添加浏览器历史条目 maxCacheLength 20 历史内容 cache 的最大size version string ：
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-02-08 12:18:54 +0800 +0800'>2017-02-08</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>179 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to pjax用法" href="https://jiangxingye.github.io/2017/02/08/pjax/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">jQuery之checkbox|radio|select操作
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>jQuery1.6中添加了prop方法,看起来和用起来都和attr方法一样,但是在一些特殊情况下,attribute和properties的区别非常大,在jQuery1.6之前，.attr()方法在获取一些attributes的时候使用了property值，这样会导致一些不一致的行为。在jQuery1.6中，.prop()方法提供了一中明确的获取property值得方式，这样.attr()方法仅返回attributes。
+–摘自jQuery API文档 checkbox $(“input[type=checkbox]”) //获取所有的checkbox $(“input[type=checkbox]:checked”) //获取所有的被选中的checkbox $(“input[type=checkbox]:not(:checked)”) //获取所有未被选中的checkbox $(“input[type=checkbox]”).not(&#34;:checked&#34;) //获取所有未被选中的checkbox $(“input[type=checkbox]:first”) //获取第一个checkbox的value值 $(“input[type=checkbox]:checked”).length //获取被选中checkbox的数量 $(“input[type=checkbox]:first”).prop(“checked”) //判断第一个checkbox是否被选中 $(“input[type=checkbox]:first”).prop(“checkbox”,true) //选中第一个checkbox $(“input[type=checkbox]:not(:checked)”).prop(“checked”,true) //全选 $(“input[type=checkbox]:checkbox”).prop(“checked”,false) //都不选中 //反选 $(“input[type=checkbox]”).each(function(){ if($(this).prop(“checked”)){ $(this).prop(“checked”,false);
+}else{ $(this).prop(“checked”,true);
+} }) radio $(“input[type=radio]”) //获取所有的radio $(“input[type=radio]:checked”) //获取被选中的radio $(“input[type=radio]:not(:checkbox)”) //获取所有没有被选中的radio $(“input[type=radio]:checked”).val() //获取被选中的radio的value值 $(“input[type=radio]:first”).prop(“checked”) //判断第一个radio是否被选中 $(“input[type=radio]:first”).prop(“checked”,true) //选中第一个radio select 1 2 3 $(“select option:selected”) //获取被选中的option $(“select”).val() //获取选中option的value值 $(“select option:selected”).text() //获取被选中的option的text值 $(“select option:first”).prop(“selected”) //判断第一个option是否被选中 $(“select option:first”).prop(“selected”,true) //选中第一个option $(“select option:selected”).prop(“selected”,false) //取消当前选中,然后默认选中第一个
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2016-11-23 08:19:34 +0800 +0800'>2016-11-23</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>66 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to jQuery之checkbox|radio|select操作" href="https://jiangxingye.github.io/2016/11/23/jquery-checkbox-radio-select/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">jQuery选择器与节点操作
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>jQuery 是一个 JavaScript 函数库。jQuery的语法设计使得许多操作变得容易，如操作文档对象（document）、选择文档对象模型（DOM）元素、创建动画效果、处理事件、以及开发Ajax程序。jQuery也提供了给开发人员在其上创建插件的能力。这使开发人员可以对底层交互与动画、高级效果和高级主题化的组件进行抽象化。
+jQuery获取元素元素选择器//元素选择器 $(“div”) id选择器//id选择器 $(&#34;#id&#34;) $(“div#id”) class选择器//class选择器 $(&#34;.class&#34;) $(“div.class”) 属性过滤选择器 //通过属性获取 如果属性值为有特殊字符，一定要加引号 $(&#34;[type]&#34;) //获取有type属性的元素 $(&#34;[type=‘li_01’]&#34;) //获取type值等于’li_01’的元素 $(&#34;[type!=‘li_01’]&#34;) //获取type值不等于’li_01’的元素 $(&#34;[type*=‘li’]&#34;) //模糊匹配 获取type值包含’li’的元素 $(&#34;[type^=‘li’]&#34;) //模糊匹配 获取type值以’li’开始的元素 $(&#34;[type$=‘01’]&#34;) //模糊匹配 获取type值以&#39;01’结尾的元素 $(“li[class=‘check’][type]”) //获取多个条件同时满足的元素 * 选择器//遍历form下的所有元素,将其margin设置0 $(‘form *’).css(‘margin’,‘0px’) 并列选择器$(‘p, div’).css(‘color’,‘red’);
+//将p元素和div元素的字体颜色设置为red 层叠选择器 $(&#34;.a div&#34;) //选择class=a的元素下所有的div 即选择到子级div1,2,3 孙级div1 $(&#34;.a &gt; div&#34;) //选择class=a的元素的所有子div元素, 即选择到子级div1,2,3;
+$(“div &#43; span”) //选择所有的div元素的下一个input元素节点,即选择到:子级div3 $(&#34;.a1 ~ div&#34;) //同胞选择器,返回class为a2的标签元素的所有属于同一个父元素的div标签,即div1,2,3 基本过滤选择器 $(“li:first”) //选择所有li元素的第一个 $(“li:last”) //选择所有li元素的最后一个 $(“li:even”) //选择所有li元素的第0,2,4… …个元素(序号从0开始) $(“li:odd”) //选择所有li元素的第1,3,5… …个元素 $(“li:eq(2)”) //选择所有li元素中的第三个(即序号为2) $(“li:gt(3)”) //选择所有li元素中序号大于3的li元素 $(“li:ll(2)”) //选择所有li元素中序号小于2的li元素 $(“input[type=‘checkbox’]:checked”) //获取所有已被选中的type等于checkbox的input元素 $(“input[type=‘checkbox’]:not(:checked)”) //获取所有未被选中的type等于checkbox的input元素 内容过滤器$(“div:contains(‘Faker’)”) //选择所有div中含有Faker文本的元素 $(“div:empty”) //选择所有div中为空(不包含任何元素/文本)的元素 $(“div:has(‘p’)”) //选择所有div中包含p元素的元素 $(“div:parent”) //选择所有的含有子元素或文本的div 可视化过滤器$(“div:hidden”) //选择所有被hidden的div元素 $(“div:not(:hidden)”) //选择所有没有被hidden的div元素 $(“div:visible”) //所有可视化的div元素 $(“div:not(:visible)”) //所有非可视化的div元素 子元素过滤器 $(“body div:first-child”) //返回所有的body元素下 所有div 为父元素的第一个元素 的元素. //:first 与 :first-child 的区别用法 //$(“body div:first”)只匹配到第一个合适的元素 即只匹配到 d1 //$(“body div:first-child”) 匹配所有合适的元素:d1是body的第一个元素,d11是d1的第一个元素.. //所以匹配到d1,d11,d111 $(“div span:last-child”) //返回所有的body元素下 所有div 为父元素的最后一个元素 的元素. //:last 与 :last-child 的区别参考first $(“div button:only-child”) //如果button是它父级元素的唯一子元素,此button将会被匹配 表单元素选择器$(&#34;:input&#34;) //选择所有的表单输入元素，包括input, textarea, select 和 button $(&#34;:text&#34;) //选择所有的text input元素 $(&#34;:password&#34;) //选择所有的password input元素 $(&#34;:radio&#34;) //选择所有的radio input元素 $(&#34;:checkbox&#34;) //选择所有的checkbox input元素 $(&#34;:submit&#34;) //选择所有的submit input元素 $(&#34;:image&#34;) //选择所有的image input元素 $(&#34;:reset&#34;) //选择所有的reset input元素 $(&#34;:button&#34;) //选择所有的button input元素 $(&#34;:file&#34;) //选择所有的file input元素 $(&#34;:hidden&#34;) //选择所有类型为hidden的input元素或表单的隐藏域 表单元素过滤器$(&#34;:enabled&#34;) //选择所有的可操作的表单元素 $(&#34;:disabled&#34;) //选择所有的不可操作的表单元素 $(&#34;:checked&#34;) //选择所有的被checked的表单元素 $(“select option:selected”) //选择所有的select 的子元素中被selected的元素 节点操作获取和操作节点属性index $(“a”).attr(“href”);
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2016-11-22 09:11:48 +0800 +0800'>2016-11-22</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>239 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to jQuery选择器与节点操作" href="https://jiangxingye.github.io/2016/11/22/jquery-selector/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jiangxingye.github.io/">jiangxingye&#39;s blog</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+    <script async src="https://vercount.one/js"></script>
+
+<div class="footer-stats" style="text-align:center; color:var(--secondary); font-size:0.875em; margin-top:1rem;">
+      <span>本博客共 21891 字</span>
+      <span> · 本站总访问量 <span id="busuanzi_value_site_pv"></span></span>
+      <span> · 本文阅读量 <span id="busuanzi_value_page_pv"></span></span>
+</div>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Linux命令 | jiangxingye&#39;s blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+<meta name="author" content="jiangxingye">
+<link rel="canonical" href="https://jiangxingye.github.io/tags/linux%E5%91%BD%E4%BB%A4/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jiangxingye.github.io/img/avatar.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jiangxingye.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jiangxingye.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jiangxingye.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jiangxingye.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://jiangxingye.github.io/tags/linux%E5%91%BD%E4%BB%A4/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://jiangxingye.github.io/tags/linux%E5%91%BD%E4%BB%A4/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://jiangxingye.github.io/tags/linux%E5%91%BD%E4%BB%A4/">
+  <meta property="og:site_name" content="jiangxingye&#39;s blog">
+  <meta property="og:title" content="Linux命令">
+  <meta property="og:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Linux命令">
+  <meta name="twitter:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://jiangxingye.github.io/" accesskey="h" title="jiangxingye&#39;s blog (Alt + H)">
+                <img src="https://jiangxingye.github.io/img/avatar.jpg" alt="" aria-label="logo"
+                    height="35">jiangxingye&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://jiangxingye.github.io/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/search/" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/tags/">Tags</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+  <h1>
+    Linux命令
+    <a href="/tags/linux%E5%91%BD%E4%BB%A4/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（20）: find命令之exec
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>find是我们很常用的一个Linux命令，但是我们一般查找出来的并不仅仅是看看而已，还会有进一步的操作，这个时候exec的作用就显现出来了 命令介绍 -exec 参数后面跟的是command命令，它的终止是以;为结束标志的，所以这句命令后面的分号是不可缺少的，考虑到各个系统中分号会有不同的意义，所以前面加反斜杠。
+{} 花括号代表前面find查找出来的文件名。
+使用find时，只要把想要的操作写在一个文件里，就可以用exec来配合find查找，很方便的。在有些操作系统中只允许-exec选项执行诸如ls或ls -l这样的命令。大多数用户使用这一选项是为了查找旧文件并删除它们。建议在真正执行rm命令删除文件之前，最好先用ls命令看一下，确认它们是所要删除的文件。
+exec选项后面跟随着所要执行的命令或脚本，然后是一对儿{ }，一个空格和一个\，最后是一个分号。为了使用exec选项，必须要同时使用print选项。如果验证一下find命令，会发现该命令只输出从当前路径起的相对路径及文件名。
+使用实例例一：ls -l命令放在find命令的-exec选项中 # find命令匹配到了当前目录下的所有普通文件，并在-exec选项中使用ls -l命令将它们列出 $ find . -type f -exec ls -l {} ;
+例二：在目录中查找更改时间在n日以前的文件并删除它们 $ find . -type f -mtime &#43;14 -exec rm {} ;
+例三：在目录中查找更改时间在n日以前的文件并删除它们，在删除之前先给出提示 $ find . -name “*.log” -mtime &#43;5 -ok rm {} ;
+例四：-exec中使用grep命令 $ find /etc -name “passwd*” -exec grep “root” {} ;
+例五：查找文件移动到指定目录 $ find . -name “*.log” -exec mv {} .. ;
+例六：用exec选项执行cp命令 $ find . -name “*.log” -exec cp {} test3 ;
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2016-12-20 02:47:32 +0800 +0800'>2016-12-20</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>82 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（20）: find命令之exec" href="https://jiangxingye.github.io/2016/12/20/linux-command20-find%E5%91%BD%E4%BB%A4%E4%B9%8Bexec/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（19）: find命令概览
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Linux下find命令在目录结构中搜索文件，并执行指定的操作。Linux下find命令提供了相当多的查找条件，功能很强大。由于find具有强大的功能，所以它的选项也很多，其中大部分选项都值得我们花时间来了解一下。即使系统中含有网络文件系统( NFS)，find命令在该文件系统中同样有效，只你具有相应的权限。
+在运行一个非常消耗资源的find命令时，很多人都倾向于把它放在后台执行，因为遍历一个大的文件系统可能会花费很长的时间(这里是指30G字节以上的文件系统)。
+命令格式$ find pathname -options [-print -exec -ok …] 命令功能 用于在文件树种查找文件，并作出相应的处理 命令参数 参数 描述 pathname find命令所查找的目录路径。例如用.来表示当前目录，用/来表示系统根目录 -print find命令将匹配的文件输出到标准输出 -exec find命令对匹配的文件执行该参数所给出的shell命令。相应命令的形式为’command’ { } ;，注意{ }和\；之间的空格 -ok 和-exec的作用相同，只不过以一种更为安全的模式来执行该参数所给出的shell命令，在执行每一个命令之前，都会给出提示，让用户来确定是否执行 ### 命令选项 选项 描述 :————- :————- -name 按照文件名查找文件 -perm 按照文件权限来查找文件 -prune 使用这一选项可以使find命令不在当前指定的目录中查找，如果同时使用-depth选项，那么-prune将被find命令忽略 -user 按照文件属主来查找文件 -group 按照文件所属的组来查找文件 -mtime -n &#43;n 按照文件的更改时间来查找文件， - n表示文件更改时间距现在n天以内，&#43; n表示文件更改时间距现在n天以前。find命令还有-atime和-ctime 选项，但它们都和-m time选项 -nogroup 查找无有效所属组的文件，即该文件所属的组在/etc/groups中不存在 -nouser 查找无有效属主的文件，即该文件的属主在/etc/passwd中不存在 -newer file1 !
+file2 查找更改时间比文件file1新但比文件file2旧的文件 -type 查找某一类型的文件,诸如：b - 块设备文件d - 目录c - 字符设备文件p - 管道文件l - 符号链接文件f - 普通文件 -size n：[c] 查找文件长度为n块的文件，带有c时表示文件长度以字节计。-depth：在查找文件时，首先查找当前目录中的文件，然后再在其子目录中查找 -fstype 查找位于某一类型文件系统中的文件，这些文件系统类型通常可以在配置文件/etc/fstab中找到，该配置文件中包含了本系统中有关文件系统的信息 -mount 在查找文件时不跨越文件系统mount点 -follow 如果find命令遇到符号链接文件，就跟踪至链接所指向的文件 -cpio 对匹配的文件使用cpio命令，将这些文件备份到磁带设备中 -amin n 查找系统中最后N分钟访问的文件 -atime n 查找系统中最后n24小时访问的文件 -cmin n 查找系统中最后N分钟被改变文件状态的文件 -ctime n 查找系统中最后n24小时被改变文件状态的文件 -mmin n 查找系统中最后N分钟被改变文件数据的文件 -mtime n 查找系统中最后n*24小时被改变文件数据的文件 ### 使用实例 例一：查找指定时间内修改过的文件
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2016-12-19 07:19:10 +0800 +0800'>2016-12-19</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>160 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（19）: find命令概览" href="https://jiangxingye.github.io/2016/12/19/linux-command19-find%E5%91%BD%E4%BB%A4%E6%A6%82%E8%A7%88/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（18）: locate
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>locate 让使用者可以很快速的搜寻档案系统内是否有指定的档案。其方法是先建立一个包括系统内所有档案名称及路径的数据库，之后当寻找时就只需查询这个数据库，而不必实际深入档案系统之中了。在一般的 distribution 之中，数据库的建立都被放在 crontab 中自动执行。
+命令格式$ locate [选择参数] [样式] 命令功能 locate命令可以在搜寻数据库时快速找到档案，数据库由updatedb程序来更新，updatedb是由cron daemon周期性建立的，locate命令在搜寻数据库时比由整个由硬盘资料来搜寻资料来得快，但较差劲的是locate所找到的档案若是最近才建立或 刚更名的，可能会找不到，在内定值中，updatedb每天会跑一次，可以由修改crontab来更新设定值。(etc/crontab) locate指定用在搜寻符合条件的档案，它会去储存档案与目录名称的数据库内，寻找合乎范本样式条件的档案或目录录，可以使用特殊字元（如* 或 ?等）来指定范本样式，如指定范本为kcpa*ner, locate会找出所有起始字串为kcpa且结尾为ner的档案或目录，如名称为kcpartner若目录录名称为kcpa_ner则会列出该目录下包括 子目录在内的所有档案。
+locate指令和find找寻档案的功能类似，但locate是透过update程序将硬盘中的所有档案和目录资料先建立一个索引数据库，在 执行loacte时直接找该索引，查询速度会较快，索引数据库一般是由操作系统管理，但也可以直接下达update强迫系统立即修改索引数据库。
+命令参数 参数 描述 -e 将排除在寻找的范围之外 -1 如果 是 1．则启动安全模式。在安全模式下，使用者不会看到权限无法看到的档案。这会始速度减慢，因为 locate 必须至实际的档案系统中取得档案的权限资料 -f 将特定的档案系统排除在外，例如我们没有到理要把 proc 档案系统中的档案放在资料库中 -q 安静模式，不会显示任何错误讯息 -n 至多显示 n个输出 -r 使用正规运算式 做寻找的条件 -o 指定资料库存的名称 -d 指定资料库的路径 -h 显示辅助讯息 -V 显示程式的版本讯息 ### 使用实例 例一：查找和pwd相关的所有文件
+$ locate pwd 例二：搜索etc目录下所有以sh开头的文件
+$ locate /etc/sh </p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2016-12-18 07:09:28 +0800 +0800'>2016-12-18</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>62 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（18）: locate" href="https://jiangxingye.github.io/2016/12/18/linux-command18-locate/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（17）: whereis
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>whereis命令只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息。
+和find相比，whereis查找的速度非常快，这是因为linux系统会将 系统内的所有文件都记录在一个数据库文件中，当使用whereis和下面即将介绍的locate时，会从数据库中查找数据，而不是像find命令那样，通 过遍历硬盘来查找，效率自然会很高。
+但是该数据库文件并不是实时更新，默认情况下时一星期更新一次，因此，我们在用whereis和locate 查找文件时，有时会找到已经被删除的数据，或者刚刚建立文件，却无法查找到，原因就是因为数据库文件没有被更新。
+命令格式$ whereis [-bmsu] [BMS 目录名 -f ] 文件名 命令功能 whereis命令是定位可执行文件、源代码文件、帮助文件在文件系统中的位置。这些文件的属性应属于原始代码，二进制文件，或是帮助文件。whereis 程序还具有搜索源代码、指定备用搜索路径和搜索不寻常项的能力。
+命令参数 参数 描述 -b 定位可执行文件 -m 定位帮助文件 -s 定位源代码文件 -u 搜索默认路径下除可执行文件、源代码文件、帮助文件以外的其它文件 -B 指定搜索可执行文件的路径 -M 指定搜索帮助文件的路径 -S 指定搜索源代码文件的路径 ### 使用实例 例一：将和git文件相关的文件都查找出来
+$ whereis git 例二：只将二进制文件 查找出来
+$ whereis -b svn whereis -m svn 查出说明文档路径，whereis -s svn 找source源文件
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2016-12-17 02:42:58 +0800 +0800'>2016-12-17</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>53 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（17）: whereis" href="https://jiangxingye.github.io/2016/12/17/linux-command17-whereis/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（16）: which
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索：which 查看可执行文件的位置。whereis 查看文件的位置。locate 配合数据库查看文件位置。find 实际搜寻硬盘查询文件名称。
+which命令的作用是，在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是否存在，以及执行的到底是哪一个位置的命令。
+命令格式$ which 可执行文件名称 命令功能 which指令会在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。
+命令参数 参数 描述 -n 指定文件名长度，指定的长度必须大于或等于所有文件中最长的文件名 -p 与-n参数相同，但此处的包括了文件的路径 -w 指定输出时栏位的宽度 -V 显示版本信息 ### 使用实例 例一：查找文件、显示命令路径
+# which 是根据使用者所配置的 PATH 变量内的目录去搜寻可运行档的！ # 所以，不同的 PATH 配置内容所找到的命令当然不一样的！ $ which pwd 例二：用 which 去找出 which
+# 竟然会有两个 which ，其中一个是 alias 这就是所谓的『命令别名』，意思是输入 which 会等於后面接的那串命令！ $ which which 例三：找出 cd 这个命令
+# cd 这个常用的命令竟然找不到啊！为什么呢？这是因为 cd 是bash 内建的命令！ # 但是 which 默认是找 PATH 内所规范的目录，所以当然一定找不到的！ $ which cd </p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2016-12-16 03:25:49 +0800 +0800'>2016-12-16</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>70 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（16）: which" href="https://jiangxingye.github.io/2016/12/16/linux-command16-which/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（15）: tail
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>tail 命令从指定点开始将文件写到标准输出.使用tail命令的-f选项可以方便的查阅正在改变的日志文件,tail -f filename会把filename里最尾部的内容显示在屏幕上,并且不但刷新,使你看到最新的文件内容. 命令格式tail[必要参数][选择参数][文件] 命令功能 用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件。
+命令参数 参数 描述 -f 循环读取 -q 不显示处理信息 -v 显示详细的处理信息 -c&lt;数目&gt; 显示的字节数 -n&lt;行数&gt; 显示行数 –pid=PID 与-f合用,表示在进程ID,PID死掉之后结束 -q, –quiet, –silent 从不输出给出文件名的首部 -s, –sleep-interval=S 与-f合用,表示在每次反复的间隔休眠S秒 ### 使用实例 例一：显示文件末尾内容
+# 显示文件最后5行内容 $ tail -n 5 log2014.log 例二：循环查看文件内容
+$ tail -f test.log 例三：从第5行开始显示文件
+$ tail -n &#43;5 log2014.log </p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2016-12-15 07:00:26 +0800 +0800'>2016-12-15</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>50 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（15）: tail" href="https://jiangxingye.github.io/2016/12/15/linux-command15-tail/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（14）: head
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>head 与 tail 就像它的名字一样的浅显易懂，它是用来显示开头或结尾某个数量的文字区块，head 用来显示档案的开头至标准输出中，而 tail 想当然尔就是看档案的结尾。
+命令格式head [参数]… [文件]… 命令功能 head 用来显示档案的开头至标准输出中，默认head命令打印其相应文件的开头10行。
+命令参数 参数 描述 -q 隐藏文件名 -v 显示文件名 -c&lt;字节&gt; 显示字节数 -n&lt;行数&gt; 显示的行数 ### 使用实例 例一：显示文件的前n行
+$ head -n 5 log2014.log 例二：显示文件前n个字节
+$ head -c 20 log2014.log 例三：文件的除了最后n个字节以外的内容
+$ head -c -32 log2014.log 例四：输出文件除了最后n行的全部内容
+$ head -n -6 log2014.log </p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2016-12-14 06:35:49 +0800 +0800'>2016-12-14</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>50 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（14）: head" href="https://jiangxingye.github.io/2016/12/14/linux-command14-head/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（13）: less
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>less 工具也是对文件或其它输出进行分页显示的工具，应该说是linux正统查看文件内容的工具，功能极其强大。less 的用法比起 more 更加的有弹性。在 more 的时候，我们并没有办法向前面翻， 只能往后面看，但若使用了 less 时，就可以使用 [pageup] [pagedown] 等按键的功能来往前往后翻看文件，更容易用来查看一个文件的内容！除此之外，在 less 里头可以拥有更多的搜索功能，不止可以向下搜，也可以向上搜。
+命令格式$ less [参数] 文件 命令功能 less 与 more 类似，但使用 less 可以随意浏览文件，而 more 仅能向前移动，却不能向后移动，而且 less 在查看之前不会加载整个文件。
+命令参数 参数 描述 -b &lt;缓冲区大小&gt; 设置缓冲区的大小 -e 当文件显示结束后，自动离开 -f 强迫打开特殊文件，例如外围设备代号、目录和二进制文件 -g 只标志最后搜索的关键词 -i 忽略搜索时的大小写 -m 显示类似more命令的百分比 -N 显示每行的行号 -o &lt;文件名&gt; 将less 输出的内容在指定文件中保存起来 -Q 不使用警告音 -s 显示连续空行为一行 -S 行过长时间将超出部分舍弃 -x &lt;数字&gt; 将“tab”键显示为规定的数字空格 /字符串 向下搜索“字符串”的功能 ?字符串 向上搜索“字符串”的功能 n 重复前一个搜索（与 / 或 ?
+有关） N 反向重复前一个搜索（与 / 或 ?
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2016-12-13 13:46:14 +0800 +0800'>2016-12-13</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>202 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（13）: less" href="https://jiangxingye.github.io/2016/12/13/linux-command13-less/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（12）: more
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>more命令，功能类似 cat ，cat命令是整个文件的内容从上到下显示在屏幕上。
+more会以一页一页的显示方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能 。more命令从前向后读取文件，因此在启动时就加载整个文件。
+命令格式$ more [-dlfpcsu ] [-num ] [&#43;/ pattern] [&#43; linenum] [file … ] 命令功能 more命令和cat的功能一样都是查看文件里的内容，但有所不同的是more可以按页来查看文件的内容，还支持直接跳转行等功能。
+命令参数 参数 描述 &#43;n 从笫n行开始显示 -n 定义屏幕大小为n行 &#43;/pattern 每个档案显示前搜寻该字串（pattern），然后从该字串前两行之后开始显示 -c 从顶部清屏，然后显示 -d 提示“Press space to continue，’q’ to quit（按空格键继续，按q键退出）”，禁用响铃功能 -l 忽略Ctrl&#43;l（换页）字符 -p 通过清除窗口而不是滚屏来对文件进行换页，与-c选项相似 -s 把连续的多个空行显示为一行 -u 把文件内容中的下画线去掉 常用操作 操作 描述 Enter 向下n行，需要定义。默认为1行 Ctrl&#43;F 向下滚动一屏 空格键 向下滚动一屏 Ctrl&#43;B 返回上一屏 = 输出当前行的行号 ：f 输出文件名和当前行的行号 V 调用vi编辑器 !命令 调用Shell，并执行命令 q 退出more ### 命令实例 例一：显示文件中从第3行起的内容
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2016-12-12 13:29:39 +0800 +0800'>2016-12-12</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>98 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（12）: more" href="https://jiangxingye.github.io/2016/12/12/linux-command12-more/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（11）: nl
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>nl命令在linux系统中用来计算文件中行号。nl 可以将输出的文件内容自动的加上行号！其默认的结果与 cat -n 有点不太一样， nl 可以将行号做比较多的显示设计，包括位数与是否自动补齐 0 等等的功能。
+命令格式$ nl [选项]… [文件]… 命令功能 nl 命令读取 File 参数（缺省情况下标准输入），计算输入中的行号，将计算过的行号写入标准输出。
+在输出中，nl 命令根据您在命令行中指定的标志来计算左边的行。
+输入文本必须写在逻辑页中。每个逻辑页有头、主体和页脚节（可以有空节）。
+除非使用 -p 标志，nl 命令在每个逻辑页开始的地方重新设置行号。
+可以单独为头、主体和页脚节设置行计算标志（例如，头和页脚行可以被计算然而文本行不能）。
+命令参数 种类 参数 描述 -b -b a 表示不论是否为空行，也同样列出行号(类似 cat -n) -b t 如果有空行，空的那一行不要列出行号(默认值) -n -n ln 行号在萤幕的最左方显示 -n rn 行号在自己栏位的最右方显示，且不加 0 -n rz 行号在自己栏位的最右方显示，且加 0 -w -w 行号栏位的占用的位数 -p -p 在逻辑定界符处不重新开始计算 ### 命令实例 例一：用 nl 列出 log2012.log 的内容
+# 文件中的空白行，nl 不会加上行号 $ nl log2012.log 例二：用 nl 列出 log2012.log 的内容，空本行也加上行号
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2016-12-11 13:11:48 +0800 +0800'>2016-12-11</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>97 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（11）: nl" href="https://jiangxingye.github.io/2016/12/11/linux-command11-nl/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://jiangxingye.github.io/tags/linux%E5%91%BD%E4%BB%A4/page/4/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="https://jiangxingye.github.io/tags/linux%E5%91%BD%E4%BB%A4/page/6/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jiangxingye.github.io/">jiangxingye&#39;s blog</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+    <script async src="https://vercount.one/js"></script>
+
+<div class="footer-stats" style="text-align:center; color:var(--secondary); font-size:0.875em; margin-top:1rem;">
+      <span>本博客共 21891 字</span>
+      <span> · 本站总访问量 <span id="busuanzi_value_site_pv"></span></span>
+      <span> · 本文阅读量 <span id="busuanzi_value_page_pv"></span></span>
+</div>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Docker | jiangxingye&#39;s blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+<meta name="author" content="jiangxingye">
+<link rel="canonical" href="https://jiangxingye.github.io/tags/docker/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jiangxingye.github.io/img/avatar.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jiangxingye.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jiangxingye.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jiangxingye.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jiangxingye.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://jiangxingye.github.io/tags/docker/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://jiangxingye.github.io/tags/docker/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://jiangxingye.github.io/tags/docker/">
+  <meta property="og:site_name" content="jiangxingye&#39;s blog">
+  <meta property="og:title" content="Docker">
+  <meta property="og:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Docker">
+  <meta name="twitter:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://jiangxingye.github.io/" accesskey="h" title="jiangxingye&#39;s blog (Alt + H)">
+                <img src="https://jiangxingye.github.io/img/avatar.jpg" alt="" aria-label="logo"
+                    height="35">jiangxingye&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://jiangxingye.github.io/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/search/" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/tags/">Tags</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+  <h1>
+    Docker
+    <a href="/tags/docker/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">docker报错集锦
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>docker创建容器1. iptables failed创建 tale 容器时，如下命令：
+docker run -d –privileged –hostname tale –name tale \ -v /etc/localtime:/etc/localtime:ro \ -v /home/tale:/var/tale_home -p 127.0.0.1:234:9000 \ -m 1024m –memory-swap -1 tale:1.0 然后就报了以下错误：
+docker:
+Error response from daemon:
+driver failed programming external connectivity on endpoint tale (263775ff559176224428ec44dcec416a1c20e6c69198d9760b38f35849914260):
+iptables failed:
+iptables –wait -t nat -A DOCKER -p tcp -d 127.0.0.1 –dport 234 -j DNAT –to-destination 172.17.0.4:9000 !
+-i docker0:
+iptables:
+No chain/target/match by that name. (exit status 1). 解决办法：重启 docker 服务：
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-09-25 02:03:50 +0800 +0800'>2017-09-25</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>79 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to docker报错集锦" href="https://jiangxingye.github.io/2017/09/25/docker-errors/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">docker备份恢复之save与export
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>docker save导出docker save 命令用于持久化 镜像，先获得镜像名称，再执行保存：
+通过此命令查出要持久化的镜像名称 $ docker images # 持久化镜像名为 image_name 的镜像， $ docker save image_name -o ~/save.tar 注意： 如果镜像是在远程仓库，执行保存镜像的时候可能会报 Cowardly refusing to save to a terminal. Use the -o flag or redirect. 的错，可以通过 docker save image_name &gt; image_name.tar 将镜像从远程仓库持久化到本地。
+导入# 导入 save.tar $ docker load &lt; ~/save.tar # 查看镜像 $ docker images images docker export导出docker export 命令用于持久化 容器，先获取容器ID，再执行保存。
+通过此命令查出要持久化的容器ID $ docker ps -a # 持久化容器id为 container_id 的容器 $ docker export container_id &gt; ~/export.tar 导入# 从 export.tar 导入镜像 $ cat ~/export.tar | docker import - my-images:latest # 查看镜像 $ sudo docker images 不同通过 sudo docker images –tree 可以查看到镜像的所有层，就会发现， docker export 丢失了所有的历史，而docker save 则会保存所有历史。</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-09-18 14:38:52 +0800 +0800'>2017-09-18</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>104 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to docker备份恢复之save与export" href="https://jiangxingye.github.io/2017/09/18/docker-save-export/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">进入docker容器命令制作
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>通过attach进入容器# 进入容器（Docker自带的命令） $ sudo docker attach [name] 通过这命令进入容器后，执行ctrl&#43;d退出容器后发现容器也停止了。所以可以通过 先按，ctrl&#43;p 再按，ctrl&#43;q 退出 制作进入容器的命令既然attach退出很麻烦，一不小心容器就down掉了 通过 docker exec 进入容器是安全的，但是命令过长 所以我们可以通过下面操作，简化命令 1.创建文件 /usr/bin/ctn,内容如下 docker exec -it $1 /bin/bash2.检查环境变量有没有配置目录 /usr/bin $PATH bash:
+/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:
+No such file or directory配置环境变量的方式自行百度 3.完成上面两步即可通过命令 ctn 进入容器 $ ctn [name] 注意：如果是使用非root账号创建的命令，而docker命令是root权限，可能会存在权限问题可以设置 chmod 777 /usr/bin/ctn 设置权限使用 sudo ctn [name] 即可进入容器 4.自动补全docker名使用上面命令时，docker的名字都是手动输入，很麻烦，而且容易出错。
+我们可以借助complete命令，来补全docker信息。
+在~/.bashrc(作用于当前用户，如果所有用户，修改/etc/bashrc)文件中添加一行 # ctn auto complete complete -W “$(docker ps –format “{{.Names}}”)” ctn 再执行 source .bashrc 使之生效。
+这样我们输入 ctn 后，按 Tab 就会提示或自动补全了。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-06-01 09:25:11 +0800 +0800'>2017-06-01</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>78 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 进入docker容器命令制作" href="https://jiangxingye.github.io/2017/06/01/entering-docker/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">docker数据管理
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>数据卷数据卷是一个可供一个或多个容器使用的特殊目录，它绕过 UFS，可以提供很多有用的特性：
+数据卷可以在容器之间共享和重用 对数据卷的修改会立马生效 对数据卷的更新，不会影响镜像 数据卷默认会一直存在，即使容器被删除 注意：数据卷的使用，类似于 Linux 下对目录或文件进行 mount，镜像中的被指定为挂载点的目录中的文件会隐藏掉，能显示看的是挂载的数据卷。
+创建一个数据卷在用 docker run 命令的时候，使用 -v 标记来创建一个数据卷并挂载到容器里。在一次 run 中多次使用可以挂载多个数据卷。
+下面创建一个名为 web 的容器，并加载一个数据卷到容器的 /webapp 目录。
+$ sudo docker run -d -P –name web -v /webapp training/webapp python app.py 注意：也可以在 Dockerfile 中使用 VOLUME 来添加一个或者多个新的卷到由该镜像创建的任意容器。
+删除数据卷数据卷是被设计用来持久化数据的，它的生命周期独立于容器，Docker不会在容器被删除后自动删除数据卷，并且也不存在垃圾回收这样的机制来处理没有任何容器引用的数据卷。如果需要在删除容器的同时移除数据卷。可以在删除容器的时候使用 docker rm -v 这个命令。无主的数据卷可能会占据很多空间，要清理会很麻烦。Docker官方正在试图解决这个问题，相关工作的进度可以查看这个PR。
+挂载一个主机目录作为数据卷使用 -v 标记也可以指定挂载一个本地主机的目录到容器中去。
+$ sudo docker run -d -P –name web -v /src/webapp:/opt/webapp training/webapp python app.py 上面的命令加载主机的 /src/webapp 目录到容器的 /opt/webapp 目录。这个功能在进行测试的时候十分方便，比如用户可以放置一些程序到本地目录中，来查看容器是否正常工作。本地目录的路径必须是绝对路径，如果目录不存在 Docker 会自动为你创建它。
+注意：Dockerfile 中不支持这种用法，这是因为 Dockerfile 是为了移植和分享用的。然而，不同操作系统的路径格式不一样，所以目前还不能支持。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-05-23 13:43:06 +0800 +0800'>2017-05-23</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>295 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to docker数据管理" href="https://jiangxingye.github.io/2017/05/23/docker-data-manager/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">docker容器
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>容器镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的类和实例一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。
+容器的实质是进程，但与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的 命名空间。因此容器可以拥有自己的 root 文件系统、自己的网络配置、自己的进程空间，甚至自己的用户 ID 空间。容器内的进程是运行在一个隔离的环境里，使用起来，就好像是在一个独立于宿主的系统下操作一样。这种特性使得容器封装的应用比直接在宿主运行更加安全。
+命令# 创建一个名为myubuntu的容器 # -t:分配一个伪终端 -i:让容器的标准输入保持打开 $ docker run –name=myubuntu -t -i ubuntu /bin/bash # 创建一个名为webserver 的nginx容器，使用卷映射本机/home/faker/myspace/nginx目录到docker目录/usr/share/nginx/html $ docker run –name=webserver -d -v /home/faker/myspace/nginx:/usr/share/nginx/html -p 80:80 nginx # 查看容器的输出信息（打印信息，如 echo） # run的时候，使用-d将会不展示在宿主机上，可通过下面命令查看打印信息 $ docker run -d ubuntu:14.04 /bin/sh -c “while true;
+do echo hello world;
+sleep 1;
+done” $ docker logs [container ID or NAMES] # 启动容器 myubuntu $ docker start myubuntu # 关闭容器 myubuntu $ docker stop myubuntu # 查看已启动的容器 -a:查看包括未启动的容器在内的所有容器 $ docker ps [-a] # 进入容器（Docker自带的命令） $ docker attach [name] # 进入容器（通过exec） $ docker exec -it [name] /bin/bash # 导出容器快照到本地文件 $ docker export [container id] &gt; ubuntu.tar # 将容器快照导入为镜像 $ cat ubuntu.tar | docker import - test/ubuntu:v1.0 # 从制定 URL 或者某个目录导入 $ docker import http://example.com/exampleimage.tgz example/imagerepo # 删除容器 -f:删除正在运行的容器 $ docker [-f] rm myubuntu # 删除所有已关闭的容器 $ docker rm $(docker ps -a -q) # 查询各容器资源使用情况 $ docker stats $(docker ps –format={{.Names}})
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-05-23 13:29:38 +0800 +0800'>2017-05-23</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>149 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to docker容器" href="https://jiangxingye.github.io/2017/05/23/docker-container/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">docker仓库
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Docker Hub目前 Docker 官方维护了一个公共仓库 Docker Hub，其中已经包括了超过 15,000 的镜像。大部分需求，都可以通过在 Docker Hub 中直接下载镜像来实现。
+登录可以通过执行 docker login 命令来输入用户名、密码和邮箱来完成注册和登录。
+注册成功后，本地用户目录的 .dockercfg 中将保存用户的认证信息。
+基本操作用户无需登录即可通过 docker search 命令来查找官方仓库中的镜像，并利用 docker pull 命令来将它下载到本地。
+例如以 centos 为关键词进行搜索：
+$ sudo docker search centos NAME DESCRIPTION STARS OFFICIAL AUTOMATED centos The official build of CentOS. 465 [OK] tianon/centos CentOS 5 and 6, created using rinse instea… 28 blalor/centos Bare-bones base CentOS 6.5 image 6 [OK] saltstack/centos-6-minimal 6 [OK] tutum/centos-6.4 DEPRECATED. Use tutum/centos:6.4 instead. … 5 [OK] … 可以看到返回了很多包含关键字的镜像，其中包括镜像名字、描述、星级（表示该镜像的受欢迎程度）、是否官方创建、是否自动创建。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-05-23 13:15:52 +0800 +0800'>2017-05-23</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>760 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to docker仓库" href="https://jiangxingye.github.io/2017/05/23/docker-registry/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Dockerfile指令详解
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Dockerfile 是一个文本文件，其内包含了一条条的指令(Instruction)，每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。
+构建镜像命令格式：
+$ docker build [选项] &lt;上下文路径/URL/-&gt; 示例：
+构建一个名为 nginx:v3 的镜像 $ docker build -t nginx:v3 . RUN 执行命令1) shell格式：RUN &lt;命令&gt;，就像直接在命令行中输入的命令一样。刚才写的 Dockrfile 中的 RUN 指令就是这种格式。 RUN echo ‘Hello, Docker!’ &gt; /usr/share/nginx/html/index.html 2) exec格式：RUN [“可执行文件”, “参数1”, “参数2”]，这更像是函数调用中的格式。
+COPY 复制文件格式：
+COPY &lt;源路径&gt;… &lt;目标路径&gt;2) COPY [&#34;&lt;源路径1&gt;&#34;,… “&lt;目标路径&gt;&#34;]和 RUN 指令一样，也有两种格式，一种类似于命令行，一种类似于函数调用。COPY 指令将从构建上下文目录中 &lt;源路径&gt; 的文件/目录复制到新的一层的镜像内的 &lt;目标路径&gt; 位置。比如： COPY package.json /usr/src/app/ &lt;源路径&gt; 可以是多个，甚至可以是通配符，其通配符规则要满足 Go 的 filepath.Match 规则，如：
+COPY hom* /mydir/ COPY hom?.txt /mydir/ &lt;目标路径&gt; 可以是容器内的绝对路径，也可以是相对于工作目录的相对路径（工作目录可以用 WORKDIR 指令来指定）。目标路径不需要事先创建，如果目录不存在会在复制文件前先行创建缺失目录。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-05-22 11:11:42 +0800 +0800'>2017-05-22</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>1100 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to Dockerfile指令详解" href="https://jiangxingye.github.io/2017/05/22/dockerfile/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">docker镜像
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>WhatDocker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。
+因为镜像包含操作系统完整的 root 文件系统，其体积往往是庞大的，因此在 Docker 设计时，就充分利用 Union FS 的技术，将其设计为分层存储的架构。所以严格来说，镜像并非是像一个 ISO 那样的打包文件，镜像只是一个虚拟的概念，其实际体现并非由一个文件组成，而是由一组文件系统组成，或者说，由多层文件系统联合组成。
+安装# 官方 的安装脚本 $ curl -sSL https://get.docker.com/ | sh # 阿里云 的安装脚本 $ curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh - # DaoCloud 的安装脚本 $ curl -sSL https://get.daocloud.io/docker | sh 镜像# 获取镜像，registry为空默认从Docker Hub上获取 docker pull [选项] [Docker Registry地址]&lt;仓库名&gt;:&lt;标签&gt; # 交互式运行，退出删除:
+-i:交互式 ,-t:终端,–rm 退出删除 ,bash 启动bash窗口 $ docker run -it –rm ubuntu:14.04 bash # 列出已下载的镜像（只显示顶层镜像） -a:显示所有镜像 image_name:指定列出某个镜像 $ docker images [-a] [image_name] # 只显示虚悬镜像(dangling image) -f:–filter 过滤 $ docker images -f dangling=true # 过滤从mongo:3.2建立之后的镜像 $ docker images -f since=mongo:3.2 # 通过label过滤 $ docker images -f label=com.example.version=0.1 # 只显示镜像id $ docker images -q # 只包含镜像ID和仓库名 $ docker images –format “{{.ID}}:
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-05-19 08:47:33 +0800 +0800'>2017-05-19</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>163 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to docker镜像" href="https://jiangxingye.github.io/2017/05/19/docker-image/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">docker初体验
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>笔者环境操作系统：deepin 15.4 Desktop 64Bit 安装# 官方 的安装脚本 $ curl -sSL https://get.docker.com/ | sh # 阿里云 的安装脚本 $ curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh - # DaoCloud 的安装脚本 $ curl -sSL https://get.daocloud.io/docker | sh 获取镜像Docker Hub 上有大量的高质量的镜像可以用，这里我们就说一下怎么获取这些镜像并运行。从 Docker Registry 获取镜像的命令是 docker pull。其命令格式为：
+$ docker pull [选项] [Docker Registry地址]&lt;仓库名&gt;:&lt;标签&gt; 具体的选项可以通过 docker pull –help 命令看到，这里我们说一下镜像名称的格式。
+Docker Registry地址：地址的格式一般是 &lt;域名/IP&gt;[:端口号]。默认地址是 Docker Hub。
+仓库名：如之前所说，这里的仓库名是两段式名称，既 &lt;用户名&gt;/&lt;软件名&gt;。对于 Docker Hub，如果不给出用户名，则默认为 library，也就是官方镜像。
+$ sudo docker pull ubuntu 运行有了镜像后，我们就可以以这个镜像为基础启动一个容器来运行。以上面的 ubuntu 为例，如果我们打算启动里面的 bash 并且进行交互式操作的话，可以执行下面的命令。
+$ sudo docker run -it –rm ubuntu root@0ae011f7b5be:/# cat /etc/os-release NAME=“Ubuntu” VERSION=“16.04.2 LTS (Xenial Xerus)” ID=ubuntu ID_LIKE=debian PRETTY_NAME=“Ubuntu 16.04.2 LTS” VERSION_ID=“16.04” HOME_URL=“http://www.ubuntu.com/&#34; SUPPORT_URL=“http://help.ubuntu.com/&#34; BUG_REPORT_URL=“http://bugs.launchpad.net/ubuntu/&#34; VERSION_CODENAME=xenial UBUNTU_CODENAME=xenial docker run 就是运行容器的命令 -it：这是两个参数，一个是 -i：交互式操作，一个是 -t 终端。我们这里打算进入 bash 执行一些命令并查看返回结果，因此我们需要交互式终端。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-05-19 08:32:23 +0800 +0800'>2017-05-19</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>131 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to docker初体验" href="https://jiangxingye.github.io/2017/05/19/docker-first/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jiangxingye.github.io/">jiangxingye&#39;s blog</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+    <script async src="https://vercount.one/js"></script>
+
+<div class="footer-stats" style="text-align:center; color:var(--secondary); font-size:0.875em; margin-top:1rem;">
+      <span>本博客共 21891 字</span>
+      <span> · 本站总访问量 <span id="busuanzi_value_site_pv"></span></span>
+      <span> · 本文阅读量 <span id="busuanzi_value_page_pv"></span></span>
+</div>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

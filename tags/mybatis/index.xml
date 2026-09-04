@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Mybatis on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/tags/mybatis/</link>
+    <description>Recent content in Mybatis on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Sep 2019 13:02:59 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/tags/mybatis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mybatis常用Mapper语句</title>
+      <link>https://jiangxingye.github.io/2017/08/04/mybatis-mapper/</link>
+      <pubDate>Fri, 04 Aug 2017 07:54:47 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/08/04/mybatis-mapper/</guid>
+      <description>Mybatis常用Mapper语句</description>
+      <content:encoded><![CDATA[<p>插入/* 简单插入 */ <insert id="insertOne" parameterType="Person"> insert into person (id, name, age) VALUES(#{id}, #{name}, #{age});</p>
+<p></insert> /* 插入并返回对象的主键（数据库序列） */ <insert id="insertOne" parameterType="Person" useGeneratedKeys="true" keyProperty="id"> insert into person (name, age) VALUES(#{name}, #{age});</p>
+<p></insert> 更新/* 简单更新 */ <update id="updateName"> update person set name = #{name} where id = #{id};</p>
+<p></update> /* 更新值并返回 */ <select id="updateAge" parameterType="Person"> update person set age = age + #{age} where id = #{id} returning age;</p>
+<p></select> 插入或更新记录玩家在某种类型游戏下的统计记录：</p>
+<p>如果没有记录，则从插入，count字段为1；如果有记录，则更新count字段+1；</p>
+<p>方式一 <insert id="addCount" parameterType="CountRecord"> /<em>如果有记录，则更新；无记录，则noting</em>/ update count_record set &ldquo;count&rdquo; = &ldquo;count&rdquo;+1 where type_id = #{typeId} and user_id = #{userId};</p>
+<p>/<em>如果有记录，则noting；无记录，则插入</em>/ insert into count_record(type_id, user_id, &ldquo;count&rdquo;) select #{typeId}, #{userId}, 1 where not exists (select * from count where type_id = #{typeId} and user_id = #{userId});</p>
+<p></insert> 方式二 /* 利用 PostgreSQL 的 conflic 特性 */ <insert id="addCount" parameterType="CountRecord"> insert into count_record(type_id, user_id, &ldquo;count&rdquo;) VALUES (#{typeId}, #{userId}, #{count}) on conflict(type_id,user_id) do update set &ldquo;count&rdquo; = count_record.&ldquo;count&rdquo; + 1 </insert></p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>运维 | jiangxingye&#39;s blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+<meta name="author" content="jiangxingye">
+<link rel="canonical" href="https://jiangxingye.github.io/categories/%E8%BF%90%E7%BB%B4/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jiangxingye.github.io/img/avatar.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jiangxingye.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jiangxingye.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jiangxingye.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jiangxingye.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://jiangxingye.github.io/categories/%E8%BF%90%E7%BB%B4/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://jiangxingye.github.io/categories/%E8%BF%90%E7%BB%B4/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://jiangxingye.github.io/categories/%E8%BF%90%E7%BB%B4/">
+  <meta property="og:site_name" content="jiangxingye&#39;s blog">
+  <meta property="og:title" content="运维">
+  <meta property="og:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="运维">
+  <meta name="twitter:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://jiangxingye.github.io/" accesskey="h" title="jiangxingye&#39;s blog (Alt + H)">
+                <img src="https://jiangxingye.github.io/img/avatar.jpg" alt="" aria-label="logo"
+                    height="35">jiangxingye&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://jiangxingye.github.io/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/search/" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/categories/">Categories</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+  <h1>
+    运维
+    <a href="/categories/%E8%BF%90%E7%BB%B4/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（51）: wc
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Linux系统中的wc(Word Count)命令的功能为统计指定文件中的字节数、字数、行数，并将统计结果显示输出。
+命令格式$ wc [选项]文件… 命令功能 统计指定文件中的字节数、字数、行数，并将统计结果显示输出。该命令统计指定文件中的字节数、字数、行数。如果没有给出文件名，则从标准输入读取。wc同时也给出所指定文件的总统计数。
+命令参数 参数 描述 -c 统计字节数 -l 统计行数 -m 统计字符数。这个标志不能与 -c 标志一起使用 -w 统计字数。一个字被定义为由空白、跳格或换行字符分隔的字符串 -L 打印最长行的长度 -help 显示帮助信息 –version 显示版本信息 ### 使用实例 例一：查看文件的字节数、字数、行数
+$ wc 1.txt 5 19 105 1.txt 行数 单词数 字节数 文件名 例二：用wc命令怎么做到只打印统计数字不打印文件名
+$ wc -l 1.txt 5 1.txt # 5行 $ cat 1.txt | wc -l5 # 值输出数字 **`例三`：用来统计当前目录下的文件和文件夹总数** bash # 数量中包含当前目录 $ ls -l | wc -l 10 # 7个文件 &#43; 2个文件夹 &#43; 1个当前目录
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-01-19 01:33:59 +0800 +0800'>2017-01-19</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>74 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（51）: wc" href="https://jiangxingye.github.io/2017/01/19/linux-command51-wc/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（50）: grep
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。
+grep的工作方式是这样的，它在一个或多个文件中搜索字符串模板。如果模板包括空格，则必须被引用，模板后的所有字符串被看作文件名。搜索的结果被送到标准输出，不影响原文件内容。
+grep可用于shell脚本，因为grep通过返回一个状态值来说明搜索的状态，如果模板搜索成功，则返回0，如果搜索不成功，则返回1，如果搜索的文件不存在，则返回2。我们利用这些返回值就可进行一些自动化的文本处理工作。
+命令格式$ grep [option] pattern file 命令功能 用于过滤/搜索的特定字符。可使用正则表达式能多种命令配合使用，使用上十分灵活。
+命令参数 参数 描述 -a –text 不要忽略二进制的数据 -A&lt;显示行数&gt; –after-context=&lt;显示行数&gt; 除了显示符合范本样式的那一列之外，并显示该行之后的内容 -b –byte-offset 在显示符合样式的那一行之前，标示出该行第一个字符的编号 -B&lt;显示行数&gt; –before-context=&lt;显示行数&gt; 除了显示符合样式的那一行之外，并显示该行之前的内容 -c –count 计算符合样式的列数 -C&lt;显示行数&gt; –context=&lt;显示行数&gt;或-&lt;显示行数&gt; 显示上下文n行 -d &lt;动作&gt; –directories=&lt;动作&gt; 当指定要查找的是目录而非文件时，必须使用这项参数，否则grep指令将回报信息并停止动作 -e&lt;范本样式&gt; –regexp=&lt;范本样式&gt; 指定字符串做为查找文件内容的样式 -E –extended-regexp 将样式为延伸的普通表示法来使用 -f&lt;规则文件&gt; –file=&lt;规则文件&gt; 指定规则文件，其内容含有一个或多个规则样式，让grep查找符合规则条件的文件内容，格式为每行一个规则样式 -F –fixed-regexp 将样式视为固定字符串的列表 -G –basic-regexp 样式视为普通的表示法来使用 -h –no-filename 在显示符合样式的那一行之前，不标示该行所属的文件名称 -H –with-filename 在显示符合样式的那一行之前，表示该行所属的文件名称 -i –ignore-case 忽略字符的大小写 -l –file-with-matches 只列出匹配的文件名 -L –files-without-match 列出不匹配的文件名 -n –line-number 显示行号 -q –quiet或–silent 不显示任何信息 -r –recursive 递归查询， 此参数的效果和指定“-d recurse”参数相同 -s –no-messages 不显示错误信息 -v –revert-match 显示不包含匹配文本的所有行 -V –version 显示版本信息 -w –word-regexp 只显示全字符合的列 -x –line-regexp 只显示全列符合的列 -y 此参数的效果和指定“-i”参数相同 规则表达式grep的规则表达式 ^ #锚定行的开始 如：’^grep’匹配所有以grep开头的行。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-01-18 02:12:46 +0800 +0800'>2017-01-18</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>340 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（50）: grep" href="https://jiangxingye.github.io/2017/01/18/linux-command50-grep/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（49）: cal
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>cal命令可以用来显示公历（阳历）日历。公历是现在国际通用的历法，又称格列历，通称阳历。“阳历”又名“太阳历”，系以地球绕行太阳一周为一年，为西方各国所通用，故又名“西历”。
+命令格式$ cal [参数][月份][年份] 命令功能用于查看日历等时间信息，如只有一个参数，则表示年份(1-9999)，如有两个参数，则表示月份和年份 命令参数 参数 描述 -1 显示一个月的月历 -3 显示系统前一个月，当前月，下一个月的月历 -s 显示星期天为一个星期的第一天，默认的格式 -m 显示星期一为一个星期的第一天 -j 显示在当年中的第几天（一年日期按天算，从1月1号算起，默认显示当前月在一年中的天数） -y 显示当前年份的日历 使用实例例一：显示当前月份日历 $ cal 例二：显示指定月份的日历 $ cal 6 2016 例三：显示2016年的日历 $ cal -y 2016 $ cal 2016 例四：显示自1月1日的天数 $ cal -j 例五：星期一显示在第一列 $ cal -m
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-01-17 01:38:32 +0800 +0800'>2017-01-17</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>44 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（49）: cal" href="https://jiangxingye.github.io/2017/01/17/linux-command49-cal/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（48）: date
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>在linux环境中，不管是编程还是其他维护，时间是必不可少的，也经常会用到时间的运算，熟练运用date命令来表示自己想要表示的时间，肯定可以给自己的工作带来诸多方便。
+命令格式$ date [参数]… [&#43;格式] 命令功能 date 可以用来显示或设定系统的日期与时间。
+命令参数命令参数 参数 描述 %H 小时(以00-23来表示) %I 小时(以01-12来表示) %K 小时(以0-23来表示) %l 小时(以0-12来表示) %M 分钟(以00-59来表示) %P AM或PM %r 时间(含时分秒，小时以12小时AM/PM来表示) %s 总秒数。起算时间为1970-01-01 00:00:00 UTC %S 秒(以本地的惯用法来表示) %T 时间(含时分秒，小时以24小时制来表示) %X 时间(以本地的惯用法来表示) %Z 市区 %a 星期的缩写 %A 星期的完整名称 %b 月份英文名的缩写 %B 月份的完整英文名称 %c 日期与时间。只输入date指令也会显示同样的结果 %d 日期(以01-31来表示) %D 日期(含年月日) %j 该年中的第几天 %m 月份(以01-12来表示) %U 该年中的周数 %w 该周的天数，0代表周日，1代表周一，异词类推 %x 日期(以本地的惯用法来表示) %y 年份(以00-99来表示) %Y 年份(以四位数来表示) %n 在显示时，插入新的一行 %t 在显示时，插入tab MM 月份(必要) DD 日期(必要) hh 小时(必要) mm 分钟(必要) ss 秒(选择性) 选择参数 参数 描述 -d&lt;字符串&gt; 显示字符串所指的日期与时间。字符串前后必须加上双引号 -s&lt;字符串&gt; 根据字符串来设置日期与时间。字符串前后必须加上双引号 -u 显示GMT –help 在线帮助 –version 显示版本信息 使用说明1.在显示方面，使用者可以设定欲显示的格式，格式设定为一个加号后接数个标记，其中可用的标记列表如下:
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-01-16 06:39:27 +0800 +0800'>2017-01-16</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>493 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（48）: date" href="https://jiangxingye.github.io/2017/01/16/linux-command48-date/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（47）: diff
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>diff 命令是 linux上非常重要的工具，用于比较文件的内容，特别是比较两个版本不同的文件以找到改动的地方。diff在命令行中打印每一个行的改动。最新版本的diff还支持二进制文件。diff程序的输出被称为补丁 (patch)，因为Linux系统中还有一个patch程序，可以根据diff的输出将a.c的文件内容更新为b.c。diff是svn、cvs、git等版本控制工具不可或缺的一部分。
+命令格式$ diff [参数] [文件1或目录1] [文件2或目录2] 命令功能 diff命令能比较单个文件或者目录内容。如果指定比较的是文件，则只有当输入为文本文件时才有效。以逐行的方式，比较文本文件的异同处。如果指定比较的是目录的的时候，diff 命令会比较两个目录下名字相同的文本文件。列出不同的二进制文件、公共子目录和只在一个目录出现的文件。
+命令参数 参数 描述 - 指定要显示多少行的文本。此参数必须与-c或-u参数一并使用 -a或–text diff预设只会逐行比较文本文件 -b或–ignore-space-change 不检查空格字符的不同 -B或–ignore-blank-lines 不检查空白行 -c 显示全部内文，并标出不同之处 -C或–context 与执行”-c”指令相同 -d或–minimal 使用不同的演算法，以较小的单位来做比较 -D或ifdef 此参数的输出格式可用于前置处理器巨集 -e或–ed 此参数的输出格式可用于ed的script文件 -f或-forward-ed 输出的格式类似ed的script文件，但按照原来文件的顺序来显示不同处 -H或–speed-large-files 比较大文件时，可加快速度 -l或–ignore-matching-lines 若两个文件在某几行有所不同，而这几行同时都包含了选项中指定的字符或字符串，则不显示这两个文件的差异 -i或–ignore-case 不检查大小写的不同 -l或–paginate 将结果交由pr程序来分页 -n或–rcs 将比较结果以RCS的格式来显示 -N或–new-file 在比较目录时，若文件A仅出现在某个目录中，预设会显示：Only in目录：文件A若使用-N参数，则diff会将文件A与一个空白的文件比较 -p 若比较的文件为C语言的程序码文件时，显示差异所在的函数名称 -P或–unidirectional-new-file 与-N类似，但只有当第二个目录包含了一个第一个目录所没有的文件时，才会将这个文件与空白的文件做比较 -q或–brief 仅显示有无差异，不显示详细的信息 -r或–recursive 比较子目录中的文件 -s或–report-identical-files 若没有发现任何差异，仍然显示信息 -S或–starting-file 在比较目录时，从指定的文件开始比较 -t或–expand-tabs 在输出时，将tab字符展开 -T或–initial-tab 在每行前面加上tab字符以便对齐 -u,-U或–unified= 以合并的方式来显示文件内容的不同 -v或–version 显示版本信息 -w或–ignore-all-space 忽略全部的空格字符 -W或–width 在使用-y参数时，指定栏宽 -x或–exclude 不比较选项中所指定的文件或目录 -X或–exclude-from 您可以将文件或目录类型存成文本文件，然后在=中指定此文本文件 -y或–side-by-side 以并列的方式显示文件的异同之处 –left-column 在使用-y参数时，若两个文件某一行内容相同，则仅在左侧的栏位显示该行内容 –suppress-common-lines 在使用-y参数时，仅显示不同之处 –help 显示帮助 使用实例例一：比较两个文件 $ diff 1.txt 2.txt 1c1 &lt; ii — &gt; iii 说明：
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-01-15 06:08:08 +0800 +0800'>2017-01-15</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>212 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（47）: diff" href="https://jiangxingye.github.io/2017/01/15/linux-command47-diff/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（46）: ln
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>ln是linux中又一个非常重要命令，它的功能是为某一个文件在另外一个位置建立一个同步的链接.当我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，我们只要在某个固定的目录，放上该文件，然后在 其它的目录下用ln命令链接（link）它就可以，不必重复的占用磁盘空间。
+命令格式$ ln [参数][源文件或目录][目标文件或目录] 命令功能 Linux文件系统中，有所谓的链接(link)，我们可以将其视为档案的别名，而链接又可分为两种 :
+硬链接(hard link)与软链接(symbolic link)，硬链接的意思是一个档案可以有多个名称，而软链接的方式则是产生一个特殊的档案，该档案的内容是指向另一个档案的位置。硬链接是存在同一个文件系统中，而软链接却可以跨越不同的文件系统。软连接 1.软链接，以路径的形式存在。类似于Windows操作系统中的快捷方式 2.软链接可以 跨文件系统 ，硬链接不可以 3.软链接可以对一个不存在的文件名进行链接 4.软链接可以对目录进行链接硬链接 1.硬链接，以文件副本的形式存在。但不占用实际空间。
+2.不允许给目录创建硬链接 3.硬链接只有在同一个文件系统中才能创建两点注意 第一，ln命令会保持每一处链接文件的同步性，也就是说，不论你改动了哪一处，其它的文件都会发生相同的变化；
+第二，ln的链接又分软链接和硬链接两种，软链接就是ln –s 源文件 目标文件，它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，硬链接 ln 源文件 目标文件，没有参数-s， 它会在你选定的位置上生成一个和源文件大小相同的文件，无论是软链接还是硬链接，文件都保持同步变化。
+ln指令用在链接文件或目录，如同时指定两个以上的文件或目录，且最后的目的地是一个已经存在的目录，则会把前面指定的所有文件或目录复制到该目录中。若同时指定多个文件或目录，且最后的目的地并非是一个已存在的目录，则会出现错误信息。
+命令参数必要参数 参数 描述 -b 删除，覆盖以前建立的链接 -d 允许超级用户制作目录的硬链接 -f 强制执行 -i 交互模式，文件存在则提示用户是否覆盖 -n 把符号链接视为一般目录 -s 软链接(符号链接) -v 显示详细的处理过程 选择参数 参数 描述 -S “-S&lt;字尾备份字符串&gt; ”或 “–suffix=&lt;字尾备份字符串&gt;” -V “-V&lt;备份方式&gt;”或“–version-control=&lt;备份方式&gt;” –help 显示帮助信息 –version 显示版本信息 使用实例例一：给文件创建软链接 # 为2.txt文件创建软链接2，如果2.txt丢失，2将失效 $ ln -s 2.txt 2 例二：给文件创建硬链接 # 为1.txt创建硬链接1，1.txt与1的各项属性相同,删除1.txt，1仍能使用 $ ln 1.txt 1 例三：接上面两实例，链接完毕后，删除和重建链接原文件 $ ll -rw-r–r– 2 faker faker 10 1月 22 11:28 1 -rw-r–r– 2 faker faker 10 1月 22 11:28 1.txt lrwxrwxrwx 1 faker faker 5 1月 28 11:15 2 -&gt; 2.txt -rwxrwxrwx 1 faker faker 14 1月 18 10:06 2.txt $ rm 1.txt 2.txt -rw-r–r– 1 faker faker 10 1月 22 11:28 1 lrwxrwxrwx 1 faker faker 5 1月 28 11:15 2 -&gt; 2.txt $ cat 1 sdfiskdlf $ cat 2 cat:
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-01-14 03:00:33 +0800 +0800'>2017-01-14</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>183 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（46）: ln" href="https://jiangxingye.github.io/2017/01/14/linux-command46-ln/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（45）: scp
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>scp是secure copy的简写，用于在Linux下进行远程拷贝文件的命令，和它类似的命令有cp，不过cp只是在本机进行拷贝不能跨服务器，而且scp传输是加密的。可能会稍微影响一下速度。当你服务器硬盘变为只读 read only system时，用scp可以帮你把文件移出来。另外，scp还非常不占资源，不会提高多少系统负荷，在这一点上，rsync就远远不及它了。虽然 rsync比scp会快一点，但当小文件众多的情况下，rsync会导致硬盘I/O非常高，而scp基本不影响系统正常使用。
+命令格式$ scp [参数] [原路径] [目标路径] 命令功能 scp是 secure copy的缩写, scp是linux系统下基于ssh登陆进行安全的远程文件拷贝命令。linux的scp命令可以在linux服务器之间复制文件和目录。
+命令参数 参数 描述 -1 强制scp命令使用协议ssh1 -2 强制scp命令使用协议ssh2 -4 强制scp命令只使用IPv4寻址 -6 强制scp命令只使用IPv6寻址 -B 使用批处理模式（传输过程中不询问传输口令或短语） -C 允许压缩。（将-C标志传递给ssh，从而打开压缩功能） -p 保留原文件的修改时间，访问时间和访问权限 -q 不显示传输进度条 -r 递归复制整个目录 -v 详细方式显示输出。scp和ssh(1)会显示出整个过程的调试信息。这些信息用于调试连接，验证和配置问题 -c cipher 以cipher将数据传输进行加密，这个选项将直接传递给ssh -F ssh_config 指定一个替代的ssh配置文件，此参数直接传递给ssh -i identity_file 从指定文件中读取传输时使用的密钥文件，此参数直接传递给ssh -l limit 限定用户所能使用的带宽，以Kbit/s为单位 -o ssh_option 如果习惯于使用ssh_config(5)中的参数传递方式 -P port 注意是大写的P, port是指定数据传输用到的端口号 -S program 指定加密传输时所使用的程序。此程序必须能够理解ssh(1)的选项 使用实例从本地服务器复制到远程服务器：
+指定了用户名，命令执行后需输入密码 $ scp -r img/* root@server:/var/project/img/ # 没有指定用户名，命令执行后需要输入用户名密码 $ scp -r img/* server:/var/project/img/ 从远程服务器复制到本地当前目录： $ scp -r server:/var/project/img/* .
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-01-13 02:53:48 +0800 +0800'>2017-01-13</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>81 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（45）: scp" href="https://jiangxingye.github.io/2017/01/13/linux-command45-scp/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（44）: rcp
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>rcp代表“remote file copy”（远程文件拷贝）。该命令用于在计算机之间拷贝文件。rcp命令有两种格式。第一种格式用于文件到文件的拷贝；第二种格式用于把文件或目录拷贝到另一个目录中。
+命令格式$ rcp [参数] [源文件] [目标文件] 命令功能 rcp命令用在远端复制文件或目录，如同时指定两个以上的文件或目录，且最后的目的地是一个已经存在的目录，则它会把前面指定的所有文件或目录复制到该目录中。
+命令参数 命令 描述 -r 递归地把源目录中的所有内容拷贝到目的目录中。要使用这个选项，目的必须是一个目录 -p 试图保留源文件的修改时间和模式，忽略umask -k 请求rcp获得在指定区域内的远程主机的Kerberos 许可，而不是获得由krb_relmofhost⑶确定的远程主机区域内的远程主机的Kerberos许可。
+-x 为传送的所有数据打开DES加密。这会影响响应时间和CPU利用率，但是可以提高安全性。如果在文件名中指定的路径不是完整的路径名，那么这个路径被解释为相对远程机上同名用户的主目录。如果没有给出远程用户名，就使用当前用户名。如果远程机上的路径包含特殊shell字符，需要用反斜线（\）、双引号（”）或单引号（’）括起来，使所有的shell元字符都能被远程地解释。需要说明的是，rcp不提示输入口令，它通过rsh命令来执行拷贝。
+directory 每个文件或目录参数既可以是远程文件名也可以是本地文件名。远程文件名具有如下形式：rname@rhost：path，其中rname是远程用户名，rhost是远程计算机名，path是这个文件的路径。
+使用实例使用rcp，需要具备的条件 如果系统中有 /etc/hosts 文件，系统管理员应确保该文件包含要与之进行通信的远程主机的项。
+/etc/hosts 文件中有一行文字，其中包含每个远程系统的以下信息：
+internet_address official_name alias 例如：
+9.186.10.*** webserver1.com.58.webserver.rhosts 文件 .rhosts 文件位于远程系统的主目录下，其中包含本地系统的名称和本地登录名。
+例如，远程系统的 .rhosts 文件中的项可能是：
+webserver1 root 其中，webserver1 是本地系统的名称，root 是本地登录名。这样，webserver1 上的 root 即可在包含.rhosts 文件的远程系统中来回复制文件。配置过程:只对root用户生效 在双方root用户根目录下建立.rhosts文件,并将双方的hostname加进去.在此之前应在双方的 /etc/hosts文件中加入对方的IP和hostname 把rsh服务启动起来,redhat默认是不启动的。方法：用执行ntsysv命令,在rsh选项前用空格键选中,确定退出。然后执行：service xinetd restart即可。
+3.到/etc/pam.d/目录下,把rsh文件中的auth required /lib/security/pam_securetty.so一行用“#”注释掉即可。（只有注释掉这一行，才能用root用户登录） 例一：将本地img文件夹内的所有内容 复制到服务器相应的img目录下 # -r 递归子目录 $ rcp -r img/* webserver1:/var/project/img/ 例二：将服务器的img文件夹内的所有内容 复制到本地目录下 # -r 递归子目录 $ rcp -r webserver1:/var/project/img/* img/ 例三：将目录复制到远程系统：要将本地目录及其文件和子目录复制到远程系统 # 将本地的img目录复制到服务器的project目录下 $ rcp -r img/ webserver1:/var/project/
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-01-12 02:36:06 +0800 +0800'>2017-01-12</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>87 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（44）: rcp" href="https://jiangxingye.github.io/2017/01/12/linux-command44-rcp/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（43）: telnet
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>telnet命令通常用来远程登录。telnet程序是基于TELNET协议的远程登录客户端程序。Telnet协议是TCP/IP协议族中的一员，是Internet远程登陆服务的标准协议和主要方式。它为用户提供了在本地计算机上完成远程主机工作的 能力。在终端使用者的电脑上使用telnet程序，用它连接到服务器。终端使用者可以在telnet程序中输入命令，这些命令会在服务器上运行，就像直接在服务器的控制台上输入一样。可以在本地就能控制服务器。要开始一个 telnet会话，必须输入用户名和密码来登录服务器。Telnet是常用的远程控制Web服务器的方法。
+但是，telnet因为采用明文传送报文，安全性不好，很多Linux服务器都不开放telnet服务，而改用更安全的ssh方式了。但仍然有很多别的系统可能采用了telnet方式来提供远程登录，因此弄清楚telnet客户端的使用方式仍是很有必要的。
+telnet命令还可做别的用途，比如确定远程服务的状态，比如确定远程服务器的某个端口是否能访问。
+命令格式$ telnet [参数][主机] 命令功能 执行telnet指令开启终端机阶段作业，并登入远端主机。
+命令参数 命令 描述 -8 允许使用8位字符资料，包括输入与输出 -a 尝试自动登入远端系统 -b&lt;主机别名&gt; 使用别名指定远端主机名称 -c 不读取用户专属目录里的.telnetrc文件 -d 启动排错模式 -e&lt;脱离字符&gt; 设置脱离字符 -E 滤除脱离字符 -f 此参数的效果和指定”-F”参数相同 -F 使用Kerberos V5认证时，加上此参数可把本地主机的认证数据上传到远端主机 -k&lt;域名&gt; 使用Kerberos认证时，加上此参数让远端主机采用指定的领域名，而非该主机的域名 -K 不自动登入远端主机 -l&lt;用户名称&gt; 指定要登入远端主机的用户名称 -L 允许输出8位字符资料 -n&lt;记录文件&gt; 指定文件记录相关信息 -r 使用类似rlogin指令的用户界面 -S&lt;服务类型&gt; 设置telnet连线所需的IP TOS信息 -x 假设主机有支持数据加密的功能，就使用它 -X&lt;认证形态&gt; 关闭指定的认证形态 使用实例例一：远程服务器无法访问 $ telnet 192.168.120.206 Trying 192.168.120.209… telnet:
+connect to address 192.168.120.209:
+No route to host telnet:
+Unable to connect to remote host:
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-01-12 01:24:01 +0800 +0800'>2017-01-12</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>163 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（43）: telnet" href="https://jiangxingye.github.io/2017/01/12/linux-command43-telnet/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（42）: ss
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>ss是Socket Statistics的缩写。顾名思义，ss命令可以用来获取socket统计信息，它可以显示和netstat类似的内容。但ss的优势在于它能够显示更多更详细的有关TCP和连接状态的信息，而且比netstat更快速更高效。
+当服务器的socket连接数量变得非常大时，无论是使用netstat命令还是直接cat /proc/net/tcp，执行速度都会很慢。可能你不会有切身的感受，但请相信我，当服务器维持的连接达到上万个的时候，使用netstat等于浪费 生命，而用ss才是节省时间。
+天下武功唯快不破。ss快的秘诀在于，它利用到了TCP协议栈中tcp_diag。tcp_diag是一个用于分析统计的模块，可以获得Linux 内核中第一手的信息，这就确保了ss的快捷高效。当然，如果你的系统中没有tcp_diag，ss也可以正常运行，只是效率会变得稍慢。（但仍然比 netstat要快。） 命令格式$ ss [参数] $ ss[参数] [过滤] 命令功能 ss(Socket Statistics的缩写)命令可以用来获取 socket统计信息，此命令输出的结果类似于 netstat输出的内容，但它能显示更多更详细的 TCP连接状态的信息，且比 netstat 更快速高效。它使用了 TCP协议栈中 tcp_diag（是一个用于分析统计的模块），能直接从获得第一手内核信息，这就使得 ss命令快捷高效。在没有 tcp_diag，ss也可以正常运行。
+命令参数 命令 描述 -h, –help 帮助信息 -V, –version 程序版本信息 -n, –numeric 不解析服务名称 -r, –resolve 解析主机名 -a, –all 显示所有套接字（sockets） -l, –listening 显示监听状态的套接字（sockets） -o, –options 显示计时器信息 -e, –extended 显示详细的套接字（sockets）信息 -m, –memory 显示套接字（socket）的内存使用情况 -p, –processes 显示使用套接字（socket）的进程 -i, –info 显示 TCP内部信息 -s, –summary 显示套接字（socket）使用概况 -4, –ipv4 仅显示IPv4的套接字（sockets） -6, –ipv6 仅显示IPv6的套接字（sockets） -0, –packet 显示 PACKET 套接字（socket） -t, –tcp 仅显示 TCP套接字（sockets） -u, –udp 仅显示 UCP套接字（sockets） -d, –dccp 仅显示 DCCP套接字（sockets） -w, –raw 仅显示 RAW套接字（sockets） -x, –unix 仅显示 Unix套接字（sockets） -f, –family=FAMILY 显示 FAMILY类型的套接字（sockets），FAMILY可选，支持 unix, inet, inet6, link, netlink -A, –query=QUERY, –socket=QUERYQUERY := {all inet -D, –diag=FILE 将原始TCP套接字（sockets）信息转储到文件 -F, –filter=FILE 从文件中都去过滤器信息 FILTER := [ state TCP-STATE ] [ EXPRESSION ] 使用实例例一：显示TCP连接 $ ss -t -a 例二：显示 Sockets 摘要 $ ss -s Total:
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-01-11 02:34:47 +0800 +0800'>2017-01-11</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>421 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（42）: ss" href="https://jiangxingye.github.io/2017/01/11/linux-command42-ss/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://jiangxingye.github.io/categories/%E8%BF%90%E7%BB%B4/page/3/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="https://jiangxingye.github.io/categories/%E8%BF%90%E7%BB%B4/page/5/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jiangxingye.github.io/">jiangxingye&#39;s blog</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+    <script async src="https://vercount.one/js"></script>
+
+<div class="footer-stats" style="text-align:center; color:var(--secondary); font-size:0.875em; margin-top:1rem;">
+      <span>本博客共 21891 字</span>
+      <span> · 本站总访问量 <span id="busuanzi_value_site_pv"></span></span>
+      <span> · 本文阅读量 <span id="busuanzi_value_page_pv"></span></span>
+</div>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

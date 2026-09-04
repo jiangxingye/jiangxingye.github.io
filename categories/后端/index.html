@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>后端 | jiangxingye&#39;s blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+<meta name="author" content="jiangxingye">
+<link rel="canonical" href="https://jiangxingye.github.io/categories/%E5%90%8E%E7%AB%AF/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jiangxingye.github.io/img/avatar.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jiangxingye.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jiangxingye.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jiangxingye.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jiangxingye.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://jiangxingye.github.io/categories/%E5%90%8E%E7%AB%AF/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://jiangxingye.github.io/categories/%E5%90%8E%E7%AB%AF/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://jiangxingye.github.io/categories/%E5%90%8E%E7%AB%AF/">
+  <meta property="og:site_name" content="jiangxingye&#39;s blog">
+  <meta property="og:title" content="后端">
+  <meta property="og:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="后端">
+  <meta name="twitter:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://jiangxingye.github.io/" accesskey="h" title="jiangxingye&#39;s blog (Alt + H)">
+                <img src="https://jiangxingye.github.io/img/avatar.jpg" alt="" aria-label="logo"
+                    height="35">jiangxingye&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://jiangxingye.github.io/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/search/" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/categories/">Categories</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+  <h1>
+    后端
+    <a href="/categories/%E5%90%8E%E7%AB%AF/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[转]谈谈Java中的语法糖
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>语法糖（Syntactic Sugar），也称糖衣语法，指在计算机语言中添加的某种语法，这种语法对语言本身功能来说没有什么影响，只是为了方便程序员的开发，提高开发效率。说白了，语法糖就是对现有语法的一个封装。
+Java作为一种与平台无关的高级语言，当然也含有语法糖，这些语法糖并不被虚拟机所支持，在编译成字节码阶段就自动转换成简单常用语法。一般来说Java中的语法糖主要有以下几种：
+泛型与类型擦除 自动装箱与拆箱，变长参数、 增强for循环 内部类与枚举类 泛型与类型擦除Java语言并不是一开始就支持泛型的。在早期的JDK中，只能通过Object类是所有类型的父类和强制类型转换来实现泛型的功能。强制类型转换的缺点就是把编译期间的问题延迟到运行时，JVM并不能为我们提供编译期间的检查。
+在JDK1.5中，Java语言引入了泛型机制。但是这种泛型机制是通过类型擦除来实现的，即Java中的泛型只在程序源代码中有效（源代码阶段提供类型检查），在编译后的字节码中自动用强制类型转换进行替代。也就是说，Java语言中的泛型机制其实就是一颗语法糖，相较与C&#43;&#43;、C#相比，其泛型实现实在是不那么优雅。
+/** * 在源代码中存在泛型 */ public static void main(String[] args) { Map&lt;String,String&gt; map = new HashMap&lt;String,String&gt;();
+map.put(“hello”,“你好”);
+String hello = map.get(“hello”);
+System.out.println(hello);
+} 当上述源代码被编译为class文件后，泛型被擦除且引入强制类型转换 public static void main(String[] args) { HashMap map = new HashMap();
+//类型擦除 map.put(“hello”, “你好”);
+String hello = (String)map.get(“hello”);//强制转换 System.out.println(hello);
+} 自动装箱与拆箱 Java中的自动装箱与拆箱指的是基本数据类型与他们的包装类型之间的相互转换。
+我们知道Java是一门面向对象的语言，在Java世界中有一句话是这么说的：“万物皆对象”。但是Java中的基本数据类型却不是对象，他们不需要进行new操作，也不能调用任何方法，这在使用的时候有诸多不便。因此Java为这些基本类型提供了包装类，并且为了使用方便，提供了自动装箱与拆箱功能。自动装箱与拆箱在使用的过程中，其实是一个语法糖，内部还是调用了相应的函数进行转换。
+下面代码演示了自动装箱和拆箱功能 public static void main(String[] args) { Integer a = 1;
+int b = 2;
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-11-27 14:51:45 +0800 +0800'>2017-11-27</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>382 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to [转]谈谈Java中的语法糖" href="https://jiangxingye.github.io/2017/11/27/java-grammatical-sugar/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">搭建dubbo&#43;zookeeper平台
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>前言本文将介绍在SpringMVC&#43;Spring&#43;Mybatis项目中添加 dubbo 作为 rpc 服务。
+文末有项目代码地址。
+一.搭建zookeeper使用 docker 一句话创建：
+docker run -dit –name zookeeper –hostname zookeeper-host -v /data:/data -p 2181:2181 jplock/zookeeper:latest 二.安装zkui（非必须）这个项目为 zookeeper 提供一个 web 的管理界面。当然我们也可以直接在zookeeper中使用命令查看，所以此步骤可以忽略 在开始前需要安装 Java 环境、Maven 环境。
+到 zkui 的项目中下载代码。git clone https://github.com/DeemOpen/zkui.git 执行 mvn clean install 生成jar文件。
+将config.cfg复制到上一步生成的jar文件所在目录，然后修改配置文件中的zookeeper地址。
+执行 nohup java -jar zkui-2.0-SNAPSHOT-jar-with-dependencies.jar &amp; 测试 http://localhost:9090，如果能看到如下页面，表示安装成功。
+三.使用dubbo 在原来 SpringMVC&#43;Spring&#43;Mybatis 项目中，除了原来 spring 相关依赖外，还需要加入以下依赖 com.alibaba dubbo 2.5.5 org.apache.zookeeper zookeeper 3.4.9 com.101tec zkclient 0.2 定义服务接口 public interface IPersonService { List listAll();
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-09-25 08:29:07 +0800 +0800'>2017-09-25</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>187 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 搭建dubbo&#43;zookeeper平台" href="https://jiangxingye.github.io/2017/09/25/%E6%90%AD%E5%BB%BAdubbo&#43;zookeeper%E5%B9%B3%E5%8F%B0/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">加密算法简介
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>一、对称密钥算法概述对称加密（Symmetric-key algorithm）是指加解密用同一个密钥的算法，根据具体实现分为流加密和分组加密两种类型：
+流加密（Stream cipher）是对称加密常用的一种实现方法，加密和解密双方使用相同伪随机加密数据流，一般都是逐位异或随机密码本的内容。
+分组加密加密（Block cipher），也叫块加密，将明文分成多个等长的模块（block），使用确定的算法和对称密钥对每组分别加密解密。现代分组加密建立在迭代的思想上产生密文。迭代产生的密文在每一轮加密中使用不同的子密钥，而子密钥生成自原始密钥。
+对称加密普遍比非对称加密速度要快，实现更简单，适合大量内容的加密 DESDES (Data Encryption Standard) 是一种分组加密算法 DES算法的入口参数有三个:Key,Data,Mode，Key是密钥密钥占7个字节56位（64位里另外8位是用来校验的），Data是加密内容，占8个字节64位，Mode是加密还是解密。
+DES算法于1976被确定，现在已经被认为不够安全，主要原因是56位的密钥过短。据说这个算法因为包含一些机密设计元素，被怀疑内含美国国家安全局（NSA）的后门。
+DES算法有个拓展算法叫3DES，就是对数据块进行三次DES加密，增加爆破成本，但本质上也不够安全。
+RC4RC4 (Rivest Cipher 4) 是一种流加密算法 RC4起源于1987年，现在已经被认为不够安全。RC4由伪随机数生成器和异或运算组成。RC4的密钥长度可变，范围是[1,255]。RC4一个字节一个字节地加解密。给定一个密钥，伪随机数生成器接受密钥并产生一个S盒。S盒用来加密数据，而且在加密过程中S盒会变化。
+由于异或运算的对合性，RC4加密解密使用同一套算法。这个算法实现起来很简单，只用了最基本的加、异或、循环，话说我大学时某个课程设计的做的加密算法就是简化版的RC4。
+之后还出现了RC5、RC6加密算法，但RC5和RC6都是分组加密，和RC4原理并不一样。
+RC5RC5 （Rivest Cipher 5） 是一种分组加密算法，它和RC2，RC4，RC6都是同一个叫Ronald Rivest的人设计的。
+相比RC4，RC5的密钥成了128位，但RC5仍然只需要基础的加、异或、循环运算，可以在很多硬件上实现。RC5有三个参数：字的大小，循环轮数（round），密钥中的8位字节个数，所以可以说RC5是一种可变加密算法。实际上循环轮数12轮以下的RC5都被认为是不安全的，会被差分分析法（Differential cryptanalysis）攻击，18-20轮才足够安全。
+目前来说，RC5还是挺安全的，因为实现简单，消耗资源少，在一些传感器、嵌入式设备上使用很合适。
+RC6RC6 （Rivest Cipher 6） 是RC5的加强版，也属于分组加密算法。
+RC6算法在RC5算法基础之上针对RC5算法中的漏洞，主要是循环移位的位移量并不取决于要移动次数的所有比特，通过采用引入乘法运算来决定循环移位次数的方法，对RC5算法进行了改进，从而大大提高了RC6算法的安全性。
+RC6曾作为AES（高级加密标准）备选算法之一，但最终AES选择了Rijndael算法。
+AES最后压轴出场的是最著名的单密钥对称加密算法AES (Rijndael)，AES是Advanced Encryption Standard的缩写，是美国国家标准与技术研究院2001年发布的新加密标准。
+AES现在就是指的限定了区块长度和密钥长度的Rijndael算法，同样属于分组加密算法，该算法是两位比利时学者1998年发布的。起初还有很多算法参与了AES甄选，最终Rijndael凭借高安全性和清晰的数学结构而被选用。
+AES将Rijndael算法的区块长度固定为128位，密钥长度可选128，192或256比特（Rijndael原版支持128-256，n*32的区块长度和密钥长度）。
+AES算法包括4个步骤：
+AddRoundKey—矩阵中的每一个字节都与该次回合密钥（round key）做XOR运算；每个子密钥由密钥生成方案产生。
+SubBytes—通过一个非线性的替换函数，用查找表的方式把每个字节替换成对应的字节。
+ShiftRows—将矩阵中的每个横列进行循环式移位。
+MixColumns—为了充分混合矩阵中各个直行的操作。这个步骤使用线性转换来混合每内联的四个字节。最后一个加密循环中省略MixColumns步骤，而以另一个AddRoundKey替换。
+截止现在（2016），AES在算法层面上是安全的。2005年有人公布过一种缓存时序攻击法，但使用场景非常极端。
+二、非对称秘钥算法概述公钥加密的思想于1974年被提出，相比对称加密无需共享密钥，更加安全。但是没法加密大量数据，一般用来加密对称加密的密钥，而用对称加密加密大量数据。非对称加密的原理如下：
+消息发送方A在本地构建密钥对，公钥和私钥；
+消息发送方A将产生的公钥发送给消息接收方B；
+B向A发送数据时，通过公钥进行加密，A接收到数据后通过私钥进行解密，完成一次通信；
+反之，A向B发送数据时，通过私钥对数据进行加密，B接收到数据后通过公钥进行解密。
+RSARSA算法是最著名的非对称加密算法。RSA是1977年提出的，名字来源于Rivest、Shmir和Adleman三位作者。我们平时用到的SSL协议，TLS协议都采用了该算法加密，SSH（Secure Shell）也是基于RSA实现的。
+RSA的数学基础是极大整数的因数分解，具体实现过程如下：
+随意选择两个大的质数p和q，p不等于q，计算N=pq。
+根据欧拉函数，求得r=varphi (N) = varphi(p) * varphi(q)=(p-1)(q-1) 选择一个小于r的整数e，使e与r互质。并求得e关于r的模反元素，命名为d。
+(N,e)是公钥，(N,d)是私钥。
+加密时，加密的块 n^e ≡ c(MOD N)，得到的c就是密文。解密时，c^d ≡ n(MOD N)。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-04-22 01:30:41 +0800 +0800'>2017-04-22</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>149 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 加密算法简介" href="https://jiangxingye.github.io/2017/04/22/encryption-algorithm/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[转]SpringMVC执行流程及源码解析
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>在SpringMVC中主要是围绕着DispatcherServlet来设计，可以把它当做指挥中心。这里先说明一下SpringMVC文档给出的执行流程，然后是我们稍微具体的执行流程，最后是流程大致的源码跟踪。关于很很很详细的源码解析，这里暂先不做。
+官方文档中的流程首先看下SpringMVC文档上给的流程图：这张图片给了我们大概的执行流程：
+用户请求首先发送到前端控制器DispatcherServlet，DispatcherServlet根据请求的信息来决定使用哪个页面控制器Controller（也就是我们通常编写的Controller）来处理该请求。找到控制器之后，DispatcherServlet将请求委托给控制器去处理。
+接下来页面控制器开始处理用户请求，页面控制器会根据请求信息进行处理，调用业务层等等，处理完成之后，会把结果封装成一个ModelAndView返回给DispatcherServlet。
+前端控制器DispatcherServlet接到页面控制器的返回结果后，根据返回的视图名选择相应的试图模板，并根据返回的数据进行渲染。
+最后前端控制器DispatcherServlet将结果返回给用户。
+更具体的流程上面只是总体流程，接下来我们稍微深入一点，看下更具体的流程，这里没有图，只有步骤解析：
+用户请求发送到前端控制器DispatcherServlet。
+前端控制器DispatcherServlet接收到请求后，DispatcherServlet会使用HandlerMapping来处理，HandlerMapping会查找到具体进行处理请求的Handler对象。
+HandlerMapping找到对应的Handler之后，并不是返回一个Handler原始对象，而是一个Handler执行链，在这个执行链中包括了拦截器和处理请求的Handler。HandlerMapping返回一个执行链给DispatcherServlet。
+DispatcherServlet接收到执行链之后，会调用Handler适配器去执行Handler。
+Handler适配器执行完成Handler（也就是我们写的Controller）之后会得到一个ModelAndView，并返回给DispatcherServlet。
+DispatcherServlet接收到Handler适配器返回的ModelAndView之后，会根据其中的视图名调用视图解析器。
+视图解析器根据逻辑视图名解析成一个真正的View视图，并返回给DispatcherServlet。
+DispatcherServlet接收到视图之后，会根据上面的ModelAndView中的model来进行视图中数据的填充，也就是所谓的视图渲染。
+渲染完成之后，DispatcherServlet就可以将结果返回给用户了。
+源码DispatcherServlet是一个Servlet，我们知道在Servlet在处理一个请求的时候会交给service方法进行处理，这里也不例外，DispatcherServlet继承了FrameworkServlet，首先进入FrameworkServlet的service方法：
+protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { //请求方法 String method = request.getMethod();
+//PATCH方法单独处理 if (method.equalsIgnoreCase(RequestMethod.PATCH.name())) { processRequest(request, response);
+} else {//其他的请求类型的方法经由父类，也就是HttpServlet处理 super.service(request, response);
+} } HttpServlet中会根据请求类型的不同分别调用doGet或者doPost等方法，FrameworkServlet中已经重写了这些方法，在这些方法中会调用processRequest进行处理，在processRequest中会调用doService方法，这个doService方法就是在DispatcherServlet中实现的。下面就看下DispatcherServlet中的doService方法的实现。
+请求到达DispatcherServletdoService方法：
+protected void doService(HttpServletRequest request, HttpServletResponse response) throws Exception { //给request中的属性做一份快照 Map&lt;String, Object&gt; attributesSnapshot = null;
+if (WebUtils.isIncludeRequest(request)) { logger.debug(“Taking snapshot of request attributes before include”);
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-04-15 02:22:05 +0800 +0800'>2017-04-15</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>1006 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to [转]SpringMVC执行流程及源码解析" href="https://jiangxingye.github.io/2017/04/15/springmvc-implementation-process/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[译]Java内存泄露介绍
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>内存管理是Java最大的优势之一；你可以很简单的创建一个对象，内存的分配和释放则交给Java垃圾收集器处理；然而实际情况并非如此简单，因为在Java应用程序中会频繁的发生内存泄露。
+这个教程将会说明内存泄露是什么？它为什么会发生？我们如何防止它？
+内存泄露是什么内存泄露的定义：对象不再被应用程序使用，但是由于它们还在被引用，垃圾收集器不能清除掉它们。
+为了理解这个定义，我们需要理解对象在内存中的状态；下面的图表说明什么是未被使用和未被引用。
+图表中，有被引用的对象和未被引用的对象；未被引用的对象将会被当做垃圾回收，而被引用的对象将不会被当做垃圾回收；未被引用的对象由于没有被其他对象引用，它当然也是不被使用的对象，然而，不被使用的对象不全是不被引用的，它们中的一些是被引用的！这就是内存泄露的来源。
+内存泄露为什么会发生让我们来看一下下面这个例子，它说明了内存泄露为什么会发生。在下面这个列子中，对象A引用了对象B，A的生命周期（t1t4）是比B（t2t3）的长；当B不再被应用程序使用时，A仍然在引用它；在这种情况下，垃圾收集器不能从内存中移除B；如果A引用了很多类似B这样的对象，它们不能被回收，又消耗着内存空间的资源，这样很有可能造成内存不足的问题。
+还有一种可能的事情，B又引用了一些对象，这些被B引用的对象也不能被回收，那所有这些不被使用的对象将消耗大量宝贵的内存空间。
+如何防止内存泄露下面有一些防止内存泄露的快速实践技巧 注意集合类，如：HashMap、ArrayList等等，因为它们是在常见的地方发生内存泄露；当它们被static声明时，它们和应用程序的生命周期是一样长的。
+注意事件监听和回调，当一个监听事件被注册，而这个类再也没有被使用时可能会发生内存泄露。
+“如果一个类管理自己的内存，程序员应该被提醒内存泄漏了”，通常，一个对象的指向其他对象的成员变量需要被置为null。
+References：[1] Program Creek :The Introduction of Java Memory Leaks
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-02-21 07:05:39 +0800 +0800'>2017-02-21</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>20 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to [译]Java内存泄露介绍" href="https://jiangxingye.github.io/2017/02/21/the-introduction-of-memory-leak-what-why-and-how/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">web.xml详解
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>web.xml文件是用来配置:欢迎页、servlet、filter、listener等的. 当你的web项目工程没用到这些时,你可以不用web.xml文件来配置你的web工程。如果项目中有多项标签,其加载顺序依次是:context-param » listener » filter » servlet(同类多个节点出现顺序依次加载) ​web.xml先读取context-param和listener这两种节点；
+然后容器创建一个ServletContext(上下文)，应用于整个项目；
+容器会将读取到的context-param转化为键值对并存入servletContext；
+根据listener创建监听；
+容器会读取，根据指定的类路径来实例化过滤器；
+此时项目初始化完成；
+在发起第一次请求是，servlet节点才会被加载实例化。
+参数设置context-paramcontext-param节点是web.xml中用于配置应用于整个web项目的​上下文。包括两个子节点，其中param-name 设定上下文的参数名称。必须是唯一名称；param-value 设定的参数名称的值。
+读取节点的方法如下：
+${initParam.参数名} Servlet中String paramValue=getServletContext().getInitParameter(“参数名”)​ web.xml中配置spring必须使用listener节点，但context-param节点可有可无，如果缺省则默认contextConfigLocation路径为“/WEB-INF/applicationContext.xml”；如果有多个xml文件，使用”,“分隔 listener org.springframework.web.context.request.RequestContextListener 为web应用程序定义监听器，监听器用来监听各种事件，比如：application和session事件，所有的监听器按照相同的方式定义，功能取决去它们各自实现的接口，常用的Web事件接口有如下几个：ServletContextListener：用于监听Web应用的启动和关闭；ServletContextAttributeListener：用于监听ServletContext范围（application）内属性的改变；ServletRequestListener：用于监听用户的请求；ServletRequestAttributeListener：用于监听ServletRequest范围（request）内属性的改变；HttpSessionListener：用于监听用户session的开始和结束；HttpSessionAttributeListener：用于监听HttpSession范围（session）内属性的改变。
+配置Listener只要向Web应用注册Listener实现类即可，无序配置参数之类的东西，因为Listener获取的是Web应用ServletContext（application）的配置参数。为Web应用配置Listener的两种方式：
+使用@WebListener修饰Listener实现类即可。
+在web.xml文档中使用进行配置。
+servletservlet即配置所需用的servlet，用于处理及响应客户的请求。容器的Context对象对请求路径(URL)做出处理，去掉请求URL的上下文路径后，按路径映射规则和Servlet映射路径（）做匹配，如果匹配成功，则调用这个Servlet处理请求。
+为Servlet命名： servlet org.whatisjava.TestServlet 1 为Servlet定制URL servlet *.do Load-on-startupLoad-on-startup 元素在web应用启动的时候指定了servlet被加载的顺序，它的值必须是一个整数。如果它的值是一个负整数或是这个元素不存在，那么容器会在该servlet被调用的时候，加载这个servlet 。如果值是正整数或零，容器在配置的时候就加载并初始化这个servlet，容器必须保证值小的先被加载。如果值相等，容器可以自动选择先加载谁。当值为0或者大于0时，表示容器在应用启动时就加载这个servlet；当是一个负数时或者没有指定时，则指示容器在该servlet被选择时才加载。正数的值越小，启动该servlet的优先级越高。
+filter设置过滤器:如编码过滤器,过滤所有资源 encodingFilter org.springframework.web.filter.CharacterEncodingFilter encoding UTF-8 forceEncoding true encodingFilter /* session设置会话(Session)过期时间,其中时间以分钟为单位,加入设置60分超时:
+60 welcom-file-list index.jsp index.html PS:指定了两个欢迎页面,显示时按顺序从第一个找起，如果第一个存在，就显示第一个，后面的不起作用。如果第一个不存在，就找第二个，以此类推。如果都没有就404. 关于欢迎页面：访问一个网站时，默认看到的第一个页面就叫欢迎页，一般情况下是由首页来充当欢迎页的。一般情况下，我们会在web.xml中指定欢迎页。但 web.xml并不是一个Web的必要文件，没有web.xml，网站仍然是可以正常工作的。只不过网站的功能复杂起来后，web.xml的确有非常大用处，所以，默认创建的动态web工程在WEB-INF文件夹下面都有一个web.xml文件。
+error-page 404 /error404.jsp java.lang.Exception /exception.jsp </p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2016-10-24 02:10:45 +0800 +0800'>2016-10-24</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>62 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to web.xml详解" href="https://jiangxingye.github.io/2016/10/24/web-xml/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jiangxingye.github.io/">jiangxingye&#39;s blog</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+    <script async src="https://vercount.one/js"></script>
+
+<div class="footer-stats" style="text-align:center; color:var(--secondary); font-size:0.875em; margin-top:1rem;">
+      <span>本博客共 21891 字</span>
+      <span> · 本站总访问量 <span id="busuanzi_value_site_pv"></span></span>
+      <span> · 本文阅读量 <span id="busuanzi_value_page_pv"></span></span>
+</div>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

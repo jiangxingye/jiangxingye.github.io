@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>每天一个linux命令（40）: traceroute | jiangxingye&#39;s blog</title>
+<meta name="keywords" content="linux命令">
+<meta name="description" content="每天一个linux命令（40）: traceroute">
+<meta name="author" content="jiangxingye">
+<link rel="canonical" href="https://jiangxingye.github.io/2017/01/09/linux-command40-traceroute/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jiangxingye.github.io/img/avatar.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jiangxingye.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jiangxingye.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jiangxingye.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jiangxingye.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://jiangxingye.github.io/2017/01/09/linux-command40-traceroute/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://jiangxingye.github.io/2017/01/09/linux-command40-traceroute/">
+  <meta property="og:site_name" content="jiangxingye&#39;s blog">
+  <meta property="og:title" content="每天一个linux命令（40）: traceroute">
+  <meta property="og:description" content="每天一个linux命令（40）: traceroute">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="2017">
+    <meta property="article:published_time" content="2017-01-09T02:56:53+08:00">
+    <meta property="article:modified_time" content="2019-09-02T13:03:00+08:00">
+    <meta property="article:tag" content="Linux命令">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="每天一个linux命令（40）: traceroute">
+  <meta name="twitter:description" content="每天一个linux命令（40）: traceroute">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "2017s",
+      "item": "https://jiangxingye.github.io/2017/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "每天一个linux命令（40）: traceroute",
+      "item": "https://jiangxingye.github.io/2017/01/09/linux-command40-traceroute/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "每天一个linux命令（40）: traceroute",
+  "name": "每天一个linux命令（40）: traceroute",
+  "description": "每天一个linux命令（40）: traceroute",
+  "keywords": [
+    "linux命令"
+  ],
+  "articleBody": "通过traceroute我们可以知道信息从你的计算机到互联网另一端的主机是走的什么路径。当然每次数据包由某一同样的出发点（source）到达某一同样的目的地(destination)走的路径可能会不一样，但基本上来说大部分时候所走的路由是相同的。linux系统中，我们称之为traceroute,在MS Windows中为tracert。\ntraceroute通过发送小的数据包到目的设备直到其返回，来测量其需要多长时间。一条路径上的每个设备traceroute要测3次。输出结果中包括每次测试的时间(ms)和设备的名称（如有的话）及其IP地址。\n在大多数情况下，我们会在linux主机系统下，直接执行命令行：\ntraceroute hostname 而在Windows系统下是执行tracert的命令：\ntracert hostname 命令格式$ traceroute [参数] [主机] 命令功能 traceroute指令让你追踪网络数据包的路由途径，预设数据包大小是40Bytes，用户可另行设置。\n具体参数格式：traceroute [-dFlnrvx][-f\u003c存活数值\u003e][-g\u003c网关\u003e…][-i\u003c网络界面\u003e][-m\u003c存活数值\u003e][-p\u003c通信端口\u003e][-s\u003c来源地址\u003e][-t\u003c服务类型\u003e][-w\u003c超时秒数\u003e][主机名称或IP地址][数据包大小] 命令参数 命令 描述 -d 使用Socket层级的排错功能 -f 设置第一个检测数据包的存活数值TTL的大小 -F 设置勿离断位 -g 设置来源路由网关，最多可设置8个 -i 使用指定的网络界面送出数据包 -I 使用ICMP回应取代UDP资料信息 -m 设置检测数据包的最大存活数值TTL的大小 -n 直接使用IP地址而非主机名称 -p 设置UDP传输协议的通信端口 -r 忽略普通的Routing Table，直接将数据包送到远端主机上 -s 设置本地主机送出数据包的IP地址 -t 设置检测数据包的TOS数值 -v 详细显示指令的执行过程 -w 设置等待远端主机回报的时间 -x 开启或关闭数据包的正确性检验 使用实例例一：traceroute 用法简单、最常用的用法 $ traceroute yelog.github.com traceroute to yelog.github.com (151.101.192.133), 30 hops max, 60 byte packets 1 vrouter (192.168.0.1) 0.443 ms 0.565 ms 0.684 ms 2 112.208.32.1.pldt.net (112.208.32.1) 14.518 ms 22.454 ms 23.080 ms 3 119.93.255.197 (119.93.255.197) 24.492 ms 25.380 ms 26.328 ms 4 210.213.131.66.static.pldt.net (210.213.131.66) 29.942 ms 210.213.131.70.static.pldt.net (210.213.131.70) 28.209 ms 28.992 ms 5 122.2.175.30.static.pldt.net (122.2.175.30) 32.429 ms 32.765 ms 210.213.128.29.static.pldt.net (210.213.128.29) 35.165 ms 6 210.213.130.162.static.pldt.net (210.213.130.162) 32.147 ms 31.403 ms 32.107 ms 7 las-b3-link.telia.net (62.115.13.128) 198.546 ms 190.829 ms 191.039 ms 8 las-b21-link.telia.net (213.155.131.82) 194.301 ms las-b21-link.telia.net (62.115.116.179) 191.927 ms las-b21-link.telia.net (213.155.131.84) 194.433 ms 9 * * * 10 * * * 说明：\n记录按序列号从1开始，每个纪录就是一跳 ，每跳表示一个网关，我们看到每行有三个时间，单位是 ms，其实就是-q的默认参数。探测数据包向每个网关发送三个数据包后，网关响应后返回的时间；如果您用 traceroute -q 4 www.58.com ，表示向每个网关发送4个数据包。\n有时我们traceroute 一台主机时，会看到有一些行是以星号表示的。出现这样的情况，可能是防火墙封掉了ICMP的返回信息，所以我们得不到什么相关的数据包返回数据。\n有时我们在某一网关处延时比较长，有可能是某台网关比较阻塞，也可能是物理设备本身的原因。当然如果某台DNS出现问题时，不能解析主机名、域名时，也会 有延时长的现象；您可以加-n 参数来避免DNS解析，以IP格式输出数据。\n如果在局域网中的不同网段之间，我们可以通过traceroute 来排查问题所在，是主机的问题还是网关的问题。如果我们通过远程来访问某台服务器遇到问题时，我们用到traceroute 追踪数据包所经过的网关，提交IDC服务商，也有助于解决问题；但目前看来在国内解决这样的问题是比较困难的，就是我们发现问题所在，IDC服务商也不可能帮助我们解决。\n例二：跳数设置 $ traceroute -m 10 www.baidu.com 例三：显示IP地址，不查主机名 $ traceroute -n www.baidu.com 例四：探测包使用的基本UDP端口设置6888 $ traceroute -p 6888 www.baidu.com 例五：把探测包的个数设置为值4 $ traceroute -q 4 www.baidu.com 例六：绕过正常的路由表，直接发送到网络相连的主机 $ traceroute -r www.baidu.com 例七：把对外发探测包的等待响应时间设置为3秒 $ traceroute -w 3 www.baidu.com Traceroute的工作原理 Traceroute最简单的基本用法是：traceroute hostname Traceroute程序的设计是利用ICMP及IP header的TTL（Time To Live）栏位（field）。首先，traceroute送出一个TTL是1的IP datagram（其实，每次送出的为3个40字节的包，包括源地址，目的地址和包发出的时间标签）到目的地，当路径上的第一个路由器（router）收到这个datagram时，它将TTL减1。此时，TTL变为0了，所以该路由器会将此datagram丢掉，并送回一个「ICMP time exceeded」消息（包括发IP包的源地址，IP包的所有内容及路由器的IP地址），traceroute 收到这个消息后，便知道这个路由器存在于这个路径上，接着traceroute 再送出另一个TTL是2 的datagram，发现第2 个路由器…… traceroute 每次将送出的datagram的TTL 加1来发现另一个路由器，这个重复的动作一直持续到某个datagram 抵达目的地。当datagram到达目的地后，该主机并不会送回ICMP time exceeded消息，因为它已是目的地了，那么traceroute如何得知目的地到达了呢？\nTraceroute在送出UDP datagrams到目的地时，它所选择送达的port number 是一个一般应用程序都不会用的号码（30000 以上），所以当此UDP datagram 到达目的地后该主机会送回一个「ICMP port unreachable」的消息，而当traceroute 收到这个消息时，便知道目的地已经到达了。所以traceroute 在Server端也是没有所谓的Daemon 程式。\nTraceroute提取发 ICMP TTL到期消息设备的IP地址并作域名解析。每次 ，Traceroute都打印出一系列数据,包括所经过的路由设备的域名及 IP地址,三个包每次来回所花时间。\nwindows之tracert 格式：\n$ tracert [-d] [-h maximum_hops] [-j host-list] [-w timeout] target_name 参数说明 tracert [-d] [-h maximum_hops] [-j computer-list] [-w timeout] target_name 该诊断实用程序通过向目的地发送具有不同生存时间 (TL) 的 Internet 控制信息协议 (CMP) 回应报文，以确定至目的地的路由。路径上的每个路由器都要在转发该 ICMP 回应报文之前将其 TTL 值至少减 1，因此 TTL 是有效的跳转计数。当报文的 TTL 值减少到 0 时，路由器向源系统发回 ICMP 超时信息。通过发送 TTL 为 1 的第一个回应报文并且在随后的发送中每次将 TTL 值加 1，直到目标响应或达到最大 TTL 值，Tracert 可以确定路由。通过检查中间路由器发发回的 ICMP 超时 (ime Exceeded) 信息，可以确定路由器。注意，有些路由器“安静”地丢弃生存时间 (TLS) 过期的报文并且对 tracert 无效。参数：-d 指定不对计算机名解析地址。-h maximum_hops 指定查找目标的跳转的最大数目。-jcomputer-list 指定在 computer-list 中松散源路由。-w timeout 等待由 timeout 对每个应答指定的毫秒数。target_name 目标计算机的名称。\n",
+  "wordCount" : "314",
+  "inLanguage": "en",
+  "datePublished": "2017-01-09T02:56:53+08:00",
+  "dateModified": "2019-09-02T13:03:00+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "jiangxingye"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://jiangxingye.github.io/2017/01/09/linux-command40-traceroute/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "jiangxingye's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jiangxingye.github.io/img/avatar.jpg"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://jiangxingye.github.io/" accesskey="h" title="jiangxingye&#39;s blog (Alt + H)">
+                <img src="https://jiangxingye.github.io/img/avatar.jpg" alt="" aria-label="logo"
+                    height="35">jiangxingye&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://jiangxingye.github.io/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/search/" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/2017/">2017s</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      每天一个linux命令（40）: traceroute
+    </h1>
+    <div class="post-description">
+      每天一个linux命令（40）: traceroute
+    </div>
+    <div class="post-meta">
+
+<span title='2017-01-09 02:56:53 +0800 +0800'>2017-01-09</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>314 words</span>&nbsp;·&nbsp;<span>jiangxingye</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><p>通过traceroute我们可以知道信息从你的计算机到互联网另一端的主机是走的什么路径。当然每次数据包由某一同样的出发点（source）到达某一同样的目的地(destination)走的路径可能会不一样，但基本上来说大部分时候所走的路由是相同的。linux系统中，我们称之为traceroute,在MS Windows中为tracert。</p>
+<p>traceroute通过发送小的数据包到目的设备直到其返回，来测量其需要多长时间。一条路径上的每个设备traceroute要测3次。输出结果中包括每次测试的时间(ms)和设备的名称（如有的话）及其IP地址。</p>
+<p>在大多数情况下，我们会在linux主机系统下，直接执行命令行：</p>
+<p>traceroute hostname 而在Windows系统下是执行tracert的命令：</p>
+<p>tracert hostname 命令格式$ traceroute [参数] [主机] 命令功能 traceroute指令让你追踪网络数据包的路由途径，预设数据包大小是40Bytes，用户可另行设置。</p>
+<p>具体参数格式：traceroute [-dFlnrvx][-f&lt;存活数值&gt;][-g&lt;网关&gt;…][-i&lt;网络界面&gt;][-m&lt;存活数值&gt;][-p&lt;通信端口&gt;][-s&lt;来源地址&gt;][-t&lt;服务类型&gt;][-w&lt;超时秒数&gt;][主机名称或IP地址][数据包大小] 命令参数 命令 描述 -d 使用Socket层级的排错功能 -f 设置第一个检测数据包的存活数值TTL的大小 -F 设置勿离断位 -g 设置来源路由网关，最多可设置8个 -i 使用指定的网络界面送出数据包 -I 使用ICMP回应取代UDP资料信息 -m 设置检测数据包的最大存活数值TTL的大小 -n 直接使用IP地址而非主机名称 -p 设置UDP传输协议的通信端口 -r 忽略普通的Routing Table，直接将数据包送到远端主机上 -s 设置本地主机送出数据包的IP地址 -t 设置检测数据包的TOS数值 -v 详细显示指令的执行过程 -w 设置等待远端主机回报的时间 -x 开启或关闭数据包的正确性检验 使用实例例一：traceroute 用法简单、最常用的用法 $ traceroute yelog.github.com traceroute to yelog.github.com (151.101.192.133), 30 hops max, 60 byte packets 1 vrouter (192.168.0.1) 0.443 ms 0.565 ms 0.684 ms 2 112.208.32.1.pldt.net (112.208.32.1) 14.518 ms 22.454 ms 23.080 ms 3 119.93.255.197 (119.93.255.197) 24.492 ms 25.380 ms 26.328 ms 4 210.213.131.66.static.pldt.net (210.213.131.66) 29.942 ms 210.213.131.70.static.pldt.net (210.213.131.70) 28.209 ms 28.992 ms 5 122.2.175.30.static.pldt.net (122.2.175.30) 32.429 ms 32.765 ms 210.213.128.29.static.pldt.net (210.213.128.29) 35.165 ms 6 210.213.130.162.static.pldt.net (210.213.130.162) 32.147 ms 31.403 ms 32.107 ms 7 las-b3-link.telia.net (62.115.13.128) 198.546 ms 190.829 ms 191.039 ms 8 las-b21-link.telia.net (213.155.131.82) 194.301 ms las-b21-link.telia.net (62.115.116.179) 191.927 ms las-b21-link.telia.net (213.155.131.84) 194.433 ms 9 * * * 10 * * * 说明：</p>
+<p>记录按序列号从1开始，每个纪录就是一跳 ，每跳表示一个网关，我们看到每行有三个时间，单位是 ms，其实就是-q的默认参数。探测数据包向每个网关发送三个数据包后，网关响应后返回的时间；如果您用 traceroute -q 4 <a href="https://www.58.com">www.58.com</a> ，表示向每个网关发送4个数据包。</p>
+<p>有时我们traceroute 一台主机时，会看到有一些行是以星号表示的。出现这样的情况，可能是防火墙封掉了ICMP的返回信息，所以我们得不到什么相关的数据包返回数据。</p>
+<p>有时我们在某一网关处延时比较长，有可能是某台网关比较阻塞，也可能是物理设备本身的原因。当然如果某台DNS出现问题时，不能解析主机名、域名时，也会 有延时长的现象；您可以加-n 参数来避免DNS解析，以IP格式输出数据。</p>
+<p>如果在局域网中的不同网段之间，我们可以通过traceroute 来排查问题所在，是主机的问题还是网关的问题。如果我们通过远程来访问某台服务器遇到问题时，我们用到traceroute 追踪数据包所经过的网关，提交IDC服务商，也有助于解决问题；但目前看来在国内解决这样的问题是比较困难的，就是我们发现问题所在，IDC服务商也不可能帮助我们解决。</p>
+<p>例二：跳数设置 $ traceroute -m 10 <a href="https://www.baidu.com">www.baidu.com</a> 例三：显示IP地址，不查主机名 $ traceroute -n <a href="https://www.baidu.com">www.baidu.com</a> 例四：探测包使用的基本UDP端口设置6888 $ traceroute -p 6888 <a href="https://www.baidu.com">www.baidu.com</a> 例五：把探测包的个数设置为值4 $ traceroute -q 4 <a href="https://www.baidu.com">www.baidu.com</a> 例六：绕过正常的路由表，直接发送到网络相连的主机 $ traceroute -r <a href="https://www.baidu.com">www.baidu.com</a> 例七：把对外发探测包的等待响应时间设置为3秒 $ traceroute -w 3 <a href="https://www.baidu.com">www.baidu.com</a> Traceroute的工作原理 Traceroute最简单的基本用法是：traceroute hostname Traceroute程序的设计是利用ICMP及IP header的TTL（Time To Live）栏位（field）。首先，traceroute送出一个TTL是1的IP datagram（其实，每次送出的为3个40字节的包，包括源地址，目的地址和包发出的时间标签）到目的地，当路径上的第一个路由器（router）收到这个datagram时，它将TTL减1。此时，TTL变为0了，所以该路由器会将此datagram丢掉，并送回一个「ICMP time exceeded」消息（包括发IP包的源地址，IP包的所有内容及路由器的IP地址），traceroute 收到这个消息后，便知道这个路由器存在于这个路径上，接着traceroute 再送出另一个TTL是2 的datagram，发现第2 个路由器…… traceroute 每次将送出的datagram的TTL 加1来发现另一个路由器，这个重复的动作一直持续到某个datagram 抵达目的地。当datagram到达目的地后，该主机并不会送回ICMP time exceeded消息，因为它已是目的地了，那么traceroute如何得知目的地到达了呢？</p>
+<p>Traceroute在送出UDP datagrams到目的地时，它所选择送达的port number 是一个一般应用程序都不会用的号码（30000 以上），所以当此UDP datagram 到达目的地后该主机会送回一个「ICMP port unreachable」的消息，而当traceroute 收到这个消息时，便知道目的地已经到达了。所以traceroute 在Server端也是没有所谓的Daemon 程式。</p>
+<p>Traceroute提取发 ICMP TTL到期消息设备的IP地址并作域名解析。每次 ，Traceroute都打印出一系列数据,包括所经过的路由设备的域名及 IP地址,三个包每次来回所花时间。</p>
+<p>windows之tracert 格式：</p>
+<p>$ tracert [-d] [-h maximum_hops] [-j host-list] [-w timeout] target_name 参数说明 tracert [-d] [-h maximum_hops] [-j computer-list] [-w timeout] target_name 该诊断实用程序通过向目的地发送具有不同生存时间 (TL) 的 Internet 控制信息协议 (CMP) 回应报文，以确定至目的地的路由。路径上的每个路由器都要在转发该 ICMP 回应报文之前将其 TTL 值至少减 1，因此 TTL 是有效的跳转计数。当报文的 TTL 值减少到 0 时，路由器向源系统发回 ICMP 超时信息。通过发送 TTL 为 1 的第一个回应报文并且在随后的发送中每次将 TTL 值加 1，直到目标响应或达到最大 TTL 值，Tracert 可以确定路由。通过检查中间路由器发发回的 ICMP 超时 (ime Exceeded) 信息，可以确定路由器。注意，有些路由器“安静”地丢弃生存时间 (TLS) 过期的报文并且对 tracert 无效。参数：-d 指定不对计算机名解析地址。-h maximum_hops 指定查找目标的跳转的最大数目。-jcomputer-list 指定在 computer-list 中松散源路由。-w timeout 等待由 timeout 对每个应答指定的毫秒数。target_name 目标计算机的名称。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://jiangxingye.github.io/tags/linux%E5%91%BD%E4%BB%A4/">Linux命令</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://jiangxingye.github.io/2017/01/10/linux-command41-netstat/">
+    <span class="title">« Prev</span>
+    <span>每天一个linux命令（41）: netstat</span>
+  </a>
+  <a class="next" href="https://jiangxingye.github.io/2017/01/08/linux-command39-ping/">
+    <span class="title">Next »</span>
+    <span>每天一个linux命令（39）: ping</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 每天一个linux命令（40）: traceroute on x"
+            href="https://x.com/intent/tweet/?text=%e6%af%8f%e5%a4%a9%e4%b8%80%e4%b8%aalinux%e5%91%bd%e4%bb%a4%ef%bc%8840%ef%bc%89%3a%20traceroute&amp;url=https%3a%2f%2fjiangxingye.github.io%2f2017%2f01%2f09%2flinux-command40-traceroute%2f&amp;hashtags=linux%e5%91%bd%e4%bb%a4">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 每天一个linux命令（40）: traceroute on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fjiangxingye.github.io%2f2017%2f01%2f09%2flinux-command40-traceroute%2f&amp;title=%e6%af%8f%e5%a4%a9%e4%b8%80%e4%b8%aalinux%e5%91%bd%e4%bb%a4%ef%bc%8840%ef%bc%89%3a%20traceroute&amp;summary=%e6%af%8f%e5%a4%a9%e4%b8%80%e4%b8%aalinux%e5%91%bd%e4%bb%a4%ef%bc%8840%ef%bc%89%3a%20traceroute&amp;source=https%3a%2f%2fjiangxingye.github.io%2f2017%2f01%2f09%2flinux-command40-traceroute%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 每天一个linux命令（40）: traceroute on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fjiangxingye.github.io%2f2017%2f01%2f09%2flinux-command40-traceroute%2f&title=%e6%af%8f%e5%a4%a9%e4%b8%80%e4%b8%aalinux%e5%91%bd%e4%bb%a4%ef%bc%8840%ef%bc%89%3a%20traceroute">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 每天一个linux命令（40）: traceroute on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fjiangxingye.github.io%2f2017%2f01%2f09%2flinux-command40-traceroute%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 每天一个linux命令（40）: traceroute on whatsapp"
+            href="https://api.whatsapp.com/send?text=%e6%af%8f%e5%a4%a9%e4%b8%80%e4%b8%aalinux%e5%91%bd%e4%bb%a4%ef%bc%8840%ef%bc%89%3a%20traceroute%20-%20https%3a%2f%2fjiangxingye.github.io%2f2017%2f01%2f09%2flinux-command40-traceroute%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 每天一个linux命令（40）: traceroute on telegram"
+            href="https://telegram.me/share/url?text=%e6%af%8f%e5%a4%a9%e4%b8%80%e4%b8%aalinux%e5%91%bd%e4%bb%a4%ef%bc%8840%ef%bc%89%3a%20traceroute&amp;url=https%3a%2f%2fjiangxingye.github.io%2f2017%2f01%2f09%2flinux-command40-traceroute%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 每天一个linux命令（40）: traceroute on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=%e6%af%8f%e5%a4%a9%e4%b8%80%e4%b8%aalinux%e5%91%bd%e4%bb%a4%ef%bc%8840%ef%bc%89%3a%20traceroute&u=https%3a%2f%2fjiangxingye.github.io%2f2017%2f01%2f09%2flinux-command40-traceroute%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+<div id="gitalk-container" style="margin-top: 30px;"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: "Ov23li0HarkPcKBrhYRL",
+        clientSecret: "08c9bebd481f660de75bb9b47de70353d3a65378",
+        repo: "jiangxingye-comments",
+        owner: "jiangxingye",
+        admin: ["jiangxingye"],
+        id: "pathname",
+        distractionFreeMode: false,
+        language: 'zh-CN',
+        labels: ["gitalk"],
+        perPage:  15 
+    });
+    gitalk.render('gitalk-container');
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jiangxingye.github.io/">jiangxingye&#39;s blog</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+    <script async src="https://vercount.one/js"></script>
+
+<div class="footer-stats" style="text-align:center; color:var(--secondary); font-size:0.875em; margin-top:1rem;">
+      <span>本博客共 21891 字</span>
+      <span> · 本站总访问量 <span id="busuanzi_value_site_pv"></span></span>
+      <span> · 本文阅读量 <span id="busuanzi_value_page_pv"></span></span>
+</div>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

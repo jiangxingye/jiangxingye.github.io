@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>PostgreSQL on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/tags/postgresql/</link>
+    <description>Recent content in PostgreSQL on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Sep 2019 13:02:59 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PostgreSQL事务及隔离级别</title>
+      <link>https://jiangxingye.github.io/2017/11/08/postgresql%E4%BA%8B%E7%89%A9%E5%8F%8A%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</link>
+      <pubDate>Wed, 08 Nov 2017 16:07:33 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/11/08/postgresql%E4%BA%8B%E7%89%A9%E5%8F%8A%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</guid>
+      <description>PostgreSQL事务及隔离级别</description>
+      <content:encoded><![CDATA[<p>介绍PostgreSQL中提供了多种数据完整性的保证机制。如：约束、触发器、事务和锁管理等。</p>
+<p>事务主要是为了保证一组相关数据库的操作能全部执行成功，从而保证数据的完整性。锁机制主要是控制多个用户对同一数据进行操作，使用锁机制可以解决并发问题。</p>
+<p>事务事务是用户对一个数据库操作的一个序列，这些操作要么全做，要么全不做，是一个不可分割的单位。</p>
+<p>事务管理的常用语句如下：</p>
+<p>BEGIN;</p>
+<p>SQL语句1;</p>
+<p>SQL语句2;</p>
+<p>&hellip; COMMIT;</p>
+<p>事务块是指包围在BEGIN和COMMIT之间的语句。在PostgreSQL9中，常用的事务块管理语句含义如下：</p>
+<p>START TRANSACTION：此命令表示开始一个新的事务块.BEGIN：初始化一个事务块。在BEGIN命令后的语句都将在一个事务里面执行，知道遇见COMMIT或ROLLBACK。它和START TRANSACTION是一样的。COMMIT：提交事务。ROLLBACK：事务失败时执行回滚操作。SET TRANSACTION：设置当前事务的特性。对后面的事务没有影响。</p>
+<p>事务隔离及并发控制PostgreSQL是一个支持多用户的数据库，当多个用户操作同一数据库时，并发控制要保证所有用户可以高效的访问的同时不破坏数据的完整性。</p>
+<p>数据库中数据的并发操作经常发生，而对数据的并发操作会带来下面的一些问题：</p>
+<p>脏读一个事务读取了另一个未提交事务写入的数据。</p>
+<p>不可重复读一个事务重新读取前面读取过的数据，发现该数据已经被另一个已经提交的事务修改。</p>
+<p>幻读一个事务重新执行一个查询，返回符合查询条件的行的集合，发现满足查询条件的行的集合因为其它最近提交的事务而发生了改变。</p>
+<p>SQL标准定义了四个级别的事务隔离。</p>
+<p>| 隔离级别 | 脏读 | 幻读 | 不可重复性读取 |
+| :- | :- |
+|读未提交 |可能 |可能 |可能|
+|读已提交 |不可能| 可能 |可能|
+|可重复读 |不可能 |可能 |不可能|
+|可串行读 |不可能 |不可能 |不可能|</p>
+<p>在PostgreSQL中，可以请求4种隔离级别中的任意一种。但是在内部，实际上只有两种独立的隔离级别，分别对应已提交和可串行化。如果选择了读未提交的级别，实际上使用的是读已提交，在选择可重复读级别的时候，实际上用的是可串行化，所以实际的隔离级别可能比选择的更严格。这是SQL标准允许的：4种隔离级别只定义了哪种现象不能发生，但是没有定义哪种现象一定发生。</p>
+<p>PostgreSQL只提供两种隔离级别的原因是，这是把标准的隔离级别与多版本并发控制架构映射相关的唯一合理方法。</p>
+<p>读已提交这是PostgreSQL中默认的隔离级别，当一个事务运行在这个隔离级别时，一个SELECT查询只能看到查询开始前已提交的数据，而无法看到未提交的数据或者在查询期间其他的事务已提交的数据。</p>
+<p>可串行化可串行化提供最严格的事务隔离。这个级别模拟串行的事务执行，就好像事务是一个接着一个串行的执行。不过，这个级别的应用必须准备在串行化失败的时候重新启动事务。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>PostgreSQL常用操作</title>
+      <link>https://jiangxingye.github.io/2016/10/12/postgresql-2/</link>
+      <pubDate>Wed, 12 Oct 2016 12:27:07 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2016/10/12/postgresql-2/</guid>
+      <description>PostgreSQL常用操作</description>
+      <content:encoded><![CDATA[<p>控制台命令\h:</p>
+<p>#查看SQL命令的解释，比如\h select。</p>
+<p>?:</p>
+<p>#查看psql命令列表。</p>
+<p>\l:</p>
+<p>#列出所有数据库。</p>
+<p>\c [database_name]:</p>
+<p>#连接其他数据库。</p>
+<p>\d:</p>
+<p>#列出当前数据库的所有表格。</p>
+<p>\d [table_name]:</p>
+<p>#列出某一张表格的结构。</p>
+<p>\du:</p>
+<p>#列出所有用户。</p>
+<p>\e:</p>
+<p>#打开文本编辑器。</p>
+<p>\conninfo:</p>
+<p>#列出当前数据库和连接的信息。</p>
+<p>数据库操作基本的数据库操作，就是使用一般的SQL语言 # 创建新表 CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE);</p>
+<h1 id="插入数据-insert-into-user_tblname-signup_date-values张三-2013-12-22">插入数据 INSERT INTO user_tbl(name, signup_date) VALUES(&lsquo;张三&rsquo;, &lsquo;2013-12-22&rsquo;);</h1>
+<h1 id="选择记录-select--from-user_tbl">选择记录 SELECT * FROM user_tbl;</h1>
+<h1 id="更新数据-update-user_tbl-set-name--李四-where-name--张三">更新数据 UPDATE user_tbl set name = &lsquo;李四&rsquo; WHERE name = &lsquo;张三&rsquo;;</h1>
+<h1 id="删除记录-delete-from-user_tbl-where-name--李四-">删除记录 DELETE FROM user_tbl WHERE name = &lsquo;李四&rsquo; ;</h1>
+<h1 id="添加栏位-alter-table-user_tbl-add-email-varchar40">添加栏位 ALTER TABLE user_tbl ADD email VARCHAR(40);</h1>
+<h1 id="更新结构-alter-table-user_tbl-alter-column-signup_date-set-not-null">更新结构 ALTER TABLE user_tbl ALTER COLUMN signup_date SET NOT NULL;</h1>
+<h1 id="更名栏位-alter-table-user_tbl-rename-column-signup_date-to-signup">更名栏位 ALTER TABLE user_tbl RENAME COLUMN signup_date TO signup;</h1>
+<h1 id="删除栏位-alter-table-user_tbl-drop-column-email">删除栏位 ALTER TABLE user_tbl DROP COLUMN email;</h1>
+<h1 id="表格更名-alter-table-user_tbl-rename-to-backup_tbl">表格更名 ALTER TABLE user_tbl RENAME TO backup_tbl;</h1>
+<h1 id="删除表格-drop-table-if-exists-backup_tbl">删除表格 DROP TABLE IF EXISTS backup_tbl;</h1>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>PostgreSQL初体验</title>
+      <link>https://jiangxingye.github.io/2016/10/12/postgresql-1/</link>
+      <pubDate>Wed, 12 Oct 2016 11:49:40 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2016/10/12/postgresql-1/</guid>
+      <description>PostgreSQL初体验</description>
+      <content:encoded><![CDATA[<p>创建操作系统用户创建一个新的Linux用户：dbuser $sudo adduser dbuser #创建一个新的Linux用户：dbuser 登录PostgreSQL控制台切换到postgres用户 $sudo su - postgres #切换到postgres用户 系统用户postgres以同名数据库用户的身份，登录数据库 $psql #系统用户postgres以同名数据库用户的身份，登录数据库 成功登录到控制台后，显示 postgres=# 注意：后面分号不能省略 \password postgres #给postgres用户设置密码 创建数据库用户dbuser CREATE USER dbuser WITH PASSWORD &lsquo;dbuser&rsquo;;</p>
+<p>#创建数据库用户dbuser 创建用户数据库，这里为exampledb，并指定所有者为dbuser。</p>
+<p>CREATE DATABASE exampledb OWNER dbuser;</p>
+<p>#创建用户数据库，这里为exampledb，并指定所有者为dbuser。</p>
+<p>将exampledb数据库的所有权限都赋予dbuser GRANT ALL PRIVILEGES ON DATABASE exampledb to dbuser;</p>
+<p>#将exampledb数据库的所有权限都赋予dbuser 推出控制台（也可以直接按ctrl+D） \q #退出控制台</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>PostgreSQL的介绍与安装</title>
+      <link>https://jiangxingye.github.io/2016/10/12/postgresql-3/</link>
+      <pubDate>Wed, 12 Oct 2016 07:44:16 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2016/10/12/postgresql-3/</guid>
+      <description>PostgreSQL的介绍与安装</description>
+      <content:encoded><![CDATA[<p>由于工作认识了PostgreSQL，在此系统学习一下这个数据库，本文除博主实践所得以外，大量译于 官方文档 PostgreSQL是什么 PostgreSQL 是一个基于 POSTGRES, Version 4.2 的对象关系数据库系统（ORDBMS），由加州大学伯克利分校计算机科学系开发。PostgreSQL 是一个开源的数据库，因为自由许可，任何人都可以免费的使用、修改、分发 PostgreSQL 数据库用于任何目的。</p>
+<p>它支持大部分的SQL标准并提供了许多流行的功能：</p>
+<p>复杂查询（complex queries） 外键（foreign keys） 触发器（triggers） 可更新的视图（updatable views） 事务完整性（transactional integrity） 多版本并发控制（multiversion concurrency control） 用户也可以给PostgreSQL扩展很多东西，比如：</p>
+<p>数据类型（data types） 函数（functions） 运算符（operators） 聚合函数（aggregate functions） 索引方法（index methods） 安装博主开发环境：</p>
+<p>系统 ：深度Linux 15.3 桌面版 PostgreSQL ：9.4 通过apt-get安装$ apt-get install postgresql-9.4 仓库有许多不同的包（包括第三方插件），最常见、最重要的包（根据需要替换版本号）：</p>
+<p>postgresql-client-9.4 - 客户端库和二进制文件 postgresql-9.4 - 核心数据库服务器 postgresql-contrib-9.4 - 提供额外的模块 libpq-dev - C语言前端开发库和头文件 postgresql-server-dev-9.4 - C语言后端开发库和头文件 pgadmin3 - pgAdmin III 图形化管理工具</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

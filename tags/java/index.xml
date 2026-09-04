@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Java on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/tags/java/</link>
+    <description>Recent content in Java on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Sep 2019 13:03:00 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[转]谈谈Java中的语法糖</title>
+      <link>https://jiangxingye.github.io/2017/11/27/java-grammatical-sugar/</link>
+      <pubDate>Mon, 27 Nov 2017 14:51:45 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/11/27/java-grammatical-sugar/</guid>
+      <description>[转]谈谈Java中的语法糖</description>
+      <content:encoded><![CDATA[<p>语法糖（Syntactic Sugar），也称糖衣语法，指在计算机语言中添加的某种语法，这种语法对语言本身功能来说没有什么影响，只是为了方便程序员的开发，提高开发效率。说白了，语法糖就是对现有语法的一个封装。</p>
+<p>Java作为一种与平台无关的高级语言，当然也含有语法糖，这些语法糖并不被虚拟机所支持，在编译成字节码阶段就自动转换成简单常用语法。一般来说Java中的语法糖主要有以下几种：</p>
+<p>泛型与类型擦除 自动装箱与拆箱，变长参数、 增强for循环 内部类与枚举类 泛型与类型擦除Java语言并不是一开始就支持泛型的。在早期的JDK中，只能通过Object类是所有类型的父类和强制类型转换来实现泛型的功能。强制类型转换的缺点就是把编译期间的问题延迟到运行时，JVM并不能为我们提供编译期间的检查。</p>
+<p>在JDK1.5中，Java语言引入了泛型机制。但是这种泛型机制是通过类型擦除来实现的，即Java中的泛型只在程序源代码中有效（源代码阶段提供类型检查），在编译后的字节码中自动用强制类型转换进行替代。也就是说，Java语言中的泛型机制其实就是一颗语法糖，相较与C++、C#相比，其泛型实现实在是不那么优雅。</p>
+<p>/** * 在源代码中存在泛型 */ public static void main(String[] args) { Map&lt;String,String&gt; map = new HashMap&lt;String,String&gt;();</p>
+<p>map.put(&ldquo;hello&rdquo;,&ldquo;你好&rdquo;);</p>
+<p>String hello = map.get(&ldquo;hello&rdquo;);</p>
+<p>System.out.println(hello);</p>
+<p>} 当上述源代码被编译为class文件后，泛型被擦除且引入强制类型转换 public static void main(String[] args) { HashMap map = new HashMap();</p>
+<p>//类型擦除 map.put(&ldquo;hello&rdquo;, &ldquo;你好&rdquo;);</p>
+<p>String hello = (String)map.get(&ldquo;hello&rdquo;);//强制转换 System.out.println(hello);</p>
+<p>} 自动装箱与拆箱 Java中的自动装箱与拆箱指的是基本数据类型与他们的包装类型之间的相互转换。</p>
+<p>我们知道Java是一门面向对象的语言，在Java世界中有一句话是这么说的：“万物皆对象”。但是Java中的基本数据类型却不是对象，他们不需要进行new操作，也不能调用任何方法，这在使用的时候有诸多不便。因此Java为这些基本类型提供了包装类，并且为了使用方便，提供了自动装箱与拆箱功能。自动装箱与拆箱在使用的过程中，其实是一个语法糖，内部还是调用了相应的函数进行转换。</p>
+<p>下面代码演示了自动装箱和拆箱功能 public static void main(String[] args) { Integer a = 1;</p>
+<p>int b = 2;</p>
+<p>int c = a + b;</p>
+<p>System.out.println(c);</p>
+<p>} 经过编译后，代码如下 public static void main(String[] args) { Integer a = Integer.valueOf(1);</p>
+<p>// 自动装箱 byte b = 2;</p>
+<p>int c = a.intValue() + b;//自动拆箱 System.out.println(c);</p>
+<p>} 变长参数 所谓变长参数，就是方法可以接受长度不定确定的参数 变长参数特性是在JDK1.5中引入的，使用变长参数有两个条件，一是变长的那一部分参数具有相同的类型，二是变长参数必须位于方法参数列表的最后面。变长参数同样是Java中的语法糖，其内部实现是Java数组。</p>
+<p>public class Varargs { public static void print(String&hellip; args) { for(String str :</p>
+<p>args){ System.out.println(str);</p>
+<p>} } public static void main(String[] args) { print(&ldquo;hello&rdquo;, &ldquo;world&rdquo;);</p>
+<p>} } 编译为class文件后如下，从中可以很明显的看出变长参数内部是通过数组实现的 public class Varargs { public Varargs() { } public static void print(String&hellip; args) { String[] var1 = args;</p>
+<p>int var2 = args.length;</p>
+<p>//增强for循环的数组实现方式 for(int var3 = 0;</p>
+<p>var3 &lt; var2;</p>
+<p>++var3) { String str = var1[var3];</p>
+<p>System.out.println(str);</p>
+<p>} } public static void main(String[] args) { //变长参数转换为数组 print(new String[]{&ldquo;hello&rdquo;, &ldquo;world&rdquo;});</p>
+<p>} } 增强for循环 增强for循环与普通for循环相比，功能更强并且代码更简洁 增强for循环的对象要么是一个数组，要么实现了Iterable接口。这个语法糖主要用来对数组或者集合进行遍历，其在循环过程中不能改变集合的大小。</p>
+<p>public static void main(String[] args) { String[] params = new String[]{&ldquo;hello&rdquo;,&ldquo;world&rdquo;};</p>
+<p>//增强for循环对象为数组 for(String str :</p>
+<p>params){ System.out.println(str);</p>
+<p>} List<String> lists = Arrays.asList(&ldquo;hello&rdquo;,&ldquo;world&rdquo;);</p>
+<p>//增强for循环对象实现Iterable接口 for(String str :</p>
+<p>lists){ System.out.println(str);</p>
+<p>} } 编译后的class文件为 public static void main(String[] args) { String[] params = new String[]{&ldquo;hello&rdquo;, &ldquo;world&rdquo;};</p>
+<p>String[] lists = params;</p>
+<p>int var3 = params.length;</p>
+<p>//数组形式的增强for退化为普通for for(int str = 0;</p>
+<p>str &lt; var3;</p>
+<p>++str) { String str1 = lists[str];</p>
+<p>System.out.println(str1);</p>
+<p>} List var6 = Arrays.asList(new String[]{&ldquo;hello&rdquo;, &ldquo;world&rdquo;});</p>
+<p>Iterator var7 = var6.iterator();</p>
+<p>//实现Iterable接口的增强for使用iterator接口进行遍历 while(var7.hasNext()) { String var8 = (String)var7.next();</p>
+<p>System.out.println(var8);</p>
+<p>} } 内部类 内部类就是定义在一个类内部的类 Java语言中之所以引入内部类，是因为有些时候一个类只在另一个类中有用，我们不想让其在另外一个地方被使用。内部类之所以是语法糖，是因为其只是一个编译时的概念，一旦编译完成，编译器就会为内部类生成一个单独的class文件，名为outer$innter.class。</p>
+<p>public class Outer { class Inner{ } } 使用javac编译后，生成两个class文件Outer.class和Outer$Inner.class，其中Outer$Inner.class的内容如下：</p>
+<p>class Outer$Inner { Outer$Inner(Outer var1) { this.this$0 = var1;</p>
+<p>} } 内部类分为四种：成员内部类、局部内部类、匿名内部类、静态内部类，每一种都有其用法，这里就不介绍了 枚举类型 枚举类型就是一些具有相同特性的类常量 java中类的定义使用class，枚举类的定义使用enum。在Java的字节码结构中，其实并没有枚举类型，枚举类型只是一个语法糖，在编译完成后被编译成一个普通的类。这个类继承java.lang.Enum，并被final关键字修饰。</p>
+<p>public enum Fruit { APPLE,ORINGE } 使用jad对编译后的class文件进行反编译后得到 //继承java.lang.Enum并声明为final public final class Fruit extends Enum { public static Fruit[] values() { return (Fruit[])$VALUES.clone();</p>
+<p>} public static Fruit valueOf(String s) { return (Fruit)Enum.valueOf(Fruit, s);</p>
+<p>} private Fruit(String s, int i) { super(s, i);</p>
+<p>} //枚举类型常量 public static final Fruit APPLE;</p>
+<p>public static final Fruit ORANGE;</p>
+<p>private static final Fruit $VALUES[];//使用数组进行维护 static { APPLE = new Fruit(&ldquo;APPLE&rdquo;, 0);</p>
+<p>ORANGE = new Fruit(&ldquo;ORANGE&rdquo;, 1);</p>
+<p>$VALUES = (new Fruit[] { APPLE, ORANGE });</p>
+<p>} }</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>搭建Maven私服-Nexus</title>
+      <link>https://jiangxingye.github.io/2017/09/06/build-maven-nexus/</link>
+      <pubDate>Wed, 06 Sep 2017 15:01:31 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/09/06/build-maven-nexus/</guid>
+      <description>搭建Maven私服-Nexus</description>
+      <content:encoded><![CDATA[<p>Maven 私服，可以代理远程仓库和部署自己或第三方构件。本文介绍使用最广泛搭建 Maven 私服的工具：</p>
+<p>Sonatype Nexus。</p>
+<p>作者环境 本次搭建私服是在局域网的一台服务器上，操作系统为 CentOS 。</p>
+<p>需要部署到私服的项目 soul ssm 项目需要引用 soul 安装Java 确保服务器已经安装了 java 环境，这个过程不是本文重点，安装过程自行百度。</p>
+<p>安装Nexus 官网 pro 版本的是需要付费的。所以我们使用免费的 OSS 版本，下载地址 (<a href="https://www.sonatype.com/download-oss-sonatype">https://www.sonatype.com/download-oss-sonatype</a>) # 上传到服务器并解压 $ tar xvf nexus-3.5.1-02-unix.tar.gz 启动Nexus# 启动服务 $ cd /nexus-3.5.1-02/bin/ $ ./nexus start 验证打开网址：(http://192.168.0.86:8081/) , ip 为搭建私服的服务器 ip 。用户名/密码：</p>
+<p>admin/admin123出现一下画面，就说明安装成功了。</p>
+<p>发布soul项目到私服创建仓库 创建yelog-release仓库（名字自定义）, type选择 ：</p>
+<p>release 创建yelog-snapshot仓库（名字自定义）， type选择 ：</p>
+<p>snapshot重复上面 ① 和 ② 步，根据下图选择类型:</p>
+<p>两个都创建完成后，效果如下：</p>
+<p>pom中添加部署配置url 复制上图中新建的仓库的 copy 按钮，复制url。</p>
+<p><distributionManagement> <repository> <id>yelog-release</id> <name>Release Repository of yelog</name> <url>http://192.168.0.86:8081/repository/yelog-release/</url> </repository> <snapshotRepository> <id>yelog-snapshot</id> <name>Snapshot Repository of yelog</name> <url>http://192.168.0.86:8081/repository/yelog-snapshot/</url> </snapshotRepository> </distributionManagement> 在maven的 settings.xml 中配置这里配置 maven 的账号密码，id 要与 distributionManagement 中的id一致。默认账号/密码：admin/admin123 <servers> <server> <id>yelog-realease</id> <username>admin</username> <password>admin123</password> </server> <server> <id>yelog-snapshot</id> <username>admin</username> <password>admin123</password> </server> </servers> 执行maven命令部署项目到私服上我这里直接使用IDE的插件执行部署完成后，可以在 yelog-snapshot 仓库中，查看部署的情况，如下图所示 从私服拉去依赖库 上一步我们已经将项目 soul 部署到私服上了，这一步介绍项目 ssm 如何依赖引用 soul。私服中的 maven-central 可以链接远程仓库。这样，当有依赖在私服中找不到后，就可以通过远程仓库自动下载依赖。</p>
+<p>pom 文件中添加如下配置 public库成员仓库中添加我们自定义的仓库 配置远程仓库为私服地址。<repositories> <repository> <id>public</id> <name>public Repository</name> <url>http://192.168.0.86:8081/repository/maven-public/</url> <releases> <enabled>true</enabled> </releases> <snapshots> <enabled>true</enabled> </snapshots> </repository> </repositories> <pluginRepositories> <pluginRepository> <id>public</id> <name>Public Repositories</name> <url>http://192.168.0.86:8081/repository/maven-public/</url> </pluginRepository> </pluginRepositories> 引入依赖<dependency> <groupId>org.soul</groupId> <artifactId>commons</artifactId> <version>1.0-SNAPSHOT</version> </dependency> ssm项目就可以引用到soul代码 本文结束。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>[转]SpringMVC执行流程及源码解析</title>
+      <link>https://jiangxingye.github.io/2017/04/15/springmvc-implementation-process/</link>
+      <pubDate>Sat, 15 Apr 2017 02:22:05 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/04/15/springmvc-implementation-process/</guid>
+      <description>[转]SpringMVC执行流程及源码解析</description>
+      <content:encoded><![CDATA[<p>在SpringMVC中主要是围绕着DispatcherServlet来设计，可以把它当做指挥中心。这里先说明一下SpringMVC文档给出的执行流程，然后是我们稍微具体的执行流程，最后是流程大致的源码跟踪。关于很很很详细的源码解析，这里暂先不做。</p>
+<p>官方文档中的流程首先看下SpringMVC文档上给的流程图：这张图片给了我们大概的执行流程：</p>
+<p>用户请求首先发送到前端控制器DispatcherServlet，DispatcherServlet根据请求的信息来决定使用哪个页面控制器Controller（也就是我们通常编写的Controller）来处理该请求。找到控制器之后，DispatcherServlet将请求委托给控制器去处理。</p>
+<p>接下来页面控制器开始处理用户请求，页面控制器会根据请求信息进行处理，调用业务层等等，处理完成之后，会把结果封装成一个ModelAndView返回给DispatcherServlet。</p>
+<p>前端控制器DispatcherServlet接到页面控制器的返回结果后，根据返回的视图名选择相应的试图模板，并根据返回的数据进行渲染。</p>
+<p>最后前端控制器DispatcherServlet将结果返回给用户。</p>
+<p>更具体的流程上面只是总体流程，接下来我们稍微深入一点，看下更具体的流程，这里没有图，只有步骤解析：</p>
+<p>用户请求发送到前端控制器DispatcherServlet。</p>
+<p>前端控制器DispatcherServlet接收到请求后，DispatcherServlet会使用HandlerMapping来处理，HandlerMapping会查找到具体进行处理请求的Handler对象。</p>
+<p>HandlerMapping找到对应的Handler之后，并不是返回一个Handler原始对象，而是一个Handler执行链，在这个执行链中包括了拦截器和处理请求的Handler。HandlerMapping返回一个执行链给DispatcherServlet。</p>
+<p>DispatcherServlet接收到执行链之后，会调用Handler适配器去执行Handler。</p>
+<p>Handler适配器执行完成Handler（也就是我们写的Controller）之后会得到一个ModelAndView，并返回给DispatcherServlet。</p>
+<p>DispatcherServlet接收到Handler适配器返回的ModelAndView之后，会根据其中的视图名调用视图解析器。</p>
+<p>视图解析器根据逻辑视图名解析成一个真正的View视图，并返回给DispatcherServlet。</p>
+<p>DispatcherServlet接收到视图之后，会根据上面的ModelAndView中的model来进行视图中数据的填充，也就是所谓的视图渲染。</p>
+<p>渲染完成之后，DispatcherServlet就可以将结果返回给用户了。</p>
+<p>源码DispatcherServlet是一个Servlet，我们知道在Servlet在处理一个请求的时候会交给service方法进行处理，这里也不例外，DispatcherServlet继承了FrameworkServlet，首先进入FrameworkServlet的service方法：</p>
+<p>protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { //请求方法 String method = request.getMethod();</p>
+<p>//PATCH方法单独处理 if (method.equalsIgnoreCase(RequestMethod.PATCH.name())) { processRequest(request, response);</p>
+<p>} else {//其他的请求类型的方法经由父类，也就是HttpServlet处理 super.service(request, response);</p>
+<p>} } HttpServlet中会根据请求类型的不同分别调用doGet或者doPost等方法，FrameworkServlet中已经重写了这些方法，在这些方法中会调用processRequest进行处理，在processRequest中会调用doService方法，这个doService方法就是在DispatcherServlet中实现的。下面就看下DispatcherServlet中的doService方法的实现。</p>
+<p>请求到达DispatcherServletdoService方法：</p>
+<p>protected void doService(HttpServletRequest request, HttpServletResponse response) throws Exception { //给request中的属性做一份快照 Map&lt;String, Object&gt; attributesSnapshot = null;</p>
+<p>if (WebUtils.isIncludeRequest(request)) { logger.debug(&ldquo;Taking snapshot of request attributes before include&rdquo;);</p>
+<p>attributesSnapshot = new HashMap&lt;String, Object&gt;();</p>
+<p>Enumeration<?> attrNames = request.getAttributeNames();</p>
+<p>while (attrNames.hasMoreElements()) { String attrName = (String) attrNames.nextElement();</p>
+<p>if (this.cleanupAfterInclude</p>
+<p>|
+| attrName.startsWith(&ldquo;org.springframework.web.servlet&rdquo;)) { attributesSnapshot.put(attrName, request.getAttribute(attrName)); } } } //如果我们没有配置类似本地化或者主题的处理器之类的 //SpringMVC会使用默认的值 //默认配置文件是DispatcherServlet.properties request.setAttribute(WEB_APPLICATION_CONTEXT_ATTRIBUTE, getWebApplicationContext()); request.setAttribute(LOCALE_RESOLVER_ATTRIBUTE, this.localeResolver); request.setAttribute(THEME_RESOLVER_ATTRIBUTE, this.themeResolver); request.setAttribute(THEME_SOURCE_ATTRIBUTE, getThemeSource()); FlashMap inputFlashMap = this.flashMapManager.retrieveAndUpdate(request, response); if (inputFlashMap != null) { request.setAttribute(INPUT_FLASH_MAP_ATTRIBUTE, Collections.unmodifiableMap(inputFlashMap)); } request.setAttribute(OUTPUT_FLASH_MAP_ATTRIBUTE, new FlashMap()); request.setAttribute(FLASH_MAP_MANAGER_ATTRIBUTE, this.flashMapManager); try { //开始处理 doDispatch(request, response); } finally { if (WebAsyncUtils.getAsyncManager(request).isConcurrentHandlingStarted()) { return; } // Restore the original attribute snapshot, in case of an include. if (attributesSnapshot != null) { restoreAttributesAfterInclude(request, attributesSnapshot); } } } DispatcherServlet开始真正的处理，doDispatch方法： protected void doDispatch(HttpServletRequest request, HttpServletResponse response) throws Exception { HttpServletRequest processedRequest = request; HandlerExecutionChain mappedHandler = null; boolean multipartRequestParsed = false; //SpringMVC中异步请求的相关知识，暂先不解释 WebAsyncManager asyncManager = WebAsyncUtils.getAsyncManager(request); try { ModelAndView mv = null; Exception dispatchException = null; try { //先检查是不是Multipart类型的，比如上传等 //如果是Multipart类型的，则转换为MultipartHttpServletRequest类型 processedRequest = checkMultipart(request); multipartRequestParsed = processedRequest != request; //获取当前请求的Handler mappedHandler = getHandler(processedRequest, false); if (mappedHandler == null |
+| mappedHandler.getHandler() == null) { noHandlerFound(processedRequest, response); return; } //获取当前请求的Handler适配器 HandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler()); // 对于header中last-modified的处理 String method = request.getMethod(); boolean isGet = &ldquo;GET&rdquo;.equals(method); if (isGet |
+|</p>
+<p>&ldquo;HEAD&rdquo;.equals(method)) { long lastModified = ha.getLastModified(request, mappedHandler.getHandler());</p>
+<p>if (new ServletWebRequest(request, response).checkNotModified(lastModified) &amp;&amp; isGet) { return;</p>
+<p>} } //拦截器的preHandle方法进行处理 if (!mappedHandler.applyPreHandle(processedRequest, response)) { return;</p>
+<p>} try { //真正调用Handler的地方 mv = ha.handle(processedRequest, response, mappedHandler.getHandler());</p>
+<p>} finally { if (asyncManager.isConcurrentHandlingStarted()) { return;</p>
+<p>} } //处理成默认视图名，就是添加前缀和后缀等 applyDefaultViewName(request, mv);</p>
+<p>//拦截器postHandle方法进行处理 mappedHandler.applyPostHandle(processedRequest, response, mv);</p>
+<p>} catch (Exception ex) { dispatchException = ex;</p>
+<p>} //处理最后的结果，渲染之类的都在这里 processDispatchResult(processedRequest, response, mappedHandler, mv, dispatchException);</p>
+<p>} catch (Exception ex) { triggerAfterCompletion(processedRequest, response, mappedHandler, ex);</p>
+<p>} catch (Error err) { triggerAfterCompletionWithError(processedRequest, response, mappedHandler, err);</p>
+<p>} finally { if (asyncManager.isConcurrentHandlingStarted()) { // Instead of postHandle and afterCompletion mappedHandler.applyAfterConcurrentHandlingStarted(processedRequest, response);</p>
+<p>return;</p>
+<p>} // Clean up any resources used by a multipart request. if (multipartRequestParsed) { cleanupMultipart(processedRequest);</p>
+<p>} } } 可以看到大概的步骤还是按照我们上面分析的走的。</p>
+<p>查找请求对应的Handler对象对应着这句代码 mappedHandler = getHandler(processedRequest, false);，看下具体的getHandler方法：</p>
+<p>protected HandlerExecutionChain getHandler(HttpServletRequest request, boolean cache) throws Exception { return getHandler(request);</p>
+<p>} 继续往下看getHandler：</p>
+<p>protected HandlerExecutionChain getHandler(HttpServletRequest request) throws Exception { //遍历所有的handlerMappings进行处理 //handlerMappings是在启动的时候预先注册好的 for (HandlerMapping hm :</p>
+<p>this.handlerMappings) { HandlerExecutionChain handler = hm.getHandler(request);</p>
+<p>if (handler != null) { return handler;</p>
+<p>} } return null;</p>
+<p>} 继续往下看getHandler，在AbstractHandlerMapping类中：</p>
+<p>public final HandlerExecutionChain getHandler(HttpServletRequest request) throws Exception { //根据request获取handler Object handler = getHandlerInternal(request);</p>
+<p>if (handler == null) { //如果没有找到就使用默认的handler handler = getDefaultHandler();</p>
+<p>} if (handler == null) { return null;</p>
+<p>} //如果Handler是String，表明是一个bean名称 //需要超照对应bean if (handler instanceof String) { String handlerName = (String) handler;</p>
+<p>handler = getApplicationContext().getBean(handlerName);</p>
+<p>} //封装Handler执行链 return getHandlerExecutionChain(handler, request);</p>
+<p>} 根据requrst获取handler首先看下根据requrst获取handler步骤getHandlerInternal方法，在AbstractHandlerMethodMapping中：</p>
+<p>protected HandlerMethod getHandlerInternal(HttpServletRequest request) throws Exception { //获取request中的url，用来匹配handler String lookupPath = getUrlPathHelper().getLookupPathForRequest(request);</p>
+<p>//根据路径寻找Handler HandlerMethod handlerMethod = lookupHandlerMethod(lookupPath, request);</p>
+<p>//根据handlerMethod中的bean来实例化Handler并添加进HandlerMethod return (handlerMethod != null) ?</p>
+<p>handlerMethod.createWithResolvedBean() :</p>
+<p>null;</p>
+<p>} 看下根据路径寻找handler的方法lookupHandlerMethod：</p>
+<p>protected HandlerMethod lookupHandlerMethod(String lookupPath, HttpServletRequest request) throws Exception { List<Match> matches = new ArrayList<Match>();</p>
+<p>//直接匹配 List<T> directPathMatches = this.urlMap.get(lookupPath);</p>
+<p>//如果有匹配的，就添加进匹配列表中 if (directPathMatches != null) { addMatchingMappings(directPathMatches, matches, request);</p>
+<p>} //还没有匹配的，就遍历所有的处理方法查找 if (matches.isEmpty()) { // No choice but to go through all mappings addMatchingMappings(this.handlerMethods.keySet(), matches, request);</p>
+<p>} //找到了匹配的 if (!matches.isEmpty()) { Comparator<Match> comparator = new MatchComparator(getMappingComparator(request));</p>
+<p>Collections.sort(matches, comparator);</p>
+<p>//排序之后，获取第一个 Match bestMatch = matches.get(0);</p>
+<p>//如果有多个匹配的，会找到第二个最合适的进行比较一下 if (matches.size() &gt; 1) { Match secondBestMatch = matches.get(1);</p>
+<p>if (comparator.compare(bestMatch, secondBestMatch) == 0) { Method m1 = bestMatch.handlerMethod.getMethod();</p>
+<p>Method m2 = secondBestMatch.handlerMethod.getMethod();</p>
+<p>throw new IllegalStateException( &ldquo;Ambiguous handler methods mapped for HTTP path &lsquo;&rdquo; + request.getRequestURL() + &ldquo;&rsquo;:</p>
+<p>{&rdquo; + m1 + &ldquo;, &quot; + m2 + &ldquo;}&rdquo;);</p>
+<p>} } //设置request参数 handleMatch(bestMatch.mapping, lookupPath, request);</p>
+<p>//返回匹配的url的处理的方法 return bestMatch.handlerMethod;</p>
+<p>} else {//最后还没有找到，返回null return handleNoMatch(handlerMethods.keySet(), lookupPath, request);</p>
+<p>} } 获取默认Handler如果上面没有获取到Handler，就会获取默认的Handler。如果还获取不到就返回null。</p>
+<p>处理String类型的Handler如果上面处理完的Handler是String类型的，就会根据这个handlerName获取bean。</p>
+<p>封装Handler执行链上面获取完Handler，就开始封装执行链了，就是将我们配置的拦截器加入到执行链中去，getHandlerExecutionChain：</p>
+<p>protected HandlerExecutionChain getHandlerExecutionChain(Object handler, HttpServletRequest request) { //如果当前Handler不是执行链类型，就使用一个新的执行链实例封装起来 HandlerExecutionChain chain = (handler instanceof HandlerExecutionChain) ?</p>
+<p>(HandlerExecutionChain) handler :</p>
+<p>new HandlerExecutionChain(handler);</p>
+<p>//先获取适配类型的拦截器添加进去拦截器链 chain.addInterceptors(getAdaptedInterceptors());</p>
+<p>//当前的url String lookupPath = urlPathHelper.getLookupPathForRequest(request);</p>
+<p>//遍历拦截器，找到跟当前url对应的，添加进执行链中去 for (MappedInterceptor mappedInterceptor :</p>
+<p>mappedInterceptors) { if (mappedInterceptor.matches(lookupPath, pathMatcher)) { chain.addInterceptor(mappedInterceptor.getInterceptor());</p>
+<p>} } return chain;</p>
+<p>} 获取对应请求的Handler适配器getHandlerAdapter：</p>
+<p>protected HandlerAdapter getHandlerAdapter(Object handler) throws ServletException { //遍历所有的HandlerAdapter，找到和当前Handler匹配的就返回 //我们这里会匹配到RequestMappingHandlerAdapter for (HandlerAdapter ha :</p>
+<p>this.handlerAdapters) { if (ha.supports(handler)) { return ha;</p>
+<p>} } } 缓存的处理也就是对last-modified的处理 执行拦截器的preHandle方法就是遍历所有的我们定义的interceptor，执行preHandle方法 使用Handler适配器执行当前的Handlerha.handle执行当前Handler，我们这里使用的是RequestMappingHandlerAdapter，首先会进入AbstractHandlerMethodAdapter的handle方法：</p>
+<p>public final ModelAndView handle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception { return handleInternal(request, response, (HandlerMethod) handler);</p>
+<p>} handleInternal方法，在RequestMappingHandlerAdapter中：</p>
+<p>protected final ModelAndView handleInternal(HttpServletRequest request, HttpServletResponse response, HandlerMethod handlerMethod) throws Exception { if (getSessionAttributesHandler(handlerMethod).hasSessionAttributes()) { // Always prevent caching in case of session attribute management. checkAndPrepare(request, response, this.cacheSecondsForSessionAttributeHandlers, true);</p>
+<p>} else { // Uses configured default cacheSeconds setting. checkAndPrepare(request, response, true);</p>
+<p>} // Execute invokeHandlerMethod in synchronized block if required. if (this.synchronizeOnSession) { HttpSession session = request.getSession(false);</p>
+<p>if (session != null) { Object mutex = WebUtils.getSessionMutex(session);</p>
+<p>synchronized (mutex) { return invokeHandleMethod(request, response, handlerMethod);</p>
+<p>} } } //执行方法，封装ModelAndView return invokeHandleMethod(request, response, handlerMethod);</p>
+<p>} 组装默认视图名称前缀和后缀名都加上 执行拦截器的postHandle方法遍历intercepter的postHandle方法。</p>
+<p>处理最后的结果，渲染之类的processDispatchResult方法：</p>
+<p>private void processDispatchResult(HttpServletRequest request, HttpServletResponse response, HandlerExecutionChain mappedHandler, ModelAndView mv, Exception exception) throws Exception { boolean errorView = false;</p>
+<p>if (exception != null) { if (exception instanceof ModelAndViewDefiningException) { mv = ((ModelAndViewDefiningException) exception).getModelAndView();</p>
+<p>} else { Object handler = (mappedHandler != null ?</p>
+<p>mappedHandler.getHandler() :</p>
+<p>null);</p>
+<p>mv = processHandlerException(request, response, handler, exception);</p>
+<p>errorView = (mv != null);</p>
+<p>} } // Did the handler return a view to render?</p>
+<p>if (mv != null &amp;&amp; !mv.wasCleared()) { //渲染 render(mv, request, response);</p>
+<p>if (errorView) { WebUtils.clearErrorRequestAttributes(request);</p>
+<p>} } else { } if (WebAsyncUtils.getAsyncManager(request).isConcurrentHandlingStarted()) { // Concurrent handling started during a forward return;</p>
+<p>} if (mappedHandler != null) { mappedHandler.triggerAfterCompletion(request, response, null);</p>
+<p>} } 重点看下render方法，进行渲染：</p>
+<p>protected void render(ModelAndView mv, HttpServletRequest request, HttpServletResponse response) throws Exception { //设置本地化 Locale locale = this.localeResolver.resolveLocale(request);</p>
+<p>response.setLocale(locale);</p>
+<p>View view;</p>
+<p>if (mv.isReference()) { //解析视图名，得到视图 view = resolveViewName(mv.getViewName(), mv.getModelInternal(), locale, request);</p>
+<p>} else { // No need to lookup:</p>
+<p>the ModelAndView object contains the actual View object. view = mv.getView();</p>
+<p>if (view == null) { throw new ServletException(&ldquo;ModelAndView [&rdquo; + mv + &ldquo;] neither contains a view name nor a &quot; + &ldquo;View object in servlet with name &lsquo;&rdquo; + getServletName() + &ldquo;&rsquo;&rdquo;);</p>
+<p>} } //委托给视图进行渲染 view.render(mv.getModelInternal(), request, response);</p>
+<p>} view.render就是进行视图的渲染，然后跳转页面等处理。</p>
+<p>到这里大概的流程就走完了。其中涉及到的东西还有很多，暂先不做详细处理。</p>
+<p>原文：SpringMVC执行流程及源码解析</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>[译]Java内存泄露介绍</title>
+      <link>https://jiangxingye.github.io/2017/02/21/the-introduction-of-memory-leak-what-why-and-how/</link>
+      <pubDate>Tue, 21 Feb 2017 07:05:39 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/02/21/the-introduction-of-memory-leak-what-why-and-how/</guid>
+      <description>[译]Java内存泄露介绍</description>
+      <content:encoded><![CDATA[<p>内存管理是Java最大的优势之一；你可以很简单的创建一个对象，内存的分配和释放则交给Java垃圾收集器处理；然而实际情况并非如此简单，因为在Java应用程序中会频繁的发生内存泄露。</p>
+<p>这个教程将会说明内存泄露是什么？它为什么会发生？我们如何防止它？</p>
+<p>内存泄露是什么内存泄露的定义：对象不再被应用程序使用，但是由于它们还在被引用，垃圾收集器不能清除掉它们。</p>
+<p>为了理解这个定义，我们需要理解对象在内存中的状态；下面的图表说明什么是未被使用和未被引用。</p>
+<p>图表中，有被引用的对象和未被引用的对象；未被引用的对象将会被当做垃圾回收，而被引用的对象将不会被当做垃圾回收；未被引用的对象由于没有被其他对象引用，它当然也是不被使用的对象，然而，不被使用的对象不全是不被引用的，它们中的一些是被引用的！这就是内存泄露的来源。</p>
+<p>内存泄露为什么会发生让我们来看一下下面这个例子，它说明了内存泄露为什么会发生。在下面这个列子中，对象A引用了对象B，A的生命周期（t1t4）是比B（t2t3）的长；当B不再被应用程序使用时，A仍然在引用它；在这种情况下，垃圾收集器不能从内存中移除B；如果A引用了很多类似B这样的对象，它们不能被回收，又消耗着内存空间的资源，这样很有可能造成内存不足的问题。</p>
+<p>还有一种可能的事情，B又引用了一些对象，这些被B引用的对象也不能被回收，那所有这些不被使用的对象将消耗大量宝贵的内存空间。</p>
+<p>如何防止内存泄露下面有一些防止内存泄露的快速实践技巧 注意集合类，如：HashMap、ArrayList等等，因为它们是在常见的地方发生内存泄露；当它们被static声明时，它们和应用程序的生命周期是一样长的。</p>
+<p>注意事件监听和回调，当一个监听事件被注册，而这个类再也没有被使用时可能会发生内存泄露。</p>
+<p>“如果一个类管理自己的内存，程序员应该被提醒内存泄漏了”，通常，一个对象的指向其他对象的成员变量需要被置为null。</p>
+<p>References：[1] Program Creek :The Introduction of Java Memory Leaks</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>web.xml详解</title>
+      <link>https://jiangxingye.github.io/2016/10/24/web-xml/</link>
+      <pubDate>Mon, 24 Oct 2016 02:10:45 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2016/10/24/web-xml/</guid>
+      <description>web.xml详解</description>
+      <content:encoded><![CDATA[<p>web.xml文件是用来配置:欢迎页、servlet、filter、listener等的. 当你的web项目工程没用到这些时,你可以不用web.xml文件来配置你的web工程。如果项目中有多项标签,其加载顺序依次是:context-param &raquo; listener &raquo; filter &raquo; servlet(同类多个节点出现顺序依次加载) ​web.xml先读取context-param和listener这两种节点；</p>
+<p>然后容器创建一个ServletContext(上下文)，应用于整个项目；</p>
+<p>容器会将读取到的context-param转化为键值对并存入servletContext；</p>
+<p>根据listener创建监听；</p>
+<p>容器会读取，根据指定的类路径来实例化过滤器；</p>
+<p>此时项目初始化完成；</p>
+<p>在发起第一次请求是，servlet节点才会被加载实例化。</p>
+<p>参数设置context-paramcontext-param节点是web.xml中用于配置应用于整个web项目的​上下文。包括两个子节点，其中param-name 设定上下文的参数名称。必须是唯一名称；param-value 设定的参数名称的值。</p>
+<p>读取节点的方法如下：</p>
+<p>${initParam.参数名} Servlet中String paramValue=getServletContext().getInitParameter(“参数名”)​ web.xml中配置spring必须使用listener节点，但context-param节点可有可无，如果缺省则默认contextConfigLocation路径为“/WEB-INF/applicationContext.xml”；如果有多个xml文件，使用”,“分隔 listener<listener> <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class> </listener> 为web应用程序定义监听器，监听器用来监听各种事件，比如：application和session事件，所有的监听器按照相同的方式定义，功能取决去它们各自实现的接口，常用的Web事件接口有如下几个：ServletContextListener：用于监听Web应用的启动和关闭；ServletContextAttributeListener：用于监听ServletContext范围（application）内属性的改变；ServletRequestListener：用于监听用户的请求；ServletRequestAttributeListener：用于监听ServletRequest范围（request）内属性的改变；HttpSessionListener：用于监听用户session的开始和结束；HttpSessionAttributeListener：用于监听HttpSession范围（session）内属性的改变。</p>
+<p>配置Listener只要向Web应用注册Listener实现类即可，无序配置参数之类的东西，因为Listener获取的是Web应用ServletContext（application）的配置参数。为Web应用配置Listener的两种方式：</p>
+<p>使用@WebListener修饰Listener实现类即可。</p>
+<p>在web.xml文档中使用进行配置。</p>
+<p>servletservlet即配置所需用的servlet，用于处理及响应客户的请求。容器的Context对象对请求路径(URL)做出处理，去掉请求URL的上下文路径后，按路径映射规则和Servlet映射路径（）做匹配，如果匹配成功，则调用这个Servlet处理请求。</p>
+<p>为Servlet命名：<servlet> <servlet-name>servlet</servlet-name> <servlet-class>org.whatisjava.TestServlet</servlet-class> <load-on-startup>1</load-on-startup> </servlet> 为Servlet定制URL<servlet-mapping> <servlet-name>servlet</servlet-name> <url-pattern>*.do</url-pattern> </servlet-mapping> Load-on-startupLoad-on-startup 元素在web应用启动的时候指定了servlet被加载的顺序，它的值必须是一个整数。如果它的值是一个负整数或是这个元素不存在，那么容器会在该servlet被调用的时候，加载这个servlet 。如果值是正整数或零，容器在配置的时候就加载并初始化这个servlet，容器必须保证值小的先被加载。如果值相等，容器可以自动选择先加载谁。当值为0或者大于0时，表示容器在应用启动时就加载这个servlet；当是一个负数时或者没有指定时，则指示容器在该servlet被选择时才加载。正数的值越小，启动该servlet的优先级越高。</p>
+<p>filter设置过滤器:如编码过滤器,过滤所有资源 <filter> <filter-name>encodingFilter</filter-name> <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class> <init-param> <param-name>encoding</param-name> <param-value>UTF-8</param-value> </init-param> <init-param> <param-name>forceEncoding</param-name> <param-value>true</param-value> </init-param> </filter> <filter-mapping> <filter-name>encodingFilter</filter-name> <url-pattern>/*</url-pattern> </filter-mapping> session设置会话(Session)过期时间,其中时间以分钟为单位,加入设置60分超时:</p>
+<p><session-config> <session-timeout>60</session-timeout> </session-config> welcom-file-list<welcome-file-list> <welcome-file>index.jsp</welcome-file> <welcome-file>index.html</welcome-file> </welcome-file-list> PS:指定了两个欢迎页面,显示时按顺序从第一个找起，如果第一个存在，就显示第一个，后面的不起作用。如果第一个不存在，就找第二个，以此类推。如果都没有就404. 关于欢迎页面：访问一个网站时，默认看到的第一个页面就叫欢迎页，一般情况下是由首页来充当欢迎页的。一般情况下，我们会在web.xml中指定欢迎页。但 web.xml并不是一个Web的必要文件，没有web.xml，网站仍然是可以正常工作的。只不过网站的功能复杂起来后，web.xml的确有非常大用处，所以，默认创建的动态web工程在WEB-INF文件夹下面都有一个web.xml文件。</p>
+<p>error-page<!-- 错误码 --> <error-page> <error-code>404</error-code> <location>/error404.jsp</location> </error-page> <!-- 错误类型 --> <error-page> <exception-type>java.lang.Exception<exception-type> <location>/exception.jsp<location> </error-page></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>FreeMarker语法详解</title>
+      <link>https://jiangxingye.github.io/2016/10/05/freemarker/</link>
+      <pubDate>Wed, 05 Oct 2016 03:58:50 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2016/10/05/freemarker/</guid>
+      <description>FreeMarker语法详解</description>
+      <content:encoded><![CDATA[<p>FreeMarker是一款 模板引擎 :即一种基于模板和要改变的数据，并用来生成输出文本（HTML网页、电子邮件、配置文件、源代码等）的通用工具。FreeMarker模板文件主要有4部分组成 文本，直接输出的部分 注释，即&lt;#–…–&gt;格式不会输出 插值（Interpolation）：即${..}或者#{..}格式的部分,将使用数据模型中的部分替代输出 FTL指令：FreeMarker指令，和HTML标记类似，名字前加#予以区分，不会输出。</p>
+<p>一些规则FTL指令规则FreeMarker有三种FTL标签，这和HTML的标签是完全类似的 开始标签：&lt;#directivename parameters&gt; 结束标签：&lt;/#directivename&gt; 空标签：</p>
+<p>&lt;#directivename parameters /&gt; 实际上，使用标签时前面的#符号也可能变成@，如果该指令是一个用户指令而不是系统内建指令时，应将#符号改为@符号 插值规则FreeMarker的插值有如下两种类型 1、通用插值：${expr} 2、数字格式化插值：#{expr}或者#{expr;format}通用插值，有可以分为四种情况 a、插值结果为字符串值：直接输出表达式结果 b、插值结果为数字值：根据默认格式(#setting 指令设置)将表达式结果转换成文本输出。可以使用内建的字符串函数格式单个插值，例如 &lt;#setting number_format = &ldquo;currency&rdquo; /&gt; &lt;#assign str = 42 /&gt; ${str} ${str?string} ${str?string.number} ${str?string.currency} ${str?string.percent} ${str?string.computer} 日期处理 ${openingTime?string.short} ${openingTime?string.medium} ${openingTime?string.long} ${openingTime?string.full} ${nextDiscountDay?string.short} ${nextDiscountDay?string.medium} ${nextDiscountDay?string.long} ${nextDiscountDay?string.full} ${lastUpdated?string.short} ${lastUpdated?string.medium} ${lastUpdated?string.long} ${lastUpdated?string.full} ${lastUpdated?string(&ldquo;yyyy-MM-dd HH:mm:ss zzzz&rdquo;)} ${lastUpdated?string(&ldquo;EEE, MMM d, &lsquo;&lsquo;yy&rdquo;)} ${lastUpdated?string(&ldquo;EEEE, MMMM dd, yyyy, hh:mm:ss a &lsquo;(&lsquo;zzz&rsquo;)&rsquo;&rdquo;)} if,elseif,elseif&lt;#if condition&gt; …… &lt;#elseif condition2&gt; …… &lt;#else&gt; …… &lt;/#if&gt; switch,case&lt;#switch value&gt; &lt;#case refValue1&gt; &hellip; &lt;#break&gt; &lt;#case refValue2&gt; &hellip; &lt;#break&gt; &hellip; &lt;#case refValueN&gt; &hellip; &lt;#break&gt; &lt;#default&gt; &hellip; &lt;/#switch&gt; &lt;#t&gt; 去掉左右空白和回车换行 &lt;#lt&gt;去掉左边空白和回车换行 &lt;#rt&gt;去掉右边空白和回车换行 &lt;#nt&gt;取消上面的效果 list&lt;#list sequence as item&gt; &hellip; &lt;#if item = &ldquo;spring&rdquo;&gt; &lt;#break&gt; &lt;/#if&gt; &hellip; &lt;/#list&gt; iterm_index:当前值得下标，从0开始item_has_next:判断list是否还有值 include&lt;#include filename [options]&gt; options 包含两个属性encoding=”GBK”parse=”true” 是否作为ftl语法解析，默认是true示例：&lt;#include “/common/copyright.ftl” encoding=”GBK” parse=”true”&gt; import&lt;#import path as hash&gt; 类似于java里的import,它导入文件，然后就可以在当前文件里使用被导入文件里的宏组件 compress&lt;#compress&gt; &hellip; &lt;/#compress&gt; escape, noescape&lt;#escape identifier as expression&gt; &hellip; &lt;#noescape&gt;&hellip;&lt;/#noescape&gt; &hellip; &lt;/#escape&gt; 主要使用在相似的字符串变量输出，比如某一个模块的所有字符串输出都必须是html安全的，这个时候就可以使用该表达式示例：</p>
+<p>&lt;#escape x as x?html&gt; First name:</p>
+<p>${firstName} &lt;#noescape&gt;Last name:</p>
+<p>${lastName}&lt;/#noescape&gt; Maiden name:</p>
+<p>${maidenName} &lt;/#escape&gt; 相同表达式 First name:</p>
+<p>${firstName?html} Last name:</p>
+<p>${lastName } Maiden name:</p>
+<p>${maidenName?html} assign&lt;#assign name=value&gt; &lt;#&ndash; 或则 &ndash;&gt; &lt;#assign name1=value1 name2=value2 &hellip; nameN=valueN&gt; &lt;#&ndash; 或则 &ndash;&gt; &lt;#assign same as above&hellip; in namespacehash&gt; &lt;#&ndash; 或则 &ndash;&gt; &lt;#assign name&gt; capture this &lt;/#assign&gt; &lt;#&ndash; 或则 &ndash;&gt; &lt;#assign name in namespacehash&gt; capture this &lt;/#assign&gt; 生成变量,并且给变量赋值 global&lt;#global name=value&gt; &lt;#&ndash;或则&ndash;&gt; &lt;#global name1=value1 name2=value2 &hellip; nameN=valueN&gt; &lt;#&ndash;或则&ndash;&gt; &lt;#global name&gt; capture this &lt;/#global&gt; 全局赋值语法，利用这个语法给变量赋值，那么这个变量在所有的namespace [A1] 中是可见的, 如果这个变量被当前的assign 语法覆盖 如&lt;#global x=2&gt; &lt;#assign x=1&gt; 在当前页面里x=2 将被隐藏，或者通过${.global.x} 来访问 setting&lt;#setting name=value&gt; 用来设置整个系统的一个环境localenumber_formatboolean_formatdate_format , time_format , datetime_formattime_zoneclassic_compatible macro, nested, return&lt;#macro name param1 param2 &hellip; paramN&gt; &hellip; &lt;#nested loopvar1, loopvar2, &hellip;, loopvarN&gt; &hellip; &lt;#return&gt; &hellip; &lt;/#macro&gt; t, lt, rt&lt;#t&gt; 去掉左右空白和回车换行 &lt;#lt&gt;去掉左边空白和回车换行 &lt;#rt&gt;去掉右边空白和回车换行 &lt;#nt&gt;取消上面的效果</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

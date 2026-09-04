@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Translation on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/tags/translation/</link>
+    <description>Recent content in Translation on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Sep 2019 13:02:59 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/tags/translation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[译]理解浏览器关键渲染路径</title>
+      <link>https://jiangxingye.github.io/2017/03/08/understanding-the-critical-rendering-path/</link>
+      <pubDate>Wed, 08 Mar 2017 00:58:21 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/03/08/understanding-the-critical-rendering-path/</guid>
+      <description>[译]理解浏览器关键渲染路径</description>
+      <content:encoded><![CDATA[<p>当一个浏览器接收到从服务器发来的html页面，在渲染并呈现到屏幕上之前，有很多步骤要做。浏览器渲染页面需要做的一系列行为被称作“关键渲染路径（Critical Rendering Path 简称CRP）”。</p>
+<p>CRP 的知识对于如何提升网站性能是相当有用的。CRP有6个步骤：</p>
+<p>构建DOM树 构建CSSOM树 运行JavaScript 创建渲染树 生成布局 绘制页面 构建DOM树DOM（Document Object Model）树是一个表示整个解析过的HTML页面的对象，从根节点<html>开始，会创建页面中的每个 元素/文本 节点。嵌套在其他元素中的元素作为字节点，每个节点都包含了其所有的元素属性，例如：</p>
+<p>一个<a>节点将有 href 属性与其关联。</p>
+<p>举个例子 <html> <head> <title>Understanding the Critical Rendering Path</title> <link rel="stylesheet" href="style.css"> </head> <body> <header> <h1>Understanding the Critical Rendering Path</h1> </header> <main> <h2>Introduction</h2> <p>Lorem ipsum dolor sit amet</p> </main> <footer> <small>Copyright 2017</small> </footer> </body> </html> 上面的 HTML 将会被解析成下面的DOM树HTML的优点在于它不必等待整个页面加载完成才呈现页面，可以解析一部分，显示一部分。但是像CSS、JavaScript等其他资源会阻止页面渲染。</p>
+<p>构建CSSOM树CSSOM（CSS Object Model） 是一个跟DOM相关的样式对象。它跟DOM的表示方法是相似的，但是不论显式声明还是隐式继承，每个节点都存在关联样式。</p>
+<p>In the style.css file from the document mentioned above, we have the folowing styles在上面提到的html页面的style.css中的样式如下 body { font-size:</p>
+<p>18px;</p>
+<p>} header { color:</p>
+<p>plum;</p>
+<p>} h1 { font-size:</p>
+<p>28px;</p>
+<p>} main { color:</p>
+<p>firebrick;</p>
+<p>} h2 { font-size:</p>
+<p>20px;</p>
+<p>} footer { display:</p>
+<p>none;</p>
+<p>} 它会被构建成下面的CSSOM树CSS 被认为是 “渲染阻塞资源”，它意味着如果不首先完全解析资源，渲染树是无法构建的。CSS由于它的层叠继承的性质，不能像HTML一样解析一部分，显示一部分。定义在文档后面的样式会覆盖或改写之前定义的样式，因为在整个样式表都被解析之前，如果我们使用了在样式表中较早定义的样式，那错误的样式将被应用。这意味着CSS必须被全部解析之后，才能开始下一步。</p>
+<p>如果CSS文件适用于当前设备的话，仅仅只是会阻塞渲染。<link rel="stylesheet">标签可以使用media属性，用来指定特定样式宽度的特定媒体查询。</p>
+<p>举个例子，如果我们有一个包含媒体属性orientation:landscape的样式，我们使用纵向模式（portrait mode）查看页面，这个资源将不会阻塞渲染。</p>
+<p>CSS 也会导致脚本阻塞。这是因为JavaScript文件必须等待CSSOM被构建后才能运行。</p>
+<p>运行JavaScriptJavaScript被认为是解析阻塞资源，这意味着HTML的解析会被JavaScript阻塞。</p>
+<p>当解析器解析到 <script> 标签时，无论该资源是内部还是外链的都会停止解析，先去下载资源。这也是为什么，当页面内有引用JavaScript文件时，引用标签要放到可视元素之后了。</p>
+<p>为避免JavaScript解析阻塞，它可以通过设定 async 属性来要求其异步加载。</p>
+<script async src="script.js"> 创建渲染树渲染树是DOM和CSSOM的结合体，它代表最终会渲染在页面上的元素的结构对象。这意味着它只关注可见内容，对于被隐藏或者CSS属性 display:none 的属性，不会被包含在结构内。
+
+使用上面例子的DOM和CSSOM，渲染树被创建如下：
+
+生成布局布局决定了浏览器视窗的大小,它提供了上下文依赖的CSS样式，如百分比或窗口的单位。视窗尺寸通常通过 <head> 标签中的 <meta> 中的 viewport 设定来决定。如果不存在该标签，则通常默认为 980px 例如，最常用的 meta veiwport 的值将会被设置为和设备宽度相符：
+
+<meta name="viewport" content="width=device-width,initial-scale=1"> 如果用户访问网页的设备宽度为1000px。然后整体视窗尺寸就会基于这个宽度值了，比如 50% 就是500px, 10vw 就是100px 等等。
+
+绘制页面最后，在绘制页面步骤。页面上的所有可见内容都会被转换为像素并呈现在屏幕上。
+
+具体的绘制时间跟DOM数以及应用的样式有关。有些样式会花费更多的执行时间，比如复杂的渐变背景图片所需要的计算时间远超过简单固定背景色。
+
+整合所有想要看到关键渲染路径的执行流程，可以使用DevTools，在Chrome中，它是根据时间轴展示的。
+
+举个例子, 上面的页面加入<script>标签 <html> <head> <title>Understanding the Critical Rendering Path</title> <link rel="stylesheet" href="style.css"> </head> <body> <header> <h1>Understanding the Critical Rendering Path</h1> </header> <main> <h2>Introduction</h2> <p>Lorem ipsum dolor sit amet</p> </main> <footer> <small>Copyright 2017</small> </footer> <script src="main.js"></script> </body> </html> 可以看关于页面加载时的事件日志，以下是我们获得的：
+<p>Send Request - 发送到index.html的GET请求 Parse HTML and Send Request - 开始解析HTML并构建DOM，然后发送 GET 请求style.css和main.js Parse Stylesheet - 根据 style.css 创建的CSSOM Evaluate Script - 执行 main.js Layout - 基于HTML的元视窗标签，生成布局 Paint - 绘制网页基于这些信息，我们可以知道如何优化关键渲染路径。</p>
+<p>原文：</p>
+<p>Understanding the Critical Rendering Path</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>[译]Java内存泄露介绍</title>
+      <link>https://jiangxingye.github.io/2017/02/21/the-introduction-of-memory-leak-what-why-and-how/</link>
+      <pubDate>Tue, 21 Feb 2017 07:05:39 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/02/21/the-introduction-of-memory-leak-what-why-and-how/</guid>
+      <description>[译]Java内存泄露介绍</description>
+      <content:encoded><![CDATA[<p>内存管理是Java最大的优势之一；你可以很简单的创建一个对象，内存的分配和释放则交给Java垃圾收集器处理；然而实际情况并非如此简单，因为在Java应用程序中会频繁的发生内存泄露。</p>
+<p>这个教程将会说明内存泄露是什么？它为什么会发生？我们如何防止它？</p>
+<p>内存泄露是什么内存泄露的定义：对象不再被应用程序使用，但是由于它们还在被引用，垃圾收集器不能清除掉它们。</p>
+<p>为了理解这个定义，我们需要理解对象在内存中的状态；下面的图表说明什么是未被使用和未被引用。</p>
+<p>图表中，有被引用的对象和未被引用的对象；未被引用的对象将会被当做垃圾回收，而被引用的对象将不会被当做垃圾回收；未被引用的对象由于没有被其他对象引用，它当然也是不被使用的对象，然而，不被使用的对象不全是不被引用的，它们中的一些是被引用的！这就是内存泄露的来源。</p>
+<p>内存泄露为什么会发生让我们来看一下下面这个例子，它说明了内存泄露为什么会发生。在下面这个列子中，对象A引用了对象B，A的生命周期（t1t4）是比B（t2t3）的长；当B不再被应用程序使用时，A仍然在引用它；在这种情况下，垃圾收集器不能从内存中移除B；如果A引用了很多类似B这样的对象，它们不能被回收，又消耗着内存空间的资源，这样很有可能造成内存不足的问题。</p>
+<p>还有一种可能的事情，B又引用了一些对象，这些被B引用的对象也不能被回收，那所有这些不被使用的对象将消耗大量宝贵的内存空间。</p>
+<p>如何防止内存泄露下面有一些防止内存泄露的快速实践技巧 注意集合类，如：HashMap、ArrayList等等，因为它们是在常见的地方发生内存泄露；当它们被static声明时，它们和应用程序的生命周期是一样长的。</p>
+<p>注意事件监听和回调，当一个监听事件被注册，而这个类再也没有被使用时可能会发生内存泄露。</p>
+<p>“如果一个类管理自己的内存，程序员应该被提醒内存泄漏了”，通常，一个对象的指向其他对象的成员变量需要被置为null。</p>
+<p>References：[1] Program Creek :The Introduction of Java Memory Leaks</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

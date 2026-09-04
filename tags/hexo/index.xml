@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Hexo on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/tags/hexo/</link>
+    <description>Recent content in Hexo on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Sep 2019 13:02:59 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>不蒜子适配pjax</title>
+      <link>https://jiangxingye.github.io/2017/03/09/busuanzi-pjax/</link>
+      <pubDate>Thu, 09 Mar 2017 12:15:51 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/03/09/busuanzi-pjax/</guid>
+      <description>不蒜子适配pjax</description>
+      <content:encoded><![CDATA[<p>不蒜子一般配置加入脚本 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> <!--pv方式 --> <span id="busuanzi_container_site_pv"> 本站总访问量<span id="busuanzi_value_site_pv"></span>次 </span> <!--uv方式 --> <span id="busuanzi_container_site_uv"> 本站访客数<span id="busuanzi_value_site_uv"></span>人次 </span> <!--pv方式 --> <span id="busuanzi_container_page_pv"> 本文总阅读量<span id="busuanzi_value_page_pv"></span>次 </span> 只安装脚本，不安装标签代码，即可实现只记数，不显示。</p>
+<p>适配pjax最近开发3-hexo主题，由于主题使用的pjax，异步加载页面时不蒜子会出现加载不到多说js的问题。在pjax：end加载下面js代替标签即可 $.getScript(&quot;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;);</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>多说适配pjax</title>
+      <link>https://jiangxingye.github.io/2017/03/09/duoshuo-pjax/</link>
+      <pubDate>Thu, 09 Mar 2017 11:50:45 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/03/09/duoshuo-pjax/</guid>
+      <description>多说适配pjax</description>
+      <content:encoded><![CDATA[<p>最近开发3-hexo主题，由于主题使用的pjax，异步加载页面时多说会出现加载不到多说js的问题。</p>
+<p>多说加载代码如下：</p>
+<p>//加载多说 function loadComment() { duoshuoQuery = {short_name:</p>
+<p>$(&quot;.theme_duoshuo_domain&quot;).val()};</p>
+<p>var d = document, s = d.createElement(&lsquo;script&rsquo;);</p>
+<p>s.src = &lsquo;<a href="https://static.duoshuo.com/embed.js?t='+new">https://static.duoshuo.com/embed.js?t='+new</a> Date().getTime();</p>
+<p>s.async = true;</p>
+<p>s.charset = &lsquo;UTF-8&rsquo;;</p>
+<p>(d.head || d.body).appendChild(s);</p>
+<p>} 当局部加载页面时，就会无法加载多说。需要编写一个js方法，参考文档：(<a href="http://dev.duoshuo.com/docs/50b344447f32d30066000147">http://dev.duoshuo.com/docs/50b344447f32d30066000147</a>) /** * pjax后需要回调函数.加载多说 */ function pajx_loadDuodsuo(){ if(typeof duoshuoQuery ==&ldquo;undefined&rdquo;){ loadComment();</p>
+<p>} else { var dus=$(&quot;.ds-thread&quot;);</p>
+<p>if($(dus).length==1){ var el = document.createElement(&lsquo;div&rsquo;);</p>
+<p>el.setAttribute(&lsquo;data-thread-key&rsquo;,$(dus).attr(&ldquo;data-thread-key&rdquo;));//必选参数 el.setAttribute(&lsquo;data-url&rsquo;,$(dus).attr(&ldquo;data-url&rdquo;));</p>
+<p>DUOSHUO.EmbedThread(el);</p>
+<p>$(dus).html(el);</p>
+<p>} } } 在pjax:end中调用此方法即可。</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

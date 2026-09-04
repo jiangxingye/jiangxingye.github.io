@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>大前端 | jiangxingye&#39;s blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+<meta name="author" content="jiangxingye">
+<link rel="canonical" href="https://jiangxingye.github.io/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jiangxingye.github.io/img/avatar.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jiangxingye.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jiangxingye.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jiangxingye.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jiangxingye.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://jiangxingye.github.io/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://jiangxingye.github.io/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://jiangxingye.github.io/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">
+  <meta property="og:site_name" content="jiangxingye&#39;s blog">
+  <meta property="og:title" content="大前端">
+  <meta property="og:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="大前端">
+  <meta name="twitter:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://jiangxingye.github.io/" accesskey="h" title="jiangxingye&#39;s blog (Alt + H)">
+                <img src="https://jiangxingye.github.io/img/avatar.jpg" alt="" aria-label="logo"
+                    height="35">jiangxingye&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://jiangxingye.github.io/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/search/" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/categories/">Categories</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+  <h1>
+    大前端
+    <a href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[转]浏览器前进/后退缓存（BF Cache）
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>浏览器前进/后退缓存（Backward/Forward Cache，BF Cache）是指浏览器在前进后退过程中， 会应用更强的缓存策略，表现为 DOM、window、甚至 JavaScript 对象被缓存，以及同步 XHR 也被缓存。
+这一现象在移动端浏览器尤为常见，除 Chrome for Android、Android Browser 之外的浏览器基本都会触发。
+BF Cache 本来是一项浏览器优化，但在某些情况下（比如前端路由的 Web App）会引起困惑。
+本文主要讨论 BF Cache 的行为、如何检测 BF Cache 缓存、以及如何 workaround。
+缓存行为BF Cache 是一种浏览器优化，HTML 标准并未指定其如何进行缓存，因此缓存行为是与浏览器实现相关的。
+User agents may discard the Document objects of entries other than the current entry that are not referenced from any script, reloading the pages afresh when the user or script navigates back to such pages. This specification does not specify when user agents should discard Document objects and when they should cache them. – Session history and navigation, WHATWG Desktop Chrome：阻塞的资源和同步发出的 XHR 都会被缓存，但不缓存渲染结果。因此可以看到明显的载入过程，此时脚本也会重新执行。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-09-21 07:35:24 +0800 +0800'>2017-09-21</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>240 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to [转]浏览器前进/后退缓存（BF Cache）" href="https://jiangxingye.github.io/2017/09/21/bf-cache/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">解决iphone下后退不执行js的问题
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>直接上解决方法不论页面是否被缓存，都会触发 pageshow，所以后退后需要执行的方法可以都放在下面事件内：
+window.addEventListener(‘pageshow’, function () { console.log(‘on pageshow’) }) 浏览器缓存行为 的详细介绍可以参考：
+[转]浏览器前进/后退缓存（BF Cache）
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-09-21 07:25:32 +0800 +0800'>2017-09-21</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>13 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 解决iphone下后退不执行js的问题" href="https://jiangxingye.github.io/2017/09/21/iphone-bf-no-run-js/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">JSP操作记录
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>问题EL表达式失效 {person.id} {person.name} 解决方法：在页面内加入下面代码即可 &lt;%@ page isELIgnored=“false” %&gt; Map遍历&lt;c:forEach items=&#34;${map}&#34; var=“entry”&gt; &lt;c:out value=&#34;${entry.key}&#34; /&gt; &lt;c:out value=&#34;${entry.value}&#34; /&gt; &lt;/c:forEach&gt; 取值&lt;c:out value=&#34;${map[key]}&#34; /&gt;
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-04-21 03:22:12 +0800 +0800'>2017-04-21</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>21 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to JSP操作记录" href="https://jiangxingye.github.io/2017/04/21/jsp-use-record/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">npm使用介绍
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Whatnpm（全称Node Package Manager，即node包管理器）是Node.js默认的、以JavaScript编写的软件包管理系统。作者：艾萨克·施吕特（Isaac Z. Schlueter） 安装npm 是随同node.js一起安装的，所以安装node.js即可。
+使用# 查看版本 $ npm -v # 升级 $ sudo npm install npm -g # 安装模块 $ npm install #本地安装 # 本地安装：安装到./node_modules(命令运行目录) $ npm install -g #全局安装 # 全局安装：放在 /usr/local 下或者你 node 的安装目录。
+卸载模块 $ npm uninstall # 更新模块 $ npm update # 查看所有安装的模块 $ npm ls #所有本地模块 $ npm ls -g #所有全局模块 # 搜索模块 $ npm search </p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-03-16 12:09:48 +0800 +0800'>2017-03-16</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>64 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to npm使用介绍" href="https://jiangxingye.github.io/2017/03/16/npm/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">不蒜子适配pjax
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>不蒜子一般配置加入脚本 本站总访问量次 本站访客数人次 本文总阅读量次 只安装脚本，不安装标签代码，即可实现只记数，不显示。
+适配pjax最近开发3-hexo主题，由于主题使用的pjax，异步加载页面时不蒜子会出现加载不到多说js的问题。在pjax：end加载下面js代替标签即可 $.getScript(&#34;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&#34;);
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-03-09 12:15:51 +0800 +0800'>2017-03-09</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>7 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 不蒜子适配pjax" href="https://jiangxingye.github.io/2017/03/09/busuanzi-pjax/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">多说适配pjax
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>最近开发3-hexo主题，由于主题使用的pjax，异步加载页面时多说会出现加载不到多说js的问题。
+多说加载代码如下：
+//加载多说 function loadComment() { duoshuoQuery = {short_name:
+$(&#34;.theme_duoshuo_domain&#34;).val()};
+var d = document, s = d.createElement(‘script’);
+s.src = ‘https://static.duoshuo.com/embed.js?t=&#39;&#43;new Date().getTime();
+s.async = true;
+s.charset = ‘UTF-8’;
+(d.head || d.body).appendChild(s);
+} 当局部加载页面时，就会无法加载多说。需要编写一个js方法，参考文档：(http://dev.duoshuo.com/docs/50b344447f32d30066000147) /** * pjax后需要回调函数.加载多说 */ function pajx_loadDuodsuo(){ if(typeof duoshuoQuery ==“undefined”){ loadComment();
+} else { var dus=$(&#34;.ds-thread&#34;);
+if($(dus).length==1){ var el = document.createElement(‘div’);
+el.setAttribute(‘data-thread-key’,$(dus).attr(“data-thread-key”));//必选参数 el.setAttribute(‘data-url’,$(dus).attr(“data-url”));
+DUOSHUO.EmbedThread(el);
+$(dus).html(el);
+} } } 在pjax:end中调用此方法即可。
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-03-09 11:50:45 +0800 +0800'>2017-03-09</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>60 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 多说适配pjax" href="https://jiangxingye.github.io/2017/03/09/duoshuo-pjax/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[译]理解浏览器关键渲染路径
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>当一个浏览器接收到从服务器发来的html页面，在渲染并呈现到屏幕上之前，有很多步骤要做。浏览器渲染页面需要做的一系列行为被称作“关键渲染路径（Critical Rendering Path 简称CRP）”。
+CRP 的知识对于如何提升网站性能是相当有用的。CRP有6个步骤：
+构建DOM树 构建CSSOM树 运行JavaScript 创建渲染树 生成布局 绘制页面 构建DOM树DOM（Document Object Model）树是一个表示整个解析过的HTML页面的对象，从根节点开始，会创建页面中的每个 元素/文本 节点。嵌套在其他元素中的元素作为字节点，每个节点都包含了其所有的元素属性，例如：
+一个节点将有 href 属性与其关联。
+举个例子 Understanding the Critical Rendering Path Understanding the Critical Rendering Path Introduction Lorem ipsum dolor sit amet
+Copyright 2017 上面的 HTML 将会被解析成下面的DOM树HTML的优点在于它不必等待整个页面加载完成才呈现页面，可以解析一部分，显示一部分。但是像CSS、JavaScript等其他资源会阻止页面渲染。
+构建CSSOM树CSSOM（CSS Object Model） 是一个跟DOM相关的样式对象。它跟DOM的表示方法是相似的，但是不论显式声明还是隐式继承，每个节点都存在关联样式。
+In the style.css file from the document mentioned above, we have the folowing styles在上面提到的html页面的style.css中的样式如下 body { font-size:
+18px;
+} header { color:
+plum;
+} h1 { font-size:
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-03-08 00:58:21 +0800 +0800'>2017-03-08</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>137 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to [译]理解浏览器关键渲染路径" href="https://jiangxingye.github.io/2017/03/08/understanding-the-critical-rendering-path/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AngularJs快速入门
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>简介 AngularJS是一个JavaScript框架，为了克服HTML在构建应用上的不足而设计的。
+AngularJS通过使用我们称为标识符(directives)的结构，让浏览器能够识别新的语法。
+AngularJS 使得开发现代的单一页面应用程序（SPAs：Single Page Applications）变得更加容易。
+表达式AngularJS 使用 表达式 把数据绑定到 HTML。
+表达式AngularJS 表达式写在双大括号内：{{ expression }} 。AngularJS 表达式把数据绑定到 HTML，这与 ng-bind 指令有异曲同工之妙。AngularJS 将在表达式书写的位置”输出”数据。AngularJS 表达式 很像 JavaScript 表达式：它们可以包含文字、运算符和变量。实例：
+{{ 5 &#43; 5 }} 或 {{ firstName &#43; &#34; &#34; &#43; lastName }} 我的第一个表达式:
+{{ 5 &#43; 5 }}
+效果 数字 总价：
+{{ quantity * cost }}
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-03-04 00:40:58 +0800 +0800'>2017-03-04</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>54 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to AngularJs快速入门" href="https://jiangxingye.github.io/2017/03/04/angularjs/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">pjax用法
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>最近在开发一款hexo主题3-hexo，其中使用了pjax大大提高了用户体验和加载速度，在此简单介绍一下pjax的用法github链接 pjax是什么 pjax是一款jQuery插件，使用了ajax和pushState的技术，在保留真正永久链接，网页标题和可用的返回功能的情况下，带来一种快速的浏览体验。
+–官方介绍 用人话说，就是当跳转过去的网页和当前网页的一部分是一样的，这时可以通过pjax就会从响应页面中取出 不同的那部分 （需指定），替换掉原来的内容。
+如果在服务端判断处理，直接返回 不同的那部分内容，这样就可以减少带宽占用，提升加载速度。
+这样做的优势：
+由于从服务器取回的数据量变少，加载速度将会提升。
+并且采用异步刷新页面中的不一样的地方，用户体验也是满满的。
+保留了浏览器回退的功能（解决了ajax的尴尬） 好了，开始操作。
+Demo第一步：引入jQuery和jQuery.pjax 第二步：将指定的a的链接，转为pjax风格 /将#menu中的a的链接的页面，只取回class=pjax元素中的内容，替换掉当前页面class=pjax元素中的内容/ $(document).pjax(’.#menu a’, ‘.pjax’, {fragment:’.pjax’, timeout:8000});
+第三步：如果需要在请求的过程中做一些自定义的事件，可以使用下面的方法 $(document).on({ ‘pjax:click’:
+function() { //点击链接时，需要触发的事件写到这里 }, ‘pjax:start’:
+function() { //当开始获取请求时，需要触发的事件写在这里 }, ‘pjax:end’:
+function() { //当请求完成后，需要触发的事件写在这里 } });
+结束。
+详细文档翻译于官方 参数$(document).pjax(selector, [container], options) selector 触发点击事件的选择器，String类型 container 一个选择器，为唯一的pjax容器 options 一个可以包含下面这些选项的对象 pjax options key default description timeout 650 ajax超时时间，单位毫秒，超时后将请求整个页面进行刷新 push true 使用 pushState 添加一个浏览器历史导航条目 replace false 替换URL，而不添加浏览器历史条目 maxCacheLength 20 历史内容 cache 的最大size version string ：
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-02-08 12:18:54 +0800 +0800'>2017-02-08</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>179 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to pjax用法" href="https://jiangxingye.github.io/2017/02/08/pjax/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">jQuery之checkbox|radio|select操作
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>jQuery1.6中添加了prop方法,看起来和用起来都和attr方法一样,但是在一些特殊情况下,attribute和properties的区别非常大,在jQuery1.6之前，.attr()方法在获取一些attributes的时候使用了property值，这样会导致一些不一致的行为。在jQuery1.6中，.prop()方法提供了一中明确的获取property值得方式，这样.attr()方法仅返回attributes。
+–摘自jQuery API文档 checkbox $(“input[type=checkbox]”) //获取所有的checkbox $(“input[type=checkbox]:checked”) //获取所有的被选中的checkbox $(“input[type=checkbox]:not(:checked)”) //获取所有未被选中的checkbox $(“input[type=checkbox]”).not(&#34;:checked&#34;) //获取所有未被选中的checkbox $(“input[type=checkbox]:first”) //获取第一个checkbox的value值 $(“input[type=checkbox]:checked”).length //获取被选中checkbox的数量 $(“input[type=checkbox]:first”).prop(“checked”) //判断第一个checkbox是否被选中 $(“input[type=checkbox]:first”).prop(“checkbox”,true) //选中第一个checkbox $(“input[type=checkbox]:not(:checked)”).prop(“checked”,true) //全选 $(“input[type=checkbox]:checkbox”).prop(“checked”,false) //都不选中 //反选 $(“input[type=checkbox]”).each(function(){ if($(this).prop(“checked”)){ $(this).prop(“checked”,false);
+}else{ $(this).prop(“checked”,true);
+} }) radio $(“input[type=radio]”) //获取所有的radio $(“input[type=radio]:checked”) //获取被选中的radio $(“input[type=radio]:not(:checkbox)”) //获取所有没有被选中的radio $(“input[type=radio]:checked”).val() //获取被选中的radio的value值 $(“input[type=radio]:first”).prop(“checked”) //判断第一个radio是否被选中 $(“input[type=radio]:first”).prop(“checked”,true) //选中第一个radio select 1 2 3 $(“select option:selected”) //获取被选中的option $(“select”).val() //获取选中option的value值 $(“select option:selected”).text() //获取被选中的option的text值 $(“select option:first”).prop(“selected”) //判断第一个option是否被选中 $(“select option:first”).prop(“selected”,true) //选中第一个option $(“select option:selected”).prop(“selected”,false) //取消当前选中,然后默认选中第一个
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2016-11-23 08:19:34 +0800 +0800'>2016-11-23</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>66 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to jQuery之checkbox|radio|select操作" href="https://jiangxingye.github.io/2016/11/23/jquery-checkbox-radio-select/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://jiangxingye.github.io/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jiangxingye.github.io/">jiangxingye&#39;s blog</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+    <script async src="https://vercount.one/js"></script>
+
+<div class="footer-stats" style="text-align:center; color:var(--secondary); font-size:0.875em; margin-top:1rem;">
+      <span>本博客共 21891 字</span>
+      <span> · 本站总访问量 <span id="busuanzi_value_site_pv"></span></span>
+      <span> · 本文阅读量 <span id="busuanzi_value_page_pv"></span></span>
+</div>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

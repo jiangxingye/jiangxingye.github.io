@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Freemarker on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/tags/freemarker/</link>
+    <description>Recent content in Freemarker on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Sep 2019 13:02:59 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/tags/freemarker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FreeMarker语法详解</title>
+      <link>https://jiangxingye.github.io/2016/10/05/freemarker/</link>
+      <pubDate>Wed, 05 Oct 2016 03:58:50 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2016/10/05/freemarker/</guid>
+      <description>FreeMarker语法详解</description>
+      <content:encoded><![CDATA[<p>FreeMarker是一款 模板引擎 :即一种基于模板和要改变的数据，并用来生成输出文本（HTML网页、电子邮件、配置文件、源代码等）的通用工具。FreeMarker模板文件主要有4部分组成 文本，直接输出的部分 注释，即&lt;#–…–&gt;格式不会输出 插值（Interpolation）：即${..}或者#{..}格式的部分,将使用数据模型中的部分替代输出 FTL指令：FreeMarker指令，和HTML标记类似，名字前加#予以区分，不会输出。</p>
+<p>一些规则FTL指令规则FreeMarker有三种FTL标签，这和HTML的标签是完全类似的 开始标签：&lt;#directivename parameters&gt; 结束标签：&lt;/#directivename&gt; 空标签：</p>
+<p>&lt;#directivename parameters /&gt; 实际上，使用标签时前面的#符号也可能变成@，如果该指令是一个用户指令而不是系统内建指令时，应将#符号改为@符号 插值规则FreeMarker的插值有如下两种类型 1、通用插值：${expr} 2、数字格式化插值：#{expr}或者#{expr;format}通用插值，有可以分为四种情况 a、插值结果为字符串值：直接输出表达式结果 b、插值结果为数字值：根据默认格式(#setting 指令设置)将表达式结果转换成文本输出。可以使用内建的字符串函数格式单个插值，例如 &lt;#setting number_format = &ldquo;currency&rdquo; /&gt; &lt;#assign str = 42 /&gt; ${str} ${str?string} ${str?string.number} ${str?string.currency} ${str?string.percent} ${str?string.computer} 日期处理 ${openingTime?string.short} ${openingTime?string.medium} ${openingTime?string.long} ${openingTime?string.full} ${nextDiscountDay?string.short} ${nextDiscountDay?string.medium} ${nextDiscountDay?string.long} ${nextDiscountDay?string.full} ${lastUpdated?string.short} ${lastUpdated?string.medium} ${lastUpdated?string.long} ${lastUpdated?string.full} ${lastUpdated?string(&ldquo;yyyy-MM-dd HH:mm:ss zzzz&rdquo;)} ${lastUpdated?string(&ldquo;EEE, MMM d, &lsquo;&lsquo;yy&rdquo;)} ${lastUpdated?string(&ldquo;EEEE, MMMM dd, yyyy, hh:mm:ss a &lsquo;(&lsquo;zzz&rsquo;)&rsquo;&rdquo;)} if,elseif,elseif&lt;#if condition&gt; …… &lt;#elseif condition2&gt; …… &lt;#else&gt; …… &lt;/#if&gt; switch,case&lt;#switch value&gt; &lt;#case refValue1&gt; &hellip; &lt;#break&gt; &lt;#case refValue2&gt; &hellip; &lt;#break&gt; &hellip; &lt;#case refValueN&gt; &hellip; &lt;#break&gt; &lt;#default&gt; &hellip; &lt;/#switch&gt; &lt;#t&gt; 去掉左右空白和回车换行 &lt;#lt&gt;去掉左边空白和回车换行 &lt;#rt&gt;去掉右边空白和回车换行 &lt;#nt&gt;取消上面的效果 list&lt;#list sequence as item&gt; &hellip; &lt;#if item = &ldquo;spring&rdquo;&gt; &lt;#break&gt; &lt;/#if&gt; &hellip; &lt;/#list&gt; iterm_index:当前值得下标，从0开始item_has_next:判断list是否还有值 include&lt;#include filename [options]&gt; options 包含两个属性encoding=”GBK”parse=”true” 是否作为ftl语法解析，默认是true示例：&lt;#include “/common/copyright.ftl” encoding=”GBK” parse=”true”&gt; import&lt;#import path as hash&gt; 类似于java里的import,它导入文件，然后就可以在当前文件里使用被导入文件里的宏组件 compress&lt;#compress&gt; &hellip; &lt;/#compress&gt; escape, noescape&lt;#escape identifier as expression&gt; &hellip; &lt;#noescape&gt;&hellip;&lt;/#noescape&gt; &hellip; &lt;/#escape&gt; 主要使用在相似的字符串变量输出，比如某一个模块的所有字符串输出都必须是html安全的，这个时候就可以使用该表达式示例：</p>
+<p>&lt;#escape x as x?html&gt; First name:</p>
+<p>${firstName} &lt;#noescape&gt;Last name:</p>
+<p>${lastName}&lt;/#noescape&gt; Maiden name:</p>
+<p>${maidenName} &lt;/#escape&gt; 相同表达式 First name:</p>
+<p>${firstName?html} Last name:</p>
+<p>${lastName } Maiden name:</p>
+<p>${maidenName?html} assign&lt;#assign name=value&gt; &lt;#&ndash; 或则 &ndash;&gt; &lt;#assign name1=value1 name2=value2 &hellip; nameN=valueN&gt; &lt;#&ndash; 或则 &ndash;&gt; &lt;#assign same as above&hellip; in namespacehash&gt; &lt;#&ndash; 或则 &ndash;&gt; &lt;#assign name&gt; capture this &lt;/#assign&gt; &lt;#&ndash; 或则 &ndash;&gt; &lt;#assign name in namespacehash&gt; capture this &lt;/#assign&gt; 生成变量,并且给变量赋值 global&lt;#global name=value&gt; &lt;#&ndash;或则&ndash;&gt; &lt;#global name1=value1 name2=value2 &hellip; nameN=valueN&gt; &lt;#&ndash;或则&ndash;&gt; &lt;#global name&gt; capture this &lt;/#global&gt; 全局赋值语法，利用这个语法给变量赋值，那么这个变量在所有的namespace [A1] 中是可见的, 如果这个变量被当前的assign 语法覆盖 如&lt;#global x=2&gt; &lt;#assign x=1&gt; 在当前页面里x=2 将被隐藏，或者通过${.global.x} 来访问 setting&lt;#setting name=value&gt; 用来设置整个系统的一个环境localenumber_formatboolean_formatdate_format , time_format , datetime_formattime_zoneclassic_compatible macro, nested, return&lt;#macro name param1 param2 &hellip; paramN&gt; &hellip; &lt;#nested loopvar1, loopvar2, &hellip;, loopvarN&gt; &hellip; &lt;#return&gt; &hellip; &lt;/#macro&gt; t, lt, rt&lt;#t&gt; 去掉左右空白和回车换行 &lt;#lt&gt;去掉左边空白和回车换行 &lt;#rt&gt;去掉右边空白和回车换行 &lt;#nt&gt;取消上面的效果</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

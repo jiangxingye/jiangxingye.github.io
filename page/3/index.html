@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head>
+	<meta name="generator" content="Hugo 0.165.0"><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>jiangxingye&#39;s blog</title>
+<meta name="keywords" content="Blog, Portfolio, Linux, IT">
+<meta name="description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+<meta name="author" content="jiangxingye">
+<link rel="canonical" href="https://jiangxingye.github.io/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jiangxingye.github.io/img/avatar.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jiangxingye.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jiangxingye.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jiangxingye.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jiangxingye.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://jiangxingye.github.io/index.xml" title="rss">
+<link rel="alternate" type="application/json" href="https://jiangxingye.github.io/index.json" title="json">
+<link rel="alternate" hreflang="en" href="https://jiangxingye.github.io/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://jiangxingye.github.io/">
+  <meta property="og:site_name" content="jiangxingye&#39;s blog">
+  <meta property="og:title" content="jiangxingye&#39;s blog">
+  <meta property="og:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="jiangxingye&#39;s blog">
+  <meta name="twitter:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "jiangxingye's blog",
+  "url": "https://jiangxingye.github.io/",
+  "description": "不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。",
+  "logo": "https://jiangxingye.github.io/img/avatar.jpg",
+  "sameAs": [
+      "https://github.com/jiangxingye", "mailto:jiangxingye@outlook.com", "http://wpa.qq.com/msgrd?v=3\u0026uin=174762929\u0026site=qq\u0026menu=yes", "https://weibo.com/jiangxingye"
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://jiangxingye.github.io/" accesskey="h" title="jiangxingye&#39;s blog (Alt + H)">
+                <img src="https://jiangxingye.github.io/img/avatar.jpg" alt="" aria-label="logo"
+                    height="35">jiangxingye&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://jiangxingye.github.io/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/search/" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Dockerfile指令详解
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Dockerfile 是一个文本文件，其内包含了一条条的指令(Instruction)，每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。
+构建镜像命令格式：
+$ docker build [选项] &lt;上下文路径/URL/-&gt; 示例：
+构建一个名为 nginx:v3 的镜像 $ docker build -t nginx:v3 . RUN 执行命令1) shell格式：RUN &lt;命令&gt;，就像直接在命令行中输入的命令一样。刚才写的 Dockrfile 中的 RUN 指令就是这种格式。 RUN echo ‘Hello, Docker!’ &gt; /usr/share/nginx/html/index.html 2) exec格式：RUN [“可执行文件”, “参数1”, “参数2”]，这更像是函数调用中的格式。
+COPY 复制文件格式：
+COPY &lt;源路径&gt;… &lt;目标路径&gt;2) COPY [&#34;&lt;源路径1&gt;&#34;,… “&lt;目标路径&gt;&#34;]和 RUN 指令一样，也有两种格式，一种类似于命令行，一种类似于函数调用。COPY 指令将从构建上下文目录中 &lt;源路径&gt; 的文件/目录复制到新的一层的镜像内的 &lt;目标路径&gt; 位置。比如： COPY package.json /usr/src/app/ &lt;源路径&gt; 可以是多个，甚至可以是通配符，其通配符规则要满足 Go 的 filepath.Match 规则，如：
+COPY hom* /mydir/ COPY hom?.txt /mydir/ &lt;目标路径&gt; 可以是容器内的绝对路径，也可以是相对于工作目录的相对路径（工作目录可以用 WORKDIR 指令来指定）。目标路径不需要事先创建，如果目录不存在会在复制文件前先行创建缺失目录。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-05-22 11:11:42 +0800 +0800'>2017-05-22</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>1100 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to Dockerfile指令详解" href="https://jiangxingye.github.io/2017/05/22/dockerfile/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">docker镜像
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>WhatDocker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。
+因为镜像包含操作系统完整的 root 文件系统，其体积往往是庞大的，因此在 Docker 设计时，就充分利用 Union FS 的技术，将其设计为分层存储的架构。所以严格来说，镜像并非是像一个 ISO 那样的打包文件，镜像只是一个虚拟的概念，其实际体现并非由一个文件组成，而是由一组文件系统组成，或者说，由多层文件系统联合组成。
+安装# 官方 的安装脚本 $ curl -sSL https://get.docker.com/ | sh # 阿里云 的安装脚本 $ curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh - # DaoCloud 的安装脚本 $ curl -sSL https://get.daocloud.io/docker | sh 镜像# 获取镜像，registry为空默认从Docker Hub上获取 docker pull [选项] [Docker Registry地址]&lt;仓库名&gt;:&lt;标签&gt; # 交互式运行，退出删除:
+-i:交互式 ,-t:终端,–rm 退出删除 ,bash 启动bash窗口 $ docker run -it –rm ubuntu:14.04 bash # 列出已下载的镜像（只显示顶层镜像） -a:显示所有镜像 image_name:指定列出某个镜像 $ docker images [-a] [image_name] # 只显示虚悬镜像(dangling image) -f:–filter 过滤 $ docker images -f dangling=true # 过滤从mongo:3.2建立之后的镜像 $ docker images -f since=mongo:3.2 # 通过label过滤 $ docker images -f label=com.example.version=0.1 # 只显示镜像id $ docker images -q # 只包含镜像ID和仓库名 $ docker images –format “{{.ID}}:
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-05-19 08:47:33 +0800 +0800'>2017-05-19</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>163 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to docker镜像" href="https://jiangxingye.github.io/2017/05/19/docker-image/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">docker初体验
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>笔者环境操作系统：deepin 15.4 Desktop 64Bit 安装# 官方 的安装脚本 $ curl -sSL https://get.docker.com/ | sh # 阿里云 的安装脚本 $ curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh - # DaoCloud 的安装脚本 $ curl -sSL https://get.daocloud.io/docker | sh 获取镜像Docker Hub 上有大量的高质量的镜像可以用，这里我们就说一下怎么获取这些镜像并运行。从 Docker Registry 获取镜像的命令是 docker pull。其命令格式为：
+$ docker pull [选项] [Docker Registry地址]&lt;仓库名&gt;:&lt;标签&gt; 具体的选项可以通过 docker pull –help 命令看到，这里我们说一下镜像名称的格式。
+Docker Registry地址：地址的格式一般是 &lt;域名/IP&gt;[:端口号]。默认地址是 Docker Hub。
+仓库名：如之前所说，这里的仓库名是两段式名称，既 &lt;用户名&gt;/&lt;软件名&gt;。对于 Docker Hub，如果不给出用户名，则默认为 library，也就是官方镜像。
+$ sudo docker pull ubuntu 运行有了镜像后，我们就可以以这个镜像为基础启动一个容器来运行。以上面的 ubuntu 为例，如果我们打算启动里面的 bash 并且进行交互式操作的话，可以执行下面的命令。
+$ sudo docker run -it –rm ubuntu root@0ae011f7b5be:/# cat /etc/os-release NAME=“Ubuntu” VERSION=“16.04.2 LTS (Xenial Xerus)” ID=ubuntu ID_LIKE=debian PRETTY_NAME=“Ubuntu 16.04.2 LTS” VERSION_ID=“16.04” HOME_URL=“http://www.ubuntu.com/&#34; SUPPORT_URL=“http://help.ubuntu.com/&#34; BUG_REPORT_URL=“http://bugs.launchpad.net/ubuntu/&#34; VERSION_CODENAME=xenial UBUNTU_CODENAME=xenial docker run 就是运行容器的命令 -it：这是两个参数，一个是 -i：交互式操作，一个是 -t 终端。我们这里打算进入 bash 执行一些命令并查看返回结果，因此我们需要交互式终端。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-05-19 08:32:23 +0800 +0800'>2017-05-19</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>131 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to docker初体验" href="https://jiangxingye.github.io/2017/05/19/docker-first/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">linux无损调整分区大小
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>summary 系统环境:
+Red Hat 4.8.5-11 情况：
+home：500G root：50G root分区不够用 思路：把home分区的空间划一部分到root分区 # 设置home分区大小为200G，释放300G空间 $ lvreduce -L 200G /dev/centos/home # 将空闲空间扩展到root分区 $ lvextend -l &#43;100%FREE /dev/centos/root # 使用XFS文件系统自带的命令集增加分区空间 $ xfs_growfs /dev/mapper/centos-root 实例situation挂载在根目录的分区 /dev/mapper/centos-root 爆满，占用100% $ df -h Filesystem Size Used Avail Use% Mounted on /dev/mapper/centos-root 50G 50G 19M 100% / devtmpfs 32G 0 32G 0% /dev tmpfs 32G 0 32G 0% /dev/shm tmpfs 32G 2.5G 29G 8% /run tmpfs 32G 0 32G 0% /sys/fs/cgroup /dev/mapper/centos-home 476G 33M 476G 1% /home /dev/sda1 497M 238M 259M 48% /boot tmpfs 6.3G 0 6.3G 0% /run/user/0 analyze挂载在根目录的分区空间太小，只有50G，而服务器 home 目录为非常用目录，挂在了近500G的空间。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-05-17 14:00:42 +0800 +0800'>2017-05-17</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>355 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to linux无损调整分区大小" href="https://jiangxingye.github.io/2017/05/17/linux%E6%97%A0%E6%8D%9F%E8%B0%83%E6%95%B4%E5%88%86%E5%8C%BA%E5%A4%A7%E5%B0%8F/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">解决linux下zip文件解压乱码
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>原因由于zip格式并没有指定编码格式，Windows下生成的zip文件中的编码是GBK/GB2312等，因此，导致这些zip文件在Linux下解压时出现乱码问题，因为Linux下的默认编码是UTF8。
+解决方案使用7z解压。
+安装p7zip和convmv # fedora $ su -c ‘yum install p7zip convmv’ # ubuntu $ sudo apt-get install p7zip convmv 执行一下命令解压缩 # 使用7z解压缩 $ LANG=C 7za x your-zip-file.zip # 递归转码 $ convmv -f GBK -t utf8 –notest -r .
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-04-25 01:10:40 +0800 +0800'>2017-04-25</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>39 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 解决linux下zip文件解压乱码" href="https://jiangxingye.github.io/2017/04/25/%E8%A7%A3%E5%86%B3linux%E4%B8%8Bzip%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8E%8B%E4%B9%B1%E7%A0%81/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">加密算法简介
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>一、对称密钥算法概述对称加密（Symmetric-key algorithm）是指加解密用同一个密钥的算法，根据具体实现分为流加密和分组加密两种类型：
+流加密（Stream cipher）是对称加密常用的一种实现方法，加密和解密双方使用相同伪随机加密数据流，一般都是逐位异或随机密码本的内容。
+分组加密加密（Block cipher），也叫块加密，将明文分成多个等长的模块（block），使用确定的算法和对称密钥对每组分别加密解密。现代分组加密建立在迭代的思想上产生密文。迭代产生的密文在每一轮加密中使用不同的子密钥，而子密钥生成自原始密钥。
+对称加密普遍比非对称加密速度要快，实现更简单，适合大量内容的加密 DESDES (Data Encryption Standard) 是一种分组加密算法 DES算法的入口参数有三个:Key,Data,Mode，Key是密钥密钥占7个字节56位（64位里另外8位是用来校验的），Data是加密内容，占8个字节64位，Mode是加密还是解密。
+DES算法于1976被确定，现在已经被认为不够安全，主要原因是56位的密钥过短。据说这个算法因为包含一些机密设计元素，被怀疑内含美国国家安全局（NSA）的后门。
+DES算法有个拓展算法叫3DES，就是对数据块进行三次DES加密，增加爆破成本，但本质上也不够安全。
+RC4RC4 (Rivest Cipher 4) 是一种流加密算法 RC4起源于1987年，现在已经被认为不够安全。RC4由伪随机数生成器和异或运算组成。RC4的密钥长度可变，范围是[1,255]。RC4一个字节一个字节地加解密。给定一个密钥，伪随机数生成器接受密钥并产生一个S盒。S盒用来加密数据，而且在加密过程中S盒会变化。
+由于异或运算的对合性，RC4加密解密使用同一套算法。这个算法实现起来很简单，只用了最基本的加、异或、循环，话说我大学时某个课程设计的做的加密算法就是简化版的RC4。
+之后还出现了RC5、RC6加密算法，但RC5和RC6都是分组加密，和RC4原理并不一样。
+RC5RC5 （Rivest Cipher 5） 是一种分组加密算法，它和RC2，RC4，RC6都是同一个叫Ronald Rivest的人设计的。
+相比RC4，RC5的密钥成了128位，但RC5仍然只需要基础的加、异或、循环运算，可以在很多硬件上实现。RC5有三个参数：字的大小，循环轮数（round），密钥中的8位字节个数，所以可以说RC5是一种可变加密算法。实际上循环轮数12轮以下的RC5都被认为是不安全的，会被差分分析法（Differential cryptanalysis）攻击，18-20轮才足够安全。
+目前来说，RC5还是挺安全的，因为实现简单，消耗资源少，在一些传感器、嵌入式设备上使用很合适。
+RC6RC6 （Rivest Cipher 6） 是RC5的加强版，也属于分组加密算法。
+RC6算法在RC5算法基础之上针对RC5算法中的漏洞，主要是循环移位的位移量并不取决于要移动次数的所有比特，通过采用引入乘法运算来决定循环移位次数的方法，对RC5算法进行了改进，从而大大提高了RC6算法的安全性。
+RC6曾作为AES（高级加密标准）备选算法之一，但最终AES选择了Rijndael算法。
+AES最后压轴出场的是最著名的单密钥对称加密算法AES (Rijndael)，AES是Advanced Encryption Standard的缩写，是美国国家标准与技术研究院2001年发布的新加密标准。
+AES现在就是指的限定了区块长度和密钥长度的Rijndael算法，同样属于分组加密算法，该算法是两位比利时学者1998年发布的。起初还有很多算法参与了AES甄选，最终Rijndael凭借高安全性和清晰的数学结构而被选用。
+AES将Rijndael算法的区块长度固定为128位，密钥长度可选128，192或256比特（Rijndael原版支持128-256，n*32的区块长度和密钥长度）。
+AES算法包括4个步骤：
+AddRoundKey—矩阵中的每一个字节都与该次回合密钥（round key）做XOR运算；每个子密钥由密钥生成方案产生。
+SubBytes—通过一个非线性的替换函数，用查找表的方式把每个字节替换成对应的字节。
+ShiftRows—将矩阵中的每个横列进行循环式移位。
+MixColumns—为了充分混合矩阵中各个直行的操作。这个步骤使用线性转换来混合每内联的四个字节。最后一个加密循环中省略MixColumns步骤，而以另一个AddRoundKey替换。
+截止现在（2016），AES在算法层面上是安全的。2005年有人公布过一种缓存时序攻击法，但使用场景非常极端。
+二、非对称秘钥算法概述公钥加密的思想于1974年被提出，相比对称加密无需共享密钥，更加安全。但是没法加密大量数据，一般用来加密对称加密的密钥，而用对称加密加密大量数据。非对称加密的原理如下：
+消息发送方A在本地构建密钥对，公钥和私钥；
+消息发送方A将产生的公钥发送给消息接收方B；
+B向A发送数据时，通过公钥进行加密，A接收到数据后通过私钥进行解密，完成一次通信；
+反之，A向B发送数据时，通过私钥对数据进行加密，B接收到数据后通过公钥进行解密。
+RSARSA算法是最著名的非对称加密算法。RSA是1977年提出的，名字来源于Rivest、Shmir和Adleman三位作者。我们平时用到的SSL协议，TLS协议都采用了该算法加密，SSH（Secure Shell）也是基于RSA实现的。
+RSA的数学基础是极大整数的因数分解，具体实现过程如下：
+随意选择两个大的质数p和q，p不等于q，计算N=pq。
+根据欧拉函数，求得r=varphi (N) = varphi(p) * varphi(q)=(p-1)(q-1) 选择一个小于r的整数e，使e与r互质。并求得e关于r的模反元素，命名为d。
+(N,e)是公钥，(N,d)是私钥。
+加密时，加密的块 n^e ≡ c(MOD N)，得到的c就是密文。解密时，c^d ≡ n(MOD N)。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-04-22 01:30:41 +0800 +0800'>2017-04-22</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>149 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 加密算法简介" href="https://jiangxingye.github.io/2017/04/22/encryption-algorithm/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">JSP操作记录
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>问题EL表达式失效 {person.id} {person.name} 解决方法：在页面内加入下面代码即可 &lt;%@ page isELIgnored=“false” %&gt; Map遍历&lt;c:forEach items=&#34;${map}&#34; var=“entry”&gt; &lt;c:out value=&#34;${entry.key}&#34; /&gt; &lt;c:out value=&#34;${entry.value}&#34; /&gt; &lt;/c:forEach&gt; 取值&lt;c:out value=&#34;${map[key]}&#34; /&gt;
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-04-21 03:22:12 +0800 +0800'>2017-04-21</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>21 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to JSP操作记录" href="https://jiangxingye.github.io/2017/04/21/jsp-use-record/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[转]SpringMVC执行流程及源码解析
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>在SpringMVC中主要是围绕着DispatcherServlet来设计，可以把它当做指挥中心。这里先说明一下SpringMVC文档给出的执行流程，然后是我们稍微具体的执行流程，最后是流程大致的源码跟踪。关于很很很详细的源码解析，这里暂先不做。
+官方文档中的流程首先看下SpringMVC文档上给的流程图：这张图片给了我们大概的执行流程：
+用户请求首先发送到前端控制器DispatcherServlet，DispatcherServlet根据请求的信息来决定使用哪个页面控制器Controller（也就是我们通常编写的Controller）来处理该请求。找到控制器之后，DispatcherServlet将请求委托给控制器去处理。
+接下来页面控制器开始处理用户请求，页面控制器会根据请求信息进行处理，调用业务层等等，处理完成之后，会把结果封装成一个ModelAndView返回给DispatcherServlet。
+前端控制器DispatcherServlet接到页面控制器的返回结果后，根据返回的视图名选择相应的试图模板，并根据返回的数据进行渲染。
+最后前端控制器DispatcherServlet将结果返回给用户。
+更具体的流程上面只是总体流程，接下来我们稍微深入一点，看下更具体的流程，这里没有图，只有步骤解析：
+用户请求发送到前端控制器DispatcherServlet。
+前端控制器DispatcherServlet接收到请求后，DispatcherServlet会使用HandlerMapping来处理，HandlerMapping会查找到具体进行处理请求的Handler对象。
+HandlerMapping找到对应的Handler之后，并不是返回一个Handler原始对象，而是一个Handler执行链，在这个执行链中包括了拦截器和处理请求的Handler。HandlerMapping返回一个执行链给DispatcherServlet。
+DispatcherServlet接收到执行链之后，会调用Handler适配器去执行Handler。
+Handler适配器执行完成Handler（也就是我们写的Controller）之后会得到一个ModelAndView，并返回给DispatcherServlet。
+DispatcherServlet接收到Handler适配器返回的ModelAndView之后，会根据其中的视图名调用视图解析器。
+视图解析器根据逻辑视图名解析成一个真正的View视图，并返回给DispatcherServlet。
+DispatcherServlet接收到视图之后，会根据上面的ModelAndView中的model来进行视图中数据的填充，也就是所谓的视图渲染。
+渲染完成之后，DispatcherServlet就可以将结果返回给用户了。
+源码DispatcherServlet是一个Servlet，我们知道在Servlet在处理一个请求的时候会交给service方法进行处理，这里也不例外，DispatcherServlet继承了FrameworkServlet，首先进入FrameworkServlet的service方法：
+protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { //请求方法 String method = request.getMethod();
+//PATCH方法单独处理 if (method.equalsIgnoreCase(RequestMethod.PATCH.name())) { processRequest(request, response);
+} else {//其他的请求类型的方法经由父类，也就是HttpServlet处理 super.service(request, response);
+} } HttpServlet中会根据请求类型的不同分别调用doGet或者doPost等方法，FrameworkServlet中已经重写了这些方法，在这些方法中会调用processRequest进行处理，在processRequest中会调用doService方法，这个doService方法就是在DispatcherServlet中实现的。下面就看下DispatcherServlet中的doService方法的实现。
+请求到达DispatcherServletdoService方法：
+protected void doService(HttpServletRequest request, HttpServletResponse response) throws Exception { //给request中的属性做一份快照 Map&lt;String, Object&gt; attributesSnapshot = null;
+if (WebUtils.isIncludeRequest(request)) { logger.debug(“Taking snapshot of request attributes before include”);
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-04-15 02:22:05 +0800 +0800'>2017-04-15</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>1006 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to [转]SpringMVC执行流程及源码解析" href="https://jiangxingye.github.io/2017/04/15/springmvc-implementation-process/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">PostgreSQL常用SQL操作
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>说明：文章中实例均在 PostgreSQL 环境操作。
+DDL数据定义语言数据库/角色/schema– 创建一个数据库用户 create role “sp-boss” createdb createrole login password ‘sp-boss’;
+– 使用上面角色登录 postgres 数据库 psql -U sp-boss -d postgres – 创建自己的数据库 create database “sp-boss” – 登录自己的数据库 psql -U sp-boss – 创建一个其他用户 create role “sp-manager” login password ‘sp-manager’;
+– 赋予 create 权限 grant create on database “sp-boss” to “sp-manager”;
+– 使用 新用户 登录数据库 psql -U sp-manager -d sp-boss – 创建自己的 schema create schema “sp-manager”;
+表–创建表 create table user_info ( id serial primary key, name varchar(20), age integer, create_time timestamp, type integer, display boolean default true, unique (name, type) );
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-04-14 08:37:24 +0800 +0800'>2017-04-14</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>242 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to PostgreSQL常用SQL操作" href="https://jiangxingye.github.io/2017/04/14/postgres-sql-use/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">npm使用介绍
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Whatnpm（全称Node Package Manager，即node包管理器）是Node.js默认的、以JavaScript编写的软件包管理系统。作者：艾萨克·施吕特（Isaac Z. Schlueter） 安装npm 是随同node.js一起安装的，所以安装node.js即可。
+使用# 查看版本 $ npm -v # 升级 $ sudo npm install npm -g # 安装模块 $ npm install #本地安装 # 本地安装：安装到./node_modules(命令运行目录) $ npm install -g #全局安装 # 全局安装：放在 /usr/local 下或者你 node 的安装目录。
+卸载模块 $ npm uninstall # 更新模块 $ npm update # 查看所有安装的模块 $ npm ls #所有本地模块 $ npm ls -g #所有全局模块 # 搜索模块 $ npm search </p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-03-16 12:09:48 +0800 +0800'>2017-03-16</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>64 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to npm使用介绍" href="https://jiangxingye.github.io/2017/03/16/npm/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://jiangxingye.github.io/page/2/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="https://jiangxingye.github.io/page/4/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jiangxingye.github.io/">jiangxingye&#39;s blog</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+    <script async src="https://vercount.one/js"></script>
+
+<div class="footer-stats" style="text-align:center; color:var(--secondary); font-size:0.875em; margin-top:1rem;">
+      <span>本博客共 21891 字</span>
+      <span> · 本站总访问量 <span id="busuanzi_value_site_pv"></span></span>
+      <span> · 本文阅读量 <span id="busuanzi_value_page_pv"></span></span>
+</div>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

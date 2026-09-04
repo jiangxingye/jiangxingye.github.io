@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>JQuery on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/tags/jquery/</link>
+    <description>Recent content in JQuery on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Sep 2019 13:02:59 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/tags/jquery/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>不蒜子适配pjax</title>
+      <link>https://jiangxingye.github.io/2017/03/09/busuanzi-pjax/</link>
+      <pubDate>Thu, 09 Mar 2017 12:15:51 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/03/09/busuanzi-pjax/</guid>
+      <description>不蒜子适配pjax</description>
+      <content:encoded><![CDATA[<p>不蒜子一般配置加入脚本 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> <!--pv方式 --> <span id="busuanzi_container_site_pv"> 本站总访问量<span id="busuanzi_value_site_pv"></span>次 </span> <!--uv方式 --> <span id="busuanzi_container_site_uv"> 本站访客数<span id="busuanzi_value_site_uv"></span>人次 </span> <!--pv方式 --> <span id="busuanzi_container_page_pv"> 本文总阅读量<span id="busuanzi_value_page_pv"></span>次 </span> 只安装脚本，不安装标签代码，即可实现只记数，不显示。</p>
+<p>适配pjax最近开发3-hexo主题，由于主题使用的pjax，异步加载页面时不蒜子会出现加载不到多说js的问题。在pjax：end加载下面js代替标签即可 $.getScript(&quot;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;);</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>多说适配pjax</title>
+      <link>https://jiangxingye.github.io/2017/03/09/duoshuo-pjax/</link>
+      <pubDate>Thu, 09 Mar 2017 11:50:45 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/03/09/duoshuo-pjax/</guid>
+      <description>多说适配pjax</description>
+      <content:encoded><![CDATA[<p>最近开发3-hexo主题，由于主题使用的pjax，异步加载页面时多说会出现加载不到多说js的问题。</p>
+<p>多说加载代码如下：</p>
+<p>//加载多说 function loadComment() { duoshuoQuery = {short_name:</p>
+<p>$(&quot;.theme_duoshuo_domain&quot;).val()};</p>
+<p>var d = document, s = d.createElement(&lsquo;script&rsquo;);</p>
+<p>s.src = &lsquo;<a href="https://static.duoshuo.com/embed.js?t='+new">https://static.duoshuo.com/embed.js?t='+new</a> Date().getTime();</p>
+<p>s.async = true;</p>
+<p>s.charset = &lsquo;UTF-8&rsquo;;</p>
+<p>(d.head || d.body).appendChild(s);</p>
+<p>} 当局部加载页面时，就会无法加载多说。需要编写一个js方法，参考文档：(<a href="http://dev.duoshuo.com/docs/50b344447f32d30066000147">http://dev.duoshuo.com/docs/50b344447f32d30066000147</a>) /** * pjax后需要回调函数.加载多说 */ function pajx_loadDuodsuo(){ if(typeof duoshuoQuery ==&ldquo;undefined&rdquo;){ loadComment();</p>
+<p>} else { var dus=$(&quot;.ds-thread&quot;);</p>
+<p>if($(dus).length==1){ var el = document.createElement(&lsquo;div&rsquo;);</p>
+<p>el.setAttribute(&lsquo;data-thread-key&rsquo;,$(dus).attr(&ldquo;data-thread-key&rdquo;));//必选参数 el.setAttribute(&lsquo;data-url&rsquo;,$(dus).attr(&ldquo;data-url&rdquo;));</p>
+<p>DUOSHUO.EmbedThread(el);</p>
+<p>$(dus).html(el);</p>
+<p>} } } 在pjax:end中调用此方法即可。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>pjax用法</title>
+      <link>https://jiangxingye.github.io/2017/02/08/pjax/</link>
+      <pubDate>Wed, 08 Feb 2017 12:18:54 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/02/08/pjax/</guid>
+      <description>pjax用法</description>
+      <content:encoded><![CDATA[<p>最近在开发一款hexo主题3-hexo，其中使用了pjax大大提高了用户体验和加载速度，在此简单介绍一下pjax的用法github链接 pjax是什么 pjax是一款jQuery插件，使用了ajax和pushState的技术，在保留真正永久链接，网页标题和可用的返回功能的情况下，带来一种快速的浏览体验。</p>
+<p>–官方介绍 用人话说，就是当跳转过去的网页和当前网页的一部分是一样的，这时可以通过pjax就会从响应页面中取出 不同的那部分 （需指定），替换掉原来的内容。</p>
+<p>如果在服务端判断处理，直接返回 不同的那部分内容，这样就可以减少带宽占用，提升加载速度。</p>
+<p>这样做的优势：</p>
+<p>由于从服务器取回的数据量变少，加载速度将会提升。</p>
+<p>并且采用异步刷新页面中的不一样的地方，用户体验也是满满的。</p>
+<p>保留了浏览器回退的功能（解决了ajax的尴尬） 好了，开始操作。</p>
+<p>Demo第一步：引入jQuery和jQuery.pjax <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.pjax/1.9.6/jquery.pjax.min.js"></script> 第二步：将指定的a的链接，转为pjax风格 /<em>将#menu中的a的链接的页面，只取回class=pjax元素中的内容，替换掉当前页面class=pjax元素中的内容</em>/ $(document).pjax(&rsquo;.#menu a&rsquo;, &lsquo;.pjax&rsquo;, {fragment:&rsquo;.pjax&rsquo;, timeout:8000});</p>
+<p>第三步：如果需要在请求的过程中做一些自定义的事件，可以使用下面的方法 $(document).on({ &lsquo;pjax:click&rsquo;:</p>
+<p>function() { //点击链接时，需要触发的事件写到这里 }, &lsquo;pjax:start&rsquo;:</p>
+<p>function() { //当开始获取请求时，需要触发的事件写在这里 }, &lsquo;pjax:end&rsquo;:</p>
+<p>function() { //当请求完成后，需要触发的事件写在这里 } });</p>
+<p>结束。</p>
+<p>详细文档翻译于官方 参数$(document).pjax(selector, [container], options) selector 触发点击事件的选择器，String类型 container 一个选择器，为唯一的pjax容器 options 一个可以包含下面这些选项的对象 pjax options key default description timeout 650 ajax超时时间，单位毫秒，超时后将请求整个页面进行刷新 push true 使用 pushState 添加一个浏览器历史导航条目 replace false 替换URL，而不添加浏览器历史条目 maxCacheLength 20 历史内容 cache 的最大size version string ：</p>
+<p>当前pjax版本 scrollTo 0 垂直位置滚动，为了避免改变滚动条位置 type “GET” 可以查看jQuery.ajax() dataType “html” 可以查看jQuery.ajax() container css选择器，此元素内容将被替换 url link.href string:</p>
+<p>ajax 请求的URL target link eventually the relatedTarget value for pjax events fragment 从ajax响应的页面中抽取的‘片段’ Events除了pjax:click和pjax:clicked外的所有pjax事件从pjax容器中触发，是不需要点击链接的。所有事件的生命周期在通过pjax请求链接的过程中 event cancel arguments notes pjax:click ✔︎ options 在一个链接被激活（点击）时触发此事件，可以在此取消阻止pjax pjax:beforeSend ✔︎ xhr, options 可以设置 XHR 头 pjax:start xhr, options pjax:send xhr, options pjax:clicked options 当链接被点击，并且已经开始pjax请求后触发 pjax:beforeReplace contents, options 从服务器已经加载到HTML内容，在替换HTML内容之前触发 pjax:success data, status, xhr, options 从服务器已经加载到HTML内容，在替换HTML内容之后触发 pjax:timeout ✔︎ xhr, options 页面将会在options.timeout之后直接发起请求刷新页面，除非取消pjax pjax:error ✔︎ xhr, textStatus, error, options ajax 错误，将会请求刷新页面，除非取消pjax pjax:complete xhr, textStatus, options 不管结果是什么，在ajax后，都触发 pjax:end xhr, options 生命周期在浏览器返回或前进时触发 event cancel arguments notes pjax:popstate 事件方向(前进，后退)属性:</p>
+<p>“back”/“forward” pjax:start null, options 替换内容前 pjax:beforeReplace contents, options 从cache中读取内容后，替换html前 pjax:end null, options 替换内容后</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>jQuery之checkbox|radio|select操作</title>
+      <link>https://jiangxingye.github.io/2016/11/23/jquery-checkbox-radio-select/</link>
+      <pubDate>Wed, 23 Nov 2016 08:19:34 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2016/11/23/jquery-checkbox-radio-select/</guid>
+      <description>jQuery之checkbox|radio|select操作</description>
+      <content:encoded><![CDATA[<p>jQuery1.6中添加了prop方法,看起来和用起来都和attr方法一样,但是在一些特殊情况下,attribute和properties的区别非常大,在jQuery1.6之前，.attr()方法在获取一些attributes的时候使用了property值，这样会导致一些不一致的行为。在jQuery1.6中，.prop()方法提供了一中明确的获取property值得方式，这样.attr()方法仅返回attributes。</p>
+<p>–摘自jQuery API文档 checkbox<input type='checkbox' value='1'/> <input type='checkbox' value='2'/> <input type='checkbox' value='3'/> $(&ldquo;input[type=checkbox]&rdquo;) //获取所有的checkbox $(&ldquo;input[type=checkbox]:checked&rdquo;) //获取所有的被选中的checkbox $(&ldquo;input[type=checkbox]:not(:checked)&rdquo;) //获取所有未被选中的checkbox $(&ldquo;input[type=checkbox]&rdquo;).not(&quot;:checked&quot;) //获取所有未被选中的checkbox $(&ldquo;input[type=checkbox]:first&rdquo;) //获取第一个checkbox的value值 $(&ldquo;input[type=checkbox]:checked&rdquo;).length //获取被选中checkbox的数量 $(&ldquo;input[type=checkbox]:first&rdquo;).prop(&ldquo;checked&rdquo;) //判断第一个checkbox是否被选中 $(&ldquo;input[type=checkbox]:first&rdquo;).prop(&ldquo;checkbox&rdquo;,true) //选中第一个checkbox $(&ldquo;input[type=checkbox]:not(:checked)&rdquo;).prop(&ldquo;checked&rdquo;,true) //全选 $(&ldquo;input[type=checkbox]:checkbox&rdquo;).prop(&ldquo;checked&rdquo;,false) //都不选中 //反选 $(&ldquo;input[type=checkbox]&rdquo;).each(function(){ if($(this).prop(&ldquo;checked&rdquo;)){ $(this).prop(&ldquo;checked&rdquo;,false);</p>
+<p>}else{ $(this).prop(&ldquo;checked&rdquo;,true);</p>
+<p>} }) radio<input type='radio' name='rank' value='1' /> <input type='radio' name='rank' value='2' /> <input type='radio' name='rank' value='3' /> $(&ldquo;input[type=radio]&rdquo;) //获取所有的radio $(&ldquo;input[type=radio]:checked&rdquo;) //获取被选中的radio $(&ldquo;input[type=radio]:not(:checkbox)&rdquo;) //获取所有没有被选中的radio $(&ldquo;input[type=radio]:checked&rdquo;).val() //获取被选中的radio的value值 $(&ldquo;input[type=radio]:first&rdquo;).prop(&ldquo;checked&rdquo;) //判断第一个radio是否被选中 $(&ldquo;input[type=radio]:first&rdquo;).prop(&ldquo;checked&rdquo;,true) //选中第一个radio select<select> <option value='1'>1</option> <option value='2'>2</option> <option value='4'>3</option> </select> $(&ldquo;select option:selected&rdquo;) //获取被选中的option $(&ldquo;select&rdquo;).val() //获取选中option的value值 $(&ldquo;select option:selected&rdquo;).text() //获取被选中的option的text值 $(&ldquo;select option:first&rdquo;).prop(&ldquo;selected&rdquo;) //判断第一个option是否被选中 $(&ldquo;select option:first&rdquo;).prop(&ldquo;selected&rdquo;,true) //选中第一个option $(&ldquo;select option:selected&rdquo;).prop(&ldquo;selected&rdquo;,false) //取消当前选中,然后默认选中第一个</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>jQuery选择器与节点操作</title>
+      <link>https://jiangxingye.github.io/2016/11/22/jquery-selector/</link>
+      <pubDate>Tue, 22 Nov 2016 09:11:48 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2016/11/22/jquery-selector/</guid>
+      <description>jQuery选择器与节点操作</description>
+      <content:encoded><![CDATA[<p>jQuery 是一个 JavaScript 函数库。jQuery的语法设计使得许多操作变得容易，如操作文档对象（document）、选择文档对象模型（DOM）元素、创建动画效果、处理事件、以及开发Ajax程序。jQuery也提供了给开发人员在其上创建插件的能力。这使开发人员可以对底层交互与动画、高级效果和高级主题化的组件进行抽象化。</p>
+<p>jQuery获取元素元素选择器//元素选择器 <div > $(&ldquo;div&rdquo;) id选择器//id选择器 <div id='id'> $(&quot;#id&quot;) $(&ldquo;div#id&rdquo;) class选择器//class选择器 <div class='class'> $(&quot;.class&quot;) $(&ldquo;div.class&rdquo;) 属性过滤选择器<li class='check' type='li_01'></li> <li type='li_02'></li> <li type='li_03'></li> //通过属性获取 如果属性值为有特殊字符，一定要加引号 $(&quot;[type]&quot;) //获取有type属性的元素 $(&quot;[type=&lsquo;li_01&rsquo;]&quot;) //获取type值等于&rsquo;li_01&rsquo;的元素 $(&quot;[type!=&lsquo;li_01&rsquo;]&quot;) //获取type值不等于&rsquo;li_01&rsquo;的元素 $(&quot;[type*=&lsquo;li&rsquo;]&quot;) //模糊匹配 获取type值包含&rsquo;li&rsquo;的元素 $(&quot;[type^=&lsquo;li&rsquo;]&quot;) //模糊匹配 获取type值以&rsquo;li&rsquo;开始的元素 $(&quot;[type$=&lsquo;01&rsquo;]&quot;) //模糊匹配 获取type值以'01&rsquo;结尾的元素 $(&ldquo;li[class=&lsquo;check&rsquo;][type]&rdquo;) //获取多个条件同时满足的元素 * 选择器//遍历form下的所有元素,将其margin设置0 $(&lsquo;form *&rsquo;).css(&lsquo;margin&rsquo;,&lsquo;0px&rsquo;) 并列选择器$(&lsquo;p, div&rsquo;).css(&lsquo;color&rsquo;,&lsquo;red&rsquo;);</p>
+<p>//将p元素和div元素的字体颜色设置为red 层叠选择器<div class='a'> <!-- 父级div --> <div class='a1'> <!-- 子级div1 --> <div class='a11'></div> <!-- 孙级div1 --> </div> <div class='a2'></div> <!-- 子级div2 --> <div class='a3'></div> <!-- 子级div3 --> <span></span> <!-- 子级span1 --> </div> $(&quot;.a div&quot;) //选择class=a的元素下所有的div 即选择到子级div1,2,3 孙级div1 $(&quot;.a &gt; div&quot;) //选择class=a的元素的所有子div元素, 即选择到子级div1,2,3;</p>
+<p>$(&ldquo;div + span&rdquo;) //选择所有的div元素的下一个input元素节点,即选择到:子级div3 $(&quot;.a1 ~ div&quot;) //同胞选择器,返回class为a2的标签元素的所有属于同一个父元素的div标签,即div1,2,3 基本过滤选择器<ul> <li></li> <li></li> <li></li> <li></li> <li></li> </ul> $(&ldquo;li:first&rdquo;) //选择所有li元素的第一个 $(&ldquo;li:last&rdquo;) //选择所有li元素的最后一个 $(&ldquo;li:even&rdquo;) //选择所有li元素的第0,2,4&hellip; &hellip;个元素(序号从0开始) $(&ldquo;li:odd&rdquo;) //选择所有li元素的第1,3,5&hellip; &hellip;个元素 $(&ldquo;li:eq(2)&rdquo;) //选择所有li元素中的第三个(即序号为2) $(&ldquo;li:gt(3)&rdquo;) //选择所有li元素中序号大于3的li元素 $(&ldquo;li:ll(2)&rdquo;) //选择所有li元素中序号小于2的li元素 <input type="checkbox" /> <input type="checkbox" /> $(&ldquo;input[type=&lsquo;checkbox&rsquo;]:checked&rdquo;) //获取所有已被选中的type等于checkbox的input元素 $(&ldquo;input[type=&lsquo;checkbox&rsquo;]:not(:checked)&rdquo;) //获取所有未被选中的type等于checkbox的input元素 内容过滤器$(&ldquo;div:contains(&lsquo;Faker&rsquo;)&rdquo;) //选择所有div中含有Faker文本的元素 $(&ldquo;div:empty&rdquo;) //选择所有div中为空(不包含任何元素/文本)的元素 $(&ldquo;div:has(&lsquo;p&rsquo;)&rdquo;) //选择所有div中包含p元素的元素 $(&ldquo;div:parent&rdquo;) //选择所有的含有子元素或文本的div 可视化过滤器$(&ldquo;div:hidden&rdquo;) //选择所有被hidden的div元素 $(&ldquo;div:not(:hidden)&rdquo;) //选择所有没有被hidden的div元素 $(&ldquo;div:visible&rdquo;) //所有可视化的div元素 $(&ldquo;div:not(:visible)&rdquo;) //所有非可视化的div元素 子元素过滤器<body> <div class='d1'> <div class='d11'> <div class='d111'> </div> </div> </div> </body> $(&ldquo;body div:first-child&rdquo;) //返回所有的body元素下 所有div 为父元素的第一个元素 的元素. //:first 与 :first-child 的区别用法 //$(&ldquo;body div:first&rdquo;)只匹配到第一个合适的元素 即只匹配到 d1 //$(&ldquo;body div:first-child&rdquo;) 匹配所有合适的元素:d1是body的第一个元素,d11是d1的第一个元素.. //所以匹配到d1,d11,d111 $(&ldquo;div span:last-child&rdquo;) //返回所有的body元素下 所有div 为父元素的最后一个元素 的元素. //:last 与 :last-child 的区别参考first $(&ldquo;div button:only-child&rdquo;) //如果button是它父级元素的唯一子元素,此button将会被匹配 表单元素选择器$(&quot;:input&quot;) //选择所有的表单输入元素，包括input, textarea, select 和 button $(&quot;:text&quot;) //选择所有的text input元素 $(&quot;:password&quot;) //选择所有的password input元素 $(&quot;:radio&quot;) //选择所有的radio input元素 $(&quot;:checkbox&quot;) //选择所有的checkbox input元素 $(&quot;:submit&quot;) //选择所有的submit input元素 $(&quot;:image&quot;) //选择所有的image input元素 $(&quot;:reset&quot;) //选择所有的reset input元素 $(&quot;:button&quot;) //选择所有的button input元素 $(&quot;:file&quot;) //选择所有的file input元素 $(&quot;:hidden&quot;) //选择所有类型为hidden的input元素或表单的隐藏域 表单元素过滤器$(&quot;:enabled&quot;) //选择所有的可操作的表单元素 $(&quot;:disabled&quot;) //选择所有的不可操作的表单元素 $(&quot;:checked&quot;) //选择所有的被checked的表单元素 $(&ldquo;select option:selected&rdquo;) //选择所有的select 的子元素中被selected的元素 节点操作获取和操作节点属性<a href='index.html' data-type='a' style="color:red;">index</a> <input value='user' /> $(&ldquo;a&rdquo;).attr(&ldquo;href&rdquo;);</p>
+<p>//获取href属性值 $(&ldquo;a&rdquo;).attr(&ldquo;href&rdquo;,&ldquo;about.html&rdquo;);</p>
+<p>//设置href属性值 $(&ldquo;a&rdquo;).data(&ldquo;type&rdquo;);</p>
+<p>//获取data-type属性值 $(&ldquo;a&rdquo;).css(&ldquo;color&rdquo;);</p>
+<p>//通过key(color/display/&hellip;.)获取css值 $(&ldquo;a&rdquo;).css(&ldquo;color&rdquo;,&ldquo;black&rdquo;);</p>
+<p>//通过key/value 设置css属性 $(&ldquo;a&rdquo;).text();</p>
+<p>//获取a的文本节点值 $(&ldquo;a&rdquo;).text(&ldquo;Index.html&rdquo;);</p>
+<p>//设置a的文本节点值 $(&ldquo;input&rdquo;).val();</p>
+<p>//获取input的value值 $(&ldquo;input&rdquo;).val(&ldquo;username&rdquo;);</p>
+<p>//设置input的value值 插入节点的方法<div class="head"> <span>Faker<span> </div> $(&quot;.head&quot;).append(&quot;<span>hello</span>&quot;) //在.head中的最后插入一段html //结果:</p>
+<div class="head"><span>Faker</span><span>hello</span></div> $("<span>hello</span>").appendTo(".head") //在.head中的最后插入一段html, //结果:
+<div class="head"><span>Faker</span><span>hello</span></div> $(".head").prepend("<span>hello</span>") //在.head中的开始插入一段html, //结果:
+<div class="head"><span>hello</span><span>Faker</span></div> $("<span>hello</span>").prependTo(".head") //在.head中的开始插入一段html, //结果:
+<div class="head"><span>hello</span><span>Faker</span></div> $(".head *:first").after("<span>hello</span>") //在.head中的第一个元素后插入一段html, //结果:
+<div class="head"><span>Faker</span><span>hello</span></div> $("<span>hello</span>").insertAfter(".head *:first") //在.head中的第一个元素后插入一段html, //结果:
+<div class="head"><span>Faker</span><span>hello</span></div> $(".head *:first").before("<span>hello</span>") //在.head中的第一个元素前插入一段html, //结果:
+<div class="head"><span>hello</span><span>Faker</span></div> $("<span>hello</span>").insertBefore(".head *:first") //在.head中的第一个元素后插入一段html, //结果:
+<div class="head"><span>hello</span><span>Faker</span></div> $.load()方法 在指定位置加载请求回来的html页面 <div class="head"> </div> $(".head").load(url[,data][,callback]) url:
+<p>请求HTML页面的URL地址 data(可选):</p>
+<p>请求的key/value参数 callback(可选) 请求完成的回调函数</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Postgres on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/tags/postgres/</link>
+    <description>Recent content in Postgres on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Sep 2019 13:02:59 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/tags/postgres/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PostgreSQL常用SQL操作</title>
+      <link>https://jiangxingye.github.io/2017/04/14/postgres-sql-use/</link>
+      <pubDate>Fri, 14 Apr 2017 08:37:24 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/04/14/postgres-sql-use/</guid>
+      <description>PostgreSQL常用SQL操作</description>
+      <content:encoded><![CDATA[<p>说明：文章中实例均在 PostgreSQL 环境操作。</p>
+<p>DDL数据定义语言数据库/角色/schema&ndash; 创建一个数据库用户 create role &ldquo;sp-boss&rdquo; createdb createrole login password &lsquo;sp-boss&rsquo;;</p>
+<p>&ndash; 使用上面角色登录 postgres 数据库 psql -U sp-boss -d postgres &ndash; 创建自己的数据库 create database &ldquo;sp-boss&rdquo; &ndash; 登录自己的数据库 psql -U sp-boss &ndash; 创建一个其他用户 create role &ldquo;sp-manager&rdquo; login password &lsquo;sp-manager&rsquo;;</p>
+<p>&ndash; 赋予 create 权限 grant create on database &ldquo;sp-boss&rdquo; to &ldquo;sp-manager&rdquo;;</p>
+<p>&ndash; 使用 新用户 登录数据库 psql -U sp-manager -d sp-boss &ndash; 创建自己的 schema create schema &ldquo;sp-manager&rdquo;;</p>
+<p>表&ndash;创建表 create table user_info ( id serial primary key, name varchar(20), age integer, create_time timestamp, type integer, display boolean default true, unique (name, type) );</p>
+<p>&ndash;删除表 drop table exists user_info;</p>
+<p>&ndash;重命名表 alter table user_info rename to user_infos;</p>
+<p>字段（列）&ndash;添加一列 alter table user_info add [column] username varchar(50);</p>
+<p>&ndash;删除一列 alter table user_info drop [column] username;</p>
+<p>&ndash;重命名列 alter table user_info rename [column] username to name;</p>
+<p>&ndash;修改结构 alter table user_info alter [column] username set not null;</p>
+<p>&ndash; 唯一约束&ndash; 添加名为 uk_name 的联合唯一约束，组合列为column1和column2 alter table sys_theme add constraint uk_name unique(column1,column2);</p>
+<p>&ndash; 删除名为 uk_name 的约束 alter table sys_theme drop constraint uk_name;</p>
+<p>DML数据库操作语言SELECT查询包含json格式的text类型的数据postgres=# select * from person;</p>
+<p>id</p>
+<p>| name | other &mdash;-+&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- 1 | faker | {&ldquo;gender&rdquo;:&ldquo;male&rdquo;,&ldquo;address&rdquo;:&ldquo;xiamen&rdquo;,&ldquo;college&rdquo;:&ldquo;xmut&rdquo;} 2 | watson | {&ldquo;gender&rdquo;:&ldquo;male&rdquo;,&ldquo;address&rdquo;:&ldquo;shenzhen&rdquo;,&ldquo;college&rdquo;:&ldquo;szu&rdquo;} 3 | lance | {&ldquo;gender&rdquo;:&ldquo;male&rdquo;,&ldquo;address&rdquo;:&ldquo;shenzhen&rdquo;,&ldquo;college&rdquo;:&ldquo;xmut&rdquo;} 4 | jine | {&ldquo;gender&rdquo;:&ldquo;female&rdquo;,&ldquo;address&rdquo;:&ldquo;xiamen&rdquo;,&ldquo;college&rdquo;:&ldquo;xmut&rdquo;} 5 | jobs | {&ldquo;gender&rdquo;:&ldquo;male&rdquo;,&ldquo;address&rdquo;:&ldquo;beijing&rdquo;,&ldquo;college&rdquo;:&ldquo;xmu&rdquo;} 6 | yak | {&ldquo;gender&rdquo;:&ldquo;female&rdquo;,&ldquo;address&rdquo;:&ldquo;xiamen&rdquo;,&ldquo;college&rdquo;:&ldquo;xmut&rdquo;} 7 | alice | {&ldquo;gender&rdquo;:&ldquo;female&rdquo;,&ldquo;address&rdquo;:&ldquo;shanghai&rdquo;,&ldquo;college&rdquo;:&ldquo;thu&rdquo;} 8 | anita | {&ldquo;gender&rdquo;:&ldquo;female&rdquo;,&ldquo;address&rdquo;:&ldquo;xiongan&rdquo;,&ldquo;college&rdquo;:&ldquo;hku&rdquo;} (8 行记录) &ndash; 查询深圳学生的高校分部情况 select other::json-&raquo;&lsquo;college&rsquo; college, count(1) from person where other::json-&raquo;&lsquo;address&rsquo;=&lsquo;shenzhen&rsquo; group by other::json-&raquo;&lsquo;college&rsquo;; ___________________________ college | count &mdash;&mdash;&mdash;+&mdash;&mdash;- szu | 1 xmut |</p>
+<p>1 (1 行记录) &mdash; 结果可得深圳一共有两个学生， &mdash; 在深圳大学和厦门理工学院各一个。</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

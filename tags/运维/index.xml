@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>运维 on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/tags/%E8%BF%90%E7%BB%B4/</link>
+    <description>Recent content in 运维 on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Sep 2019 13:02:59 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/tags/%E8%BF%90%E7%BB%B4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CentOS修改DNS/GW/IP</title>
+      <link>https://jiangxingye.github.io/2017/05/23/centos-dns-gw-ip/</link>
+      <pubDate>Tue, 23 May 2017 01:53:52 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/05/23/centos-dns-gw-ip/</guid>
+      <description>CentOS修改DNS/GW/IP</description>
+      <content:encoded><![CDATA[<p>1.修改DNS解决方案一：修改网卡的DNS的配置文件 $ vim /etc/resolv.conf 添加以下内容,设置两条dns nameserver 8.8.8.8 #google域名服务器 nameserver 8.8.4.4 #google域名服务器 若未生效，可执行 chattr +i /etc/resolv.conf 设置文件属性只有root用户才能修改然后执行 service NetworkManager restart 解决方案二：对接口添加dns信息；编辑/etc/sysconfig/network-scripts/ifcfg-xxx，xxx为你的网卡名，但一般是ifcfg-eth0的，具体的xxx根据你的网卡确定，在最下面添加：</p>
+<p>DNS1=8.8.8.8 #google dns服务器, 根据实际情况更换 DNS2=8.8.4.4 #google dns服务器, 根据实际情况更换保存后重启网络 $ service network restart 2.修改网关修改网关的配置文件(第3部分也可以设置) $ vim /etc/sysconfig/network 修改为一下内容 NETWORKING=yes(表示系统是否使用网络，一般设置为yes。如果设为no，则不能使用网络，而且很多系统服务程序将无法启动) HOSTNAME=centos(设置本机的主机名，这里设置的主机名要和/etc/hosts中设置的主机名对应) GATEWAY=192.168.1.1(设置本机连接的网关的IP地址。例如，网关为10.0.0.2)3.修改ip修改对应的网卡的IP地址的配置文件 $ vim /etc/sysconfig/network-scripts/ifcfg-eth0 修改为一下内容 DEVICE=eth0 #描述网卡对应的设备别名，例如ifcfg-eth0的文件中它为eth0 BOOTPROTO=static #设置网卡获得ip地址的方式，可能的选项为static，dhcp或bootp，分别对应静态指定的 ip地址，通过dhcp协议获得的ip地址，通过bootp协议获得的ip地址 BROADCAST=192.168.0.255 #对应的子网广播地址 HWADDR=00:07:E9:05:E8:B4 #对应的网卡物理地址 IPADDR=12.168.1.2 #如果设置网卡获得 ip地址的方式为静态指定，此字段就指定了网卡对应的ip地址 IPV6INIT=no IPV6_AUTOCONF=no NETMASK=255.255.255.0 #网卡对应的网络掩码 NETWORK=192.168.1.0 #网卡对应的网络地址 ONBOOT=yes #系统启动时是否设置此网络接口，设置为yes时，系统启动时激活此设备</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>linux无损调整分区大小</title>
+      <link>https://jiangxingye.github.io/2017/05/17/linux%E6%97%A0%E6%8D%9F%E8%B0%83%E6%95%B4%E5%88%86%E5%8C%BA%E5%A4%A7%E5%B0%8F/</link>
+      <pubDate>Wed, 17 May 2017 14:00:42 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/05/17/linux%E6%97%A0%E6%8D%9F%E8%B0%83%E6%95%B4%E5%88%86%E5%8C%BA%E5%A4%A7%E5%B0%8F/</guid>
+      <description>linux无损调整分区大小</description>
+      <content:encoded><![CDATA[<p>summary 系统环境:</p>
+<p>Red Hat 4.8.5-11 情况：</p>
+<p>home：500G root：50G root分区不够用 思路：把home分区的空间划一部分到root分区 # 设置home分区大小为200G，释放300G空间 $ lvreduce -L 200G /dev/centos/home # 将空闲空间扩展到root分区 $ lvextend -l +100%FREE /dev/centos/root # 使用XFS文件系统自带的命令集增加分区空间 $ xfs_growfs /dev/mapper/centos-root 实例situation挂载在根目录的分区 /dev/mapper/centos-root 爆满，占用100% $ df -h Filesystem Size Used Avail Use% Mounted on /dev/mapper/centos-root 50G 50G 19M 100% / devtmpfs 32G 0 32G 0% /dev tmpfs 32G 0 32G 0% /dev/shm tmpfs 32G 2.5G 29G 8% /run tmpfs 32G 0 32G 0% /sys/fs/cgroup /dev/mapper/centos-home 476G 33M 476G 1% /home /dev/sda1 497M 238M 259M 48% /boot tmpfs 6.3G 0 6.3G 0% /run/user/0 analyze挂载在根目录的分区空间太小，只有50G，而服务器 home 目录为非常用目录，挂在了近500G的空间。</p>
+<p>思路：从 centos-home 分区划出300G空间到 centos-root 分区。</p>
+<p>operation1.查看各分区信息$ lvdisplay &mdash; Logical volume &mdash; LV Path /dev/centos/home LV Name home VG Name centos LV UUID 1fAt1E-bQsa-1HXR-MCE2-5VZ1-xzBz-iI1SLv LV Write Access read/write LV Creation host, time localhost, 2016-10-26 17:23:47 +0800 LV Status available # open 0 LV Size 475.70 GiB Current LE 121778 Segments 1 Allocation inherit Read ahead sectors auto - currently set to 256 Block device 253:2 &mdash; Logical volume &mdash; LV Path /dev/centos/root LV Name root VG Name centos LV UUID lD64zY-yc3Z-SZaB-dAjK-03YM-2gM8-pfj4oo LV Write Access read/write LV Creation host, time localhost, 2016-10-26 17:23:48 +0800 LV Status available # open 1 LV Size 50.00 GiB Current LE 12800 Segments 1 Allocation inherit Read ahead sectors auto - currently set to 256 Block device 253:0 2.减少/home分区空间# 释放 /dev/centos/home 分区 300G 的空间 # 命令设置 /dev/centos/home 分区 200G空间 $ lvreduce -L 200G /dev/centos/home WARNING:</p>
+<p>Reducing active logical volume to 200.00 GiB. THIS MAY DESTROY YOUR DATA (filesystem etc.) Do you really want to reduce centos/home?</p>
+<p>[y/n]:</p>
+<p>y Size of logical volume centos/home changed from 475.70 GiB (121778 extents) to 200.00 GiB (51200 extents). Logical volume centos/home successfully resized. 3.增加/root分区空间$ lvextend -l +100%FREE /dev/centos/root Size of logical volume centos/root changed from 50.06 GiB (12816 extents) to 325.76 GiB (83394 extents). Logical volume centos/root successfully resized. 4.扩展XFS文件空间大小$ xfs_growfs /dev/mapper/centos-root meta-data=/dev/mapper/centos-root isize=256 agcount=4, agsize=3276800 blks = sectsz=512 attr=2, projid32bit=1 = crc=0 finobt=0 spinodes=0 data = bsize=4096 blocks=13107200, imaxpct=25 = sunit=0 swidth=0 blks naming =version 2 bsize=4096 ascii-ci=0 ftype=0 log =internal bsize=4096 blocks=6400, version=2 = sectsz=512 sunit=0 blks, lazy-count=1 realtime =none extsz=4096 blocks=0, rtextents=0 data blocks changed from 13107200 to 85395456 完成</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

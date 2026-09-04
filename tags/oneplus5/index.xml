@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Oneplus5 on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/tags/oneplus5/</link>
+    <description>Recent content in Oneplus5 on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 16 Oct 2019 02:52:58 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/tags/oneplus5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to flash Pixel Experience ROM on One Plus5</title>
+      <link>https://jiangxingye.github.io/2019/10/16/how-to-flash-pixel-experience-rom-on-one-plus5/</link>
+      <pubDate>Wed, 16 Oct 2019 02:51:41 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2019/10/16/how-to-flash-pixel-experience-rom-on-one-plus5/</guid>
+      <description>How to flash Pixel Experience ROM on One Plus5</description>
+      <content:encoded><![CDATA[<p>How to flash Pixel Experience ROM Download The latest firmware #firmware The latest PE build #download Magisk (optional) #magisk Disable Dm Verity ForceEncrypt (optional) #decrypt Clean Flash Wipe system, data, cache, dalvik/art cache, vendor Flash the latest Firmware Flash ROM Flash Magisk (if you want root) Flash Disable Dm Verity ForceEncrypt (if your data was previously decryped) Wipe cache and Enjoy!</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

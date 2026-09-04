@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>大前端 on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/</link>
+    <description>Recent content in 大前端 on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Sep 2019 13:02:59 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[转]浏览器前进/后退缓存（BF Cache）</title>
+      <link>https://jiangxingye.github.io/2017/09/21/bf-cache/</link>
+      <pubDate>Thu, 21 Sep 2017 07:35:24 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/09/21/bf-cache/</guid>
+      <description>[转]浏览器前进/后退缓存（BF Cache）</description>
+      <content:encoded><![CDATA[<p><a href="https://developer.mozilla.org/en-US/docs/Working_with_BFCache">浏览器前进/后退缓存</a>（Backward/Forward Cache，BF Cache）是指浏览器在前进后退过程中， 会应用更强的缓存策略，表现为 DOM、window、甚至 JavaScript 对象被缓存，以及同步 XHR 也被缓存。</p>
+<p>这一现象在移动端浏览器尤为常见，除 Chrome for Android、Android Browser 之外的浏览器基本都会触发。</p>
+<p>BF Cache 本来是一项浏览器优化，但在某些情况下（比如前端路由的 Web App）会引起困惑。</p>
+<p>本文主要讨论 BF Cache 的行为、如何检测 BF Cache 缓存、以及如何 workaround。</p>
+<p>缓存行为BF Cache 是一种浏览器优化，HTML 标准并未指定其如何进行缓存，因此缓存行为是与浏览器实现相关的。</p>
+<p>User agents may discard the Document objects of entries other than the current entry that are not referenced from any script, reloading the pages afresh when the user or script navigates back to such pages. This specification does not specify when user agents should discard Document objects and when they should cache them. – Session history and navigation, WHATWG Desktop Chrome：阻塞的资源和同步发出的 XHR 都会被缓存，但不缓存渲染结果。因此可以看到明显的载入过程，此时脚本也会重新执行。</p>
+<p>Chrome for Android：有些情况下不会缓存，缓存时与 Desktop Chrome 行为一致。</p>
+<p>Desktop Firefox：页面会被 Frozen，定时器会被暂停，DOM、Window、JavaScript 对象会被缓存，返回时页面脚本重新开始运行。</p>
+<p>iOS Safari：渲染结果也会被缓存，因此才能支持左右滑动手势来前进/后退。</p>
+<p>Desktop Firefox 暂停计时器的行为非常有趣，以下 HTML 中显示一个每秒加一的数字。</p>
+<p>当页面导航时就会暂停，返回时继续增加（因此直接使用 setInterval 倒计时不仅不精确，而且不可靠）：</p>
+<p><span id="timer-tick"></span> <a href="http://harttle.com">External Link</a> <script> var i = 0 setInterval(() =&gt; document.querySelector(&rsquo;#timer-tick&rsquo;).innerHTML = i++, 1000) </script> pagehide/pageshow 事件会话（Session）中的某一个页面显示/隐藏时，会触发 pagehide 和 pageshow 事件。</p>
+<p>这两个事件都有一个 persisted 属性用来指示当前页面是否被 BF Cache 缓存。</p>
+<p>因此可以通过 persisted 属性来达到禁用 BF Cache 的效果：</p>
+<p>window.onpageshow = function(event) { if (event.persisted) { window.location.reload() } };</p>
+<p>注意无论页面是否被缓存 pageshow 总会触发，因此需要检测器 persisted 属性。</p>
+<p>另外 pageshow 的时机总是在 load 事件之后。</p>
+<p>这一点很容易检测，下面的 pageshow 日志总在 load 之前：</p>
+<p>window.addEventListener(&lsquo;pageshow&rsquo;, function () { console.log(&lsquo;on pageshow&rsquo;) }) window.addEventListener(&rsquo;load&rsquo;, function () { console.log(&rsquo;load&rsquo;) }) XHR 缓存同步（阻塞加载的）脚本发出的 XMLHttpRequest 也会被 Chrome 强制缓存， 因此即使在断网的情况下后退到访问过的页面仍然是可以完美渲染的。</p>
+<p>如果页面中有这样一段外部脚本：</p>
+<p>sendXHR();</p>
+<p>function sendXHR () { var xhr = new XMLHttpRequest() xhr.open(&lsquo;GET&rsquo;, &lsquo;/data.json&rsquo;) xhr.onreadystatechange = function () { if (xhr.readyState === XMLHttpRequest.DONE &amp;&amp; xhr.status === 200) { console.log(&lsquo;xhr arrived&rsquo;, xhr.responseText) } } xhr.send() } 超链接跳转后回来，该 xhr 也会被缓存。注意下图中的 XHR 一项 size 为 “from disk cache”：</p>
+<p>为了强制发送 xhr，可以将 xhr 改为异步发送，或者加一个不重要的 query。</p>
+<p>setTimeout(sendXHR, 1000) 这样就能看到 xhr 真正发送出去了 :) 异步 xhr 缓存时机未经兼容性测试， 还是建议读者使用一个随机产生的 query。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>解决iphone下后退不执行js的问题</title>
+      <link>https://jiangxingye.github.io/2017/09/21/iphone-bf-no-run-js/</link>
+      <pubDate>Thu, 21 Sep 2017 07:25:32 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/09/21/iphone-bf-no-run-js/</guid>
+      <description>解决iphone下后退不执行js的问题</description>
+      <content:encoded><![CDATA[<p>直接上解决方法不论页面是否被缓存，都会触发 pageshow，所以后退后需要执行的方法可以都放在下面事件内：</p>
+<p>window.addEventListener(&lsquo;pageshow&rsquo;, function () { console.log(&lsquo;on pageshow&rsquo;) }) 浏览器缓存行为 的详细介绍可以参考：</p>
+<p>[转]浏览器前进/后退缓存（BF Cache）</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>JSP操作记录</title>
+      <link>https://jiangxingye.github.io/2017/04/21/jsp-use-record/</link>
+      <pubDate>Fri, 21 Apr 2017 03:22:12 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/04/21/jsp-use-record/</guid>
+      <description>JSP操作记录</description>
+      <content:encoded><![CDATA[<p>问题EL表达式失效<!-- jsp渲染器不识别el表达式，结果页面展示效果如下 --> {person.id} {person.name} 解决方法：在页面内加入下面代码即可 &lt;%@ page isELIgnored=&ldquo;false&rdquo; %&gt; Map遍历&lt;c:forEach items=&quot;${map}&quot; var=&ldquo;entry&rdquo;&gt; &lt;c:out value=&quot;${entry.key}&quot; /&gt; &lt;c:out value=&quot;${entry.value}&quot; /&gt; &lt;/c:forEach&gt; 取值&lt;c:out value=&quot;${map[key]}&quot; /&gt;</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>npm使用介绍</title>
+      <link>https://jiangxingye.github.io/2017/03/16/npm/</link>
+      <pubDate>Thu, 16 Mar 2017 12:09:48 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/03/16/npm/</guid>
+      <description>npm使用介绍</description>
+      <content:encoded><![CDATA[<p>Whatnpm（全称Node Package Manager，即node包管理器）是Node.js默认的、以JavaScript编写的软件包管理系统。作者：艾萨克·施吕特（Isaac Z. Schlueter） 安装npm 是随同node.js一起安装的，所以安装node.js即可。</p>
+<p>使用# 查看版本 $ npm -v # 升级 $ sudo npm install npm -g # 安装模块 $ npm install <Module Name> #本地安装 # 本地安装：安装到./node_modules(命令运行目录) $ npm install <Module Name> -g #全局安装 # 全局安装：放在 /usr/local 下或者你 node 的安装目录。</p>
+<h1 id="卸载模块--npm-uninstall---更新模块--npm-update---查看所有安装的模块--npm-ls-所有本地模块--npm-ls--g-所有全局模块--搜索模块--npm-search">卸载模块 $ npm uninstall <Module Name> # 更新模块 $ npm update <Module Name> # 查看所有安装的模块 $ npm ls #所有本地模块 $ npm ls -g #所有全局模块 # 搜索模块 $ npm search <Module Name></h1>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>不蒜子适配pjax</title>
+      <link>https://jiangxingye.github.io/2017/03/09/busuanzi-pjax/</link>
+      <pubDate>Thu, 09 Mar 2017 12:15:51 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/03/09/busuanzi-pjax/</guid>
+      <description>不蒜子适配pjax</description>
+      <content:encoded><![CDATA[<p>不蒜子一般配置加入脚本 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> <!--pv方式 --> <span id="busuanzi_container_site_pv"> 本站总访问量<span id="busuanzi_value_site_pv"></span>次 </span> <!--uv方式 --> <span id="busuanzi_container_site_uv"> 本站访客数<span id="busuanzi_value_site_uv"></span>人次 </span> <!--pv方式 --> <span id="busuanzi_container_page_pv"> 本文总阅读量<span id="busuanzi_value_page_pv"></span>次 </span> 只安装脚本，不安装标签代码，即可实现只记数，不显示。</p>
+<p>适配pjax最近开发3-hexo主题，由于主题使用的pjax，异步加载页面时不蒜子会出现加载不到多说js的问题。在pjax：end加载下面js代替标签即可 $.getScript(&quot;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;);</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>多说适配pjax</title>
+      <link>https://jiangxingye.github.io/2017/03/09/duoshuo-pjax/</link>
+      <pubDate>Thu, 09 Mar 2017 11:50:45 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/03/09/duoshuo-pjax/</guid>
+      <description>多说适配pjax</description>
+      <content:encoded><![CDATA[<p>最近开发3-hexo主题，由于主题使用的pjax，异步加载页面时多说会出现加载不到多说js的问题。</p>
+<p>多说加载代码如下：</p>
+<p>//加载多说 function loadComment() { duoshuoQuery = {short_name:</p>
+<p>$(&quot;.theme_duoshuo_domain&quot;).val()};</p>
+<p>var d = document, s = d.createElement(&lsquo;script&rsquo;);</p>
+<p>s.src = &lsquo;<a href="https://static.duoshuo.com/embed.js?t='+new">https://static.duoshuo.com/embed.js?t='+new</a> Date().getTime();</p>
+<p>s.async = true;</p>
+<p>s.charset = &lsquo;UTF-8&rsquo;;</p>
+<p>(d.head || d.body).appendChild(s);</p>
+<p>} 当局部加载页面时，就会无法加载多说。需要编写一个js方法，参考文档：(<a href="http://dev.duoshuo.com/docs/50b344447f32d30066000147">http://dev.duoshuo.com/docs/50b344447f32d30066000147</a>) /** * pjax后需要回调函数.加载多说 */ function pajx_loadDuodsuo(){ if(typeof duoshuoQuery ==&ldquo;undefined&rdquo;){ loadComment();</p>
+<p>} else { var dus=$(&quot;.ds-thread&quot;);</p>
+<p>if($(dus).length==1){ var el = document.createElement(&lsquo;div&rsquo;);</p>
+<p>el.setAttribute(&lsquo;data-thread-key&rsquo;,$(dus).attr(&ldquo;data-thread-key&rdquo;));//必选参数 el.setAttribute(&lsquo;data-url&rsquo;,$(dus).attr(&ldquo;data-url&rdquo;));</p>
+<p>DUOSHUO.EmbedThread(el);</p>
+<p>$(dus).html(el);</p>
+<p>} } } 在pjax:end中调用此方法即可。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>[译]理解浏览器关键渲染路径</title>
+      <link>https://jiangxingye.github.io/2017/03/08/understanding-the-critical-rendering-path/</link>
+      <pubDate>Wed, 08 Mar 2017 00:58:21 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/03/08/understanding-the-critical-rendering-path/</guid>
+      <description>[译]理解浏览器关键渲染路径</description>
+      <content:encoded><![CDATA[<p>当一个浏览器接收到从服务器发来的html页面，在渲染并呈现到屏幕上之前，有很多步骤要做。浏览器渲染页面需要做的一系列行为被称作“关键渲染路径（Critical Rendering Path 简称CRP）”。</p>
+<p>CRP 的知识对于如何提升网站性能是相当有用的。CRP有6个步骤：</p>
+<p>构建DOM树 构建CSSOM树 运行JavaScript 创建渲染树 生成布局 绘制页面 构建DOM树DOM（Document Object Model）树是一个表示整个解析过的HTML页面的对象，从根节点<html>开始，会创建页面中的每个 元素/文本 节点。嵌套在其他元素中的元素作为字节点，每个节点都包含了其所有的元素属性，例如：</p>
+<p>一个<a>节点将有 href 属性与其关联。</p>
+<p>举个例子 <html> <head> <title>Understanding the Critical Rendering Path</title> <link rel="stylesheet" href="style.css"> </head> <body> <header> <h1>Understanding the Critical Rendering Path</h1> </header> <main> <h2>Introduction</h2> <p>Lorem ipsum dolor sit amet</p> </main> <footer> <small>Copyright 2017</small> </footer> </body> </html> 上面的 HTML 将会被解析成下面的DOM树HTML的优点在于它不必等待整个页面加载完成才呈现页面，可以解析一部分，显示一部分。但是像CSS、JavaScript等其他资源会阻止页面渲染。</p>
+<p>构建CSSOM树CSSOM（CSS Object Model） 是一个跟DOM相关的样式对象。它跟DOM的表示方法是相似的，但是不论显式声明还是隐式继承，每个节点都存在关联样式。</p>
+<p>In the style.css file from the document mentioned above, we have the folowing styles在上面提到的html页面的style.css中的样式如下 body { font-size:</p>
+<p>18px;</p>
+<p>} header { color:</p>
+<p>plum;</p>
+<p>} h1 { font-size:</p>
+<p>28px;</p>
+<p>} main { color:</p>
+<p>firebrick;</p>
+<p>} h2 { font-size:</p>
+<p>20px;</p>
+<p>} footer { display:</p>
+<p>none;</p>
+<p>} 它会被构建成下面的CSSOM树CSS 被认为是 “渲染阻塞资源”，它意味着如果不首先完全解析资源，渲染树是无法构建的。CSS由于它的层叠继承的性质，不能像HTML一样解析一部分，显示一部分。定义在文档后面的样式会覆盖或改写之前定义的样式，因为在整个样式表都被解析之前，如果我们使用了在样式表中较早定义的样式，那错误的样式将被应用。这意味着CSS必须被全部解析之后，才能开始下一步。</p>
+<p>如果CSS文件适用于当前设备的话，仅仅只是会阻塞渲染。<link rel="stylesheet">标签可以使用media属性，用来指定特定样式宽度的特定媒体查询。</p>
+<p>举个例子，如果我们有一个包含媒体属性orientation:landscape的样式，我们使用纵向模式（portrait mode）查看页面，这个资源将不会阻塞渲染。</p>
+<p>CSS 也会导致脚本阻塞。这是因为JavaScript文件必须等待CSSOM被构建后才能运行。</p>
+<p>运行JavaScriptJavaScript被认为是解析阻塞资源，这意味着HTML的解析会被JavaScript阻塞。</p>
+<p>当解析器解析到 <script> 标签时，无论该资源是内部还是外链的都会停止解析，先去下载资源。这也是为什么，当页面内有引用JavaScript文件时，引用标签要放到可视元素之后了。</p>
+<p>为避免JavaScript解析阻塞，它可以通过设定 async 属性来要求其异步加载。</p>
+<script async src="script.js"> 创建渲染树渲染树是DOM和CSSOM的结合体，它代表最终会渲染在页面上的元素的结构对象。这意味着它只关注可见内容，对于被隐藏或者CSS属性 display:none 的属性，不会被包含在结构内。
+
+使用上面例子的DOM和CSSOM，渲染树被创建如下：
+
+生成布局布局决定了浏览器视窗的大小,它提供了上下文依赖的CSS样式，如百分比或窗口的单位。视窗尺寸通常通过 <head> 标签中的 <meta> 中的 viewport 设定来决定。如果不存在该标签，则通常默认为 980px 例如，最常用的 meta veiwport 的值将会被设置为和设备宽度相符：
+
+<meta name="viewport" content="width=device-width,initial-scale=1"> 如果用户访问网页的设备宽度为1000px。然后整体视窗尺寸就会基于这个宽度值了，比如 50% 就是500px, 10vw 就是100px 等等。
+
+绘制页面最后，在绘制页面步骤。页面上的所有可见内容都会被转换为像素并呈现在屏幕上。
+
+具体的绘制时间跟DOM数以及应用的样式有关。有些样式会花费更多的执行时间，比如复杂的渐变背景图片所需要的计算时间远超过简单固定背景色。
+
+整合所有想要看到关键渲染路径的执行流程，可以使用DevTools，在Chrome中，它是根据时间轴展示的。
+
+举个例子, 上面的页面加入<script>标签 <html> <head> <title>Understanding the Critical Rendering Path</title> <link rel="stylesheet" href="style.css"> </head> <body> <header> <h1>Understanding the Critical Rendering Path</h1> </header> <main> <h2>Introduction</h2> <p>Lorem ipsum dolor sit amet</p> </main> <footer> <small>Copyright 2017</small> </footer> <script src="main.js"></script> </body> </html> 可以看关于页面加载时的事件日志，以下是我们获得的：
+<p>Send Request - 发送到index.html的GET请求 Parse HTML and Send Request - 开始解析HTML并构建DOM，然后发送 GET 请求style.css和main.js Parse Stylesheet - 根据 style.css 创建的CSSOM Evaluate Script - 执行 main.js Layout - 基于HTML的元视窗标签，生成布局 Paint - 绘制网页基于这些信息，我们可以知道如何优化关键渲染路径。</p>
+<p>原文：</p>
+<p>Understanding the Critical Rendering Path</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>AngularJs快速入门</title>
+      <link>https://jiangxingye.github.io/2017/03/04/angularjs/</link>
+      <pubDate>Sat, 04 Mar 2017 00:40:58 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/03/04/angularjs/</guid>
+      <description>AngularJs快速入门</description>
+      <content:encoded><![CDATA[<p>简介 AngularJS是一个JavaScript框架，为了克服HTML在构建应用上的不足而设计的。</p>
+<p>AngularJS通过使用我们称为标识符(directives)的结构，让浏览器能够识别新的语法。</p>
+<p>AngularJS 使得开发现代的单一页面应用程序（SPAs：Single Page Applications）变得更加容易。</p>
+<p>表达式AngularJS 使用 表达式 把数据绑定到 HTML。</p>
+<p>表达式AngularJS 表达式写在双大括号内：{{ expression }} 。AngularJS 表达式把数据绑定到 HTML，这与 ng-bind 指令有异曲同工之妙。AngularJS 将在表达式书写的位置”输出”数据。AngularJS 表达式 很像 JavaScript 表达式：它们可以包含文字、运算符和变量。实例：</p>
+<p>{{ 5 + 5 }} 或 {{ firstName + &quot; &quot; + lastName }} <div ng-app=""> <p>我的第一个表达式:</p>
+<p>{{ 5 + 5 }}</p> </div> 效果 数字<div ng-app="" ng-init="quantity=1;cost=5"> <p>总价：</p>
+<p>{{ quantity * cost }}</p> </div></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>pjax用法</title>
+      <link>https://jiangxingye.github.io/2017/02/08/pjax/</link>
+      <pubDate>Wed, 08 Feb 2017 12:18:54 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/02/08/pjax/</guid>
+      <description>pjax用法</description>
+      <content:encoded><![CDATA[<p>最近在开发一款hexo主题3-hexo，其中使用了pjax大大提高了用户体验和加载速度，在此简单介绍一下pjax的用法github链接 pjax是什么 pjax是一款jQuery插件，使用了ajax和pushState的技术，在保留真正永久链接，网页标题和可用的返回功能的情况下，带来一种快速的浏览体验。</p>
+<p>–官方介绍 用人话说，就是当跳转过去的网页和当前网页的一部分是一样的，这时可以通过pjax就会从响应页面中取出 不同的那部分 （需指定），替换掉原来的内容。</p>
+<p>如果在服务端判断处理，直接返回 不同的那部分内容，这样就可以减少带宽占用，提升加载速度。</p>
+<p>这样做的优势：</p>
+<p>由于从服务器取回的数据量变少，加载速度将会提升。</p>
+<p>并且采用异步刷新页面中的不一样的地方，用户体验也是满满的。</p>
+<p>保留了浏览器回退的功能（解决了ajax的尴尬） 好了，开始操作。</p>
+<p>Demo第一步：引入jQuery和jQuery.pjax <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.pjax/1.9.6/jquery.pjax.min.js"></script> 第二步：将指定的a的链接，转为pjax风格 /<em>将#menu中的a的链接的页面，只取回class=pjax元素中的内容，替换掉当前页面class=pjax元素中的内容</em>/ $(document).pjax(&rsquo;.#menu a&rsquo;, &lsquo;.pjax&rsquo;, {fragment:&rsquo;.pjax&rsquo;, timeout:8000});</p>
+<p>第三步：如果需要在请求的过程中做一些自定义的事件，可以使用下面的方法 $(document).on({ &lsquo;pjax:click&rsquo;:</p>
+<p>function() { //点击链接时，需要触发的事件写到这里 }, &lsquo;pjax:start&rsquo;:</p>
+<p>function() { //当开始获取请求时，需要触发的事件写在这里 }, &lsquo;pjax:end&rsquo;:</p>
+<p>function() { //当请求完成后，需要触发的事件写在这里 } });</p>
+<p>结束。</p>
+<p>详细文档翻译于官方 参数$(document).pjax(selector, [container], options) selector 触发点击事件的选择器，String类型 container 一个选择器，为唯一的pjax容器 options 一个可以包含下面这些选项的对象 pjax options key default description timeout 650 ajax超时时间，单位毫秒，超时后将请求整个页面进行刷新 push true 使用 pushState 添加一个浏览器历史导航条目 replace false 替换URL，而不添加浏览器历史条目 maxCacheLength 20 历史内容 cache 的最大size version string ：</p>
+<p>当前pjax版本 scrollTo 0 垂直位置滚动，为了避免改变滚动条位置 type “GET” 可以查看jQuery.ajax() dataType “html” 可以查看jQuery.ajax() container css选择器，此元素内容将被替换 url link.href string:</p>
+<p>ajax 请求的URL target link eventually the relatedTarget value for pjax events fragment 从ajax响应的页面中抽取的‘片段’ Events除了pjax:click和pjax:clicked外的所有pjax事件从pjax容器中触发，是不需要点击链接的。所有事件的生命周期在通过pjax请求链接的过程中 event cancel arguments notes pjax:click ✔︎ options 在一个链接被激活（点击）时触发此事件，可以在此取消阻止pjax pjax:beforeSend ✔︎ xhr, options 可以设置 XHR 头 pjax:start xhr, options pjax:send xhr, options pjax:clicked options 当链接被点击，并且已经开始pjax请求后触发 pjax:beforeReplace contents, options 从服务器已经加载到HTML内容，在替换HTML内容之前触发 pjax:success data, status, xhr, options 从服务器已经加载到HTML内容，在替换HTML内容之后触发 pjax:timeout ✔︎ xhr, options 页面将会在options.timeout之后直接发起请求刷新页面，除非取消pjax pjax:error ✔︎ xhr, textStatus, error, options ajax 错误，将会请求刷新页面，除非取消pjax pjax:complete xhr, textStatus, options 不管结果是什么，在ajax后，都触发 pjax:end xhr, options 生命周期在浏览器返回或前进时触发 event cancel arguments notes pjax:popstate 事件方向(前进，后退)属性:</p>
+<p>“back”/“forward” pjax:start null, options 替换内容前 pjax:beforeReplace contents, options 从cache中读取内容后，替换html前 pjax:end null, options 替换内容后</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>jQuery之checkbox|radio|select操作</title>
+      <link>https://jiangxingye.github.io/2016/11/23/jquery-checkbox-radio-select/</link>
+      <pubDate>Wed, 23 Nov 2016 08:19:34 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2016/11/23/jquery-checkbox-radio-select/</guid>
+      <description>jQuery之checkbox|radio|select操作</description>
+      <content:encoded><![CDATA[<p>jQuery1.6中添加了prop方法,看起来和用起来都和attr方法一样,但是在一些特殊情况下,attribute和properties的区别非常大,在jQuery1.6之前，.attr()方法在获取一些attributes的时候使用了property值，这样会导致一些不一致的行为。在jQuery1.6中，.prop()方法提供了一中明确的获取property值得方式，这样.attr()方法仅返回attributes。</p>
+<p>–摘自jQuery API文档 checkbox<input type='checkbox' value='1'/> <input type='checkbox' value='2'/> <input type='checkbox' value='3'/> $(&ldquo;input[type=checkbox]&rdquo;) //获取所有的checkbox $(&ldquo;input[type=checkbox]:checked&rdquo;) //获取所有的被选中的checkbox $(&ldquo;input[type=checkbox]:not(:checked)&rdquo;) //获取所有未被选中的checkbox $(&ldquo;input[type=checkbox]&rdquo;).not(&quot;:checked&quot;) //获取所有未被选中的checkbox $(&ldquo;input[type=checkbox]:first&rdquo;) //获取第一个checkbox的value值 $(&ldquo;input[type=checkbox]:checked&rdquo;).length //获取被选中checkbox的数量 $(&ldquo;input[type=checkbox]:first&rdquo;).prop(&ldquo;checked&rdquo;) //判断第一个checkbox是否被选中 $(&ldquo;input[type=checkbox]:first&rdquo;).prop(&ldquo;checkbox&rdquo;,true) //选中第一个checkbox $(&ldquo;input[type=checkbox]:not(:checked)&rdquo;).prop(&ldquo;checked&rdquo;,true) //全选 $(&ldquo;input[type=checkbox]:checkbox&rdquo;).prop(&ldquo;checked&rdquo;,false) //都不选中 //反选 $(&ldquo;input[type=checkbox]&rdquo;).each(function(){ if($(this).prop(&ldquo;checked&rdquo;)){ $(this).prop(&ldquo;checked&rdquo;,false);</p>
+<p>}else{ $(this).prop(&ldquo;checked&rdquo;,true);</p>
+<p>} }) radio<input type='radio' name='rank' value='1' /> <input type='radio' name='rank' value='2' /> <input type='radio' name='rank' value='3' /> $(&ldquo;input[type=radio]&rdquo;) //获取所有的radio $(&ldquo;input[type=radio]:checked&rdquo;) //获取被选中的radio $(&ldquo;input[type=radio]:not(:checkbox)&rdquo;) //获取所有没有被选中的radio $(&ldquo;input[type=radio]:checked&rdquo;).val() //获取被选中的radio的value值 $(&ldquo;input[type=radio]:first&rdquo;).prop(&ldquo;checked&rdquo;) //判断第一个radio是否被选中 $(&ldquo;input[type=radio]:first&rdquo;).prop(&ldquo;checked&rdquo;,true) //选中第一个radio select<select> <option value='1'>1</option> <option value='2'>2</option> <option value='4'>3</option> </select> $(&ldquo;select option:selected&rdquo;) //获取被选中的option $(&ldquo;select&rdquo;).val() //获取选中option的value值 $(&ldquo;select option:selected&rdquo;).text() //获取被选中的option的text值 $(&ldquo;select option:first&rdquo;).prop(&ldquo;selected&rdquo;) //判断第一个option是否被选中 $(&ldquo;select option:first&rdquo;).prop(&ldquo;selected&rdquo;,true) //选中第一个option $(&ldquo;select option:selected&rdquo;).prop(&ldquo;selected&rdquo;,false) //取消当前选中,然后默认选中第一个</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>jQuery选择器与节点操作</title>
+      <link>https://jiangxingye.github.io/2016/11/22/jquery-selector/</link>
+      <pubDate>Tue, 22 Nov 2016 09:11:48 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2016/11/22/jquery-selector/</guid>
+      <description>jQuery选择器与节点操作</description>
+      <content:encoded><![CDATA[<p>jQuery 是一个 JavaScript 函数库。jQuery的语法设计使得许多操作变得容易，如操作文档对象（document）、选择文档对象模型（DOM）元素、创建动画效果、处理事件、以及开发Ajax程序。jQuery也提供了给开发人员在其上创建插件的能力。这使开发人员可以对底层交互与动画、高级效果和高级主题化的组件进行抽象化。</p>
+<p>jQuery获取元素元素选择器//元素选择器 <div > $(&ldquo;div&rdquo;) id选择器//id选择器 <div id='id'> $(&quot;#id&quot;) $(&ldquo;div#id&rdquo;) class选择器//class选择器 <div class='class'> $(&quot;.class&quot;) $(&ldquo;div.class&rdquo;) 属性过滤选择器<li class='check' type='li_01'></li> <li type='li_02'></li> <li type='li_03'></li> //通过属性获取 如果属性值为有特殊字符，一定要加引号 $(&quot;[type]&quot;) //获取有type属性的元素 $(&quot;[type=&lsquo;li_01&rsquo;]&quot;) //获取type值等于&rsquo;li_01&rsquo;的元素 $(&quot;[type!=&lsquo;li_01&rsquo;]&quot;) //获取type值不等于&rsquo;li_01&rsquo;的元素 $(&quot;[type*=&lsquo;li&rsquo;]&quot;) //模糊匹配 获取type值包含&rsquo;li&rsquo;的元素 $(&quot;[type^=&lsquo;li&rsquo;]&quot;) //模糊匹配 获取type值以&rsquo;li&rsquo;开始的元素 $(&quot;[type$=&lsquo;01&rsquo;]&quot;) //模糊匹配 获取type值以'01&rsquo;结尾的元素 $(&ldquo;li[class=&lsquo;check&rsquo;][type]&rdquo;) //获取多个条件同时满足的元素 * 选择器//遍历form下的所有元素,将其margin设置0 $(&lsquo;form *&rsquo;).css(&lsquo;margin&rsquo;,&lsquo;0px&rsquo;) 并列选择器$(&lsquo;p, div&rsquo;).css(&lsquo;color&rsquo;,&lsquo;red&rsquo;);</p>
+<p>//将p元素和div元素的字体颜色设置为red 层叠选择器<div class='a'> <!-- 父级div --> <div class='a1'> <!-- 子级div1 --> <div class='a11'></div> <!-- 孙级div1 --> </div> <div class='a2'></div> <!-- 子级div2 --> <div class='a3'></div> <!-- 子级div3 --> <span></span> <!-- 子级span1 --> </div> $(&quot;.a div&quot;) //选择class=a的元素下所有的div 即选择到子级div1,2,3 孙级div1 $(&quot;.a &gt; div&quot;) //选择class=a的元素的所有子div元素, 即选择到子级div1,2,3;</p>
+<p>$(&ldquo;div + span&rdquo;) //选择所有的div元素的下一个input元素节点,即选择到:子级div3 $(&quot;.a1 ~ div&quot;) //同胞选择器,返回class为a2的标签元素的所有属于同一个父元素的div标签,即div1,2,3 基本过滤选择器<ul> <li></li> <li></li> <li></li> <li></li> <li></li> </ul> $(&ldquo;li:first&rdquo;) //选择所有li元素的第一个 $(&ldquo;li:last&rdquo;) //选择所有li元素的最后一个 $(&ldquo;li:even&rdquo;) //选择所有li元素的第0,2,4&hellip; &hellip;个元素(序号从0开始) $(&ldquo;li:odd&rdquo;) //选择所有li元素的第1,3,5&hellip; &hellip;个元素 $(&ldquo;li:eq(2)&rdquo;) //选择所有li元素中的第三个(即序号为2) $(&ldquo;li:gt(3)&rdquo;) //选择所有li元素中序号大于3的li元素 $(&ldquo;li:ll(2)&rdquo;) //选择所有li元素中序号小于2的li元素 <input type="checkbox" /> <input type="checkbox" /> $(&ldquo;input[type=&lsquo;checkbox&rsquo;]:checked&rdquo;) //获取所有已被选中的type等于checkbox的input元素 $(&ldquo;input[type=&lsquo;checkbox&rsquo;]:not(:checked)&rdquo;) //获取所有未被选中的type等于checkbox的input元素 内容过滤器$(&ldquo;div:contains(&lsquo;Faker&rsquo;)&rdquo;) //选择所有div中含有Faker文本的元素 $(&ldquo;div:empty&rdquo;) //选择所有div中为空(不包含任何元素/文本)的元素 $(&ldquo;div:has(&lsquo;p&rsquo;)&rdquo;) //选择所有div中包含p元素的元素 $(&ldquo;div:parent&rdquo;) //选择所有的含有子元素或文本的div 可视化过滤器$(&ldquo;div:hidden&rdquo;) //选择所有被hidden的div元素 $(&ldquo;div:not(:hidden)&rdquo;) //选择所有没有被hidden的div元素 $(&ldquo;div:visible&rdquo;) //所有可视化的div元素 $(&ldquo;div:not(:visible)&rdquo;) //所有非可视化的div元素 子元素过滤器<body> <div class='d1'> <div class='d11'> <div class='d111'> </div> </div> </div> </body> $(&ldquo;body div:first-child&rdquo;) //返回所有的body元素下 所有div 为父元素的第一个元素 的元素. //:first 与 :first-child 的区别用法 //$(&ldquo;body div:first&rdquo;)只匹配到第一个合适的元素 即只匹配到 d1 //$(&ldquo;body div:first-child&rdquo;) 匹配所有合适的元素:d1是body的第一个元素,d11是d1的第一个元素.. //所以匹配到d1,d11,d111 $(&ldquo;div span:last-child&rdquo;) //返回所有的body元素下 所有div 为父元素的最后一个元素 的元素. //:last 与 :last-child 的区别参考first $(&ldquo;div button:only-child&rdquo;) //如果button是它父级元素的唯一子元素,此button将会被匹配 表单元素选择器$(&quot;:input&quot;) //选择所有的表单输入元素，包括input, textarea, select 和 button $(&quot;:text&quot;) //选择所有的text input元素 $(&quot;:password&quot;) //选择所有的password input元素 $(&quot;:radio&quot;) //选择所有的radio input元素 $(&quot;:checkbox&quot;) //选择所有的checkbox input元素 $(&quot;:submit&quot;) //选择所有的submit input元素 $(&quot;:image&quot;) //选择所有的image input元素 $(&quot;:reset&quot;) //选择所有的reset input元素 $(&quot;:button&quot;) //选择所有的button input元素 $(&quot;:file&quot;) //选择所有的file input元素 $(&quot;:hidden&quot;) //选择所有类型为hidden的input元素或表单的隐藏域 表单元素过滤器$(&quot;:enabled&quot;) //选择所有的可操作的表单元素 $(&quot;:disabled&quot;) //选择所有的不可操作的表单元素 $(&quot;:checked&quot;) //选择所有的被checked的表单元素 $(&ldquo;select option:selected&rdquo;) //选择所有的select 的子元素中被selected的元素 节点操作获取和操作节点属性<a href='index.html' data-type='a' style="color:red;">index</a> <input value='user' /> $(&ldquo;a&rdquo;).attr(&ldquo;href&rdquo;);</p>
+<p>//获取href属性值 $(&ldquo;a&rdquo;).attr(&ldquo;href&rdquo;,&ldquo;about.html&rdquo;);</p>
+<p>//设置href属性值 $(&ldquo;a&rdquo;).data(&ldquo;type&rdquo;);</p>
+<p>//获取data-type属性值 $(&ldquo;a&rdquo;).css(&ldquo;color&rdquo;);</p>
+<p>//通过key(color/display/&hellip;.)获取css值 $(&ldquo;a&rdquo;).css(&ldquo;color&rdquo;,&ldquo;black&rdquo;);</p>
+<p>//通过key/value 设置css属性 $(&ldquo;a&rdquo;).text();</p>
+<p>//获取a的文本节点值 $(&ldquo;a&rdquo;).text(&ldquo;Index.html&rdquo;);</p>
+<p>//设置a的文本节点值 $(&ldquo;input&rdquo;).val();</p>
+<p>//获取input的value值 $(&ldquo;input&rdquo;).val(&ldquo;username&rdquo;);</p>
+<p>//设置input的value值 插入节点的方法<div class="head"> <span>Faker<span> </div> $(&quot;.head&quot;).append(&quot;<span>hello</span>&quot;) //在.head中的最后插入一段html //结果:</p>
+<div class="head"><span>Faker</span><span>hello</span></div> $("<span>hello</span>").appendTo(".head") //在.head中的最后插入一段html, //结果:
+<div class="head"><span>Faker</span><span>hello</span></div> $(".head").prepend("<span>hello</span>") //在.head中的开始插入一段html, //结果:
+<div class="head"><span>hello</span><span>Faker</span></div> $("<span>hello</span>").prependTo(".head") //在.head中的开始插入一段html, //结果:
+<div class="head"><span>hello</span><span>Faker</span></div> $(".head *:first").after("<span>hello</span>") //在.head中的第一个元素后插入一段html, //结果:
+<div class="head"><span>Faker</span><span>hello</span></div> $("<span>hello</span>").insertAfter(".head *:first") //在.head中的第一个元素后插入一段html, //结果:
+<div class="head"><span>Faker</span><span>hello</span></div> $(".head *:first").before("<span>hello</span>") //在.head中的第一个元素前插入一段html, //结果:
+<div class="head"><span>hello</span><span>Faker</span></div> $("<span>hello</span>").insertBefore(".head *:first") //在.head中的第一个元素后插入一段html, //结果:
+<div class="head"><span>hello</span><span>Faker</span></div> $.load()方法 在指定位置加载请求回来的html页面 <div class="head"> </div> $(".head").load(url[,data][,callback]) url:
+<p>请求HTML页面的URL地址 data(可选):</p>
+<p>请求的key/value参数 callback(可选) 请求完成的回调函数</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>FreeMarker语法详解</title>
+      <link>https://jiangxingye.github.io/2016/10/05/freemarker/</link>
+      <pubDate>Wed, 05 Oct 2016 03:58:50 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2016/10/05/freemarker/</guid>
+      <description>FreeMarker语法详解</description>
+      <content:encoded><![CDATA[<p>FreeMarker是一款 模板引擎 :即一种基于模板和要改变的数据，并用来生成输出文本（HTML网页、电子邮件、配置文件、源代码等）的通用工具。FreeMarker模板文件主要有4部分组成 文本，直接输出的部分 注释，即&lt;#–…–&gt;格式不会输出 插值（Interpolation）：即${..}或者#{..}格式的部分,将使用数据模型中的部分替代输出 FTL指令：FreeMarker指令，和HTML标记类似，名字前加#予以区分，不会输出。</p>
+<p>一些规则FTL指令规则FreeMarker有三种FTL标签，这和HTML的标签是完全类似的 开始标签：&lt;#directivename parameters&gt; 结束标签：&lt;/#directivename&gt; 空标签：</p>
+<p>&lt;#directivename parameters /&gt; 实际上，使用标签时前面的#符号也可能变成@，如果该指令是一个用户指令而不是系统内建指令时，应将#符号改为@符号 插值规则FreeMarker的插值有如下两种类型 1、通用插值：${expr} 2、数字格式化插值：#{expr}或者#{expr;format}通用插值，有可以分为四种情况 a、插值结果为字符串值：直接输出表达式结果 b、插值结果为数字值：根据默认格式(#setting 指令设置)将表达式结果转换成文本输出。可以使用内建的字符串函数格式单个插值，例如 &lt;#setting number_format = &ldquo;currency&rdquo; /&gt; &lt;#assign str = 42 /&gt; ${str} ${str?string} ${str?string.number} ${str?string.currency} ${str?string.percent} ${str?string.computer} 日期处理 ${openingTime?string.short} ${openingTime?string.medium} ${openingTime?string.long} ${openingTime?string.full} ${nextDiscountDay?string.short} ${nextDiscountDay?string.medium} ${nextDiscountDay?string.long} ${nextDiscountDay?string.full} ${lastUpdated?string.short} ${lastUpdated?string.medium} ${lastUpdated?string.long} ${lastUpdated?string.full} ${lastUpdated?string(&ldquo;yyyy-MM-dd HH:mm:ss zzzz&rdquo;)} ${lastUpdated?string(&ldquo;EEE, MMM d, &lsquo;&lsquo;yy&rdquo;)} ${lastUpdated?string(&ldquo;EEEE, MMMM dd, yyyy, hh:mm:ss a &lsquo;(&lsquo;zzz&rsquo;)&rsquo;&rdquo;)} if,elseif,elseif&lt;#if condition&gt; …… &lt;#elseif condition2&gt; …… &lt;#else&gt; …… &lt;/#if&gt; switch,case&lt;#switch value&gt; &lt;#case refValue1&gt; &hellip; &lt;#break&gt; &lt;#case refValue2&gt; &hellip; &lt;#break&gt; &hellip; &lt;#case refValueN&gt; &hellip; &lt;#break&gt; &lt;#default&gt; &hellip; &lt;/#switch&gt; &lt;#t&gt; 去掉左右空白和回车换行 &lt;#lt&gt;去掉左边空白和回车换行 &lt;#rt&gt;去掉右边空白和回车换行 &lt;#nt&gt;取消上面的效果 list&lt;#list sequence as item&gt; &hellip; &lt;#if item = &ldquo;spring&rdquo;&gt; &lt;#break&gt; &lt;/#if&gt; &hellip; &lt;/#list&gt; iterm_index:当前值得下标，从0开始item_has_next:判断list是否还有值 include&lt;#include filename [options]&gt; options 包含两个属性encoding=”GBK”parse=”true” 是否作为ftl语法解析，默认是true示例：&lt;#include “/common/copyright.ftl” encoding=”GBK” parse=”true”&gt; import&lt;#import path as hash&gt; 类似于java里的import,它导入文件，然后就可以在当前文件里使用被导入文件里的宏组件 compress&lt;#compress&gt; &hellip; &lt;/#compress&gt; escape, noescape&lt;#escape identifier as expression&gt; &hellip; &lt;#noescape&gt;&hellip;&lt;/#noescape&gt; &hellip; &lt;/#escape&gt; 主要使用在相似的字符串变量输出，比如某一个模块的所有字符串输出都必须是html安全的，这个时候就可以使用该表达式示例：</p>
+<p>&lt;#escape x as x?html&gt; First name:</p>
+<p>${firstName} &lt;#noescape&gt;Last name:</p>
+<p>${lastName}&lt;/#noescape&gt; Maiden name:</p>
+<p>${maidenName} &lt;/#escape&gt; 相同表达式 First name:</p>
+<p>${firstName?html} Last name:</p>
+<p>${lastName } Maiden name:</p>
+<p>${maidenName?html} assign&lt;#assign name=value&gt; &lt;#&ndash; 或则 &ndash;&gt; &lt;#assign name1=value1 name2=value2 &hellip; nameN=valueN&gt; &lt;#&ndash; 或则 &ndash;&gt; &lt;#assign same as above&hellip; in namespacehash&gt; &lt;#&ndash; 或则 &ndash;&gt; &lt;#assign name&gt; capture this &lt;/#assign&gt; &lt;#&ndash; 或则 &ndash;&gt; &lt;#assign name in namespacehash&gt; capture this &lt;/#assign&gt; 生成变量,并且给变量赋值 global&lt;#global name=value&gt; &lt;#&ndash;或则&ndash;&gt; &lt;#global name1=value1 name2=value2 &hellip; nameN=valueN&gt; &lt;#&ndash;或则&ndash;&gt; &lt;#global name&gt; capture this &lt;/#global&gt; 全局赋值语法，利用这个语法给变量赋值，那么这个变量在所有的namespace [A1] 中是可见的, 如果这个变量被当前的assign 语法覆盖 如&lt;#global x=2&gt; &lt;#assign x=1&gt; 在当前页面里x=2 将被隐藏，或者通过${.global.x} 来访问 setting&lt;#setting name=value&gt; 用来设置整个系统的一个环境localenumber_formatboolean_formatdate_format , time_format , datetime_formattime_zoneclassic_compatible macro, nested, return&lt;#macro name param1 param2 &hellip; paramN&gt; &hellip; &lt;#nested loopvar1, loopvar2, &hellip;, loopvarN&gt; &hellip; &lt;#return&gt; &hellip; &lt;/#macro&gt; t, lt, rt&lt;#t&gt; 去掉左右空白和回车换行 &lt;#lt&gt;去掉左边空白和回车换行 &lt;#rt&gt;去掉右边空白和回车换行 &lt;#nt&gt;取消上面的效果</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

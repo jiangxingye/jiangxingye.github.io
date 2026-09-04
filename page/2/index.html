@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head>
+	<meta name="generator" content="Hugo 0.165.0"><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>jiangxingye&#39;s blog</title>
+<meta name="keywords" content="Blog, Portfolio, Linux, IT">
+<meta name="description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+<meta name="author" content="jiangxingye">
+<link rel="canonical" href="https://jiangxingye.github.io/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jiangxingye.github.io/img/avatar.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jiangxingye.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jiangxingye.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jiangxingye.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jiangxingye.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://jiangxingye.github.io/index.xml" title="rss">
+<link rel="alternate" type="application/json" href="https://jiangxingye.github.io/index.json" title="json">
+<link rel="alternate" hreflang="en" href="https://jiangxingye.github.io/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://jiangxingye.github.io/">
+  <meta property="og:site_name" content="jiangxingye&#39;s blog">
+  <meta property="og:title" content="jiangxingye&#39;s blog">
+  <meta property="og:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="jiangxingye&#39;s blog">
+  <meta name="twitter:description" content="不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "jiangxingye's blog",
+  "url": "https://jiangxingye.github.io/",
+  "description": "不是啥程序员，自己利用空闲时间写点东西，有技术，也有一些岁月感悟。",
+  "logo": "https://jiangxingye.github.io/img/avatar.jpg",
+  "sameAs": [
+      "https://github.com/jiangxingye", "mailto:jiangxingye@outlook.com", "http://wpa.qq.com/msgrd?v=3\u0026uin=174762929\u0026site=qq\u0026menu=yes", "https://weibo.com/jiangxingye"
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://jiangxingye.github.io/" accesskey="h" title="jiangxingye&#39;s blog (Alt + H)">
+                <img src="https://jiangxingye.github.io/img/avatar.jpg" alt="" aria-label="logo"
+                    height="35">jiangxingye&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://jiangxingye.github.io/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/search/" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">搭建Maven私服-Nexus
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Maven 私服，可以代理远程仓库和部署自己或第三方构件。本文介绍使用最广泛搭建 Maven 私服的工具：
+Sonatype Nexus。
+作者环境 本次搭建私服是在局域网的一台服务器上，操作系统为 CentOS 。
+需要部署到私服的项目 soul ssm 项目需要引用 soul 安装Java 确保服务器已经安装了 java 环境，这个过程不是本文重点，安装过程自行百度。
+安装Nexus 官网 pro 版本的是需要付费的。所以我们使用免费的 OSS 版本，下载地址 (https://www.sonatype.com/download-oss-sonatype) # 上传到服务器并解压 $ tar xvf nexus-3.5.1-02-unix.tar.gz 启动Nexus# 启动服务 $ cd /nexus-3.5.1-02/bin/ $ ./nexus start 验证打开网址：(http://192.168.0.86:8081/) , ip 为搭建私服的服务器 ip 。用户名/密码：
+admin/admin123出现一下画面，就说明安装成功了。
+发布soul项目到私服创建仓库 创建yelog-release仓库（名字自定义）, type选择 ：
+release 创建yelog-snapshot仓库（名字自定义）， type选择 ：
+snapshot重复上面 ① 和 ② 步，根据下图选择类型:
+两个都创建完成后，效果如下：
+pom中添加部署配置url 复制上图中新建的仓库的 copy 按钮，复制url。
+yelog-release Release Repository of yelog http://192.168.0.86:8081/repository/yelog-release/ yelog-snapshot Snapshot Repository of yelog http://192.168.0.86:8081/repository/yelog-snapshot/ 在maven的 settings.xml 中配置这里配置 maven 的账号密码，id 要与 distributionManagement 中的id一致。默认账号/密码：admin/admin123 yelog-realease admin admin123 yelog-snapshot admin admin123 执行maven命令部署项目到私服上我这里直接使用IDE的插件执行部署完成后，可以在 yelog-snapshot 仓库中，查看部署的情况，如下图所示 从私服拉去依赖库 上一步我们已经将项目 soul 部署到私服上了，这一步介绍项目 ssm 如何依赖引用 soul。私服中的 maven-central 可以链接远程仓库。这样，当有依赖在私服中找不到后，就可以通过远程仓库自动下载依赖。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-09-06 15:01:31 +0800 +0800'>2017-09-06</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>123 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 搭建Maven私服-Nexus" href="https://jiangxingye.github.io/2017/09/06/build-maven-nexus/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Mybatis常用Mapper语句
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>插入/* 简单插入 */ insert into person (id, name, age) VALUES(#{id}, #{name}, #{age});
+/* 插入并返回对象的主键（数据库序列） */ insert into person (name, age) VALUES(#{name}, #{age});
+更新/* 简单更新 */ update person set name = #{name} where id = #{id};
+/* 更新值并返回 */ update person set age = age &#43; #{age} where id = #{id} returning age;
+插入或更新记录玩家在某种类型游戏下的统计记录：
+如果没有记录，则从插入，count字段为1；如果有记录，则更新count字段&#43;1；
+方式一 /如果有记录，则更新；无记录，则noting/ update count_record set “count” = “count”&#43;1 where type_id = #{typeId} and user_id = #{userId};
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-08-04 07:54:47 +0800 +0800'>2017-08-04</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>122 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to Mybatis常用Mapper语句" href="https://jiangxingye.github.io/2017/08/04/mybatis-mapper/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CentOS7安装配置匿名访问Samba
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>介绍 Samba，是种用来让UNIX系列的操作系统与微软Windows操作系统的SMB/CIFS（Server Message Block/Common Internet File System）网络协议做链接的自由软件 –wikipedia 本文就以 CentOS7 搭建 Samba 匿名完全访问（读/写）为目标，实现一个局域网内的文件共享平台。
+1.安装Samba服务使用 yum 工具进行安装 $ yum install samba samba-client 2.检查是否安装成功$ rpm -qa | grep samba 3.防火墙开放端口在 /etc/sysconfig/iptables 中添加配置 -A INPUT -p tcp -m state –state NEW -m tcp –dport 137 -j ACCEPT -A INPUT -p tcp -m state –state NEW -m tcp –dport 138 -j ACCEPT -A INPUT -p tcp -m state –state NEW -m tcp –dport 139 -j ACCEPT -A INPUT -p tcp -m state –state NEW -m tcp –dport 389 -j ACCEPT -A INPUT -p tcp -m state –state NEW -m tcp –dport 445 -j ACCEPT -A INPUT -p tcp -m state –state NEW -m tcp –dport 901 -j ACCEPT 重启 iptables 服务 $ service iptables restart 设置开机自启动 $ chkconfig –level 35 smb on 4.共享配置Samba Server的验证方式有四种：
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-07-03 11:40:14 +0800 +0800'>2017-07-03</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>351 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to CentOS7安装配置匿名访问Samba" href="https://jiangxingye.github.io/2017/07/03/centos7-anonymous-samba/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">解决粘贴到vim缩进错乱问题
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>遇见当我使用vim，想要粘贴下面这段脚本到 xx.sh 文件中 #!/bin/bash if [ $1 ] then if [ $1 == “help” ];
+then echo -e “\033[37m pay 参数1 [参数2] \033[0m” else if [ $2 ];
+then filename = $2 fi fi else echo -e “\033[37m 缺少关键词，通过’pay help’查看帮助信息 \033[0m” fi 却出现了错乱,如下图所示 分析vim 没有相应的程序来处理这个从其他应用复制粘贴的过程，所以Vim通过插入键盘输入的buffer来模拟这个粘贴的过程，这个时候Vim会以为这是用户输入的。
+所以问题是：当上一行结束，光标进入下一行时Vim会自动以上一行的的缩进为初始位置。这样就会破坏原始文件的缩进。
+解决问题经过一番google，发现vim提供了 paste 选项，进入 paste 模式后，就可以正常缩进了。
+进入 paste 模式 :set paste # 退出 paste 模式 :set nopaste 如果不想每次都执行这个命令，可以在 ～/.vimrc 中添加一行配置 set pastetoggle= ，这样就可以通过F12快速在paste模式中切换。</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-06-01 11:45:24 +0800 +0800'>2017-06-01</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>68 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 解决粘贴到vim缩进错乱问题" href="https://jiangxingye.github.io/2017/06/01/vim-paste/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">进入docker容器命令制作
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>通过attach进入容器# 进入容器（Docker自带的命令） $ sudo docker attach [name] 通过这命令进入容器后，执行ctrl&#43;d退出容器后发现容器也停止了。所以可以通过 先按，ctrl&#43;p 再按，ctrl&#43;q 退出 制作进入容器的命令既然attach退出很麻烦，一不小心容器就down掉了 通过 docker exec 进入容器是安全的，但是命令过长 所以我们可以通过下面操作，简化命令 1.创建文件 /usr/bin/ctn,内容如下 docker exec -it $1 /bin/bash2.检查环境变量有没有配置目录 /usr/bin $PATH bash:
+/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:
+No such file or directory配置环境变量的方式自行百度 3.完成上面两步即可通过命令 ctn 进入容器 $ ctn [name] 注意：如果是使用非root账号创建的命令，而docker命令是root权限，可能会存在权限问题可以设置 chmod 777 /usr/bin/ctn 设置权限使用 sudo ctn [name] 即可进入容器 4.自动补全docker名使用上面命令时，docker的名字都是手动输入，很麻烦，而且容易出错。
+我们可以借助complete命令，来补全docker信息。
+在~/.bashrc(作用于当前用户，如果所有用户，修改/etc/bashrc)文件中添加一行 # ctn auto complete complete -W “$(docker ps –format “{{.Names}}”)” ctn 再执行 source .bashrc 使之生效。
+这样我们输入 ctn 后，按 Tab 就会提示或自动补全了。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-06-01 09:25:11 +0800 +0800'>2017-06-01</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>78 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 进入docker容器命令制作" href="https://jiangxingye.github.io/2017/06/01/entering-docker/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">docker数据管理
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>数据卷数据卷是一个可供一个或多个容器使用的特殊目录，它绕过 UFS，可以提供很多有用的特性：
+数据卷可以在容器之间共享和重用 对数据卷的修改会立马生效 对数据卷的更新，不会影响镜像 数据卷默认会一直存在，即使容器被删除 注意：数据卷的使用，类似于 Linux 下对目录或文件进行 mount，镜像中的被指定为挂载点的目录中的文件会隐藏掉，能显示看的是挂载的数据卷。
+创建一个数据卷在用 docker run 命令的时候，使用 -v 标记来创建一个数据卷并挂载到容器里。在一次 run 中多次使用可以挂载多个数据卷。
+下面创建一个名为 web 的容器，并加载一个数据卷到容器的 /webapp 目录。
+$ sudo docker run -d -P –name web -v /webapp training/webapp python app.py 注意：也可以在 Dockerfile 中使用 VOLUME 来添加一个或者多个新的卷到由该镜像创建的任意容器。
+删除数据卷数据卷是被设计用来持久化数据的，它的生命周期独立于容器，Docker不会在容器被删除后自动删除数据卷，并且也不存在垃圾回收这样的机制来处理没有任何容器引用的数据卷。如果需要在删除容器的同时移除数据卷。可以在删除容器的时候使用 docker rm -v 这个命令。无主的数据卷可能会占据很多空间，要清理会很麻烦。Docker官方正在试图解决这个问题，相关工作的进度可以查看这个PR。
+挂载一个主机目录作为数据卷使用 -v 标记也可以指定挂载一个本地主机的目录到容器中去。
+$ sudo docker run -d -P –name web -v /src/webapp:/opt/webapp training/webapp python app.py 上面的命令加载主机的 /src/webapp 目录到容器的 /opt/webapp 目录。这个功能在进行测试的时候十分方便，比如用户可以放置一些程序到本地目录中，来查看容器是否正常工作。本地目录的路径必须是绝对路径，如果目录不存在 Docker 会自动为你创建它。
+注意：Dockerfile 中不支持这种用法，这是因为 Dockerfile 是为了移植和分享用的。然而，不同操作系统的路径格式不一样，所以目前还不能支持。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-05-23 13:43:06 +0800 +0800'>2017-05-23</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>295 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to docker数据管理" href="https://jiangxingye.github.io/2017/05/23/docker-data-manager/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">docker容器
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>容器镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的类和实例一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。
+容器的实质是进程，但与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的 命名空间。因此容器可以拥有自己的 root 文件系统、自己的网络配置、自己的进程空间，甚至自己的用户 ID 空间。容器内的进程是运行在一个隔离的环境里，使用起来，就好像是在一个独立于宿主的系统下操作一样。这种特性使得容器封装的应用比直接在宿主运行更加安全。
+命令# 创建一个名为myubuntu的容器 # -t:分配一个伪终端 -i:让容器的标准输入保持打开 $ docker run –name=myubuntu -t -i ubuntu /bin/bash # 创建一个名为webserver 的nginx容器，使用卷映射本机/home/faker/myspace/nginx目录到docker目录/usr/share/nginx/html $ docker run –name=webserver -d -v /home/faker/myspace/nginx:/usr/share/nginx/html -p 80:80 nginx # 查看容器的输出信息（打印信息，如 echo） # run的时候，使用-d将会不展示在宿主机上，可通过下面命令查看打印信息 $ docker run -d ubuntu:14.04 /bin/sh -c “while true;
+do echo hello world;
+sleep 1;
+done” $ docker logs [container ID or NAMES] # 启动容器 myubuntu $ docker start myubuntu # 关闭容器 myubuntu $ docker stop myubuntu # 查看已启动的容器 -a:查看包括未启动的容器在内的所有容器 $ docker ps [-a] # 进入容器（Docker自带的命令） $ docker attach [name] # 进入容器（通过exec） $ docker exec -it [name] /bin/bash # 导出容器快照到本地文件 $ docker export [container id] &gt; ubuntu.tar # 将容器快照导入为镜像 $ cat ubuntu.tar | docker import - test/ubuntu:v1.0 # 从制定 URL 或者某个目录导入 $ docker import http://example.com/exampleimage.tgz example/imagerepo # 删除容器 -f:删除正在运行的容器 $ docker [-f] rm myubuntu # 删除所有已关闭的容器 $ docker rm $(docker ps -a -q) # 查询各容器资源使用情况 $ docker stats $(docker ps –format={{.Names}})
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-05-23 13:29:38 +0800 +0800'>2017-05-23</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>149 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to docker容器" href="https://jiangxingye.github.io/2017/05/23/docker-container/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">docker仓库
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Docker Hub目前 Docker 官方维护了一个公共仓库 Docker Hub，其中已经包括了超过 15,000 的镜像。大部分需求，都可以通过在 Docker Hub 中直接下载镜像来实现。
+登录可以通过执行 docker login 命令来输入用户名、密码和邮箱来完成注册和登录。
+注册成功后，本地用户目录的 .dockercfg 中将保存用户的认证信息。
+基本操作用户无需登录即可通过 docker search 命令来查找官方仓库中的镜像，并利用 docker pull 命令来将它下载到本地。
+例如以 centos 为关键词进行搜索：
+$ sudo docker search centos NAME DESCRIPTION STARS OFFICIAL AUTOMATED centos The official build of CentOS. 465 [OK] tianon/centos CentOS 5 and 6, created using rinse instea… 28 blalor/centos Bare-bones base CentOS 6.5 image 6 [OK] saltstack/centos-6-minimal 6 [OK] tutum/centos-6.4 DEPRECATED. Use tutum/centos:6.4 instead. … 5 [OK] … 可以看到返回了很多包含关键字的镜像，其中包括镜像名字、描述、星级（表示该镜像的受欢迎程度）、是否官方创建、是否自动创建。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-05-23 13:15:52 +0800 +0800'>2017-05-23</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>760 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to docker仓库" href="https://jiangxingye.github.io/2017/05/23/docker-registry/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">每天一个linux命令（58）: sort
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>sort是在Linux里非常常用的一个命令，管排序的。
+1.工作原理sort将文件的每一行作为一个单位，相互比较，比较原则是从首字符向后，依次按ASCII码值进行比较，最后将他们按升序输出。
+$ cat seq.txt apple allow photo bowl peal check cheese $ sort seq.txt allow apple bowl check cheese peal photo 2.sort的-u选项它的作用很简单，就是在输出行中去除重复行。
+3.sort的-r选项sort默认的排序方式是升序，如果想改成降序，就加个-r就搞定了。
+4.sort的-o选项由于sort默认是把结果输出到标准输出，所以需要用重定向才能将结果写入文件，形如sort filename &gt; newfile。
+但是，如果你想把排序结果输出到原文件中，用重定向可就不行了。
+[rocrocket@rocrocket programming]$ sort -r number.txt &gt; number.txt [rocrocket@rocrocket programming]$ cat number.txt [rocrocket@rocrocket programming]$ 看，竟然将number清空了。
+就在这个时候，-o选项出现了，它成功的解决了这个问题，让你放心的将结果写入原文件。这或许也是-o比重定向的唯一优势所在。
+5.sort的-n选项你有没有遇到过10比2小的情况。我反正遇到过。出现这种情况是由于排序程序将这些数字按字符来排序了，排序程序会先比较1和2，显然1小，所以就将10放在2前面喽。这也是sort的一贯作风。
+我们如果想改变这种现状，就要使用-n选项，来告诉sort，“要以数值来排序”！
+6.sort的-t选项和-k选项如果有一个文件的内容是这样：
+[rocrocket@rocrocket programming]$ cat facebook.txt banana:30:5.5 apple:10:2.5 pear:90:2.3 orange:20:3.4 这个文件有三列，列与列之间用冒号隔开了，第一列表示水果类型，第二列表示水果数量，第三列表示水果价格。
+那么我想以水果数量来排序，也就是以第二列来排序，如何利用sort实现？
+幸好，sort提供了-t选项，后面可以设定间隔符。（是不是想起了cut和paste的-d选项，共鸣～～） 指定了间隔符之后，就可以用-k来指定列数了。
+[rocrocket@rocrocket programming]$ sort -n -k 2 -t :
+facebook.txt apple:10:2.5 orange:20:3.4 banana:30:5.5 pear:90:2.3 我们使用冒号作为间隔符，并针对第二列来进行数值升序排序，结果很令人满意。
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-05-23 03:44:12 +0800 +0800'>2017-05-23</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>78 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to 每天一个linux命令（58）: sort" href="https://jiangxingye.github.io/2017/05/23/linux-command57-sort/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CentOS修改DNS/GW/IP
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>1.修改DNS解决方案一：修改网卡的DNS的配置文件 $ vim /etc/resolv.conf 添加以下内容,设置两条dns nameserver 8.8.8.8 #google域名服务器 nameserver 8.8.4.4 #google域名服务器 若未生效，可执行 chattr &#43;i /etc/resolv.conf 设置文件属性只有root用户才能修改然后执行 service NetworkManager restart 解决方案二：对接口添加dns信息；编辑/etc/sysconfig/network-scripts/ifcfg-xxx，xxx为你的网卡名，但一般是ifcfg-eth0的，具体的xxx根据你的网卡确定，在最下面添加：
+DNS1=8.8.8.8 #google dns服务器, 根据实际情况更换 DNS2=8.8.4.4 #google dns服务器, 根据实际情况更换保存后重启网络 $ service network restart 2.修改网关修改网关的配置文件(第3部分也可以设置) $ vim /etc/sysconfig/network 修改为一下内容 NETWORKING=yes(表示系统是否使用网络，一般设置为yes。如果设为no，则不能使用网络，而且很多系统服务程序将无法启动) HOSTNAME=centos(设置本机的主机名，这里设置的主机名要和/etc/hosts中设置的主机名对应) GATEWAY=192.168.1.1(设置本机连接的网关的IP地址。例如，网关为10.0.0.2)3.修改ip修改对应的网卡的IP地址的配置文件 $ vim /etc/sysconfig/network-scripts/ifcfg-eth0 修改为一下内容 DEVICE=eth0 #描述网卡对应的设备别名，例如ifcfg-eth0的文件中它为eth0 BOOTPROTO=static #设置网卡获得ip地址的方式，可能的选项为static，dhcp或bootp，分别对应静态指定的 ip地址，通过dhcp协议获得的ip地址，通过bootp协议获得的ip地址 BROADCAST=192.168.0.255 #对应的子网广播地址 HWADDR=00:07:E9:05:E8:B4 #对应的网卡物理地址 IPADDR=12.168.1.2 #如果设置网卡获得 ip地址的方式为静态指定，此字段就指定了网卡对应的ip地址 IPV6INIT=no IPV6_AUTOCONF=no NETMASK=255.255.255.0 #网卡对应的网络掩码 NETWORK=192.168.1.0 #网卡对应的网络地址 ONBOOT=yes #系统启动时是否设置此网络接口，设置为yes时，系统启动时激活此设备
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2017-05-23 01:53:52 +0800 +0800'>2017-05-23</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>64 words</span>&nbsp;·&nbsp;<span>jiangxingye</span></footer>
+  <a class="entry-link" aria-label="post link to CentOS修改DNS/GW/IP" href="https://jiangxingye.github.io/2017/05/23/centos-dns-gw-ip/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://jiangxingye.github.io/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="https://jiangxingye.github.io/page/3/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jiangxingye.github.io/">jiangxingye&#39;s blog</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+    <script async src="https://vercount.one/js"></script>
+
+<div class="footer-stats" style="text-align:center; color:var(--secondary); font-size:0.875em; margin-top:1rem;">
+      <span>本博客共 21891 字</span>
+      <span> · 本站总访问量 <span id="busuanzi_value_site_pv"></span></span>
+      <span> · 本文阅读量 <span id="busuanzi_value_page_pv"></span></span>
+</div>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

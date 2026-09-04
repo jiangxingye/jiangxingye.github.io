@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AngularJs on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/tags/angularjs/</link>
+    <description>Recent content in AngularJs on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Sep 2019 13:02:59 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/tags/angularjs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AngularJs快速入门</title>
+      <link>https://jiangxingye.github.io/2017/03/04/angularjs/</link>
+      <pubDate>Sat, 04 Mar 2017 00:40:58 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/03/04/angularjs/</guid>
+      <description>AngularJs快速入门</description>
+      <content:encoded><![CDATA[<p>简介 AngularJS是一个JavaScript框架，为了克服HTML在构建应用上的不足而设计的。</p>
+<p>AngularJS通过使用我们称为标识符(directives)的结构，让浏览器能够识别新的语法。</p>
+<p>AngularJS 使得开发现代的单一页面应用程序（SPAs：Single Page Applications）变得更加容易。</p>
+<p>表达式AngularJS 使用 表达式 把数据绑定到 HTML。</p>
+<p>表达式AngularJS 表达式写在双大括号内：{{ expression }} 。AngularJS 表达式把数据绑定到 HTML，这与 ng-bind 指令有异曲同工之妙。AngularJS 将在表达式书写的位置”输出”数据。AngularJS 表达式 很像 JavaScript 表达式：它们可以包含文字、运算符和变量。实例：</p>
+<p>{{ 5 + 5 }} 或 {{ firstName + &quot; &quot; + lastName }} <div ng-app=""> <p>我的第一个表达式:</p>
+<p>{{ 5 + 5 }}</p> </div> 效果 数字<div ng-app="" ng-init="quantity=1;cost=5"> <p>总价：</p>
+<p>{{ quantity * cost }}</p> </div></p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

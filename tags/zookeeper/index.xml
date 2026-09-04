@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Zookeeper on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/tags/zookeeper/</link>
+    <description>Recent content in Zookeeper on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Sep 2019 13:02:59 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/tags/zookeeper/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>搭建dubbo&#43;zookeeper平台</title>
+      <link>https://jiangxingye.github.io/2017/09/25/%E6%90%AD%E5%BB%BAdubbo&#43;zookeeper%E5%B9%B3%E5%8F%B0/</link>
+      <pubDate>Mon, 25 Sep 2017 08:29:07 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/09/25/%E6%90%AD%E5%BB%BAdubbo&#43;zookeeper%E5%B9%B3%E5%8F%B0/</guid>
+      <description>搭建dubbo&#43;zookeeper平台</description>
+      <content:encoded><![CDATA[<p>前言本文将介绍在SpringMVC+Spring+Mybatis项目中添加 dubbo 作为 rpc 服务。</p>
+<p>文末有项目代码地址。</p>
+<p>一.搭建zookeeper使用 docker 一句话创建：</p>
+<p>docker run -dit &ndash;name zookeeper &ndash;hostname zookeeper-host -v /data:/data -p 2181:2181 jplock/zookeeper:latest 二.安装zkui（非必须）这个项目为 zookeeper 提供一个 web 的管理界面。当然我们也可以直接在zookeeper中使用命令查看，所以此步骤可以忽略 在开始前需要安装 Java 环境、Maven 环境。</p>
+<p>到 zkui 的项目中下载代码。git clone <a href="https://github.com/DeemOpen/zkui.git">https://github.com/DeemOpen/zkui.git</a> 执行 mvn clean install 生成jar文件。</p>
+<p>将config.cfg复制到上一步生成的jar文件所在目录，然后修改配置文件中的zookeeper地址。</p>
+<p>执行 nohup java -jar zkui-2.0-SNAPSHOT-jar-with-dependencies.jar &amp; 测试 http://localhost:9090，如果能看到如下页面，表示安装成功。</p>
+<p>三.使用dubbo 在原来 SpringMVC+Spring+Mybatis 项目中，除了原来 spring 相关依赖外，还需要加入以下依赖 <dependency> <groupId>com.alibaba</groupId> <artifactId>dubbo</artifactId> <version>2.5.5</version> </dependency> <dependency> <groupId>org.apache.zookeeper</groupId> <artifactId>zookeeper</artifactId> <version>3.4.9</version> </dependency> <dependency> <groupId>com.101tec</groupId> <artifactId>zkclient</artifactId> <version>0.2</version> </dependency> 定义服务接口 public interface IPersonService { List<Person> listAll();</p>
+<p>Person getById(Integer id);</p>
+<p>Integer delById(Person person);</p>
+<p>Integer updatePerson(Person person);</p>
+<p>} 定义服务实现类 @Service public class PersonService implements IPersonService { @Autowired PersonMapper personMapper;</p>
+<p>public List<Person> listAll() { return personMapper.findAll();</p>
+<p>} public Person getById(Integer id) { return personMapper.findOneById(id);</p>
+<p>} public Integer delById(Person person) { return personMapper.del(person);</p>
+<p>} public Integer updatePerson(Person person) { return personMapper.update(person);</p>
+<p>} } 配置生产者，注册服务信息 <?xml version="1.0" encoding="UTF-8"?> <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns="http://www.springframework.org/schema/beans" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"> <!--定义了提供方应用信息，用于计算依赖关系；--> &lt;dubbo:application name=&ldquo;demotest-provider&rdquo; /&gt; <!-- 使用 zookeeper 注册中心暴露服务地址 --> &lt;dubbo:registry address=&ldquo;zookeeper://192.168.0.86:2181&rdquo;/&gt; <!-- 用dubbo协议在20880端口暴露服务 --> &lt;dubbo:protocol name=&ldquo;dubbo&rdquo; port=&ldquo;20880&rdquo;/&gt; <!-- 和本地bean一样实现服务 --> <bean id="personService" class="com.ssm.service.PersonService"/> <!-- 声明需要暴露的服务接口 --> &lt;dubbo:service interface=&ldquo;com.ssm.iservice.IPersonService&rdquo; ref=&ldquo;personService&rdquo;/&gt; </beans> 配置消费者，订阅服务 <?xml version="1.0" encoding="UTF-8"?> <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns="http://www.springframework.org/schema/beans" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"> <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 --> &lt;dubbo:application name=&ldquo;demo-consumer&rdquo;/&gt; <!-- 使用 zookeeper 注册中心暴露发现服务地址 --> &lt;dubbo:registry address=&ldquo;zookeeper://192.168.0.86:2181&rdquo;/&gt; <!-- 生成远程服务代理，可以和本地bean一样使用demoService --> &lt;dubbo:reference id=&ldquo;personService&rdquo; check=&ldquo;false&rdquo; interface=&ldquo;com.ssm.iservice.IPersonService&rdquo;/&gt; </beans> 调用远程服务配置完成后，我们就可以像使用本地 bean 一样，使用 rpc 的 service；</p>
+<p>@Controller public class IndexController { @Autowired IPersonService personService;</p>
+<p>@RequestMapping(&quot;/index.html&quot;) public String index(Model model) { RpcContext.getContext().setAttachment(&ldquo;index&rdquo;, &ldquo;1&rdquo;);//测试ThreadLocal List<Person> list = personService.listAll();</p>
+<p>model.addAttribute(&ldquo;command&rdquo;,list);</p>
+<p>return &ldquo;index&rdquo;;</p>
+<p>} } 最后至此，单机运行的 rpc 服务已搭建完成。</p>
+<p>代码传送文 ssm</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

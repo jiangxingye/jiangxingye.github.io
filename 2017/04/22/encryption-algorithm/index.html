@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>加密算法简介 | jiangxingye&#39;s blog</title>
+<meta name="keywords" content="encryption">
+<meta name="description" content="加密算法简介">
+<meta name="author" content="jiangxingye">
+<link rel="canonical" href="https://jiangxingye.github.io/2017/04/22/encryption-algorithm/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jiangxingye.github.io/img/avatar.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jiangxingye.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jiangxingye.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jiangxingye.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jiangxingye.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://jiangxingye.github.io/2017/04/22/encryption-algorithm/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://jiangxingye.github.io/2017/04/22/encryption-algorithm/">
+  <meta property="og:site_name" content="jiangxingye&#39;s blog">
+  <meta property="og:title" content="加密算法简介">
+  <meta property="og:description" content="加密算法简介">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="2017">
+    <meta property="article:published_time" content="2017-04-22T01:30:41+08:00">
+    <meta property="article:modified_time" content="2019-09-02T13:02:59+08:00">
+    <meta property="article:tag" content="Encryption">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="加密算法简介">
+  <meta name="twitter:description" content="加密算法简介">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "2017s",
+      "item": "https://jiangxingye.github.io/2017/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "加密算法简介",
+      "item": "https://jiangxingye.github.io/2017/04/22/encryption-algorithm/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "加密算法简介",
+  "name": "加密算法简介",
+  "description": "加密算法简介",
+  "keywords": [
+    "encryption"
+  ],
+  "articleBody": "一、对称密钥算法概述对称加密（Symmetric-key algorithm）是指加解密用同一个密钥的算法，根据具体实现分为流加密和分组加密两种类型：\n流加密（Stream cipher）是对称加密常用的一种实现方法，加密和解密双方使用相同伪随机加密数据流，一般都是逐位异或随机密码本的内容。\n分组加密加密（Block cipher），也叫块加密，将明文分成多个等长的模块（block），使用确定的算法和对称密钥对每组分别加密解密。现代分组加密建立在迭代的思想上产生密文。迭代产生的密文在每一轮加密中使用不同的子密钥，而子密钥生成自原始密钥。\n对称加密普遍比非对称加密速度要快，实现更简单，适合大量内容的加密 DESDES (Data Encryption Standard) 是一种分组加密算法 DES算法的入口参数有三个:Key,Data,Mode，Key是密钥密钥占7个字节56位（64位里另外8位是用来校验的），Data是加密内容，占8个字节64位，Mode是加密还是解密。\nDES算法于1976被确定，现在已经被认为不够安全，主要原因是56位的密钥过短。据说这个算法因为包含一些机密设计元素，被怀疑内含美国国家安全局（NSA）的后门。\nDES算法有个拓展算法叫3DES，就是对数据块进行三次DES加密，增加爆破成本，但本质上也不够安全。\nRC4RC4 (Rivest Cipher 4) 是一种流加密算法 RC4起源于1987年，现在已经被认为不够安全。RC4由伪随机数生成器和异或运算组成。RC4的密钥长度可变，范围是[1,255]。RC4一个字节一个字节地加解密。给定一个密钥，伪随机数生成器接受密钥并产生一个S盒。S盒用来加密数据，而且在加密过程中S盒会变化。\n由于异或运算的对合性，RC4加密解密使用同一套算法。这个算法实现起来很简单，只用了最基本的加、异或、循环，话说我大学时某个课程设计的做的加密算法就是简化版的RC4。\n之后还出现了RC5、RC6加密算法，但RC5和RC6都是分组加密，和RC4原理并不一样。\nRC5RC5 （Rivest Cipher 5） 是一种分组加密算法，它和RC2，RC4，RC6都是同一个叫Ronald Rivest的人设计的。\n相比RC4，RC5的密钥成了128位，但RC5仍然只需要基础的加、异或、循环运算，可以在很多硬件上实现。RC5有三个参数：字的大小，循环轮数（round），密钥中的8位字节个数，所以可以说RC5是一种可变加密算法。实际上循环轮数12轮以下的RC5都被认为是不安全的，会被差分分析法（Differential cryptanalysis）攻击，18-20轮才足够安全。\n目前来说，RC5还是挺安全的，因为实现简单，消耗资源少，在一些传感器、嵌入式设备上使用很合适。\nRC6RC6 （Rivest Cipher 6） 是RC5的加强版，也属于分组加密算法。\nRC6算法在RC5算法基础之上针对RC5算法中的漏洞，主要是循环移位的位移量并不取决于要移动次数的所有比特，通过采用引入乘法运算来决定循环移位次数的方法，对RC5算法进行了改进，从而大大提高了RC6算法的安全性。\nRC6曾作为AES（高级加密标准）备选算法之一，但最终AES选择了Rijndael算法。\nAES最后压轴出场的是最著名的单密钥对称加密算法AES (Rijndael)，AES是Advanced Encryption Standard的缩写，是美国国家标准与技术研究院2001年发布的新加密标准。\nAES现在就是指的限定了区块长度和密钥长度的Rijndael算法，同样属于分组加密算法，该算法是两位比利时学者1998年发布的。起初还有很多算法参与了AES甄选，最终Rijndael凭借高安全性和清晰的数学结构而被选用。\nAES将Rijndael算法的区块长度固定为128位，密钥长度可选128，192或256比特（Rijndael原版支持128-256，n*32的区块长度和密钥长度）。\nAES算法包括4个步骤：\nAddRoundKey—矩阵中的每一个字节都与该次回合密钥（round key）做XOR运算；每个子密钥由密钥生成方案产生。\nSubBytes—通过一个非线性的替换函数，用查找表的方式把每个字节替换成对应的字节。\nShiftRows—将矩阵中的每个横列进行循环式移位。\nMixColumns—为了充分混合矩阵中各个直行的操作。这个步骤使用线性转换来混合每内联的四个字节。最后一个加密循环中省略MixColumns步骤，而以另一个AddRoundKey替换。\n截止现在（2016），AES在算法层面上是安全的。2005年有人公布过一种缓存时序攻击法，但使用场景非常极端。\n二、非对称秘钥算法概述公钥加密的思想于1974年被提出，相比对称加密无需共享密钥，更加安全。但是没法加密大量数据，一般用来加密对称加密的密钥，而用对称加密加密大量数据。非对称加密的原理如下：\n消息发送方A在本地构建密钥对，公钥和私钥；\n消息发送方A将产生的公钥发送给消息接收方B；\nB向A发送数据时，通过公钥进行加密，A接收到数据后通过私钥进行解密，完成一次通信；\n反之，A向B发送数据时，通过私钥对数据进行加密，B接收到数据后通过公钥进行解密。\nRSARSA算法是最著名的非对称加密算法。RSA是1977年提出的，名字来源于Rivest、Shmir和Adleman三位作者。我们平时用到的SSL协议，TLS协议都采用了该算法加密，SSH（Secure Shell）也是基于RSA实现的。\nRSA的数学基础是极大整数的因数分解，具体实现过程如下：\n随意选择两个大的质数p和q，p不等于q，计算N=pq。\n根据欧拉函数，求得r=varphi (N) = varphi(p) * varphi(q)=(p-1)(q-1) 选择一个小于r的整数e，使e与r互质。并求得e关于r的模反元素，命名为d。\n(N,e)是公钥，(N,d)是私钥。\n加密时，加密的块 n^e ≡ c(MOD N)，得到的c就是密文。解密时，c^d ≡ n(MOD N)。\n要破解RSA要解决怎么把一个极大数分解为两个质数p和q，然后通过欧拉函数再得到公钥和私钥。但极大数因数分解目前还没什么好办法，所以只要N足够大，RSA在算法层面上就是安全的。\n当N的长度为256时，用普通电脑花几小时即可以分解，当N长度为512时需要花数月时间分解，1024时需要大型分布式系统才能分解，长度到2046则可以确保是完全安全的。目前已有记录里，被分解的极大数最大位数是768位，于2009年被分解。\nRSA也常被用来做数字签名，在消息内附加一个私钥加密过的散列值（Message digest），以此来确保消息发送人是可靠的。公钥私钥对生成 # 1.该命令会生成1024位的私钥,此时我们就可以在当前路径下看到rsa_private_key.pem文件了. genrsa -out rsa_private_key.pem 1024 # 2.生成的密钥不是pcs8格式，我们需要转成pkcs8格式 pkcs8 -topk8 -inform PEM -in rsa_private_key.pem -outform PEM -nocrypt # 3.生成 rsa 公钥 rsa -in rsa_private_key.pem -pubout -out rsa_public_key.pem 椭圆曲线算法椭圆曲线算法（Elliptic curve cryptography）也是一种非对称加密算法，于1985年被提出，以下简称ECC。相比RSA，同等破解难度时ECC的秘钥更短。另外，ECC可定义椭圆曲线群的双线性映射，该特性可能将来被用来实现身份基加密体制（Identity-Based Encryption，IBE）。\nECC的数学基础是求椭圆曲线离散对数问题。实现比较复杂我就不写了，因为我也看不懂(⊙﹏⊙)b。\n也正因为实现复杂，ECC的加解密速度慢，消耗资源也更多。\nECC也同样可以实现数字签名，叫做ECDSA。\nECC的秘钥长度最小要求是160位，建议是163位。目前已有的破解记录是109位，一万台机器破解了一年半。所以ECC在算法层面是可以保证安全的。\nElGamalElGamal加密算法是一种用于对采用Diff-Hellman方式进行交换的公钥进行加密，常被用于数字签名和密钥加密的算法，ElGamal的数学基础是有限域上的离散对数问题。\n选择一个素数p和两个随机数g 、x （g、 x \u003c p ），计算 y ≡ g^x（ mod p ） ，则其公钥为 y, g 和p ，私钥是x ，g和p可由一组用户共享。\nElGamal方法中一个明文对应两个加密结果(g^a和g^b)，因此密文空间的大小是明文空间大小的两倍，也就是说纵观整个通信过程，收发密文的大小是实际明文大小的两倍。\n三、哈希算法概述我们经常说MD5加密，但追根究底的话，MD5应该是哈希函数（Hash Function），而哈希函数并不等同于加密（Encrypt），不过我们平常也把哈希叫做加密。哈希函数也叫散列函数，散列函数把消息或数据压缩成摘要，使得数据量变小，将数据的格式固定下来。该函数将数据打乱混合，重新创建一个叫做散列值（hash values，hash codes，hash sums，或hashes）的指纹。散列值通常用来代表一个短的随机字母和数字组成的字符串。\n说人话就是哈希（Hash）是将目标文本转换成具有相同长度的、不可逆的杂凑字符串，而加密（Encrypt）是将目标文本转换成具有不同长度的、可逆的密文。\n哈希主要用来校验身份，错误检查，完整性检查。\nMD5MD5（Message-Digest5 Algorithm）即消息摘要算法，是最著名、应用最为广泛的一种哈希算法，于1992年被公开。MD5之前还有MD4、MD3、MD2等哥哥算法，MD5是最终的改进版。\nMD5输入不定长度信息，输出固定长度为128-bits的散列 未完 待补充REFERENCE常见加密算法简介\n",
+  "wordCount" : "149",
+  "inLanguage": "en",
+  "datePublished": "2017-04-22T01:30:41+08:00",
+  "dateModified": "2019-09-02T13:02:59+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "jiangxingye"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://jiangxingye.github.io/2017/04/22/encryption-algorithm/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "jiangxingye's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jiangxingye.github.io/img/avatar.jpg"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://jiangxingye.github.io/" accesskey="h" title="jiangxingye&#39;s blog (Alt + H)">
+                <img src="https://jiangxingye.github.io/img/avatar.jpg" alt="" aria-label="logo"
+                    height="35">jiangxingye&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://jiangxingye.github.io/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/categories/" title="分类">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/search/" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jiangxingye.github.io/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/2017/">2017s</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      加密算法简介
+    </h1>
+    <div class="post-description">
+      加密算法简介
+    </div>
+    <div class="post-meta">
+
+<span title='2017-04-22 01:30:41 +0800 +0800'>2017-04-22</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>149 words</span>&nbsp;·&nbsp;<span>jiangxingye</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><p>一、对称密钥算法概述对称加密（Symmetric-key algorithm）是指加解密用同一个密钥的算法，根据具体实现分为流加密和分组加密两种类型：</p>
+<p>流加密（Stream cipher）是对称加密常用的一种实现方法，加密和解密双方使用相同伪随机加密数据流，一般都是逐位异或随机密码本的内容。</p>
+<p>分组加密加密（Block cipher），也叫块加密，将明文分成多个等长的模块（block），使用确定的算法和对称密钥对每组分别加密解密。现代分组加密建立在迭代的思想上产生密文。迭代产生的密文在每一轮加密中使用不同的子密钥，而子密钥生成自原始密钥。</p>
+<p>对称加密普遍比非对称加密速度要快，实现更简单，适合大量内容的加密 DESDES (Data Encryption Standard) 是一种分组加密算法 DES算法的入口参数有三个:Key,Data,Mode，Key是密钥密钥占7个字节56位（64位里另外8位是用来校验的），Data是加密内容，占8个字节64位，Mode是加密还是解密。</p>
+<p>DES算法于1976被确定，现在已经被认为不够安全，主要原因是56位的密钥过短。据说这个算法因为包含一些机密设计元素，被怀疑内含美国国家安全局（NSA）的后门。</p>
+<p>DES算法有个拓展算法叫3DES，就是对数据块进行三次DES加密，增加爆破成本，但本质上也不够安全。</p>
+<p>RC4RC4 (Rivest Cipher 4) 是一种流加密算法 RC4起源于1987年，现在已经被认为不够安全。RC4由伪随机数生成器和异或运算组成。RC4的密钥长度可变，范围是[1,255]。RC4一个字节一个字节地加解密。给定一个密钥，伪随机数生成器接受密钥并产生一个S盒。S盒用来加密数据，而且在加密过程中S盒会变化。</p>
+<p>由于异或运算的对合性，RC4加密解密使用同一套算法。这个算法实现起来很简单，只用了最基本的加、异或、循环，话说我大学时某个课程设计的做的加密算法就是简化版的RC4。</p>
+<p>之后还出现了RC5、RC6加密算法，但RC5和RC6都是分组加密，和RC4原理并不一样。</p>
+<p>RC5RC5 （Rivest Cipher 5） 是一种分组加密算法，它和RC2，RC4，RC6都是同一个叫Ronald Rivest的人设计的。</p>
+<p>相比RC4，RC5的密钥成了128位，但RC5仍然只需要基础的加、异或、循环运算，可以在很多硬件上实现。RC5有三个参数：字的大小，循环轮数（round），密钥中的8位字节个数，所以可以说RC5是一种可变加密算法。实际上循环轮数12轮以下的RC5都被认为是不安全的，会被差分分析法（Differential cryptanalysis）攻击，18-20轮才足够安全。</p>
+<p>目前来说，RC5还是挺安全的，因为实现简单，消耗资源少，在一些传感器、嵌入式设备上使用很合适。</p>
+<p>RC6RC6 （Rivest Cipher 6） 是RC5的加强版，也属于分组加密算法。</p>
+<p>RC6算法在RC5算法基础之上针对RC5算法中的漏洞，主要是循环移位的位移量并不取决于要移动次数的所有比特，通过采用引入乘法运算来决定循环移位次数的方法，对RC5算法进行了改进，从而大大提高了RC6算法的安全性。</p>
+<p>RC6曾作为AES（高级加密标准）备选算法之一，但最终AES选择了Rijndael算法。</p>
+<p>AES最后压轴出场的是最著名的单密钥对称加密算法AES (Rijndael)，AES是Advanced Encryption Standard的缩写，是美国国家标准与技术研究院2001年发布的新加密标准。</p>
+<p>AES现在就是指的限定了区块长度和密钥长度的Rijndael算法，同样属于分组加密算法，该算法是两位比利时学者1998年发布的。起初还有很多算法参与了AES甄选，最终Rijndael凭借高安全性和清晰的数学结构而被选用。</p>
+<p>AES将Rijndael算法的区块长度固定为128位，密钥长度可选128，192或256比特（Rijndael原版支持128-256，n*32的区块长度和密钥长度）。</p>
+<p>AES算法包括4个步骤：</p>
+<p>AddRoundKey—矩阵中的每一个字节都与该次回合密钥（round key）做XOR运算；每个子密钥由密钥生成方案产生。</p>
+<p>SubBytes—通过一个非线性的替换函数，用查找表的方式把每个字节替换成对应的字节。</p>
+<p>ShiftRows—将矩阵中的每个横列进行循环式移位。</p>
+<p>MixColumns—为了充分混合矩阵中各个直行的操作。这个步骤使用线性转换来混合每内联的四个字节。最后一个加密循环中省略MixColumns步骤，而以另一个AddRoundKey替换。</p>
+<p>截止现在（2016），AES在算法层面上是安全的。2005年有人公布过一种缓存时序攻击法，但使用场景非常极端。</p>
+<p>二、非对称秘钥算法概述公钥加密的思想于1974年被提出，相比对称加密无需共享密钥，更加安全。但是没法加密大量数据，一般用来加密对称加密的密钥，而用对称加密加密大量数据。非对称加密的原理如下：</p>
+<p>消息发送方A在本地构建密钥对，公钥和私钥；</p>
+<p>消息发送方A将产生的公钥发送给消息接收方B；</p>
+<p>B向A发送数据时，通过公钥进行加密，A接收到数据后通过私钥进行解密，完成一次通信；</p>
+<p>反之，A向B发送数据时，通过私钥对数据进行加密，B接收到数据后通过公钥进行解密。</p>
+<p>RSARSA算法是最著名的非对称加密算法。RSA是1977年提出的，名字来源于Rivest、Shmir和Adleman三位作者。我们平时用到的SSL协议，TLS协议都采用了该算法加密，SSH（Secure Shell）也是基于RSA实现的。</p>
+<p>RSA的数学基础是极大整数的因数分解，具体实现过程如下：</p>
+<p>随意选择两个大的质数p和q，p不等于q，计算N=pq。</p>
+<p>根据欧拉函数，求得r=varphi (N) = varphi(p) * varphi(q)=(p-1)(q-1) 选择一个小于r的整数e，使e与r互质。并求得e关于r的模反元素，命名为d。</p>
+<p>(N,e)是公钥，(N,d)是私钥。</p>
+<p>加密时，加密的块 n^e ≡ c(MOD N)，得到的c就是密文。解密时，c^d ≡ n(MOD N)。</p>
+<p>要破解RSA要解决怎么把一个极大数分解为两个质数p和q，然后通过欧拉函数再得到公钥和私钥。但极大数因数分解目前还没什么好办法，所以只要N足够大，RSA在算法层面上就是安全的。</p>
+<p>当N的长度为256时，用普通电脑花几小时即可以分解，当N长度为512时需要花数月时间分解，1024时需要大型分布式系统才能分解，长度到2046则可以确保是完全安全的。目前已有记录里，被分解的极大数最大位数是768位，于2009年被分解。</p>
+<p>RSA也常被用来做数字签名，在消息内附加一个私钥加密过的散列值（Message digest），以此来确保消息发送人是可靠的。公钥私钥对生成 # 1.该命令会生成1024位的私钥,此时我们就可以在当前路径下看到rsa_private_key.pem文件了. genrsa -out rsa_private_key.pem 1024 # 2.生成的密钥不是pcs8格式，我们需要转成pkcs8格式 pkcs8 -topk8 -inform PEM -in rsa_private_key.pem -outform PEM -nocrypt # 3.生成 rsa 公钥 rsa -in rsa_private_key.pem -pubout -out rsa_public_key.pem 椭圆曲线算法椭圆曲线算法（Elliptic curve cryptography）也是一种非对称加密算法，于1985年被提出，以下简称ECC。相比RSA，同等破解难度时ECC的秘钥更短。另外，ECC可定义椭圆曲线群的双线性映射，该特性可能将来被用来实现身份基加密体制（Identity-Based Encryption，IBE）。</p>
+<p>ECC的数学基础是求椭圆曲线离散对数问题。实现比较复杂我就不写了，因为我也看不懂(⊙﹏⊙)b。</p>
+<p>也正因为实现复杂，ECC的加解密速度慢，消耗资源也更多。</p>
+<p>ECC也同样可以实现数字签名，叫做ECDSA。</p>
+<p>ECC的秘钥长度最小要求是160位，建议是163位。目前已有的破解记录是109位，一万台机器破解了一年半。所以ECC在算法层面是可以保证安全的。</p>
+<p>ElGamalElGamal加密算法是一种用于对采用Diff-Hellman方式进行交换的公钥进行加密，常被用于数字签名和密钥加密的算法，ElGamal的数学基础是有限域上的离散对数问题。</p>
+<p>选择一个素数p和两个随机数g 、x （g、 x &lt; p ），计算 y ≡ g^x（ mod p ） ，则其公钥为 y, g 和p ，私钥是x ，g和p可由一组用户共享。</p>
+<p>ElGamal方法中一个明文对应两个加密结果(g^a和g^b)，因此密文空间的大小是明文空间大小的两倍，也就是说纵观整个通信过程，收发密文的大小是实际明文大小的两倍。</p>
+<p>三、哈希算法概述我们经常说MD5加密，但追根究底的话，MD5应该是哈希函数（Hash Function），而哈希函数并不等同于加密（Encrypt），不过我们平常也把哈希叫做加密。哈希函数也叫散列函数，散列函数把消息或数据压缩成摘要，使得数据量变小，将数据的格式固定下来。该函数将数据打乱混合，重新创建一个叫做散列值（hash values，hash codes，hash sums，或hashes）的指纹。散列值通常用来代表一个短的随机字母和数字组成的字符串。</p>
+<p>说人话就是哈希（Hash）是将目标文本转换成具有相同长度的、不可逆的杂凑字符串，而加密（Encrypt）是将目标文本转换成具有不同长度的、可逆的密文。</p>
+<p>哈希主要用来校验身份，错误检查，完整性检查。</p>
+<p>MD5MD5（Message-Digest5 Algorithm）即消息摘要算法，是最著名、应用最为广泛的一种哈希算法，于1992年被公开。MD5之前还有MD4、MD3、MD2等哥哥算法，MD5是最终的改进版。</p>
+<p>MD5输入不定长度信息，输出固定长度为128-bits的散列 未完 待补充REFERENCE常见加密算法简介</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://jiangxingye.github.io/tags/encryption/">Encryption</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://jiangxingye.github.io/2017/04/25/%E8%A7%A3%E5%86%B3linux%E4%B8%8Bzip%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8E%8B%E4%B9%B1%E7%A0%81/">
+    <span class="title">« Prev</span>
+    <span>解决linux下zip文件解压乱码</span>
+  </a>
+  <a class="next" href="https://jiangxingye.github.io/2017/04/21/jsp-use-record/">
+    <span class="title">Next »</span>
+    <span>JSP操作记录</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 加密算法简介 on x"
+            href="https://x.com/intent/tweet/?text=%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95%e7%ae%80%e4%bb%8b&amp;url=https%3a%2f%2fjiangxingye.github.io%2f2017%2f04%2f22%2fencryption-algorithm%2f&amp;hashtags=encryption">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 加密算法简介 on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fjiangxingye.github.io%2f2017%2f04%2f22%2fencryption-algorithm%2f&amp;title=%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95%e7%ae%80%e4%bb%8b&amp;summary=%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95%e7%ae%80%e4%bb%8b&amp;source=https%3a%2f%2fjiangxingye.github.io%2f2017%2f04%2f22%2fencryption-algorithm%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 加密算法简介 on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fjiangxingye.github.io%2f2017%2f04%2f22%2fencryption-algorithm%2f&title=%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95%e7%ae%80%e4%bb%8b">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 加密算法简介 on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fjiangxingye.github.io%2f2017%2f04%2f22%2fencryption-algorithm%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 加密算法简介 on whatsapp"
+            href="https://api.whatsapp.com/send?text=%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95%e7%ae%80%e4%bb%8b%20-%20https%3a%2f%2fjiangxingye.github.io%2f2017%2f04%2f22%2fencryption-algorithm%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 加密算法简介 on telegram"
+            href="https://telegram.me/share/url?text=%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95%e7%ae%80%e4%bb%8b&amp;url=https%3a%2f%2fjiangxingye.github.io%2f2017%2f04%2f22%2fencryption-algorithm%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 加密算法简介 on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95%e7%ae%80%e4%bb%8b&u=https%3a%2f%2fjiangxingye.github.io%2f2017%2f04%2f22%2fencryption-algorithm%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+<div id="gitalk-container" style="margin-top: 30px;"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: "Ov23li0HarkPcKBrhYRL",
+        clientSecret: "08c9bebd481f660de75bb9b47de70353d3a65378",
+        repo: "jiangxingye-comments",
+        owner: "jiangxingye",
+        admin: ["jiangxingye"],
+        id: "pathname",
+        distractionFreeMode: false,
+        language: 'zh-CN',
+        labels: ["gitalk"],
+        perPage:  15 
+    });
+    gitalk.render('gitalk-container');
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jiangxingye.github.io/">jiangxingye&#39;s blog</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+    <script async src="https://vercount.one/js"></script>
+
+<div class="footer-stats" style="text-align:center; color:var(--secondary); font-size:0.875em; margin-top:1rem;">
+      <span>本博客共 21891 字</span>
+      <span> · 本站总访问量 <span id="busuanzi_value_site_pv"></span></span>
+      <span> · 本文阅读量 <span id="busuanzi_value_page_pv"></span></span>
+</div>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

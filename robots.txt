@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://jiangxingye.github.io/sitemap.xml

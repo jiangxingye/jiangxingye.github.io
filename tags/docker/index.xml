@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Docker on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/tags/docker/</link>
+    <description>Recent content in Docker on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Sep 2019 13:03:00 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>docker报错集锦</title>
+      <link>https://jiangxingye.github.io/2017/09/25/docker-errors/</link>
+      <pubDate>Mon, 25 Sep 2017 02:03:50 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/09/25/docker-errors/</guid>
+      <description>docker报错集锦</description>
+      <content:encoded><![CDATA[<p>docker创建容器1. iptables failed创建 tale 容器时，如下命令：</p>
+<p>docker run -d &ndash;privileged &ndash;hostname tale &ndash;name tale \ -v /etc/localtime:/etc/localtime:ro \ -v /home/tale:/var/tale_home -p 127.0.0.1:234:9000 \ -m 1024m &ndash;memory-swap -1 tale:1.0 然后就报了以下错误：</p>
+<p>docker:</p>
+<p>Error response from daemon:</p>
+<p>driver failed programming external connectivity on endpoint tale (263775ff559176224428ec44dcec416a1c20e6c69198d9760b38f35849914260):</p>
+<p>iptables failed:</p>
+<p>iptables &ndash;wait -t nat -A DOCKER -p tcp -d 127.0.0.1 &ndash;dport 234 -j DNAT &ndash;to-destination 172.17.0.4:9000 !</p>
+<p>-i docker0:</p>
+<p>iptables:</p>
+<p>No chain/target/match by that name. (exit status 1). 解决办法：重启 docker 服务：</p>
+<p>$ service docker restart</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>docker备份恢复之save与export</title>
+      <link>https://jiangxingye.github.io/2017/09/18/docker-save-export/</link>
+      <pubDate>Mon, 18 Sep 2017 14:38:52 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/09/18/docker-save-export/</guid>
+      <description>docker备份恢复之save与export</description>
+      <content:encoded><![CDATA[<p>docker save导出docker save 命令用于持久化 镜像，先获得镜像名称，再执行保存：</p>
+<h1 id="通过此命令查出要持久化的镜像名称--docker-images--持久化镜像名为-image_name-的镜像--docker-save-image_name--o-savetar-注意">通过此命令查出要持久化的镜像名称 $ docker images # 持久化镜像名为 image_name 的镜像， $ docker save image_name -o ~/save.tar 注意：</h1>
+<p>如果镜像是在远程仓库，执行保存镜像的时候可能会报 Cowardly refusing to save to a terminal. Use the -o flag or redirect. 的错，可以通过 docker save image_name &gt; image_name.tar 将镜像从远程仓库持久化到本地。</p>
+<p>导入# 导入 save.tar $ docker load &lt; ~/save.tar # 查看镜像 $ docker images images docker export导出docker export 命令用于持久化 容器，先获取容器ID，再执行保存。</p>
+<h1 id="通过此命令查出要持久化的容器id--docker-ps--a--持久化容器id为-container_id-的容器--docker-export-container_id--exporttar-导入-从-exporttar-导入镜像--cat-exporttar--docker-import---my-imageslatest--查看镜像--sudo-docker-images-不同通过-sudo-docker-images-tree-可以查看到镜像的所有层就会发现-docker-export-丢失了所有的历史而docker-save-则会保存所有历史">通过此命令查出要持久化的容器ID $ docker ps -a # 持久化容器id为 container_id 的容器 $ docker export container_id &gt; ~/export.tar 导入# 从 export.tar 导入镜像 $ cat ~/export.tar | docker import - my-images:latest # 查看镜像 $ sudo docker images 不同通过 sudo docker images &ndash;tree 可以查看到镜像的所有层，就会发现， docker export 丢失了所有的历史，而docker save 则会保存所有历史。</h1>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>进入docker容器命令制作</title>
+      <link>https://jiangxingye.github.io/2017/06/01/entering-docker/</link>
+      <pubDate>Thu, 01 Jun 2017 09:25:11 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/06/01/entering-docker/</guid>
+      <description>进入docker容器命令制作</description>
+      <content:encoded><![CDATA[<p>通过attach进入容器# 进入容器（Docker自带的命令） $ sudo docker attach [name] 通过这命令进入容器后，执行ctrl+d退出容器后发现容器也停止了。所以可以通过 先按，ctrl+p 再按，ctrl+q 退出 制作进入容器的命令既然attach退出很麻烦，一不小心容器就down掉了 通过 docker exec 进入容器是安全的，但是命令过长 所以我们可以通过下面操作，简化命令 1.创建文件 /usr/bin/ctn,内容如下 docker exec -it $1 /bin/bash2.检查环境变量有没有配置目录 /usr/bin $PATH bash:</p>
+<p>/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:</p>
+<p>No such file or directory配置环境变量的方式自行百度 3.完成上面两步即可通过命令 ctn 进入容器 $ ctn [name] 注意：如果是使用非root账号创建的命令，而docker命令是root权限，可能会存在权限问题可以设置 chmod 777 /usr/bin/ctn 设置权限使用 sudo ctn [name] 即可进入容器 4.自动补全docker名使用上面命令时，docker的名字都是手动输入，很麻烦，而且容易出错。</p>
+<p>我们可以借助complete命令，来补全docker信息。</p>
+<p>在~/.bashrc(作用于当前用户，如果所有用户，修改/etc/bashrc)文件中添加一行 # ctn auto complete complete -W &ldquo;$(docker ps &ndash;format &ldquo;{{.Names}}&rdquo;)&rdquo; ctn 再执行 source .bashrc 使之生效。</p>
+<p>这样我们输入 ctn 后，按 Tab 就会提示或自动补全了。</p>
+<p>注意：</p>
+<p>由于提示的docker名是 .bashrc 生效时的列表，所以如果之后docker列表有变动，需重新执行 source .bashrc 使之更新提示列表</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>docker数据管理</title>
+      <link>https://jiangxingye.github.io/2017/05/23/docker-data-manager/</link>
+      <pubDate>Tue, 23 May 2017 13:43:06 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/05/23/docker-data-manager/</guid>
+      <description>docker数据管理</description>
+      <content:encoded><![CDATA[<p>数据卷数据卷是一个可供一个或多个容器使用的特殊目录，它绕过 UFS，可以提供很多有用的特性：</p>
+<p>数据卷可以在容器之间共享和重用 对数据卷的修改会立马生效 对数据卷的更新，不会影响镜像 数据卷默认会一直存在，即使容器被删除 注意：数据卷的使用，类似于 Linux 下对目录或文件进行 mount，镜像中的被指定为挂载点的目录中的文件会隐藏掉，能显示看的是挂载的数据卷。</p>
+<p>创建一个数据卷在用 docker run 命令的时候，使用 -v 标记来创建一个数据卷并挂载到容器里。在一次 run 中多次使用可以挂载多个数据卷。</p>
+<p>下面创建一个名为 web 的容器，并加载一个数据卷到容器的 /webapp 目录。</p>
+<p>$ sudo docker run -d -P &ndash;name web -v /webapp training/webapp python app.py 注意：也可以在 Dockerfile 中使用 VOLUME 来添加一个或者多个新的卷到由该镜像创建的任意容器。</p>
+<p>删除数据卷数据卷是被设计用来持久化数据的，它的生命周期独立于容器，Docker不会在容器被删除后自动删除数据卷，并且也不存在垃圾回收这样的机制来处理没有任何容器引用的数据卷。如果需要在删除容器的同时移除数据卷。可以在删除容器的时候使用 docker rm -v 这个命令。无主的数据卷可能会占据很多空间，要清理会很麻烦。Docker官方正在试图解决这个问题，相关工作的进度可以查看这个PR。</p>
+<p>挂载一个主机目录作为数据卷使用 -v 标记也可以指定挂载一个本地主机的目录到容器中去。</p>
+<p>$ sudo docker run -d -P &ndash;name web -v /src/webapp:/opt/webapp training/webapp python app.py 上面的命令加载主机的 /src/webapp 目录到容器的 /opt/webapp 目录。这个功能在进行测试的时候十分方便，比如用户可以放置一些程序到本地目录中，来查看容器是否正常工作。本地目录的路径必须是绝对路径，如果目录不存在 Docker 会自动为你创建它。</p>
+<p>注意：Dockerfile 中不支持这种用法，这是因为 Dockerfile 是为了移植和分享用的。然而，不同操作系统的路径格式不一样，所以目前还不能支持。</p>
+<p>Docker 挂载数据卷的默认权限是读写，用户也可以通过 :ro 指定为只读。</p>
+<p>$ sudo docker run -d -P &ndash;name web -v /src/webapp:/opt/webapp:ro training/webapp python app.py 加了 :ro 之后，就挂载为只读了。</p>
+<p>查看数据卷的具体信息在主机里使用以下命令可以查看指定容器的信息 $ docker inspect web 在输出的内容中找到其中和数据卷相关的部分，可以看到所有的数据卷都是创建在主机的/var/lib/docker/volumes/下面的 &ldquo;Volumes&rdquo;:</p>
+<p>{ &ldquo;/webapp&rdquo;:</p>
+<p>&ldquo;/var/lib/docker/volumes/fac362&hellip;80535&rdquo; }, &ldquo;VolumesRW&rdquo;:</p>
+<p>{ &ldquo;/webapp&rdquo;:</p>
+<p>true } &hellip; 注：从Docker 1.8.0起，数据卷配置在”Mounts”Key下面，可以看到所有的数据卷都是创建在主机的/mnt/sda1/var/lib/docker/volumes/….下面了。</p>
+<p>&ldquo;Mounts&rdquo;:</p>
+<p>[ { &ldquo;Name&rdquo;:</p>
+<p>&ldquo;b53ebd40054dae599faf7c9666acfe205c3e922fc3e8bc3f2fd178ed788f1c29&rdquo;, &ldquo;Source&rdquo;:</p>
+<p>&ldquo;/mnt/sda1/var/lib/docker/volumes/b53ebd40054dae599faf7c9666acfe205c3e922fc3e8bc3f2fd178ed788f1c29/_data&rdquo;, &ldquo;Destination&rdquo;:</p>
+<p>&ldquo;/webapp&rdquo;, &ldquo;Driver&rdquo;:</p>
+<p>&ldquo;local&rdquo;, &ldquo;Mode&rdquo;:</p>
+<p>&ldquo;&rdquo;, &ldquo;RW&rdquo;:</p>
+<p>true, &ldquo;Propagation&rdquo;:</p>
+<p>&quot;&quot; } ] &hellip; 挂载一个本地主机文件作为数据卷-v 标记也可以从主机挂载单个文件到容器中 $ sudo docker run &ndash;rm -it -v ~/.bash_history:/.bash_history ubuntu /bin/bash 这样就可以记录在容器输入过的命令了。</p>
+<p>注意：如果直接挂载一个文件，很多文件编辑工具，包括 vi 或者 sed &ndash;in-place，可能会造成文件 inode 的改变，从 Docker 1.1 .0起，这会导致报错误信息。所以最简单的办法就直接挂载文件的父目录。</p>
+<p>数据卷容器如果你有一些持续更新的数据需要在容器之间共享，最好创建数据卷容器。</p>
+<p>数据卷容器，其实就是一个正常的容器，专门用来提供数据卷供其它容器挂载的。</p>
+<p>首先，创建一个名为 dbdata 的数据卷容器：</p>
+<p>$ sudo docker run -d -v /dbdata &ndash;name dbdata training/postgres echo Data-only container for postgres 然后，在其他容器中使用 –volumes-from 来挂载 dbdata 容器中的数据卷。</p>
+<p>$ sudo docker run -d &ndash;volumes-from dbdata &ndash;name db1 training/postgres $ sudo docker run -d &ndash;volumes-from dbdata &ndash;name db2 training/postgres 可以使用超过一个的 &ndash;volumes-from 参数来指定从多个容器挂载不同的数据卷。</p>
+<p>也可以从其他已经挂载了数据卷的容器来级联挂载数据卷。</p>
+<p>$ sudo docker run -d &ndash;name db3 &ndash;volumes-from db1 training/postgres 注意：使用 –volumes-from 参数所挂载数据卷的容器自己并不需要保持在运行状态。</p>
+<p>如果删除了挂载的容器（包括 dbdata、db1 和 db2），数据卷并不会被自动删除。如果要删除一个数据卷，必须在删除最后一个还挂载着它的容器时使用 docker rm -v 命令来指定同时删除关联的容器。</p>
+<p>这可以让用户在容器之间升级和移动数据卷。具体的操作将在下一节中进行讲解。</p>
+<p>利用数据卷容器来备份、恢复、迁移数据卷可以利用数据卷对其中的数据进行进行备份、恢复和迁移。</p>
+<p>备份首先使用 –volumes-from 标记来创建一个加载 dbdata 容器卷的容器，并从主机挂载当前目录到容器的 /backup 目录。命令如下：</p>
+<p>$ sudo docker run &ndash;volumes-from dbdata -v $(pwd):/backup ubuntu tar cvf /backup/backup.tar /dbdata 容器启动后，使用了 tar 命令来将 dbdata 卷备份为容器中 /backup/backup.tar 文件，也就是主机当前目录下的名为 backup.tar 的文件。</p>
+<p>恢复如果要恢复数据到一个容器，首先创建一个带有空数据卷的容器 dbdata2。</p>
+<p>$ sudo docker run -v /dbdata &ndash;name dbdata2 ubuntu /bin/bash 然后创建另一个容器，挂载 dbdata2 容器卷中的数据卷，并使用 untar 解压备份文件到挂载的容器卷中。</p>
+<p>$ sudo docker run &ndash;volumes-from dbdata2 -v $(pwd):/backup busybox tar xvf /backup/backup.tar 为了查看/验证恢复的数据，可以再启动一个容器挂载同样的容器卷来查看 $ sudo docker run &ndash;volumes-from dbdata2 busybox /bin/ls /dbdata</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>docker容器</title>
+      <link>https://jiangxingye.github.io/2017/05/23/docker-container/</link>
+      <pubDate>Tue, 23 May 2017 13:29:38 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/05/23/docker-container/</guid>
+      <description>docker容器</description>
+      <content:encoded><![CDATA[<p>容器镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的类和实例一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</p>
+<p>容器的实质是进程，但与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的 命名空间。因此容器可以拥有自己的 root 文件系统、自己的网络配置、自己的进程空间，甚至自己的用户 ID 空间。容器内的进程是运行在一个隔离的环境里，使用起来，就好像是在一个独立于宿主的系统下操作一样。这种特性使得容器封装的应用比直接在宿主运行更加安全。</p>
+<p>命令# 创建一个名为myubuntu的容器 # -t:分配一个伪终端 -i:让容器的标准输入保持打开 $ docker run &ndash;name=myubuntu -t -i ubuntu /bin/bash # 创建一个名为webserver 的nginx容器，使用卷映射本机/home/faker/myspace/nginx目录到docker目录/usr/share/nginx/html $ docker run &ndash;name=webserver -d -v /home/faker/myspace/nginx:/usr/share/nginx/html -p 80:80 nginx # 查看容器的输出信息（打印信息，如 echo） # run的时候，使用-d将会不展示在宿主机上，可通过下面命令查看打印信息 $ docker run -d ubuntu:14.04 /bin/sh -c &ldquo;while true;</p>
+<p>do echo hello world;</p>
+<p>sleep 1;</p>
+<p>done&rdquo; $ docker logs [container ID or NAMES] # 启动容器 myubuntu $ docker start myubuntu # 关闭容器 myubuntu $ docker stop myubuntu # 查看已启动的容器 -a:查看包括未启动的容器在内的所有容器 $ docker ps [-a] # 进入容器（Docker自带的命令） $ docker attach [name] # 进入容器（通过exec） $ docker exec -it [name] /bin/bash # 导出容器快照到本地文件 $ docker export [container id] &gt; ubuntu.tar # 将容器快照导入为镜像 $ cat ubuntu.tar | docker import - test/ubuntu:v1.0 # 从制定 URL 或者某个目录导入 $ docker import <a href="http://example.com/exampleimage.tgz">http://example.com/exampleimage.tgz</a> example/imagerepo # 删除容器 -f:删除正在运行的容器 $ docker [-f] rm myubuntu # 删除所有已关闭的容器 $ docker rm $(docker ps -a -q) # 查询各容器资源使用情况 $ docker stats $(docker ps &ndash;format={{.Names}})</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>docker仓库</title>
+      <link>https://jiangxingye.github.io/2017/05/23/docker-registry/</link>
+      <pubDate>Tue, 23 May 2017 13:15:52 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/05/23/docker-registry/</guid>
+      <description>docker仓库</description>
+      <content:encoded><![CDATA[<p>Docker Hub目前 Docker 官方维护了一个公共仓库 Docker Hub，其中已经包括了超过 15,000 的镜像。大部分需求，都可以通过在 Docker Hub 中直接下载镜像来实现。</p>
+<p>登录可以通过执行 docker login 命令来输入用户名、密码和邮箱来完成注册和登录。</p>
+<p>注册成功后，本地用户目录的 .dockercfg 中将保存用户的认证信息。</p>
+<p>基本操作用户无需登录即可通过 docker search 命令来查找官方仓库中的镜像，并利用 docker pull 命令来将它下载到本地。</p>
+<p>例如以 centos 为关键词进行搜索：</p>
+<p>$ sudo docker search centos NAME DESCRIPTION STARS OFFICIAL AUTOMATED centos The official build of CentOS. 465 [OK] tianon/centos CentOS 5 and 6, created using rinse instea&hellip; 28 blalor/centos Bare-bones base CentOS 6.5 image 6 [OK] saltstack/centos-6-minimal 6 [OK] tutum/centos-6.4 DEPRECATED. Use tutum/centos:6.4 instead. &hellip; 5 [OK] &hellip; 可以看到返回了很多包含关键字的镜像，其中包括镜像名字、描述、星级（表示该镜像的受欢迎程度）、是否官方创建、是否自动创建。</p>
+<p>官方的镜像说明是官方项目组创建和维护的，automated 资源允许用户验证镜像的来源和内容。</p>
+<p>根据是否是官方提供，可将镜像资源分为两类。</p>
+<p>一种是类似 centos 这样的基础镜像，被称为基础或根镜像。这些基础镜像是由 Docker 公司创建、验证、支持、提供。这样的镜像往往使用单个单词作为名字。</p>
+<p>还有一种类型，比如 tianon/centos 镜像，它是由 Docker 的用户创建并维护的，往往带有用户名称前缀。可以通过前缀 user_name/ 来指定使用某个用户提供的镜像，比如 tianon 用户。</p>
+<p>另外，在查找的时候通过 -s N 参数可以指定仅显示评价为 N 星以上的镜像。</p>
+<p>下载官方 centos 镜像到本地。</p>
+<p>$ sudo docker pull centos Pulling repository centos 0b443ba03958:</p>
+<p>Download complete 539c0211cd76:</p>
+<p>Download complete 511136ea3c5a:</p>
+<p>Download complete 7064731afe90:</p>
+<p>Download complete 用户也可以在登录后通过 docker push 命令来将镜像推送到 Docker Hub。</p>
+<p>私有仓库安装 docker-registry容器运行在安装了 Docker 后，可以通过获取官方 registry 镜像来运行。</p>
+<p>$ sudo docker run -d -p 5000:5000 registry 这将使用官方的 registry 镜像来启动本地的私有仓库。</p>
+<p>用户可以通过指定参数来配置私有仓库位置，例如配置镜像存储到 Amazon S3 服务。</p>
+<p>$ sudo docker run \ -e SETTINGS_FLAVOR=s3 \ -e AWS_BUCKET=acme-docker \ -e STORAGE_PATH=/registry \ -e AWS_KEY=AKIAHSHB43HS3J92MXZ \ -e AWS_SECRET=xdDowwlK7TJajV1Y7EoOZrmuPEJlHYcNP2k4j49T \ -e SEARCH_BACKEND=sqlalchemy \ -p 5000:5000 \ registry此外，还可以指定本地路径（如 /home/user/registry-conf ）下的配置文件。</p>
+<p>$ sudo docker run -d -p 5000:5000 -v /home/user/registry-conf:/registry-conf -e DOCKER_REGISTRY_CONFIG=/registry-conf/config.yml registry 默认情况下，仓库会被创建在容器的 /tmp/registry 下。可以通过 -v 参数来将镜像文件存放在本地的指定路径。</p>
+<p>例如下面的例子将上传的镜像放到 /opt/data/registry 目录。</p>
+<p>$ sudo docker run -d -p 5000:5000 -v /opt/data/registry:/tmp/registry registry 本地安装对于 Ubuntu 或 CentOS 等发行版，可以直接通过源安装。1.Ubuntu $ sudo apt-get install -y build-essential python-dev libevent-dev python-pip liblzma-dev $ sudo pip install docker-registry 2.CentOS $ sudo yum install -y python-devel libevent-devel python-pip gcc xz-devel $ sudo python-pip install docker-registry 3.源码安装 $ sudo apt-get install build-essential python-dev libevent-dev python-pip libssl-dev liblzma-dev libffi-dev $ git clone <a href="https://github.com/docker/docker-registry.git">https://github.com/docker/docker-registry.git</a> $ cd docker-registry $ sudo python setup.py install 然后修改配置文件，主要修改 dev 模板段的 storage_path 到本地的存储仓库的路径。</p>
+<p>$ cp config/config_sample.yml config/config.yml 之后启动 Web 服务。</p>
+<p>$ sudo gunicorn -c contrib/gunicorn.py docker_registry.wsgi:application 或者 $ sudo gunicorn &ndash;access-logfile - &ndash;error-logfile - -k gevent -b 0.0.0.0:5000 -w 4 &ndash;max-requests 100 docker_registry.wsgi:application 此时使用 curl 访问本地的 5000 端口，看到输出 docker-registry 的版本信息说明运行成功。</p>
+<p>注：config/config_sample.yml 文件是示例配置文件。</p>
+<p>在私有仓库上传、下载、搜索镜像创建好私有仓库之后，就可以使用 docker tag 来标记一个镜像，然后推送它到仓库，别的机器上就可以下载下来了。例如私有仓库地址为 192.168.7.26:5000。</p>
+<p>先在本机查看已有的镜像。</p>
+<p>$ sudo docker images REPOSITORY TAG IMAGE ID CREATED VIRTUAL SIZE ubuntu latest ba5877dc9bec 6 weeks ago 192.7 MB ubuntu 14.04 ba5877dc9bec 6 weeks ago 192.7 MB 使用docker tag 将 ba58 这个镜像标记为 192.168.7.26:5000/test（格式为 docker tag IMAGE[:TAG] [REGISTRYHOST/][USERNAME/]NAME[:TAG]）。</p>
+<p>$ sudo docker tag ba58 192.168.7.26:5000/test root ~ # docker images REPOSITORY TAG IMAGE ID CREATED VIRTUAL SIZE ubuntu 14.04 ba5877dc9bec 6 weeks ago 192.7 MB ubuntu latest ba5877dc9bec 6 weeks ago 192.7 MB 192.168.7.26:5000/test latest ba5877dc9bec 6 weeks ago 192.7 MB 使用 docker push 上传标记的镜像。</p>
+<p>$ sudo docker push 192.168.7.26:5000/test The push refers to a repository [192.168.7.26:5000/test] (len:</p>
+<ol>
+<li>Sending image list Pushing repository 192.168.7.26:5000/test (1 tags) Image 511136ea3c5a already pushed, skipping Image 9bad880da3d2 already pushed, skipping Image 25f11f5fb0cb already pushed, skipping Image ebc34468f71d already pushed, skipping Image 2318d26665ef already pushed, skipping Image ba5877dc9bec already pushed, skipping Pushing tag for rev [ba5877dc9bec] on {http://192.168.7.26:5000/v1/repositories/test/tags/latest} 用 curl 查看仓库中的镜像。</li>
+</ol>
+<p>$ curl http://192.168.7.26:5000/v1/search {&ldquo;num_results&rdquo;:</p>
+<p>7, &ldquo;query&rdquo;:</p>
+<p>&ldquo;&rdquo;, &ldquo;results&rdquo;:</p>
+<p>[{&ldquo;description&rdquo;:</p>
+<p>&ldquo;&rdquo;, &ldquo;name&rdquo;:</p>
+<p>&ldquo;library/miaxis_j2ee&rdquo;}, {&ldquo;description&rdquo;:</p>
+<p>&ldquo;&rdquo;, &ldquo;name&rdquo;:</p>
+<p>&ldquo;library/tomcat&rdquo;}, {&ldquo;description&rdquo;:</p>
+<p>&ldquo;&rdquo;, &ldquo;name&rdquo;:</p>
+<p>&ldquo;library/ubuntu&rdquo;}, {&ldquo;description&rdquo;:</p>
+<p>&ldquo;&rdquo;, &ldquo;name&rdquo;:</p>
+<p>&ldquo;library/ubuntu_office&rdquo;}, {&ldquo;description&rdquo;:</p>
+<p>&ldquo;&rdquo;, &ldquo;name&rdquo;:</p>
+<p>&ldquo;library/desktop_ubu&rdquo;}, {&ldquo;description&rdquo;:</p>
+<p>&ldquo;&rdquo;, &ldquo;name&rdquo;:</p>
+<p>&ldquo;dockerfile/ubuntu&rdquo;}, {&ldquo;description&rdquo;:</p>
+<p>&ldquo;&rdquo;, &ldquo;name&rdquo;:</p>
+<p>&ldquo;library/test&rdquo;}]} 这里可以看到 {“description”:</p>
+<p>“”, “name”:</p>
+<p>“library/test”}，表明镜像已经被成功上传了。</p>
+<p>现在可以到另外一台机器去下载这个镜像。</p>
+<p>$ sudo docker pull 192.168.7.26:5000/test Pulling repository 192.168.7.26:5000/test ba5877dc9bec:</p>
+<p>Download complete 511136ea3c5a:</p>
+<p>Download complete 9bad880da3d2:</p>
+<p>Download complete 25f11f5fb0cb:</p>
+<p>Download complete ebc34468f71d:</p>
+<p>Download complete 2318d26665ef:</p>
+<p>Download complete $ sudo docker images REPOSITORY TAG IMAGE ID CREATED VIRTUAL SIZE 192.168.7.26:5000/test latest ba5877dc9bec 6 weeks ago 192.7 MB 可以使用 这个脚本 批量上传本地的镜像到注册服务器中，默认是本地注册服务器 127.0.0.1:5000。例如：</p>
+<p>$ wget <a href="https://github.com/yeasy/docker_practice/raw/master/_local/push_images.sh;">https://github.com/yeasy/docker_practice/raw/master/_local/push_images.sh;</a></p>
+<p>sudo chmod a+x push_images.sh $ ./push_images.sh ubuntu:latest centos:centos7 The registry server is 127.0.0.1 Uploading ubuntu:latest&hellip; The push refers to a repository [127.0.0.1:5000/ubuntu] (len:</p>
+<ol>
+<li>Sending image list Pushing repository 127.0.0.1:5000/ubuntu (1 tags) Image 511136ea3c5a already pushed, skipping Image bfb8b5a2ad34 already pushed, skipping Image c1f3bdbd8355 already pushed, skipping Image 897578f527ae already pushed, skipping Image 9387bcc9826e already pushed, skipping Image 809ed259f845 already pushed, skipping Image 96864a7d2df3 already pushed, skipping Pushing tag for rev [96864a7d2df3] on {http://127.0.0.1:5000/v1/repositories/ubuntu/tags/latest} Untagged:</li>
+</ol>
+<p>127.0.0.1:5000/ubuntu:latest Done Uploading centos:centos7&hellip; The push refers to a repository [127.0.0.1:5000/centos] (len:</p>
+<ol>
+<li>Sending image list Pushing repository 127.0.0.1:5000/centos (1 tags) Image 511136ea3c5a already pushed, skipping 34e94e67e63a:</li>
+</ol>
+<p>Image successfully pushed 70214e5d0a90:</p>
+<p>Image successfully pushed Pushing tag for rev [70214e5d0a90] on {http://127.0.0.1:5000/v1/repositories/centos/tags/centos7} Untagged:</p>
+<p>127.0.0.1:5000/centos:centos7 Done 仓库配置文件Docker 的 Registry 利用配置文件提供了一些仓库的模板（flavor），用户可以直接使用它们来进行开发或生产部署。</p>
+<p>模板在 config_sample.yml 文件中，可以看到一些现成的模板段：</p>
+<p>common：基础配置 local：存储数据到本地文件系统 s3：存储数据到 AWS S3 中 dev：使用 local 模板的基本配置 test：单元测试使用 prod：生产环境配置（基本上跟s3配置类似） gcs：存储数据到 Google 的云存储 swift：存储数据到 OpenStack Swift 服务 glance：存储数据到 OpenStack Glance 服务，本地文件系统为后备 glance-swift：存储数据到 OpenStack Glance 服务，Swift 为后备 elliptics：存储数据到 Elliptics key/value 存储 用户也可以添加自定义的模版段。</p>
+<p>默认情况下使用的模板是 dev，要使用某个模板作为默认值，可以添加 SETTINGS_FLAVOR 到环境变量中，例如 export SETTINGS_FLAVOR=dev另外，配置文件中支持从环境变量中加载值，语法格式为 _env:VARIABLENAME[:DEFAULT]。</p>
+<p>示例配置common:</p>
+<p>loglevel:</p>
+<p>info search_backend:</p>
+<p>&ldquo;_env:SEARCH_BACKEND:&rdquo; sqlalchemy_index_database:</p>
+<p>&ldquo;_env:SQLALCHEMY_INDEX_DATABASE:sqlite:////tmp/docker-registry.db&rdquo; prod:</p>
+<p>loglevel:</p>
+<p>warn storage:</p>
+<p>s3 s3_access_key:</p>
+<p>_env:AWS_S3_ACCESS_KEY s3_secret_key:</p>
+<p>_env:AWS_S3_SECRET_KEY s3_bucket:</p>
+<p>_env:AWS_S3_BUCKET boto_bucket:</p>
+<p>_env:AWS_S3_BUCKET storage_path:</p>
+<p>/srv/docker smtp_host:</p>
+<p>localhost from_addr:</p>
+<p><a href="mailto:docker@myself.com">docker@myself.com</a> to_addr:</p>
+<p><a href="mailto:my@myself.com">my@myself.com</a> dev:</p>
+<p>loglevel:</p>
+<p>debug storage:</p>
+<p>local storage_path:</p>
+<p>/home/myself/docker test:</p>
+<p>storage:</p>
+<p>local storage_path:</p>
+<p>/tmp/tmpdockertmp</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Dockerfile指令详解</title>
+      <link>https://jiangxingye.github.io/2017/05/22/dockerfile/</link>
+      <pubDate>Mon, 22 May 2017 11:11:42 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/05/22/dockerfile/</guid>
+      <description>Dockerfile指令详解</description>
+      <content:encoded><![CDATA[<p>Dockerfile 是一个文本文件，其内包含了一条条的指令(Instruction)，每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。</p>
+<p>构建镜像命令格式：</p>
+<p>$ docker build [选项] &lt;上下文路径/URL/-&gt; 示例：</p>
+<h1 id="构建一个名为-nginxv3-的镜像--docker-build--t-nginxv3--run-执行命令1-shell格式run-命令就像直接在命令行中输入的命令一样刚才写的-dockrfile-中的-run-指令就是这种格式">构建一个名为 nginx:v3 的镜像 $ docker build -t nginx:v3 . RUN 执行命令1) shell格式：RUN &lt;命令&gt;，就像直接在命令行中输入的命令一样。刚才写的 Dockrfile 中的 RUN 指令就是这种格式。</h1>
+<p>RUN echo &lsquo;<h1>Hello, Docker!</h1>&rsquo; &gt; /usr/share/nginx/html/index.html 2) exec格式：RUN [“可执行文件”, “参数1”, “参数2”]，这更像是函数调用中的格式。</p>
+<p>COPY 复制文件格式：</p>
+<ol>
+<li>COPY &lt;源路径&gt;&hellip; &lt;目标路径&gt;2) COPY [&quot;&lt;源路径1&gt;&quot;,&hellip; &ldquo;&lt;目标路径&gt;&quot;]和 RUN 指令一样，也有两种格式，一种类似于命令行，一种类似于函数调用。COPY 指令将从构建上下文目录中 &lt;源路径&gt; 的文件/目录复制到新的一层的镜像内的 &lt;目标路径&gt; 位置。比如：</li>
+</ol>
+<p>COPY package.json /usr/src/app/ &lt;源路径&gt; 可以是多个，甚至可以是通配符，其通配符规则要满足 Go 的 filepath.Match 规则，如：</p>
+<p>COPY hom* /mydir/ COPY hom?.txt /mydir/ &lt;目标路径&gt; 可以是容器内的绝对路径，也可以是相对于工作目录的相对路径（工作目录可以用 WORKDIR 指令来指定）。目标路径不需要事先创建，如果目录不存在会在复制文件前先行创建缺失目录。</p>
+<p>此外，还需要注意一点，使用 COPY 指令，源文件的各种元数据都会保留。比如读、写、执行权限、文件变更时间等。这个特性对于镜像定制很有用。特别是构建相关文件都在使用 Git 进行管理的时候。</p>
+<p>ADD更高级的复制文件ADD 指令和 COPY 的格式和性质基本一致。但是在 COPY 基础上增加了一些功能。</p>
+<p>比如 &lt;源路径&gt; 可以是一个 URL，这种情况下，Docker 引擎会试图去下载这个链接的文件放到 &lt;目标路径&gt; 去。下载后的文件权限自动设置为 600，如果这并不是想要的权限，那么还需要增加额外的一层 RUN 进行权限调整，另外，如果下载的是个压缩包，需要解压缩，也一样还需要额外的一层 RUN 指令进行解压缩。所以不如直接使用 RUN 指令，然后使用 wget 或者 curl 工具下载，处理权限、解压缩、然后清理无用文件更合理。因此，这个功能其实并不实用，而且不推荐使用。</p>
+<p>如果 &lt;源路径&gt; 为一个 tar 压缩文件的话，压缩格式为 gzip, bzip2 以及 xz 的情况下，ADD 指令将会自动解压缩这个压缩文件到 &lt;目标路径&gt; 去。</p>
+<p>在 Docker 官方的最佳实践文档中要求，尽可能的使用 COPY 。</p>
+<p>因此在 COPY 和 ADD 指令中选择的时候，可以遵循这样的原则，所有的文件复制均使用 COPY 指令，仅在需要自动解压缩的场合使用 ADD。</p>
+<p>CMD 容器启动命令CMD 指令的格式和 RUN 相似，也是两种格式：1） shell 格式：CMD &lt;命令&gt;2） exec 格式：CMD [&ldquo;可执行文件&rdquo;, &ldquo;参数1&rdquo;, &ldquo;参数2&rdquo;&hellip;]3） 参数列表格式：CMD [&ldquo;参数1&rdquo;, &ldquo;参数2&rdquo;&hellip;]。在指定了 ENTRYPOINT 指令后，用 CMD 指定具体的参数。</p>
+<p>Docker 不是虚拟机，容器就是进程。既然是进程，那么在启动容器的时候，需要指定所运行的程序及参数。CMD 指令就是用于指定默认的容器主进程的启动命令的。</p>
+<p>在运行时可以指定新的命令来替代镜像设置中的这个默认命令，比如，ubuntu 镜像默认的 CMD 是 /bin/bash，如果我们直接 docker run -it ubuntu 的话，会直接进入 bash。我们也可以在运行时指定运行别的命令，如 docker run -it ubuntu cat /etc/os-release。这就是用 cat /etc/os-release 命令替换了默认的 /bin/bash 命令了，输出了系统版本信息。</p>
+<p>在指令格式上，一般推荐使用 exec 格式，这类格式在解析时会被解析为 JSON 数组，因此一定要使用双引号 “，而不要使用单引号。</p>
+<p>ENTRYPOINT 入口点ENTRYPOINT 的目的和 CMD 一样，都是在指定容器启动程序及参数。ENTRYPOINT 在运行时也可以替代，不过比 CMD 要略显繁琐，需要通过 docker run 的参数 –entrypoint 来指定。</p>
+<p>当指定了 ENTRYPOINT 后，CMD 的含义就发生了改变，不再是直接的运行其命令，而是将 CMD 的内容作为参数传给 ENTRYPOINT 指令，换句话说实际执行时，将变为：</p>
+<p><ENTRYPOINT> &ldquo;<CMD>&rdquo; 1) 场景一：让镜像变成像命令一样使用 FROM ubuntu:16.04 RUN apt-get update \ &amp;&amp; apt-get install -y curl \ &amp;&amp; rm -rf /var/lib/apt/lists/* ENTRYPOINT [ &ldquo;curl&rdquo;, &ldquo;-s&rdquo;, &ldquo;http://ip.cn&rdquo; ] $ docker run myip -i 这是因为当存在 ENTRYPOINT 后，CMD 的内容将会作为参数传给 ENTRYPOINT，而这里 -i 就是新的 CMD，因此会作为参数传给 curl，从而达到了我们预期的效果。</p>
+<ol start="2">
+<li>场景二：应用运行前的准备工作可以写一个脚本，然后放入 ENTRYPOINT 中去执行，而这个脚本会将接到的参数（也就是 ）作为命令，在脚本最后执行。比如官方镜像 redis 中就是这么做的：</li>
+</ol>
+<p>FROM alpine:3.4 &hellip; RUN addgroup -S redis &amp;&amp; adduser -S -G redis redis &hellip; ENTRYPOINT [&ldquo;docker-entrypoint.sh&rdquo;] EXPOSE 6379 CMD [ &ldquo;redis-server&rdquo; ] 可以看到其中为了 redis 服务创建了 redis 用户，并在最后指定了 ENTRYPOINT 为 docker-entrypoint.sh 脚本。</p>
+<p>#!/bin/sh &hellip; # allow the container to be started with <code>--user</code> if [ &ldquo;$1&rdquo; = &lsquo;redis-server&rsquo; -a &ldquo;$(id -u)&rdquo; = &lsquo;0&rsquo; ];</p>
+<p>then chown -R redis . exec su-exec redis &ldquo;$0&rdquo; &ldquo;$@&rdquo; fi exec &ldquo;$@&rdquo; 该脚本的内容就是根据 CMD 的内容来判断，如果是 redis-server 的话，则切换到 redis 用户身份启动服务器，否则依旧使用 root 身份执行。比如：</p>
+<p>$ docker run -it redis id uid=0(root) gid=0(root) groups=0(root) ENV 设置环境变量格式有两种：</p>
+<ol>
+<li>ENV <key> <value>2) ENV <key1>=<value1> <key2>=<value2>&hellip; 这个指令很简单，就是设置环境变量而已，无论是后面的其它指令，如 RUN，还是运行时的应用，都可以直接使用这里定义的环境变量。</li>
+</ol>
+<p>ENV VERSION=1.0 DEBUG=on \ NAME=&ldquo;Happy Feet&quot;这个例子中演示了如何换行，以及对含有空格的值用双引号括起来的办法，这和 Shell 下的行为是一致的。</p>
+<p>定义了环境变量，那么在后续的指令中，就可以使用这个环境变量。比如在官方 node 镜像 Dockerfile 中，就有类似这样的代码：</p>
+<p>ENV NODE_VERSION 7.2.0 RUN curl -SLO &ldquo;<a href="https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz%22">https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz&quot;</a> \ &amp;&amp; curl -SLO &ldquo;<a href="https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc%22">https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc&quot;</a> \ &amp;&amp; gpg &ndash;batch &ndash;decrypt &ndash;output SHASUMS256.txt SHASUMS256.txt.asc \ &amp;&amp; grep &quot; node-v$NODE_VERSION-linux-x64.tar.xz$&rdquo; SHASUMS256.txt</p>
+<p>| sha256sum -c - \ &amp;&amp; tar -xJf &ldquo;node-v$NODE_VERSION-linux-x64.tar.xz&rdquo; -C /usr/local &ndash;strip-components=1 \ &amp;&amp; rm &ldquo;node-v$NODE_VERSION-linux-x64.tar.xz&rdquo; SHASUMS256.txt.asc SHASUMS256.txt \ &amp;&amp; ln -s /usr/local/bin/node /usr/local/bin/nodejs在这里先定义了环境变量 NODE_VERSION，其后的 RUN 这层里，多次使用 $NODE_VERSION 来进行操作定制。可以看到，将来升级镜像构建版本的时候，只需要更新 7.2.0 即可，Dockerfile 构建维护变得更轻松了。 下列指令可以支持环境变量展开： ADD、COPY、ENV、EXPOSE、LABEL、USER、WORKDIR、VOLUME、STOPSIGNAL、ONBUILD。 可以从这个指令列表里感觉到，环境变量可以使用的地方很多，很强大。通过环境变量，我们可以让一份 Dockerfile 制作更多的镜像，只需使用不同的环境变量即可。 ARG 构建参数格式：ARG &lt;参数名&gt;[=&lt;默认值&gt;] 构建参数和 ENV 的效果一样，都是设置环境变量。所不同的是，ARG 所设置的构建环境的环境变量，在将来容器运行时是不会存在这些环境变量的。但是不要因此就使用 ARG 保存密码之类的信息，因为 docker history 还是可以看到所有值的。 Dockerfile 中的 ARG 指令是定义参数名称，以及定义其默认值。该默认值可以在构建命令 docker build 中用 –build-arg &lt;参数名&gt;=&lt;值&gt; 来覆盖。 在 1.13 之前的版本，要求 –build-arg 中的参数名，必须在 Dockerfile 中用 ARG 定义过了，换句话说，就是 –build-arg 指定的参数，必须在 Dockerfile 中使用了。如果对应参数没有被使用，则会报错退出构建。从 1.13 开始，这种严格的限制被放开，不再报错退出，而是显示警告信息，并继续构建。这对于使用 CI 系统，用同样的构建流程构建不同的 Dockerfile 的时候比较有帮助，避免构建命令必须根据每个 Dockerfile 的内容修改。 VOLUME 定义匿名卷格式为： 1) VOLUME [&quot;&lt;路径1&gt;&rdquo;, &ldquo;&lt;路径2&gt;&rdquo;&hellip;]2) VOLUME &lt;路径&gt; 之前我们说过，容器运行时应该尽量保持容器存储层不发生写操作，对于数据库类需要保存动态数据的应用，其数据库文件应该保存于卷(volume)中，后面的章节我们会进一步介绍 Docker 卷的概念。为了防止运行时用户忘记将动态文件所保存目录挂载为卷，在 Dockerfile 中，我们可以事先指定某些目录挂载为匿名卷，这样在运行时如果用户不指定挂载，其应用也可以正常运行，不会向容器存储层写入大量数据。 VOLUME /data 这里的 /data 目录就会在运行时自动挂载为匿名卷，任何向 /data 中写入的信息都不会记录进容器存储层，从而保证了容器存储层的无状态化。当然，运行时可以覆盖这个挂载设置。比如： $ docker run -d -v mydata:/data xxxx 在这行命令中，就使用了 mydata 这个命名卷挂载到了 /data 这个位置，替代了 Dockerfile 中定义的匿名卷的挂载配置。 EXPOSE 声明端口格式为 EXPOSE &lt;端口1&gt; [&lt;端口2&gt;&hellip;]。 EXPOSE 指令是声明运行时容器提供服务端口，这只是一个声明，在运行时并不会因为这个声明应用就会开启这个端口的服务。在 Dockerfile 中写入这样的声明有两个好处，一个是帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射；另一个用处则是在运行时使用随机端口映射时，也就是 docker run -P 时，会自动随机映射 EXPOSE 的端口。 此外，在早期 Docker 版本中还有一个特殊的用处。以前所有容器都运行于默认桥接网络中，因此所有容器互相之间都可以直接访问，这样存在一定的安全性问题。于是有了一个 Docker 引擎参数 –icc=false，当指定该参数后，容器间将默认无法互访，除非互相间使用了 –links 参数的容器才可以互通，并且只有镜像中 EXPOSE 所声明的端口才可以被访问。这个 –icc=false 的用法，在引入了 docker network 后已经基本不用了，通过自定义网络可以很轻松的实现容器间的互联与隔离。 要将 EXPOSE 和在运行时使用 -p &lt;宿主端口&gt;:&lt;容器端口&gt; 区分开来。-p，是映射宿主端口和容器端口，换句话说，就是将容器的对应端口服务公开给外界访问，而 EXPOSE 仅仅是声明容器打算使用什么端口而已，并不会自动在宿主进行端口映射。 WORKDIR 指定工作目录格式为 WORKDIR &lt;工作目录路径&gt;。 使用 WORKDIR 指令可以来指定工作目录（或者称为当前目录），以后各层的当前目录就被改为指定的目录，如该目录不存在，WORKDIR 会帮你建立目录。 之前提到一些初学者常犯的错误是把 Dockerfile 等同于 Shell 脚本来书写，这种错误的理解还可能会导致出现下面这样的错误： RUN cd /app RUN echo &ldquo;hello&rdquo; &gt; world.txt 如果将这个 Dockerfile 进行构建镜像运行后，会发现找不到 /app/world.txt 文件，或者其内容不是 hello。原因其实很简单，在 Shell 中，连续两行是同一个进程执行环境，因此前一个命令修改的内存状态，会直接影响后一个命令；而在 Dockerfile 中，这两行 RUN 命令的执行环境根本不同，是两个完全不同的容器。这就是对 Dokerfile 构建分层存储的概念不了解所导致的错误。 之前说过每一个 RUN 都是启动一个容器、执行命令、然后提交存储层文件变更。第一层 RUN cd /app 的执行仅仅是当前进程的工作目录变更，一个内存上的变化而已，其结果不会造成任何文件变更。而到第二层的时候，启动的是一个全新的容器，跟第一层的容器更完全没关系，自然不可能继承前一层构建过程中的内存变化。 因此如果需要改变以后各层的工作目录的位置，那么应该使用 WORKDIR 指令。 USER 指定当前用户格式：USER &lt;用户名&gt; USER 指令和 WORKDIR 相似，都是改变环境状态并影响以后的层。WORKDIR 是改变工作目录，USER 则是改变之后层的执行 RUN, CMD 以及 ENTRYPOINT 这类命令的身份。 当然，和 WORKDIR 一样，USER 只是帮助你切换到指定用户而已，这个用户必须是事先建立好的，否则无法切换。 RUN groupadd -r redis &amp;&amp; useradd -r -g redis redis USER redis RUN [ &ldquo;redis-server&rdquo; ]如果以 root 执行的脚本，在执行期间希望改变身份，比如希望以某个已经建立好的用户来运行某个服务进程，不要使用 su 或者 sudo，这些都需要比较麻烦的配置，而且在 TTY 缺失的环境下经常出错。建议使用 gosu，可以从其项目网站看到进一步的信息：https://github.com/tianon/gosu # 建立 redis 用户，并使用 gosu 换另一个用户执行命令 RUN groupadd -r redis &amp;&amp; useradd -r -g redis redis # 下载 gosu RUN wget -O /usr/local/bin/gosu &ldquo;<a href="https://github.com/tianon/gosu/releases/download/1.7/gosu-amd64%22">https://github.com/tianon/gosu/releases/download/1.7/gosu-amd64&quot;</a> \ &amp;&amp; chmod +x /usr/local/bin/gosu \ &amp;&amp; gosu nobody true # 设置 CMD，并以另外的用户执行 CMD [ &ldquo;exec&rdquo;, &ldquo;gosu&rdquo;, &ldquo;redis&rdquo;, &ldquo;redis-server&rdquo; ]HEALTHCHECK 健康检查格式： 1) HEALTHCHECK [选项] CMD &lt;命令&gt;：设置检查容器健康状况的命令2) HEALTHCHECK NONE：如果基础镜像有健康检查指令，使用这行可以屏蔽掉其健康检查指令 HEALTHCHECK 指令是告诉 Docker 应该如何进行判断容器的状态是否正常，这是 Docker 1.12 引入的新指令。 在没有 HEALTHCHECK 指令前，Docker 引擎只可以通过容器内主进程是否退出来判断容器是否状态异常。很多情况下这没问题，但是如果程序进入死锁状态，或者死循环状态，应用进程并不退出，但是该容器已经无法提供服务了。在 1.12 以前，Docker 不会检测到容器的这种状态，从而不会重新调度，导致可能会有部分容器已经无法提供服务了却还在接受用户请求。 而自 1.12 之后，Docker 提供了 HEALTHCHECK 指令，通过该指令指定一行命令，用这行命令来判断容器主进程的服务状态是否还正常，从而比较真实的反应容器实际状态。 当在一个镜像指定了 HEALTHCHECK 指令后，用其启动容器，初始状态会为 starting，在 HEALTHCHECK 指令检查成功后变为 healthy，如果连续一定次数失败，则会变为 unhealthy。 HEALTHCHECK 支持下列选项： 1) &ndash;interval=&lt;间隔&gt;：两次健康检查的间隔，默认为 30 秒；2) &ndash;timeout=&lt;时长&gt;：健康检查命令运行超时时间，如果超过这个时间，本次健康检查就被视为失败，默认 30 秒；3)&ndash;retries=&lt;次数&gt;：当连续失败指定次数后，则将容器状态视为 unhealthy，默认 3 次。 和 CMD, ENTRYPOINT 一样，HEALTHCHECK 只可以出现一次，如果写了多个，只有最后一个生效。 在 HEALTHCHECK [选项] CMD 后面的命令，格式和 ENTRYPOINT 一样，分为 shell 格式，和 exec 格式。命令的返回值决定了该次健康检查的成功与否：0：成功；1：失败；2：保留，不要使用这个值。 假设我们有个镜像是个最简单的 Web 服务，我们希望增加健康检查来判断其 Web 服务是否在正常工作，我们可以用 curl 来帮助判断，其 Dockerfile 的 HEALTHCHECK 可以这么写： FROM nginx RUN apt-get update &amp;&amp; apt-get install -y curl &amp;&amp; rm -rf /var/lib/apt/lists/* HEALTHCHECK &ndash;interval=5s &ndash;timeout=3s \ CMD curl -fs http://localhost/ |
+| exit 1这里我们设置了每 5 秒检查一次（这里为了试验所以间隔非常短，实际应该相对较长），如果健康检查命令超过 3 秒没响应就视为失败，并且使用 curl -fs http://localhost/ |
+| exit 1 作为健康检查命令。 使用 docker build 来构建这个镜像： $ docker build -t myweb:v1 . 构建好了后，我们启动一个容器： $ docker run -d &ndash;name web -p 80:80 myweb:v1 当运行该镜像后，可以通过 docker ps 看到最初的状态为 (health: starting)： $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 03e28eb00bd0 myweb:v1 &ldquo;nginx -g &lsquo;daemon off&rdquo; 3 seconds ago Up 2 seconds (health: starting) 80/tcp, 443/tcp web 在等待几秒钟后，再次 docker ps，就会看到健康状态变化为了 (healthy)： $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 03e28eb00bd0 myweb:v1 &ldquo;nginx -g &lsquo;daemon off&rdquo; 18 seconds ago Up 16 seconds (healthy) 80/tcp, 443/tcp web 如果健康检查连续失败超过了重试次数，状态就会变为 (unhealthy)。 为了帮助排障，健康检查命令的输出（包括 stdout 以及 stderr）都会被存储于健康状态里，可以用 docker inspect 来查看。 $ docker inspect &ndash;format &lsquo;{{json .State.Health}}&rsquo; web |</p>
+<p>python -m json.tool { &ldquo;FailingStreak&rdquo;:</p>
+<p>0, &ldquo;Log&rdquo;:</p>
+<p>[ { &ldquo;End&rdquo;:</p>
+<p>&ldquo;2016-11-25T14:35:37.940957051Z&rdquo;, &ldquo;ExitCode&rdquo;:</p>
+<p>0, &ldquo;Output&rdquo;:</p>
+<p>&ldquo;<!DOCTYPE html>\n<html>\n<head>\n<title>Welcome to nginx!</title>\n<style>\n body {\n width:</p>
+<p>35em;\n margin:</p>
+<p>0 auto;\n font-family:</p>
+<p>Tahoma, Verdana, Arial, sans-serif;\n }\n</style>\n</head>\n<body>\n<h1>Welcome to nginx!</h1>\n<p>If you see this page, the nginx web server is successfully installed and\nworking. Further configuration is required.</p>\n\n<p>For online documentation and support please refer to\n&lt;a href=&quot;http://nginx.org/&quot;&gt;nginx.org</a>.<br/>\nCommercial support is available at\n&lt;a href=&quot;http://nginx.com/&quot;&gt;nginx.com</a>.</p>\n\n<p><em>Thank you for using nginx.</em></p>\n</body>\n</html>\n&rdquo;, &ldquo;Start&rdquo;:</p>
+<p>&ldquo;2016-11-25T14:35:37.780192565Z&rdquo; } ], &ldquo;Status&rdquo;:</p>
+<p>&ldquo;healthy&rdquo; } ONBUILD 为他人做嫁衣裳格式：ONBUILD &lt;其它指令&gt;。</p>
+<p>ONBUILD 是一个特殊的指令，它后面跟的是其它指令，比如 RUN, COPY 等，而这些指令，在当前镜像构建时并不会被执行。只有当以当前镜像为基础镜像，去构建下一级镜像的时候才会被执行。</p>
+<p>Dockerfile 中的其它指令都是为了定制当前镜像而准备的，唯有 ONBUILD 是为了帮助别人定制自己而准备的。</p>
+<p>假设我们要制作 Node.js 所写的应用的镜像。我们都知道 Node.js 使用 npm 进行包管理，所有依赖、配置、启动信息等会放到 package.json 文件里。在拿到程序代码后，需要先进行 npm install 才可以获得所有需要的依赖。然后就可以通过 npm start 来启动应用。因此，一般来说会这样写 Dockerfile：</p>
+<p>FROM node:slim RUN &ldquo;mkdir /app&rdquo; WORKDIR /app COPY ./package.json /app RUN [ &ldquo;npm&rdquo;, &ldquo;install&rdquo; ] COPY . /app/ CMD [ &ldquo;npm&rdquo;, &ldquo;start&rdquo; ]把这个 Dockerfile 放到 Node.js 项目的根目录，构建好镜像后，就可以直接拿来启动容器运行。但是如果我们还有第二个 Node.js 项目也差不多呢？好吧，那就再把这个 Dockerfile 复制到第二个项目里。那如果有第三个项目呢？再复制么？文件的副本越多，版本控制就越困难，让我们继续看这样的场景维护的问题。</p>
+<p>如果第一个 Node.js 项目在开发过程中，发现这个 Dockerfile 里存在问题，比如敲错字了、或者需要安装额外的包，然后开发人员修复了这个 Dockerfile，再次构建，问题解决。第一个项目没问题了，但是第二个项目呢？虽然最初 Dockerfile 是复制、粘贴自第一个项目的，但是并不会因为第一个项目修复了他们的 Dockerfile，而第二个项目的 Dockerfile 就会被自动修复。</p>
+<p>那么我们可不可以做一个基础镜像，然后各个项目使用这个基础镜像呢？这样基础镜像更新，各个项目不用同步 Dockerfile 的变化，重新构建后就继承了基础镜像的更新？好吧，可以，让我们看看这样的结果。那么上面的这个 Dockerfile 就会变为：</p>
+<p>FROM node:slim RUN &ldquo;mkdir /app&rdquo; WORKDIR /app CMD [ &ldquo;npm&rdquo;, &ldquo;start&rdquo; ]这里我们把项目相关的构建指令拿出来，放到子项目里去。假设这个基础镜像的名字为 my-node 的话，各个项目内的自己的 Dockerfile 就变为：</p>
+<p>FROM my-node COPY ./package.json /app RUN [ &ldquo;npm&rdquo;, &ldquo;install&rdquo; ] COPY . /app/基础镜像变化后，各个项目都用这个 Dockerfile 重新构建镜像，会继承基础镜像的更新。</p>
+<p>那么，问题解决了么？没有。准确说，只解决了一半。如果这个 Dockerfile 里面有些东西需要调整呢？比如 npm install 都需要加一些参数，那怎么办？这一行 RUN 是不可能放入基础镜像的，因为涉及到了当前项目的 ./package.json，难道又要一个个修改么？所以说，这样制作基础镜像，只解决了原来的 Dockerfile 的前4条指令的变化问题，而后面三条指令的变化则完全没办法处理。</p>
+<p>ONBUILD 可以解决这个问题。让我们用 ONBUILD 重新写一下基础镜像的 Dockerfile:</p>
+<p>FROM node:slim RUN &ldquo;mkdir /app&rdquo; WORKDIR /app ONBUILD COPY ./package.json /app ONBUILD RUN [ &ldquo;npm&rdquo;, &ldquo;install&rdquo; ] ONBUILD COPY . /app/ CMD [ &ldquo;npm&rdquo;, &ldquo;start&rdquo; ]这次我们回到原始的 Dockerfile，但是这次将项目相关的指令加上 ONBUILD，这样在构建基础镜像的时候，这三行并不会被执行。然后各个项目的 Dockerfile 就变成了简单地：</p>
+<p>FROM my-node是的，只有这么一行。当在各个项目目录中，用这个只有一行的 Dockerfile 构建镜像时，之前基础镜像的那三行 ONBUILD 就会开始执行，成功的将当前项目的代码复制进镜像、并且针对本项目执行 npm install，生成应用镜像。</p>
+<p>ReferenceDocker–从入门到实践:</p>
+<p><a href="https://yeasy.gitbooks.io/docker_practice/content/Dockerfie">https://yeasy.gitbooks.io/docker_practice/content/Dockerfie</a> 官方文档：https://docs.docker.com/engine/reference/builder/Dockerfile 最佳实践文档：https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>docker镜像</title>
+      <link>https://jiangxingye.github.io/2017/05/19/docker-image/</link>
+      <pubDate>Fri, 19 May 2017 08:47:33 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/05/19/docker-image/</guid>
+      <description>docker镜像</description>
+      <content:encoded><![CDATA[<p>WhatDocker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。</p>
+<p>因为镜像包含操作系统完整的 root 文件系统，其体积往往是庞大的，因此在 Docker 设计时，就充分利用 Union FS 的技术，将其设计为分层存储的架构。所以严格来说，镜像并非是像一个 ISO 那样的打包文件，镜像只是一个虚拟的概念，其实际体现并非由一个文件组成，而是由一组文件系统组成，或者说，由多层文件系统联合组成。</p>
+<p>安装# 官方 的安装脚本 $ curl -sSL <a href="https://get.docker.com/">https://get.docker.com/</a> | sh # 阿里云 的安装脚本 $ curl -sSL <a href="http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet">http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet</a> | sh - # DaoCloud 的安装脚本 $ curl -sSL <a href="https://get.daocloud.io/docker">https://get.daocloud.io/docker</a> | sh 镜像# 获取镜像，registry为空默认从Docker Hub上获取 docker pull [选项] [Docker Registry地址]&lt;仓库名&gt;:&lt;标签&gt; # 交互式运行，退出删除:</p>
+<p>-i:交互式 ,-t:终端,&ndash;rm 退出删除 ,bash 启动bash窗口 $ docker run -it &ndash;rm ubuntu:14.04 bash # 列出已下载的镜像（只显示顶层镜像） -a:显示所有镜像 image_name:指定列出某个镜像 $ docker images [-a] [image_name] # 只显示虚悬镜像(dangling image) -f:&ndash;filter 过滤 $ docker images -f dangling=true # 过滤从mongo:3.2建立之后的镜像 $ docker images -f since=mongo:3.2 # 通过label过滤 $ docker images -f label=com.example.version=0.1 # 只显示镜像id $ docker images -q # 只包含镜像ID和仓库名 $ docker images &ndash;format &ldquo;{{.ID}}:</p>
+<p>{{.Repository}}&rdquo; # 以表格等距显示 有标题行，和默认一样，不过自己定义列 $ docker images &ndash;format &ldquo;table {{.ID}}\t{{.Repository}}\t{{.Tag}}&rdquo; # 删除镜像ID为image_id的镜像 $ docker rmi &lt;image_id&gt; # 删除虚悬镜像 $ docker rmi $(docker images -q -f dangling=true) # 将容器保存为镜像 $ docker commit [选项] &lt;容器ID或容器名&gt; [&lt;仓库名&gt;[:&lt;标签&gt;]] # 将容器保存为镜像 $ docker commit \ &ndash;author &ldquo;Tao Wang <a href="mailto:twang2218@gmail.com">twang2218@gmail.com</a>&rdquo; \ &ndash;message &ldquo;修改了默认网页&rdquo; \ webserver \ nginx:v2 $ docker history nginx:v2</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>docker初体验</title>
+      <link>https://jiangxingye.github.io/2017/05/19/docker-first/</link>
+      <pubDate>Fri, 19 May 2017 08:32:23 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2017/05/19/docker-first/</guid>
+      <description>docker初体验</description>
+      <content:encoded><![CDATA[<p>笔者环境操作系统：deepin 15.4 Desktop 64Bit 安装# 官方 的安装脚本 $ curl -sSL <a href="https://get.docker.com/">https://get.docker.com/</a> | sh # 阿里云 的安装脚本 $ curl -sSL <a href="http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet">http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet</a> | sh - # DaoCloud 的安装脚本 $ curl -sSL <a href="https://get.daocloud.io/docker">https://get.daocloud.io/docker</a> | sh 获取镜像Docker Hub 上有大量的高质量的镜像可以用，这里我们就说一下怎么获取这些镜像并运行。从 Docker Registry 获取镜像的命令是 docker pull。其命令格式为：</p>
+<p>$ docker pull [选项] [Docker Registry地址]&lt;仓库名&gt;:&lt;标签&gt; 具体的选项可以通过 docker pull &ndash;help 命令看到，这里我们说一下镜像名称的格式。</p>
+<p>Docker Registry地址：地址的格式一般是 &lt;域名/IP&gt;[:端口号]。默认地址是 Docker Hub。</p>
+<p>仓库名：如之前所说，这里的仓库名是两段式名称，既 &lt;用户名&gt;/&lt;软件名&gt;。对于 Docker Hub，如果不给出用户名，则默认为 library，也就是官方镜像。</p>
+<p>$ sudo docker pull ubuntu 运行有了镜像后，我们就可以以这个镜像为基础启动一个容器来运行。以上面的 ubuntu 为例，如果我们打算启动里面的 bash 并且进行交互式操作的话，可以执行下面的命令。</p>
+<p>$ sudo docker run -it &ndash;rm ubuntu root@0ae011f7b5be:/# cat /etc/os-release NAME=&ldquo;Ubuntu&rdquo; VERSION=&ldquo;16.04.2 LTS (Xenial Xerus)&rdquo; ID=ubuntu ID_LIKE=debian PRETTY_NAME=&ldquo;Ubuntu 16.04.2 LTS&rdquo; VERSION_ID=&ldquo;16.04&rdquo; HOME_URL=&ldquo;<a href="http://www.ubuntu.com/%22">http://www.ubuntu.com/&quot;</a> SUPPORT_URL=&ldquo;<a href="http://help.ubuntu.com/%22">http://help.ubuntu.com/&quot;</a> BUG_REPORT_URL=&ldquo;<a href="http://bugs.launchpad.net/ubuntu/%22">http://bugs.launchpad.net/ubuntu/&quot;</a> VERSION_CODENAME=xenial UBUNTU_CODENAME=xenial docker run 就是运行容器的命令 -it：这是两个参数，一个是 -i：交互式操作，一个是 -t 终端。我们这里打算进入 bash 执行一些命令并查看返回结果，因此我们需要交互式终端。</p>
+<p>&ndash;rm：这个参数是说容器退出后随之将其删除。默认情况下，为了排障需求，退出的容器并不会立即删除，除非手动 docker rm。我们这里只是随便执行个命令，看看结果，不需要排障和保留结果，因此使用 –rm 可以避免浪费空间。</p>
+<p>ubuntu：这是指用 ubuntu 镜像为基础来启动容器。</p>
+<p>bash：放在镜像名后的是命令，这里我们希望有个交互式 Shell，因此用的是 bash。</p>
+<p>进入容器后，我们可以在 Shell 下操作，执行任何所需的命令。这里，我们执行了 cat /etc/os-release，这是 Linux 常用的查看当前系统版本的命令，从返回的结果可以看到容器内是 Ubuntu 16.04.2 LTS 系统。</p>
+<p>最后通过 exit 退出了这个容器。</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Nginx on jiangxingye&#39;s blog</title>
+    <link>https://jiangxingye.github.io/tags/nginx/</link>
+    <description>Recent content in Nginx on jiangxingye&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Sep 2019 13:02:59 +0800</lastBuildDate>
+    <atom:link href="https://jiangxingye.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>nginx配置记录</title>
+      <link>https://jiangxingye.github.io/2018/02/08/nginx-config/</link>
+      <pubDate>Thu, 08 Feb 2018 01:19:09 +0800</pubDate>
+      <guid>https://jiangxingye.github.io/2018/02/08/nginx-config/</guid>
+      <description>nginx配置记录</description>
+      <content:encoded><![CDATA[<p>启用https1.购买免费证书登录阿里云 -&gt; 控制台 -&gt; 安全（云盾） -&gt; CA证书服务 -&gt; 购买证书 2.补全证书信息点击补全，绑定域名 3.下载并配置选择下载 证书for nginx 上面这个页面有相关的配置信息，下面简单介绍：</p>
+<p>① 将下载文件中的 <em>.pem、</em>.key, 拷贝到 nginx 目录下 的 cert , 当然也可以是其他目录② 修改 nginx.conf server { listen 443 ssl;</p>
+<p>server_name xiangzhangshugongyi.com;</p>
+<p>ssl_certificate cert/214487958220243.pem;</p>
+<p>ssl_certificate_key cert/214487958220243.key;</p>
+<p>ssl_session_cache shared:SSL:1m;</p>
+<p>ssl_session_timeout 5m;</p>
+<p>ssl_ciphers HIGH:!aNULL:!MD5;</p>
+<p>ssl_prefer_server_ciphers on;</p>
+<p>location / { proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</p>
+<p>proxy_set_header Host $http_host;</p>
+<p>proxy_set_header X-Forwarded-Proto https;</p>
+<p>proxy_redirect off;</p>
+<p>proxy_connect_timeout 240;</p>
+<p>proxy_send_timeout 240;</p>
+<p>proxy_read_timeout 240;</p>
+<h1 id="note-there-is-not-ssl-here">note, there is not SSL here!</h1>
+<p>plain HTTP is used proxy_pass http://127.0.0.1:8080;</p>
+<p>} } ③ 重启 nginx，通过 证书绑定域名进行 https 访问到 服务器跑在 8080 的服务</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>
